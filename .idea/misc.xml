@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android/tamansari/app/src/main/res/drawable/border_claim.xml" value="0.1125" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/drawable/border_menu_white.xml" value="0.1046875" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/drawable/border_riwayat_spbu.xml" value="0.1046875" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/drawable/border_saldo_home.xml" value="0.1046875" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/drawable/border_spbu_bulan.xml" value="0.1046875" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/drawable/ic_arrow_right_grey.xml" value="0.1125" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/drawable/ic_barcode.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/drawable/ic_liter.xml" value="0.1046875" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/drawable/ic_location.xml" value="0.1125" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/drawable/ic_money.xml" value="0.20833333333333334" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/drawable/ic_next.xml" value="0.1046875" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/drawable/ic_transaction.xml" value="0.1125" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/activity_berita.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/activity_bumdes.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/activity_daftar_wisata.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/activity_dashboard_wisata.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/activity_homestay.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/activity_main.xml" value="0.12590579710144928" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/activity_paket.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/activity_pemdes.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/activity_peta.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/activity_spbu.xml" value="0.2" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/activity_splash_screen.xml" value="0.12" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/activity_tpsr.xml" value="0.17857142857142858" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/content_akun.xml" value="0.1503623188405797" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/content_menu.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/content_menu_list.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/fragment_akun.xml" value="0.11299435028248588" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/fragment_home.xml" value="0.12" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/fragment_pesan.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/fragment_riwayat.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/item_banner.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/item_berita.xml" value="0.18" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/item_homestay.xml" value="0.22" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/item_list_wisata.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/item_paket_wisata.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/item_pesan.xml" value="0.33" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/item_promo.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/item_riwayat_claim_sampah.xml" value="0.2" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/item_riwayat_spbu.xml" value="0.25" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/item_sampah.xml" value="0.1652892561983471" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/item_transaksi.xml" value="0.25" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/layout/item_wisata.xml" value="0.33" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="..\:/Android/tamansari/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1046875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

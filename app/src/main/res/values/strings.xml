@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Tamansari</string>
+    <string name="title_home">Home</string>
+    <string name="title_transaksi">Transaksi</string>
+    <string name="title_pesan">Pesan</string>
+    <string name="title_akun">Akun</string>
+    <string name="toolbar_pemdes">Pemdes</string>
+    <string name="toolbar_bumdes">Bumdes</string>
+    <string name="toolbar_tps3r">TPS3R</string>
+    <string name="toolbar_paket">Paket Wisata</string>
+    <string name="toolbar_homestay">Homestay</string>
+    <string name="saldo">Saldo</string>
+    <string name="harga_sampah">Harga Sampah</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="bantuan">Bantuan</string>
+    <string name="faq">FAQ</string>
+    <string name="pusat_bantuan">Pusat Bantuan</string>
+    <string name="data_pribadi">Data Pribadi</string>
+    <string name="notifikasi">Notifikasi</string>
+    <string name="tentang">Tentang</string>
+    <string name="wisata_populer">Wisata Populer</string>
+    <string name="total_pembelian">Total Pembelian</string>
+    <string name="riwayat">Riwayat</string>
+    <string name="placeholder_homestay_name">Hadi Homestay</string>
+    <string name="placeholder_jarak_lokasi">1,4 KM</string>
+    <string name="placeholder_id">#SFAS44123</string>
+    <string name="placeholder_claim">Claim</string>
+    <string name="placeholder_nama_sampah">Botol Plastic</string>
+    <string name="placeholder_liter">12.5 Ltr</string>
+    <string name="placeholder_bulan">September</string>
+    <string name="placeholder_judul_berita">Tamansari Banyuwangi Masuk 50 Besar Anugerah Desa Wisata Indonesia Tahun 2021 dari Kemenparekraf</string>
+    <string name="placeholder_username">Rizal Sahputra</string>
+    <string name="placeholder_lokasi">Banyuwangi</string>
+    <string name="placeholder_email">rizalsahputra@gmail.com</string>
+    <string name="placeholder_saldo">Rp 100.000</string>
+    <string name="placeholder_vote_count">(100)</string>
+    <string name="placeholder_nama_wisata">Sendang Seruni</string>
+    <string name="placeholder_id_transaksi">Transaksi 1</string>
+    <string name="placeholder_tanggal">24 Agustus 21, 20:48</string>
+    <string name="placeholder_deskripsi_transaksi">Pembelian untuk pulsa 082132133213</string>
+    <string name="placeholder_jenis_pesan">Lapor</string>
+    <string name="placeholder_pesan">Laporan anda sudah kami teruskan ke RT/RW setempat, mohon ditunggu</string>
+
+</resources>

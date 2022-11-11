@@ -1,21 +1,30 @@
-package com.bwx.tamansari.ui.wisata
+package com.bwx.tamansari.ui.wisata.list
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bwx.tamansari.R
-import com.bwx.tamansari.databinding.ActivityDaftarWisataBinding
+import com.bwx.tamansari.databinding.FragmentDaftarWisataBinding
 import com.bwx.tamansari.model.WisataModel
 
-class DaftarWisataActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDaftarWisataBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityDaftarWisataBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        setupToolbar()
+class DaftarWisataFragment : Fragment() {
+
+    private var _binding: FragmentDaftarWisataBinding? = null
+    val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentDaftarWisataBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupWisata()
     }
 
@@ -48,23 +57,14 @@ class DaftarWisataActivity : AppCompatActivity() {
 
         val adapter = ListWisataAdapter()
         adapter.updateData(wisata)
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         binding.rvWisata.layoutManager = layoutManager
         binding.rvWisata.adapter = adapter
     }
 
-    private fun setupToolbar() {
-        binding.toolbar.setTitleTextColor(ContextCompat.getColor(this, android.R.color.white))
-        setSupportActionBar(binding.toolbar)
-        val actionBar = supportActionBar
-        actionBar!!.title = getString(R.string.toolbar_paket)
-        actionBar.setDisplayShowHomeEnabled(true)
-        actionBar.setDisplayHomeAsUpEnabled(true)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return super.onSupportNavigateUp()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

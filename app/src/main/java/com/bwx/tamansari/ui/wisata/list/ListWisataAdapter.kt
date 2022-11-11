@@ -1,4 +1,4 @@
-package com.bwx.tamansari.ui.wisata
+package com.bwx.tamansari.ui.wisata.list
 
 import android.view.LayoutInflater
 import android.view.View

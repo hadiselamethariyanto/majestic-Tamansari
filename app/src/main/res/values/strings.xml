@@ -8,6 +8,7 @@
     <string name="toolbar_bumdes">Bumdes</string>
     <string name="toolbar_tps3r">TPS3R</string>
     <string name="toolbar_paket">Paket Wisata</string>
+    <string name="toolbar_wisata">Daftar Wisata</string>
     <string name="toolbar_homestay">Homestay</string>
     <string name="saldo">Saldo</string>
     <string name="harga_sampah">Harga Sampah</string>
@@ -40,5 +41,7 @@
     <string name="placeholder_deskripsi_transaksi">Pembelian untuk pulsa 082132133213</string>
     <string name="placeholder_jenis_pesan">Lapor</string>
     <string name="placeholder_pesan">Laporan anda sudah kami teruskan ke RT/RW setempat, mohon ditunggu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

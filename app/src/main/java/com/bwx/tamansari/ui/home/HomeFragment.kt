@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -43,16 +44,23 @@ class HomeFragment : Fragment() {
 
     private fun setupMenu() {
         val list = ArrayList<MenuModel>()
-        list.add(MenuModel("Pemdes", R.drawable.ic_goverment))
-        list.add(MenuModel("SPBU", R.drawable.ic_spbu))
-        list.add(MenuModel("Bumdes  ", R.drawable.ic_bumdes))
-        list.add(MenuModel("Peta", R.drawable.ic_map))
         list.add(MenuModel("Wisata", R.drawable.ic_wisata))
+        list.add(MenuModel("Homestay", R.drawable.ic_homestay))
+        list.add(MenuModel("Paket", R.drawable.ic_luggage))
+        list.add(MenuModel("Restoran", R.drawable.ic_restaurant))
+        list.add(MenuModel("Peta", R.drawable.ic_map))
         list.add(MenuModel("Berita", R.drawable.ic_berita))
         list.add(MenuModel("TPS3R", R.drawable.ic_tps3r))
 
-        val gridLayoutManager = GridLayoutManager(activity, 2, GridLayoutManager.HORIZONTAL, false)
+        val gridLayoutManager = GridLayoutManager(activity, 5, GridLayoutManager.VERTICAL, false)
         val adapter = MenuGridAdapter(list, requireActivity())
+        adapter.setOnItemClickCallback(object : MenuGridAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: MenuModel, position: Int) {
+                if (position == 0) {
+                    findNavController().navigate(R.id.action_navigation_home_to_daftarWisataFragment)
+                }
+            }
+        })
 
         binding.menu.layoutManager = gridLayoutManager
         binding.menu.adapter = adapter

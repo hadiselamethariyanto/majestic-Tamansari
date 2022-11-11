@@ -4,6 +4,11 @@ import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.bwx.tamansari.databinding.ActivityMainBinding
 import com.bwx.tamansari.ui.akun.AkunFragment
 import com.bwx.tamansari.ui.home.HomeFragment
@@ -13,6 +18,8 @@ import com.bwx.tamansari.ui.riwayat.RiwayatFragment
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -58,16 +65,34 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val navView: BottomNavigationView = binding.navView
 
-        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        val fragment = HomeFragment()
-        addFragment(fragment)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_controller) as NavHostFragment
+        navController = navHostFragment.navController
+
+//        appBarConfiguration = AppBarConfiguration(
+//            setOf(
+//                R.id.navigation_home,
+//                R.id.navigation_dashboard,
+//                R.id.navigation_notifications,
+//                R.id.navigation_daftar_wisata,
+//            ), binding.drawerLayout
+//        )
+
+        setupActionBarWithNavController(navController)
+        binding.bottomNav.setupWithNavController(navController)
+
+
+//        val navView: BottomNavigationView = binding.navView
+//
+//        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+//        val fragment = HomeFragment()
+//        addFragment(fragment)
 
         supportActionBar?.hide()
 
-        navView.background = null
-        navView.menu.getItem(2).isEnabled = false
+//        navView.background = null
+        binding.bottomNav.menu.getItem(2).isEnabled = false
 
         binding.fab.setOnClickListener {
 //            scanQrCode()

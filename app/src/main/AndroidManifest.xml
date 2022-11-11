@@ -12,10 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tamansari">
         <activity
-            android:name=".ui.wisata.DaftarWisataActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".ui.paket.PaketActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />

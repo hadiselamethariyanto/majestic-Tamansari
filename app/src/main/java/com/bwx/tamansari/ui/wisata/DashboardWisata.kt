@@ -95,7 +95,7 @@ class DashboardWisata : AppCompatActivity() {
             } else if (i == 1) {
                 startActivity(Intent(this, PaketActivity::class.java))
             } else if (i == 2) {
-                startActivity(Intent(this, DaftarWisataActivity::class.java))
+//                startActivity(Intent(this, DaftarWisataActivity::class.java))
             }
         }
     }

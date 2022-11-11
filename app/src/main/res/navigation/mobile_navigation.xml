@@ -30,5 +30,15 @@
         android:id="@+id/navigation_daftar_wisata"
         android:name="com.bwx.tamansari.ui.wisata.list.DaftarWisataFragment"
         android:label="fragment_daftar_wisata"
-        tools:layout="@layout/fragment_daftar_wisata" />
+        tools:layout="@layout/fragment_daftar_wisata" >
+
+        <action
+            android:id="@+id/action_navigation_daftar_wisata_to_navigation_detail_wisata"
+            app:destination="@id/navigation_detail_wisata" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_detail_wisata"
+        android:name="com.bwx.tamansari.ui.wisata.detail.DetailWisataFragment"
+        android:label="fragment_detail_wisata"
+        tools:layout="@layout/fragment_detail_wisata" />
 </navigation>

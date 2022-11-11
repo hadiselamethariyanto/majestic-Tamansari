@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentDaftarWisataBinding
 import com.bwx.tamansari.model.WisataModel
 
@@ -57,7 +60,17 @@ class DaftarWisataFragment : Fragment() {
 
         val adapter = ListWisataAdapter()
         adapter.updateData(wisata)
-        val layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
+        adapter.setOnItemClickCallback(object : ListWisataAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: WisataModel) {
+                val bundle = bundleOf("wisata" to data)
+                findNavController().navigate(
+                    R.id.action_navigation_daftar_wisata_to_navigation_detail_wisata,
+                    bundle
+                )
+            }
+        })
+        val layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         binding.rvWisata.layoutManager = layoutManager
         binding.rvWisata.adapter = adapter
     }

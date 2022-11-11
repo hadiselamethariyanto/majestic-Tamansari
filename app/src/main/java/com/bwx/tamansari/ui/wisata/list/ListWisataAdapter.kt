@@ -16,6 +16,12 @@ import com.bwx.tamansari.model.WisataModel
 class ListWisataAdapter : RecyclerView.Adapter<ListWisataAdapter.Viewholder>() {
     private val wisata = mutableListOf<WisataModel>()
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     fun updateData(new: MutableList<WisataModel>) {
         wisata.clear()
         wisata.addAll(new)
@@ -43,7 +49,14 @@ class ListWisataAdapter : RecyclerView.Adapter<ListWisataAdapter.Viewholder>() {
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
         holder.bindItem(wisata[position])
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(wisata[position])
+        }
     }
 
     override fun getItemCount() = wisata.size
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: WisataModel)
+    }
 }

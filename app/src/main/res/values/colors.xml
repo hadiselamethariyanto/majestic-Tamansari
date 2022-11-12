@@ -11,8 +11,10 @@
     <color name="hijau_tua">#acce22</color>
     <color name="hijau_muda">#c2d854</color>
     <color name="background">#dddddd</color>
-    <color name="grey">#505050</color>
     <color name="merah">#c32130</color>
     <color name="hijau">#31B057</color>
     <color name="yellow">#FEB139</color>
+    <color name="color_grey">#dddddd</color>
+    <color name="white_smoke">#F8F8F8</color>
+    <color name="grey">#8F8F8F</color>
 </resources>

@@ -46,5 +46,6 @@
     <string name="description_image_wisata">Image Wisata</string>
     <string name="description_image_rating">Image Rating</string>
     <string name="description_image_restaurant">Image Restaurant</string>
+    <string name="description_image_news">Image News</string>
 
 </resources>

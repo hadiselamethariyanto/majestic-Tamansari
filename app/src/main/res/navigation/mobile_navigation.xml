@@ -79,9 +79,18 @@
         tools:layout="@layout/fragment_peta" />
     <fragment
         android:id="@+id/navigation_news"
-        android:name="com.bwx.tamansari.ui.berita.BeritaFragment"
+        android:name="com.bwx.tamansari.ui.berita.list.BeritaFragment"
         android:label="fragment_berita"
-        tools:layout="@layout/fragment_berita" />
+        tools:layout="@layout/fragment_berita" >
+        <action
+            android:id="@+id/action_navigation_news_to_navigation_detail_news"
+            app:destination="@id/navigation_detail_news" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_detail_news"
+        android:name="com.bwx.tamansari.ui.berita.detail.DetailBeritaFragment"
+        android:label="fragment_detail_berita"
+        tools:layout="@layout/fragment_detail_berita" />
 
 
 </navigation>

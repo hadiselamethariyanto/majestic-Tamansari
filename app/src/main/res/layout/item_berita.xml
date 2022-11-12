@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imgBerita"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,9 +21,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_bold"
+        android:maxLines="2"
         android:text="@string/placeholder_judul_berita"
-        android:textColor="@color/biru_tua"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imgBerita"
@@ -34,11 +37,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/placeholder_tanggal"
+        android:fontFamily="@font/poppins_regular"
         android:textColor="@color/grey"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imgBerita"
-        app:layout_constraintTop_toBottomOf="@id/tvJudul" />
+        app:layout_constraintTop_toBottomOf="@id/tvJudul"
+        tools:text="12 Nov 2022" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_travel_package"
             app:destination="@id/navigation_travel_package" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_restaurant"
+            app:destination="@id/navigation_restaurant" />
     </fragment>
 
     <fragment
@@ -58,6 +61,11 @@
         android:name="com.bwx.tamansari.ui.paket.PaketFragment"
         android:label="fragment_paket"
         tools:layout="@layout/fragment_paket" />
+    <fragment
+        android:id="@+id/navigation_restaurant"
+        android:name="com.bwx.tamansari.ui.restaurant.RestaurantFragment"
+        android:label="fragment_restaurant"
+        tools:layout="@layout/fragment_restaurant" />
 
 
 </navigation>

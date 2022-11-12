@@ -56,12 +56,19 @@ class HomeFragment : Fragment() {
         val adapter = MenuGridAdapter(list, requireActivity())
         adapter.setOnItemClickCallback(object : MenuGridAdapter.OnItemClickCallback {
             override fun onItemClicked(data: MenuModel, position: Int) {
-                if (position == 0) {
-                    findNavController().navigate(R.id.action_navigation_home_to_daftarWisataFragment)
-                } else if (position == 1) {
-                    findNavController().navigate(R.id.action_navigation_home_to_navigation_homestay)
-                } else if (position == 2) {
-                    findNavController().navigate(R.id.action_navigation_home_to_navigation_travel_package)
+                when (position) {
+                    0 -> {
+                        findNavController().navigate(R.id.action_navigation_home_to_daftarWisataFragment)
+                    }
+                    1 -> {
+                        findNavController().navigate(R.id.action_navigation_home_to_navigation_homestay)
+                    }
+                    2 -> {
+                        findNavController().navigate(R.id.action_navigation_home_to_navigation_travel_package)
+                    }
+                    3 -> {
+                        findNavController().navigate(R.id.action_navigation_home_to_navigation_restaurant)
+                    }
                 }
             }
         })

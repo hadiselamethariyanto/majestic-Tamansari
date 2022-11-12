@@ -1,9 +1,6 @@
 package com.bwx.tamansari.utils
 
-import com.bwx.tamansari.model.GalleryWisataDomain
-import com.bwx.tamansari.model.HomestayModel
-import com.bwx.tamansari.model.PaketWisataModel
-import com.bwx.tamansari.model.RatingWisataDomain
+import com.bwx.tamansari.model.*
 
 object DataDummy {
 
@@ -118,7 +115,7 @@ object DataDummy {
         return homestay
     }
 
-    fun generateTravelPackage():List<PaketWisataModel>{
+    fun generateTravelPackage(): List<PaketWisataModel> {
         val paket = arrayListOf<PaketWisataModel>()
         paket.add(
             PaketWisataModel(
@@ -146,5 +143,43 @@ object DataDummy {
         )
 
         return paket
+    }
+
+    fun generateRestaurant(): List<RestaurantDomain> {
+        val list = ArrayList<RestaurantDomain>()
+        list.add(
+            RestaurantDomain(
+                "1",
+                "Warung Oseng",
+                "Traditional Food",
+                0.0,
+                0.0,
+                "https://asset.kompas.com/crops/A7H0vt6v6p95MQfOQTqIhMqhklE=/41x0:554x256/375x240/data/photo/2019/10/15/5da5188e04c2c.png",
+                4f
+            )
+        )
+        list.add(
+            RestaurantDomain(
+                "2",
+                "Warung Oseng 2",
+                "Traditional Food",
+                0.0,
+                0.0,
+                "https://asset.kompas.com/crops/A7H0vt6v6p95MQfOQTqIhMqhklE=/41x0:554x256/375x240/data/photo/2019/10/15/5da5188e04c2c.png",
+                4f
+            )
+        )
+        list.add(
+            RestaurantDomain(
+                "3",
+                "Warung Oseng 3",
+                "Traditional Food",
+                0.0,
+                0.0,
+                "https://asset.kompas.com/crops/A7H0vt6v6p95MQfOQTqIhMqhklE=/41x0:554x256/375x240/data/photo/2019/10/15/5da5188e04c2c.png",
+                4f
+            )
+        )
+        return list
     }
 }

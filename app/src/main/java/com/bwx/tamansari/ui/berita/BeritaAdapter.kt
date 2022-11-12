@@ -14,9 +14,9 @@ import com.bwx.tamansari.model.BeritaModel
 
 class BeritaAdapter : RecyclerView.Adapter<BeritaAdapter.ViewHolder>() {
 
-    private val berita = mutableListOf<BeritaModel>()
+    private val berita = ArrayList<BeritaModel>()
 
-    fun updateData(new:MutableList<BeritaModel>){
+    fun updateData(new:List<BeritaModel>){
         berita.clear()
         berita.addAll(new)
         notifyDataSetChanged()

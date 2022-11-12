@@ -72,6 +72,9 @@ class HomeFragment : Fragment() {
                     4 -> {
                         findNavController().navigate(R.id.action_navigation_home_to_navigation_peta)
                     }
+                    5 -> {
+                        findNavController().navigate(R.id.action_navigation_home_to_navigation_news)
+                    }
                 }
             }
         })

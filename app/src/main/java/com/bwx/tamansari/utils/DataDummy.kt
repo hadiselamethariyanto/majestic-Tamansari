@@ -1,6 +1,7 @@
 package com.bwx.tamansari.utils
 
 import com.bwx.tamansari.model.GalleryWisataDomain
+import com.bwx.tamansari.model.HomestayModel
 import com.bwx.tamansari.model.RatingWisataDomain
 
 object DataDummy {
@@ -82,5 +83,37 @@ object DataDummy {
         )
 
         return list
+    }
+
+    fun generateHomestay(): List<HomestayModel> {
+        val homestay = arrayListOf<HomestayModel>()
+        homestay.add(
+            HomestayModel(
+                "Jambu Merah Homestay",
+                1.4,
+                150000,
+                4.3f,
+                "https://tamansariijen.com/wp-content/uploads/2021/02/Jambu-Merah-Homestay.jpg"
+            )
+        )
+        homestay.add(
+            HomestayModel(
+                "Kastini Homestay",
+                1.4,
+                150000,
+                4.3f,
+                "https://tamansariijen.com/wp-content/uploads/2021/02/kastini-homestay-1.jpg"
+            )
+        )
+        homestay.add(
+            HomestayModel(
+                "Tolak Homestay",
+                1.4,
+                150000,
+                4.3f,
+                "https://tamansariijen.com/wp-content/uploads/2021/02/Tolak-Homestay.jpg"
+            )
+        )
+        return homestay
     }
 }

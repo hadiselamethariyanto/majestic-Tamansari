@@ -58,6 +58,8 @@ class HomeFragment : Fragment() {
             override fun onItemClicked(data: MenuModel, position: Int) {
                 if (position == 0) {
                     findNavController().navigate(R.id.action_navigation_home_to_daftarWisataFragment)
+                } else if (position == 1) {
+                    findNavController().navigate(R.id.action_navigation_home_to_navigation_homestay)
                 }
             }
         })

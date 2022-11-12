@@ -16,7 +16,7 @@ import com.bwx.tamansari.model.HomestayModel
 class HomestayAdapter : RecyclerView.Adapter<HomestayAdapter.Viewholder>() {
     private val homestay = mutableListOf<HomestayModel>()
 
-    fun updateData(new: MutableList<HomestayModel>) {
+    fun updateData(new: List<HomestayModel>) {
         homestay.clear()
         homestay.addAll(new)
         notifyDataSetChanged()
@@ -31,7 +31,8 @@ class HomestayAdapter : RecyclerView.Adapter<HomestayAdapter.Viewholder>() {
 
         fun bindItem(data: HomestayModel) {
             tvHomestayName.text = data.nama
-            Glide.with(itemView.context).load(data.foto).transform(CenterCrop(), RoundedCorners(24))
+            Glide.with(itemView.context).load(data.foto).placeholder(R.drawable.placeholder)
+                .transform(CenterCrop(), RoundedCorners(24))
                 .into(imgHomestay)
             tvDistance.text = "${data.jarak} KM"
             ratingBar.rating = data.rating

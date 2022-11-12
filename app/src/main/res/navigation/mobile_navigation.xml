@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_daftarWisataFragment"
             app:destination="@id/navigation_daftar_wisata" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_homestay"
+            app:destination="@id/navigation_homestay" />
     </fragment>
 
     <fragment
@@ -41,4 +44,10 @@
         android:name="com.bwx.tamansari.ui.wisata.detail.DetailWisataFragment"
         android:label="fragment_detail_wisata"
         tools:layout="@layout/fragment_detail_wisata" />
+    <fragment
+        android:id="@+id/navigation_homestay"
+        android:name="com.bwx.tamansari.ui.homestay.HomestayFragment"
+        android:label="fragment_homestay"
+        tools:layout="@layout/fragment_homestay" />
+
 </navigation>

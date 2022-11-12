@@ -34,12 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController)
         binding.bottomNav.setupWithNavController(navController)
-        supportActionBar?.hide()
-        binding.bottomNav.menu.getItem(2).isEnabled = false
 
-        binding.fab.setOnClickListener {
-//            scanQrCode()
-        }
 
     }
 }

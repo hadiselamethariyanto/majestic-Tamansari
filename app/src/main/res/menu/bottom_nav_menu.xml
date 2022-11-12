@@ -12,10 +12,6 @@
         android:title="@string/title_transaksi" />
 
     <item
-        android:id="@+id/placeholder"
-        android:title="" />
-
-    <item
         android:id="@+id/navigation_pesan"
         android:icon="@drawable/ic_mail"
         android:title="@string/title_pesan" />

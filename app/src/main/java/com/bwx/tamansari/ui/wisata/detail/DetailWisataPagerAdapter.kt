@@ -18,7 +18,7 @@ class DetailWisataPagerAdapter(activity: FragmentActivity, val wisata: WisataDom
 
         when (position) {
             0 -> fragment = OverviewWisataFragment.newInstance(wisataJson)
-            1 -> fragment = GalleryWisataFragment.newInstance("","")
+            1 -> fragment = GalleryWisataFragment.newInstance(wisataJson)
             2 -> fragment = RatingWisataFragment.newInstance("","")
         }
         return fragment as Fragment

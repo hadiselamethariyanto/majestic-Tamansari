@@ -13,7 +13,6 @@ import com.bwx.tamansari.databinding.ActivityDashboardWisataBinding
 import com.bwx.tamansari.model.BannerPromo
 import com.bwx.tamansari.model.MenuModel
 import com.bwx.tamansari.model.WisataDomain
-import com.bwx.tamansari.ui.paket.PaketActivity
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
@@ -92,7 +91,7 @@ class DashboardWisata : AppCompatActivity() {
             if (i == 0) {
 //                startActivity(Intent(this, HomestayActivity::class.java))
             } else if (i == 1) {
-                startActivity(Intent(this, PaketActivity::class.java))
+//                startActivity(Intent(this, PaketActivity::class.java))
             } else if (i == 2) {
 //                startActivity(Intent(this, DaftarWisataActivity::class.java))
             }

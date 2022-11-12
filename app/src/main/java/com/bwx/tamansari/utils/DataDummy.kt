@@ -1,10 +1,11 @@
 package com.bwx.tamansari.utils
 
 import com.bwx.tamansari.model.GalleryWisataDomain
+import com.bwx.tamansari.model.RatingWisataDomain
 
 object DataDummy {
 
-    fun generateGalleryWisata():List<GalleryWisataDomain>{
+    fun generateGalleryWisata(): List<GalleryWisataDomain> {
         val listGallery = arrayListOf<GalleryWisataDomain>()
         listGallery.add(
             GalleryWisataDomain(
@@ -43,5 +44,43 @@ object DataDummy {
             )
         )
         return listGallery
+    }
+
+    fun generateRatingWisata(): List<RatingWisataDomain> {
+        val list = arrayListOf<RatingWisataDomain>()
+        list.add(
+            RatingWisataDomain(
+                id = "1",
+                username = "Ferdi Sambo",
+                rating = 4f,
+                review = "Wisatanya keren",
+                photoUrl = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
+                createdDate = "12 Nov"
+            )
+        )
+
+        list.add(
+            RatingWisataDomain(
+                id = "2",
+                username = "Kuat Ma'ruf",
+                rating = 5f,
+                review = "Wisatanya masih asri",
+                photoUrl = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
+                createdDate = "12 Nov"
+            )
+        )
+
+        list.add(
+            RatingWisataDomain(
+                id = "3",
+                username = "Ricky Rizal",
+                rating = 4f,
+                review = "Kebersihannya terjaga",
+                photoUrl = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
+                createdDate = "12 Nov"
+            )
+        )
+
+        return list
     }
 }

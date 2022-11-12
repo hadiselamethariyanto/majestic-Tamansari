@@ -60,6 +60,8 @@ class HomeFragment : Fragment() {
                     findNavController().navigate(R.id.action_navigation_home_to_daftarWisataFragment)
                 } else if (position == 1) {
                     findNavController().navigate(R.id.action_navigation_home_to_navigation_homestay)
+                } else if (position == 2) {
+                    findNavController().navigate(R.id.action_navigation_home_to_navigation_travel_package)
                 }
             }
         })

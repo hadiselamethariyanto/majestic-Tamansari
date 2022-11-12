@@ -2,6 +2,7 @@ package com.bwx.tamansari.utils
 
 import com.bwx.tamansari.model.GalleryWisataDomain
 import com.bwx.tamansari.model.HomestayModel
+import com.bwx.tamansari.model.PaketWisataModel
 import com.bwx.tamansari.model.RatingWisataDomain
 
 object DataDummy {
@@ -115,5 +116,35 @@ object DataDummy {
             )
         )
         return homestay
+    }
+
+    fun generateTravelPackage():List<PaketWisataModel>{
+        val paket = arrayListOf<PaketWisataModel>()
+        paket.add(
+            PaketWisataModel(
+                "Nikmati Sedikit Waktu Luang",
+                250000,
+                4.0f,
+                "https://tamansariijen.com/wp-content/uploads/2019/10/WhatsApp-Image-2019-09-24-at-21.38.02-1.jpeg"
+            )
+        )
+        paket.add(
+            PaketWisataModel(
+                "Nikmati Destinasi Wisata Tamansari",
+                500000,
+                4.0f,
+                "https://tamansariijen.com/wp-content/uploads/2020/10/runi.jpg"
+            )
+        )
+        paket.add(
+            PaketWisataModel(
+                "Budaya dan Edukasi Tamansari",
+                750000,
+                4.0f,
+                "https://tamansariijen.com/wp-content/uploads/2020/11/DSC06920-scaled.jpg"
+            )
+        )
+
+        return paket
     }
 }

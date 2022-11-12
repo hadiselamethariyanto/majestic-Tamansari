@@ -9,13 +9,16 @@
         android:id="@+id/navigation_home"
         android:name="com.bwx.tamansari.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_daftarWisataFragment"
             app:destination="@id/navigation_daftar_wisata" />
         <action
             android:id="@+id/action_navigation_home_to_navigation_homestay"
             app:destination="@id/navigation_homestay" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_travel_package"
+            app:destination="@id/navigation_travel_package" />
     </fragment>
 
     <fragment
@@ -33,7 +36,7 @@
         android:id="@+id/navigation_daftar_wisata"
         android:name="com.bwx.tamansari.ui.wisata.list.DaftarWisataFragment"
         android:label="fragment_daftar_wisata"
-        tools:layout="@layout/fragment_daftar_wisata" >
+        tools:layout="@layout/fragment_daftar_wisata">
 
         <action
             android:id="@+id/action_navigation_daftar_wisata_to_navigation_detail_wisata"
@@ -49,5 +52,12 @@
         android:name="com.bwx.tamansari.ui.homestay.HomestayFragment"
         android:label="fragment_homestay"
         tools:layout="@layout/fragment_homestay" />
+
+    <fragment
+        android:id="@+id/navigation_travel_package"
+        android:name="com.bwx.tamansari.ui.paket.PaketFragment"
+        android:label="fragment_paket"
+        tools:layout="@layout/fragment_paket" />
+
 
 </navigation>

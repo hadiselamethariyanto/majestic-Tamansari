@@ -14,9 +14,9 @@ import com.bwx.tamansari.R
 import com.bwx.tamansari.model.PaketWisataModel
 
 class PaketAdapter : RecyclerView.Adapter<PaketAdapter.Viewholder>() {
-    private val paket = mutableListOf<PaketWisataModel>()
+    private val paket = arrayListOf<PaketWisataModel>()
 
-    fun updateData(new: MutableList<PaketWisataModel>) {
+    fun updateData(new: List<PaketWisataModel>) {
         paket.clear()
         paket.addAll(new)
         notifyDataSetChanged()

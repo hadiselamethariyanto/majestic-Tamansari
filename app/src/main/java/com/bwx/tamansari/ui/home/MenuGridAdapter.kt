@@ -1,7 +1,6 @@
 package com.bwx.tamansari.ui.home
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bwx.tamansari.R
 import com.bwx.tamansari.model.MenuModel
-import com.bwx.tamansari.ui.berita.BeritaActivity
-import com.bwx.tamansari.ui.bumdes.BumdesActivity
-import com.bwx.tamansari.ui.pemdes.PemdesActivity
-import com.bwx.tamansari.ui.peta.PetaActivity
-import com.bwx.tamansari.ui.spbu.SpbuActivity
-import com.bwx.tamansari.ui.tpsr.TpsrActivity
-import com.bwx.tamansari.ui.wisata.DashboardWisata
 
 class MenuGridAdapter(val list: List<MenuModel>, val context: Context) :
     RecyclerView.Adapter<MenuGridAdapter.ViewHolder>() {

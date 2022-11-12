@@ -22,10 +22,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.bumdes.BumdesActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".ui.pemdes.PemdesActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />

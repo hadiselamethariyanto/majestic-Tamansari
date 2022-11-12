@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bwx.tamansari.R
-import com.bwx.tamansari.model.WisataModel
+import com.bwx.tamansari.model.WisataDomain
 
 class WisataPopulerAdapter : RecyclerView.Adapter<WisataPopulerAdapter.ViewHolder>() {
-    private val wisata = mutableListOf<WisataModel>()
+    private val wisata = mutableListOf<WisataDomain>()
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val imgWisata: ImageView = view.findViewById(R.id.imgWisata)
@@ -21,7 +21,7 @@ class WisataPopulerAdapter : RecyclerView.Adapter<WisataPopulerAdapter.ViewHolde
         private val ratingBar: RatingBar = view.findViewById(R.id.ratingbar)
         private val vote_count: TextView = view.findViewById(R.id.vote_count)
 
-        fun bindItem(data: WisataModel) {
+        fun bindItem(data: WisataDomain) {
             Glide.with(itemView.context).load(data.foto)
                 .transform(CenterCrop())
                 .into(imgWisata)
@@ -32,7 +32,7 @@ class WisataPopulerAdapter : RecyclerView.Adapter<WisataPopulerAdapter.ViewHolde
         }
     }
 
-    fun updateData(new: MutableList<WisataModel>) {
+    fun updateData(new: MutableList<WisataDomain>) {
         wisata.clear()
         wisata.addAll(new)
         notifyDataSetChanged()

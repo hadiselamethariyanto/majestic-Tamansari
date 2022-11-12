@@ -11,10 +11,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bwx.tamansari.R
-import com.bwx.tamansari.model.WisataModel
+import com.bwx.tamansari.model.WisataDomain
 
 class ListWisataAdapter : RecyclerView.Adapter<ListWisataAdapter.Viewholder>() {
-    private val wisata = mutableListOf<WisataModel>()
+    private val wisata = mutableListOf<WisataDomain>()
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -22,7 +22,7 @@ class ListWisataAdapter : RecyclerView.Adapter<ListWisataAdapter.Viewholder>() {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    fun updateData(new: MutableList<WisataModel>) {
+    fun updateData(new: MutableList<WisataDomain>) {
         wisata.clear()
         wisata.addAll(new)
         notifyDataSetChanged()
@@ -34,7 +34,7 @@ class ListWisataAdapter : RecyclerView.Adapter<ListWisataAdapter.Viewholder>() {
         private val tvVoteCount: TextView = view.findViewById(R.id.tvVoteCount)
         private val imgWisata: ImageView = view.findViewById(R.id.imgWisata)
 
-        fun bindItem(data: WisataModel) {
+        fun bindItem(data: WisataDomain) {
             tvNamaWisata.text = data.nama
             ratingBar.rating = data.rating
             tvVoteCount.text = "(${data.vote_count})"
@@ -57,6 +57,6 @@ class ListWisataAdapter : RecyclerView.Adapter<ListWisataAdapter.Viewholder>() {
     override fun getItemCount() = wisata.size
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: WisataModel)
+        fun onItemClicked(data: WisataDomain)
     }
 }

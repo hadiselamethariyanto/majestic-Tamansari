@@ -30,10 +30,6 @@
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.spbu.SpbuActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".ui.berita.BeritaActivity"
             android:exported="true" />
         <activity

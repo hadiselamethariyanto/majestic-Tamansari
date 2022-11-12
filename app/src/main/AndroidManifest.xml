@@ -20,13 +20,7 @@
             android:name=".ui.tpsr.TpsrActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.berita.BeritaActivity"
-            android:exported="true" />
 
-        <activity
-            android:name=".ui.wisata.DashboardWisata"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.splashscreen.SplashScreen"
             android:exported="true"
@@ -37,9 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

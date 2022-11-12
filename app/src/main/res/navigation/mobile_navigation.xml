@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_restaurant"
             app:destination="@id/navigation_restaurant" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_peta"
+            app:destination="@id/navigation_peta" />
     </fragment>
 
     <fragment
@@ -66,6 +69,11 @@
         android:name="com.bwx.tamansari.ui.restaurant.RestaurantFragment"
         android:label="fragment_restaurant"
         tools:layout="@layout/fragment_restaurant" />
+    <fragment
+        android:id="@+id/navigation_peta"
+        android:name="com.bwx.tamansari.ui.peta.PetaFragment"
+        android:label="fragment_peta"
+        tools:layout="@layout/fragment_peta" />
 
 
 </navigation>

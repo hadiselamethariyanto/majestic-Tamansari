@@ -23,9 +23,7 @@
         <activity
             android:name=".ui.berita.BeritaActivity"
             android:exported="true" />
-        <activity
-            android:name=".ui.peta.PetaActivity"
-            android:exported="true" />
+
         <activity
             android:name=".ui.wisata.DashboardWisata"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -87,29 +87,50 @@ object DataDummy {
         val homestay = arrayListOf<HomestayModel>()
         homestay.add(
             HomestayModel(
+                "1",
+                "Vivi Homestay",
+                1.4,
+                150000,
+                4.3f,
+                6,
+                1f,
+                arrayListOf(
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/349212550.jpg?k=6508bb3a88a154676aea88c16af37e78e38826a02cc93d62b9232640d9eeb146&o=&hp=1",
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/349212574.jpg?k=d88268d689a3765c9e8cb1770df33dea2339117fb8fb0986fe2cc0808cbc6bc5&o=&hp=1",
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/349213407.jpg?k=0912d0a15a77d0e8167666199b5004f97e2e01e709a55dffa2abe192a8edc6bc&o=&hp=1"
+                )
+            )
+        )
+        homestay.add(
+            HomestayModel(
+                "2",
                 "Jambu Merah Homestay",
                 1.4,
                 150000,
                 4.3f,
-                "https://tamansariijen.com/wp-content/uploads/2021/02/Jambu-Merah-Homestay.jpg"
+                14,
+                1f,
+                arrayListOf(
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/349210208.jpg?k=5de59963e029ff038f9ce61891fb62ee0eda9cd16d7bec9497c18d3a762864ad&o=&hp=1",
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/349210220.jpg?k=3e1924fbb353007b9bcc77906d3dcb1c447ad01bdf989cbb243b08d8681e2fc5&o=&hp=1",
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/349210231.jpg?k=2c967f270c3531834f979e5970a0102f95fdced5b89998ce9b55b32d740df9a7&o=&hp=1"
+                )
             )
         )
         homestay.add(
             HomestayModel(
-                "Kastini Homestay",
+                "3",
+                "Berliant Homestay",
                 1.4,
                 150000,
                 4.3f,
-                "https://tamansariijen.com/wp-content/uploads/2021/02/kastini-homestay-1.jpg"
-            )
-        )
-        homestay.add(
-            HomestayModel(
-                "Tolak Homestay",
-                1.4,
-                150000,
-                4.3f,
-                "https://tamansariijen.com/wp-content/uploads/2021/02/Tolak-Homestay.jpg"
+                31,
+                1f,
+                arrayListOf(
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/349212196.jpg?k=b67c576d2fc996d5ab58d7dfd612fb63d3a2e64b6ad0cde4564dbb96173c3f7a&o=&hp=1",
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/349211643.jpg?k=7e92d1096cadfda8c3d5be53d7ada2c554221f2a4ba723cb1176db721d823dea&o=&hp=1",
+                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/349211613.jpg?k=768b55e78781b2c072f4dbe84b8745c7519ea1913370fd5b0881ad0f6e37a986&o=&hp=1"
+                )
             )
         )
         return homestay

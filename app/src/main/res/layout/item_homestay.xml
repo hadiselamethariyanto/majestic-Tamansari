@@ -2,6 +2,7 @@
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
@@ -10,68 +11,120 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp">
 
-        <ImageView
-            android:id="@+id/imgHomestay"
-            android:layout_width="140dp"
-            android:layout_height="160dp"
-            android:contentDescription="@string/app_name"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_image"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_image_list_homestay" />
 
         <TextView
-            android:id="@+id/tvHomestayName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/placeholder_homestay_name"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imgHomestay"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <RatingBar
-            android:id="@+id/ratingbar"
-            style="?android:attr/ratingBarStyleSmall"
+            android:id="@+id/tv_homestay_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:rating="5"
-            app:layout_constraintStart_toEndOf="@id/imgHomestay"
-            app:layout_constraintTop_toBottomOf="@id/tvHomestayName" />
-
-        <TextView
-            android:id="@+id/tvDistance"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:drawablePadding="8dp"
-            android:fontFamily="sans-serif"
-            android:text="@string/placeholder_jarak_lokasi"
-            android:textSize="14sp"
-            app:drawableStartCompat="@drawable/ic_location"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imgHomestay"
-            app:layout_constraintTop_toBottomOf="@id/ratingbar" />
-
-        <TextView
-            android:id="@+id/tvPrice"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/placeholder_saldo"
-            android:textColor="@color/hijau_tua"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_bold"
+            android:includeFontPadding="false"
+            android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_image"
+            tools:text="@string/placeholder_homestay_name" />
+
+        <RatingBar
+            android:id="@+id/homestay_star"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:progressTint="@color/yellow"
+            android:rating="5"
+            app:layout_constraintStart_toEndOf="@id/tv_homestay_name"
+            app:layout_constraintTop_toTopOf="@id/tv_homestay_name" />
+
+        <TextView
+            android:id="@+id/tv_homestay_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:includeFontPadding="false"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_homestay_name"
+            tools:text="3,2" />
+
+        <TextView
+            android:id="@+id/tv_total_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="/5"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_homestay_rating"
+            app:layout_constraintStart_toEndOf="@id/tv_homestay_rating"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/tv_total_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@id/tv_total_rating"
+            app:layout_constraintTop_toTopOf="@id/tv_total_rating"
+            tools:text="(6 Review)"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@id/tv_total_review"
+            app:layout_constraintTop_toTopOf="@id/tv_total_review"
+            tools:text="4.0 Km dari lokasimu"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:includeFontPadding="false"
+            android:textColor="@color/red"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imgHomestay" />
+            app:layout_constraintTop_toBottomOf="@id/tv_distance"
+            tools:text="IDR 139.500" />
+
+        <TextView
+            android:id="@+id/tv_description_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:text="/kamar/malam (termasuk pajak)"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_price"
+            tools:ignore="SmallSp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

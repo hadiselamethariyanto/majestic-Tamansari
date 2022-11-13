@@ -1,4 +1,4 @@
-package com.bwx.tamansari.ui.paket
+package com.bwx.tamansari.ui.paket.list
 
 import android.os.Bundle
 import android.view.View

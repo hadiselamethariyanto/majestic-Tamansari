@@ -14,26 +14,28 @@
         android:layout_marginBottom="16dp"
         android:paddingBottom="8dp">
 
-        <ImageView
-            android:id="@+id/imgPaket"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_image"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:contentDescription="@string/app_name"
-            android:scaleType="centerCrop"
+            android:layout_height="140dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            tools:listitem="@layout/item_image_list_homestay" />
 
         <TextView
             android:id="@+id/tvPackageName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_bold"
+            android:includeFontPadding="false"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@id/imgPaket"
-            tools:text="Paket 3 Hari 2 Malam"/>
+            app:layout_constraintTop_toBottomOf="@id/rv_image"
+            tools:text="Paket 3 Hari 2 Malam" />
 
         <RatingBar
             android:id="@+id/ratingbar"
@@ -42,22 +44,50 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
+            android:progressTint="@color/yellow"
             android:rating="5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvPackageName" />
 
         <TextView
+            android:id="@+id/tv_total_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:textSize="10sp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/ratingbar"
+            app:layout_constraintStart_toEndOf="@id/ratingbar"
+            app:layout_constraintTop_toTopOf="@id/ratingbar"
+            tools:text="(11 Review)"
+            tools:ignore="SmallSp" />
+
+        <TextView
             android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:textSize="12sp"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:includeFontPadding="false"
+            android:textColor="@color/red"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvPackageName"
-            tools:text="Rp300.000"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_total_review"
+            tools:text="IDR 139.500" />
 
-
+        <TextView
+            android:id="@+id/tv_description_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:text="/pack/orang"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPrice"
+            tools:ignore="SmallSp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

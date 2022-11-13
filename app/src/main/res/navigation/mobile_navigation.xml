@@ -69,7 +69,7 @@
 
     <fragment
         android:id="@+id/navigation_travel_package"
-        android:name="com.bwx.tamansari.ui.paket.PaketFragment"
+        android:name="com.bwx.tamansari.ui.paket.list.PaketFragment"
         android:label="@string/navigation_list_travel_package"
         tools:layout="@layout/fragment_paket" />
     <fragment

@@ -213,7 +213,13 @@ object DataDummy {
                 "Nikmati Sedikit Waktu Luang",
                 250000,
                 4.0f,
-                "https://tamansariijen.com/wp-content/uploads/2019/10/WhatsApp-Image-2019-09-24-at-21.38.02-1.jpeg"
+                arrayListOf(
+                    "https://farm1.staticflickr.com/579/20221640953_532b833a80_b.jpg",
+                    "https://tamansariijen.com/wp-content/uploads/2019/10/WhatsApp-Image-2019-09-24-at-21.38.02-1.jpeg",
+                    "https://cdn.nativeindonesia.com/foto/2018/11/Kawah-Ijen-Blue.jpg",
+                    "https://asset.kompas.com/crops/7-0zX9IZsHSzcZZz3bMTdMZq-oE=/0x0:1200x800/750x500/data/photo/2021/08/19/611e162fed8b4.jpg"
+                ),
+                11
             )
         )
         paket.add(
@@ -221,7 +227,13 @@ object DataDummy {
                 "Nikmati Destinasi Wisata Tamansari",
                 500000,
                 4.0f,
-                "https://tamansariijen.com/wp-content/uploads/2020/10/runi.jpg"
+                arrayListOf(
+                    "https://tamansariijen.com/wp-content/uploads/2020/10/runi.jpg",
+                    "https://farm1.staticflickr.com/579/20221640953_532b833a80_b.jpg",
+                    "https://cdn.nativeindonesia.com/foto/2018/11/Kawah-Ijen-Blue.jpg",
+                    "https://asset.kompas.com/crops/7-0zX9IZsHSzcZZz3bMTdMZq-oE=/0x0:1200x800/750x500/data/photo/2021/08/19/611e162fed8b4.jpg"
+                ),
+                21
             )
         )
         paket.add(
@@ -229,7 +241,13 @@ object DataDummy {
                 "Budaya dan Edukasi Tamansari",
                 750000,
                 4.0f,
-                "https://tamansariijen.com/wp-content/uploads/2020/11/DSC06920-scaled.jpg"
+                arrayListOf(
+                    "https://tamansariijen.com/wp-content/uploads/2020/11/DSC06920-scaled.jpg",
+                    "https://farm1.staticflickr.com/579/20221640953_532b833a80_b.jpg",
+                    "https://cdn.nativeindonesia.com/foto/2018/11/Kawah-Ijen-Blue.jpg",
+                    "https://asset.kompas.com/crops/7-0zX9IZsHSzcZZz3bMTdMZq-oE=/0x0:1200x800/750x500/data/photo/2021/08/19/611e162fed8b4.jpg"
+                ),
+                14
             )
         )
 

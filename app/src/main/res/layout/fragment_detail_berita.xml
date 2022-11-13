@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.berita.detail.DetailBeritaFragment">
 
-
     <ImageView
         android:id="@+id/img_news"
         android:layout_width="match_parent"
@@ -66,13 +65,13 @@
             android:layout_height="wrap_content"
             android:drawablePadding="8dp"
             android:fontFamily="@font/poppins_semi_bold"
-            android:textColor="@color/biru_tua"
-            android:includeFontPadding="false"
             android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:textColor="@color/biru_tua"
             app:drawableStartCompat="@drawable/ic_baseline_category_24"
+            app:layout_constraintBottom_toBottomOf="@id/tv_total_likes"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_total_likes"
-            app:layout_constraintBottom_toBottomOf="@id/tv_total_likes"
             tools:text="Prestasi" />
 
         <TextView
@@ -119,5 +118,51 @@
             tools:text="@tools:sample/lorem/random" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="24dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp">
+
+            <EditText
+                android:id="@+id/nama"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/write_a_comment"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="12dp"
+                android:singleLine="true"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            app:maxImageSize="18dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginVertical="0dp"
+            android:backgroundTint="@color/biru_tua"
+            android:foregroundTint="@color/biru_tua"
+            android:src="@drawable/ic_baseline_send_24"
+            android:contentDescription="@string/write_a_comment" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

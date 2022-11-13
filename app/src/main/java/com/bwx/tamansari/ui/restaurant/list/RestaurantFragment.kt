@@ -1,4 +1,4 @@
-package com.bwx.tamansari.ui.restaurant
+package com.bwx.tamansari.ui.restaurant.list
 
 import android.os.Bundle
 import android.view.View

@@ -299,33 +299,36 @@ object DataDummy {
             RestaurantDomain(
                 "1",
                 "Warung Oseng",
-                "Traditional Food",
+                "Traditional Food, Ayam & Bebek",
                 0.0,
                 0.0,
                 "https://asset.kompas.com/crops/A7H0vt6v6p95MQfOQTqIhMqhklE=/41x0:554x256/375x240/data/photo/2019/10/15/5da5188e04c2c.png",
-                4f
+                4f,
+                1.4
             )
         )
         list.add(
             RestaurantDomain(
                 "2",
                 "Warung Oseng 2",
-                "Traditional Food",
+                "Traditional Food, Bakmie, Aneka Nasi",
                 0.0,
                 0.0,
                 "https://asset.kompas.com/crops/A7H0vt6v6p95MQfOQTqIhMqhklE=/41x0:554x256/375x240/data/photo/2019/10/15/5da5188e04c2c.png",
-                4f
+                4f,
+                1.8
             )
         )
         list.add(
             RestaurantDomain(
                 "3",
-                "Warung Oseng 3",
-                "Traditional Food",
+                "Sarine Kopi",
+                "Aneka kopi, Minuman",
                 0.0,
                 0.0,
-                "https://asset.kompas.com/crops/A7H0vt6v6p95MQfOQTqIhMqhklE=/41x0:554x256/375x240/data/photo/2019/10/15/5da5188e04c2c.png",
-                4f
+                "https://tamansariijen.com/wp-content/uploads/2021/10/v60-sarine-kopi.jpg",
+                4f,
+                2.0
             )
         )
         return list

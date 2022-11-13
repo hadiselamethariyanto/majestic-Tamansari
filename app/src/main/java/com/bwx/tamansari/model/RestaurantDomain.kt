@@ -7,5 +7,6 @@ data class RestaurantDomain(
     val latitude: Double,
     val longitude: Double,
     val photoUrl: String,
-    val rating: Float
+    val rating: Float,
+    val distance:Double
 )

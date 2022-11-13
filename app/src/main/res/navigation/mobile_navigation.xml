@@ -78,7 +78,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_restaurant"
-        android:name="com.bwx.tamansari.ui.restaurant.RestaurantFragment"
+        android:name="com.bwx.tamansari.ui.restaurant.list.RestaurantFragment"
         android:label="@string/navigation_list_restaurant"
         tools:layout="@layout/fragment_restaurant" />
     <fragment

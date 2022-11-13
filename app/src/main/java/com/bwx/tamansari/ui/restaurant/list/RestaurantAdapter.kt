@@ -1,4 +1,4 @@
-package com.bwx.tamansari.ui.restaurant
+package com.bwx.tamansari.ui.restaurant.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -26,6 +26,8 @@ class RestaurantAdapter : RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
         fun bind(data: RestaurantDomain) {
             binding.tvRestaurantName.text = data.name
             binding.tvRestaurantCategory.text = data.category
+            binding.tvRating.text = data.rating.toString()
+            binding.tvDistance.text = "${data.distance} Km dari lokasimu"
 
             Glide.with(itemView.context).load(data.photoUrl).placeholder(R.drawable.placeholder)
                 .transform(

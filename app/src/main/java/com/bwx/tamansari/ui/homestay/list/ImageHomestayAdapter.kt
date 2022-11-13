@@ -1,4 +1,4 @@
-package com.bwx.tamansari.ui.homestay
+package com.bwx.tamansari.ui.homestay.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

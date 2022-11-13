@@ -27,14 +27,21 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_controller) as NavHostFragment
         navController = navHostFragment.navController
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.navigation_detail_news) {
-                binding.bottomNav.visibility = View.GONE
-                supportActionBar?.hide()
-            }else if(destination.id == R.id.navigation_home){
-                supportActionBar?.hide()
-            } else{
-                supportActionBar?.show()
-                binding.bottomNav.visibility = View.VISIBLE
+            when (destination.id) {
+                R.id.navigation_detail_news -> {
+                    binding.bottomNav.visibility = View.GONE
+                    supportActionBar?.hide()
+                }
+                R.id.navigation_home -> {
+                    supportActionBar?.hide()
+                }
+                R.id.navigation_detail_homestay -> {
+                    binding.bottomNav.visibility = View.GONE
+                }
+                else -> {
+                    supportActionBar?.show()
+                    binding.bottomNav.visibility = View.VISIBLE
+                }
             }
         }
 

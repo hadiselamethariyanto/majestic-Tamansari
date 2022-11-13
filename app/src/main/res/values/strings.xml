@@ -13,10 +13,16 @@
     <string name="navigation_news">Daftar Berita</string>
     <string name="navigation_detail_news">Detail Berita</string>
     <string name="navigation_detail_wisata">Detail Wisata</string>
+    <string name="navigation_detail_homestay">Detail Homestay</string>
     <string name="navigation_list_homestay">Daftar Homestay</string>
     <string name="navigation_list_travel_package">Daftar Paket Wisata</string>
     <string name="navigation_list_restaurant">Daftar Restoran</string>
     <string name="navigation_maps">Peta</string>
+    <string name="homestay">Homestay</string>
+    <string name="waktu_checkin">Waktu Check-in:</string>
+    <string name="waktu_checkout">Waktu Chek-out:</string>
+    <string name="fasilitas">Fasilitas</string>
+    <string name="lokasi">Lokasi</string>
     <string name="saldo">Saldo</string>
     <string name="harga_sampah">Harga Sampah</string>
     <string name="pengaturan">Pengaturan</string>

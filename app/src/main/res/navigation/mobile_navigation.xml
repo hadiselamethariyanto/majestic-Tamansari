@@ -59,9 +59,13 @@
 
     <fragment
         android:id="@+id/navigation_homestay"
-        android:name="com.bwx.tamansari.ui.homestay.HomestayFragment"
+        android:name="com.bwx.tamansari.ui.homestay.list.HomestayFragment"
         android:label="@string/navigation_list_homestay"
-        tools:layout="@layout/fragment_homestay" />
+        tools:layout="@layout/fragment_homestay" >
+        <action
+            android:id="@+id/action_navigation_homestay_to_navigation_detail_homestay"
+            app:destination="@id/navigation_detail_homestay" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_travel_package"
@@ -92,6 +96,11 @@
         android:name="com.bwx.tamansari.ui.berita.detail.DetailBeritaFragment"
         android:label="@string/navigation_detail_news"
         tools:layout="@layout/fragment_detail_berita" />
+    <fragment
+        android:id="@+id/navigation_detail_homestay"
+        android:name="com.bwx.tamansari.ui.homestay.detail.DetailHomestayFragment"
+        android:label="@string/navigation_detail_homestay"
+        tools:layout="@layout/fragment_detail_homestay" />
 
 
 </navigation>

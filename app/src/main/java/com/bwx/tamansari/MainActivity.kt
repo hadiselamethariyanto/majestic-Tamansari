@@ -30,7 +30,9 @@ class MainActivity : AppCompatActivity() {
             if (destination.id == R.id.navigation_detail_news) {
                 binding.bottomNav.visibility = View.GONE
                 supportActionBar?.hide()
-            }else{
+            }else if(destination.id == R.id.navigation_home){
+                supportActionBar?.hide()
+            } else{
                 supportActionBar?.show()
                 binding.bottomNav.visibility = View.VISIBLE
             }

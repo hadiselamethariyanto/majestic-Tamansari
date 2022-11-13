@@ -37,7 +37,7 @@ class ListWisataAdapter : RecyclerView.Adapter<ListWisataAdapter.Viewholder>() {
         fun bindItem(data: WisataDomain) {
             tvNamaWisata.text = data.nama
             ratingBar.rating = data.rating
-            tvVoteCount.text = "(${data.vote_count})"
+            tvVoteCount.text = "(${data.vote_count} Review)"
             Glide.with(itemView.context).load(data.foto).transform(CenterCrop(), RoundedCorners(24))
                 .into(imgWisata)
         }

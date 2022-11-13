@@ -188,7 +188,7 @@ object DataDummy {
         berita.add(
             BeritaModel(
                 "Tamansari Banyuwangi Masuk 50 Besar Anugerah Desa Wisata Indonesia Tahun 2021 dari Kemenparekraf",
-                "Rabu, 25 Agustus 2021 | 13:16 WIB",
+                "25 Agustus 2021",
                 "https://assets.promediateknologi.com/crop/0x0:0x0/x/photo/2021/08/25/1875519396.png",
                 "Wisata alam menjadi salah satu andalan dunia Pariwisata Banyuwangi. Terdapat puluhan wisata alam, mulai pantai, gunung, air terjun hingga pemandian alam. Salah satunya adalah wisata alam Sendang Seruni. Wisata alam ini menyajikan keindahan alam plus kolam pemandian dengan air langsung dari mata air. Airnya dijamin dingin dan menyegarkan.\n" +
                         "\n" +
@@ -214,7 +214,7 @@ object DataDummy {
         berita.add(
             BeritaModel(
                 "Kawan Ijen dan 14 Lokasi Wisata di Banyuwangi Resmi Dibuka Kembali",
-                "Jum'at, 10 September 2021 15:55 WIB",
+                "10 September 2021",
                 "https://img.idxchannel.com/media/700/images/idx/2021/06/10/SBY_Wisata_Kawah_Ijen_Ali_Masduki__14___1_.jpg",
                 "Wisata alam menjadi salah satu andalan dunia Pariwisata Banyuwangi. Terdapat puluhan wisata alam, mulai pantai, gunung, air terjun hingga pemandian alam. Salah satunya adalah wisata alam Sendang Seruni. Wisata alam ini menyajikan keindahan alam plus kolam pemandian dengan air langsung dari mata air. Airnya dijamin dingin dan menyegarkan.\n" +
                         "\n" +

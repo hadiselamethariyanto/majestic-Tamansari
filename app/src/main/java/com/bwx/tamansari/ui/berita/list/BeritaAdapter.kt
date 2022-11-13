@@ -35,6 +35,7 @@ class BeritaAdapter : RecyclerView.Adapter<BeritaAdapter.ViewHolder>() {
                 .into(binding.imgBerita)
 
             binding.tvJudul.text = berita.judul
+            binding.tvNewsCategory.text = "${berita.category} \u2022 "
             binding.tvTanggal.text = berita.tanggal
         }
     }

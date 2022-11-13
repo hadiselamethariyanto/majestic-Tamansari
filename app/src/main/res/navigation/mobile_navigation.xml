@@ -80,7 +80,7 @@
     <fragment
         android:id="@+id/navigation_news"
         android:name="com.bwx.tamansari.ui.berita.list.BeritaFragment"
-        android:label="fragment_berita"
+        android:label="@string/navigation_news"
         tools:layout="@layout/fragment_berita" >
         <action
             android:id="@+id/action_navigation_news_to_navigation_detail_news"
@@ -89,7 +89,7 @@
     <fragment
         android:id="@+id/navigation_detail_news"
         android:name="com.bwx.tamansari.ui.berita.detail.DetailBeritaFragment"
-        android:label="fragment_detail_berita"
+        android:label="@string/navigation_detail_news"
         tools:layout="@layout/fragment_detail_berita" />
 
 

@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/navigation_daftar_wisata"
         android:name="com.bwx.tamansari.ui.wisata.list.DaftarWisataFragment"
-        android:label="fragment_daftar_wisata"
+        android:label="@string/toolbar_wisata"
         tools:layout="@layout/fragment_daftar_wisata">
 
         <action
@@ -54,28 +54,29 @@
     <fragment
         android:id="@+id/navigation_detail_wisata"
         android:name="com.bwx.tamansari.ui.wisata.detail.DetailWisataFragment"
-        android:label="fragment_detail_wisata"
+        android:label="@string/navigation_detail_wisata"
         tools:layout="@layout/fragment_detail_wisata" />
+
     <fragment
         android:id="@+id/navigation_homestay"
         android:name="com.bwx.tamansari.ui.homestay.HomestayFragment"
-        android:label="fragment_homestay"
+        android:label="@string/navigation_list_homestay"
         tools:layout="@layout/fragment_homestay" />
 
     <fragment
         android:id="@+id/navigation_travel_package"
         android:name="com.bwx.tamansari.ui.paket.PaketFragment"
-        android:label="fragment_paket"
+        android:label="@string/navigation_list_travel_package"
         tools:layout="@layout/fragment_paket" />
     <fragment
         android:id="@+id/navigation_restaurant"
         android:name="com.bwx.tamansari.ui.restaurant.RestaurantFragment"
-        android:label="fragment_restaurant"
+        android:label="@string/navigation_list_restaurant"
         tools:layout="@layout/fragment_restaurant" />
     <fragment
         android:id="@+id/navigation_peta"
         android:name="com.bwx.tamansari.ui.peta.PetaFragment"
-        android:label="fragment_peta"
+        android:label="@string/navigation_maps"
         tools:layout="@layout/fragment_peta" />
     <fragment
         android:id="@+id/navigation_news"

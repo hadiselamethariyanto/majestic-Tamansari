@@ -17,6 +17,7 @@
     <string name="navigation_list_homestay">Daftar Homestay</string>
     <string name="navigation_list_travel_package">Daftar Paket Wisata</string>
     <string name="navigation_list_restaurant">Daftar Restoran</string>
+    <string name="navigation_detail_travel_package">Detail Paket Wisata</string>
     <string name="navigation_maps">Peta</string>
     <string name="homestay">Homestay</string>
     <string name="waktu_checkin">Waktu Check-in:</string>
@@ -61,6 +62,8 @@
     <string name="description_image_restaurant">Image Restaurant</string>
     <string name="description_image_news">Image News</string>
     <string name="description_image_homestay">Image Homestay</string>
+    <string name="description_image_travel_package">Image Paket Wisata</string>
     <string name="write_a_comment">Tulis komentar</string>
+    <string name="terjual">Terjual</string>
 
 </resources>

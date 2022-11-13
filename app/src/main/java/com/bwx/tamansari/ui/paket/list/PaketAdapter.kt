@@ -17,6 +17,12 @@ class PaketAdapter : RecyclerView.Adapter<PaketAdapter.Viewholder>() {
         notifyDataSetChanged()
     }
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     class Viewholder(private val binding: ItemPaketWisataBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -41,7 +47,14 @@ class PaketAdapter : RecyclerView.Adapter<PaketAdapter.Viewholder>() {
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
         holder.bindItem(paket[position])
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(paket[position])
+        }
     }
 
     override fun getItemCount() = paket.size
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: PaketWisataModel)
+    }
 }

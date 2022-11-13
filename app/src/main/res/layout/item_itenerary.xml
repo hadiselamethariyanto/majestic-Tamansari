@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp">
+
+    <View
+        android:id="@+id/v_top"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="@color/hijau_tua"
+        app:layout_constraintBottom_toTopOf="@id/img_icon"
+        app:layout_constraintEnd_toEndOf="@id/img_icon"
+        app:layout_constraintStart_toStartOf="@id/img_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_icon"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:src="@drawable/ic_baseline_radio_button_unchecked_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/v_bottom"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="@color/hijau_tua"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/img_icon"
+        app:layout_constraintStart_toStartOf="@id/img_icon"
+        app:layout_constraintTop_toBottomOf="@id/img_icon" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/img_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="00.00 - 00.30 WIB" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@id/img_icon"
+        app:layout_constraintTop_toBottomOf="@id/tv_time"
+        tools:ignore="SmallSp"
+        tools:text="Penjemputan peserta" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

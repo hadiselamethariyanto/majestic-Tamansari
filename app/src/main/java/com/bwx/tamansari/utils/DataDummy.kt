@@ -219,7 +219,20 @@ object DataDummy {
                     "https://cdn.nativeindonesia.com/foto/2018/11/Kawah-Ijen-Blue.jpg",
                     "https://asset.kompas.com/crops/7-0zX9IZsHSzcZZz3bMTdMZq-oE=/0x0:1200x800/750x500/data/photo/2021/08/19/611e162fed8b4.jpg"
                 ),
-                11
+                11,
+                20,
+                arrayListOf(
+                    ItineraryDomain("1", "00:00 - 00.30 WIB", "Penjemputan peserta"),
+                    ItineraryDomain("2", "00.30 - 02.30 WIB", "Perjalanan ke Basecamp Jeep"),
+                    ItineraryDomain(
+                        "3",
+                        "02.30 - 03.30 WIB",
+                        "Perjalanan ke sunrise point menggunakan Jeep"
+                    )
+                ),
+                114.245907,
+                -8.1727349,
+                "Dusun Sumberwatu, RT.001/RW.002, Tamansari, Kec. Licin, Kabupaten Banyuwangi, Jawa Timur 68485",
             )
         )
         paket.add(
@@ -233,7 +246,20 @@ object DataDummy {
                     "https://cdn.nativeindonesia.com/foto/2018/11/Kawah-Ijen-Blue.jpg",
                     "https://asset.kompas.com/crops/7-0zX9IZsHSzcZZz3bMTdMZq-oE=/0x0:1200x800/750x500/data/photo/2021/08/19/611e162fed8b4.jpg"
                 ),
-                21
+                21,
+                30,
+                arrayListOf(
+                    ItineraryDomain("1", "00:00 - 00.30 WIB", "Penjemputan peserta"),
+                    ItineraryDomain("2", "00.30 - 02.30 WIB", "Perjalanan ke Basecamp Jeep"),
+                    ItineraryDomain(
+                        "3",
+                        "02.30 - 03.30 WIB",
+                        "Perjalanan ke sunrise point menggunakan Jeep"
+                    )
+                ),
+                114.245907,
+                -8.1727349,
+                "Dusun Sumberwatu, RT.001/RW.002, Tamansari, Kec. Licin, Kabupaten Banyuwangi, Jawa Timur 68485",
             )
         )
         paket.add(
@@ -247,7 +273,20 @@ object DataDummy {
                     "https://cdn.nativeindonesia.com/foto/2018/11/Kawah-Ijen-Blue.jpg",
                     "https://asset.kompas.com/crops/7-0zX9IZsHSzcZZz3bMTdMZq-oE=/0x0:1200x800/750x500/data/photo/2021/08/19/611e162fed8b4.jpg"
                 ),
-                14
+                14,
+                15,
+                arrayListOf(
+                    ItineraryDomain("1", "00:00 - 00.30 WIB", "Penjemputan peserta"),
+                    ItineraryDomain("2", "00.30 - 02.30 WIB", "Perjalanan ke Basecamp Jeep"),
+                    ItineraryDomain(
+                        "3",
+                        "02.30 - 03.30 WIB",
+                        "Perjalanan ke sunrise point menggunakan Jeep"
+                    )
+                ),
+                114.245907,
+                -8.1727349,
+                "Dusun Sumberwatu, RT.001/RW.002, Tamansari, Kec. Licin, Kabupaten Banyuwangi, Jawa Timur 68485",
             )
         )
 

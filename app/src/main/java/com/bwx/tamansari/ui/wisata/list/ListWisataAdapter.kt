@@ -13,6 +13,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.ItemListWisataBinding
 import com.bwx.tamansari.model.WisataDomain
+import com.bwx.tamansari.utils.Utils
 
 class ListWisataAdapter : RecyclerView.Adapter<ListWisataAdapter.ViewHolder>() {
     private val wisata = mutableListOf<WisataDomain>()
@@ -36,7 +37,7 @@ class ListWisataAdapter : RecyclerView.Adapter<ListWisataAdapter.ViewHolder>() {
             binding.tvWisataName.text = data.nama
             binding.ratingbar.rating = data.rating
             binding.tvTotalReview.text = "(${data.vote_count} Review)"
-            binding.tvPrice.text = "IDR ${data.price}"
+            binding.tvPrice.text = "IDR ${Utils.thousandSeparator(data.price)}"
             Glide.with(itemView.context).load(data.foto).transform(CenterCrop(), RoundedCorners(24))
                 .into(binding.imgWisata)
         }

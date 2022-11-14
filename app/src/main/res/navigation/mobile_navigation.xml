@@ -119,6 +119,11 @@
         android:name="com.bwx.tamansari.ui.restaurant.detail.DetailRestaurantFragment"
         android:label="@string/navigation_detail_restaurant"
         tools:layout="@layout/fragment_detail_restaurant" />
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.bwx.tamansari.ui.akun.AkunFragment"
+        android:label="fragment_akun"
+        tools:layout="@layout/fragment_akun" />
 
 
 </navigation>

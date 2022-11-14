@@ -41,6 +41,15 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_detail_restaurant->{
                     binding.bottomNav.visibility = View.GONE
                 }
+                R.id.navigation_dashboard->{
+                    supportActionBar?.hide()
+                }
+                R.id.navigation_notifications->{
+                    supportActionBar?.hide()
+                }
+                R.id.navigation_account->{
+                    supportActionBar?.hide()
+                }
                 else -> {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.VISIBLE

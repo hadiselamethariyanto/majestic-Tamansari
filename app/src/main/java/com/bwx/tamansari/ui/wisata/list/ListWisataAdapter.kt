@@ -11,9 +11,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bwx.tamansari.R
+import com.bwx.tamansari.databinding.ItemListWisataBinding
 import com.bwx.tamansari.model.WisataDomain
 
-class ListWisataAdapter : RecyclerView.Adapter<ListWisataAdapter.Viewholder>() {
+class ListWisataAdapter : RecyclerView.Adapter<ListWisataAdapter.ViewHolder>() {
     private val wisata = mutableListOf<WisataDomain>()
 
     private lateinit var onItemClickCallback: OnItemClickCallback
@@ -22,32 +23,30 @@ class ListWisataAdapter : RecyclerView.Adapter<ListWisataAdapter.Viewholder>() {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    fun updateData(new: MutableList<WisataDomain>) {
+    fun updateData(new: List<WisataDomain>) {
         wisata.clear()
         wisata.addAll(new)
         notifyDataSetChanged()
     }
 
-    class Viewholder(view: View) : RecyclerView.ViewHolder(view) {
-        private val tvNamaWisata: TextView = view.findViewById(R.id.tvNamaWisata)
-        private val ratingBar: RatingBar = view.findViewById(R.id.ratingbar)
-        private val tvVoteCount: TextView = view.findViewById(R.id.tvVoteCount)
-        private val imgWisata: ImageView = view.findViewById(R.id.imgWisata)
+    class ViewHolder(private val binding: ItemListWisataBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(data: WisataDomain) {
-            tvNamaWisata.text = data.nama
-            ratingBar.rating = data.rating
-            tvVoteCount.text = "(${data.vote_count} Review)"
+            binding.tvWisataName.text = data.nama
+            binding.ratingbar.rating = data.rating
+            binding.tvTotalReview.text = "(${data.vote_count} Review)"
+            binding.tvPrice.text = "IDR ${data.price}"
             Glide.with(itemView.context).load(data.foto).transform(CenterCrop(), RoundedCorners(24))
-                .into(imgWisata)
+                .into(binding.imgWisata)
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = Viewholder(
-        LayoutInflater.from(parent.context).inflate(R.layout.item_list_wisata, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
+        ItemListWisataBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-    override fun onBindViewHolder(holder: Viewholder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItem(wisata[position])
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(wisata[position])

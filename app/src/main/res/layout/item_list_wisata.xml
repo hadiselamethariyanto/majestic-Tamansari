@@ -23,17 +23,17 @@
             tools:src="@tools:sample/backgrounds/scenic" />
 
         <TextView
-            android:id="@+id/tvNamaWisata"
+            android:id="@+id/tv_wisata_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/poppins_bold"
+            android:includeFontPadding="false"
             android:text="@string/placeholder_nama_wisata"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:includeFontPadding="false"
             app:layout_constraintTop_toBottomOf="@id/imgWisata" />
 
         <RatingBar
@@ -46,10 +46,10 @@
             android:progressTint="@color/yellow"
             android:rating="5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvNamaWisata" />
+            app:layout_constraintTop_toBottomOf="@id/tv_wisata_name" />
 
         <TextView
-            android:id="@+id/tvVoteCount"
+            android:id="@+id/tv_total_review"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -57,10 +57,38 @@
             android:fontFamily="@font/poppins_regular"
             android:includeFontPadding="false"
             android:textColor="@color/grey"
-            android:textSize="12sp"
+            android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@id/ratingbar"
             app:layout_constraintTop_toTopOf="@id/ratingbar"
+            tools:ignore="SmallSp"
             tools:text="(6 Review)" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:includeFontPadding="false"
+            android:textColor="@color/red"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_review"
+            tools:text="IDR 10.000" />
+
+        <TextView
+            android:id="@+id/tv_description_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:text="Tiket mulai dari"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_price"
+            tools:ignore="SmallSp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

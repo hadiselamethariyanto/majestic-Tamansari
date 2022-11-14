@@ -12,5 +12,6 @@ data class WisataDomain(
     val vote_count: Int,
     val latitude: Double,
     val longitude: Double,
-    val description: String
+    val description: String,
+    val price:Int
 ) : Parcelable

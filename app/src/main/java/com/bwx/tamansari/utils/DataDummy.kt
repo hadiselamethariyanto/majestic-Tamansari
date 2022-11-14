@@ -304,7 +304,8 @@ object DataDummy {
                 0.0,
                 "https://asset.kompas.com/crops/A7H0vt6v6p95MQfOQTqIhMqhklE=/41x0:554x256/375x240/data/photo/2019/10/15/5da5188e04c2c.png",
                 4f,
-                1.4
+                1.4,
+                12
             )
         )
         list.add(
@@ -316,7 +317,8 @@ object DataDummy {
                 0.0,
                 "https://asset.kompas.com/crops/A7H0vt6v6p95MQfOQTqIhMqhklE=/41x0:554x256/375x240/data/photo/2019/10/15/5da5188e04c2c.png",
                 4f,
-                1.8
+                1.8,
+                21
             )
         )
         list.add(
@@ -328,10 +330,56 @@ object DataDummy {
                 0.0,
                 "https://tamansariijen.com/wp-content/uploads/2021/10/v60-sarine-kopi.jpg",
                 4f,
-                2.0
+                2.0,
+                30
             )
         )
         return list
+    }
+
+    fun generateMenuRestaurant(): List<MenuRestaurantDomain> {
+        val menus = arrayListOf<MenuRestaurantDomain>()
+        menus.add(
+            MenuRestaurantDomain(
+                "1",
+                "https://awsimages.detik.net.id/community/media/visual/2019/11/22/da949754-170b-48ad-938e-ed72baf2f9f7.jpeg?w=700&q=90",
+                "Sego Tempong",
+                10000
+            )
+        )
+        menus.add(
+            MenuRestaurantDomain(
+                "2",
+                "https://cdn.idntimes.com/content-images/community/2019/04/img-6609-687ef1e7ba0d94ed1a489586a8d49b63_600x400.JPG",
+                "Sego Cawuk",
+                10000
+            )
+        )
+        menus.add(
+            MenuRestaurantDomain(
+                "3",
+                "https://awsimages.detik.net.id/community/media/visual/2021/04/10/mantap-sarapan-pecel-rawon-khas-banyuwangi-berlauk-lengkap-4.jpeg?w=700&q=90",
+                "Pecel Rawon",
+                10000
+            )
+        )
+        menus.add(
+            MenuRestaurantDomain(
+                "4",
+                "https://cdn0-production-images-kly.akamaized.net/V6IjXyx8-AEv80wQCPqRsWvxcPs=/1200x1200/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/1564272/original/034634100_1491974161-Pecel_Petek__2_.jpg",
+                "Pecel Pitik",
+                100000
+            )
+        )
+        menus.add(
+            MenuRestaurantDomain(
+                "5",
+                "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/8/18/a5a38710-2e53-4dec-8302-00de95085135.jpg",
+                "Es Teh",
+                4000
+            )
+        )
+        return menus
     }
 
     fun generateNews(): List<BeritaModel> {

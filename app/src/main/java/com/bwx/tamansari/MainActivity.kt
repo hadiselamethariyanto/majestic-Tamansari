@@ -50,6 +50,29 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_account->{
                     supportActionBar?.hide()
                 }
+                R.id.navigation_daftar_wisata->{
+                    supportActionBar?.show()
+                    binding.bottomNav.visibility = View.GONE
+                }
+                R.id.navigation_detail_wisata->{
+                    binding.bottomNav.visibility = View.GONE
+                }
+                R.id.navigation_homestay->{
+                    supportActionBar?.show()
+                    binding.bottomNav.visibility = View.GONE
+                }
+                R.id.navigation_travel_package->{
+                    supportActionBar?.show()
+                    binding.bottomNav.visibility = View.GONE
+                }
+                R.id.navigation_restaurant->{
+                    supportActionBar?.show()
+                    binding.bottomNav.visibility = View.GONE
+                }
+                R.id.navigation_news->{
+                    supportActionBar?.show()
+                    binding.bottomNav.visibility = View.GONE
+                }
                 else -> {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.VISIBLE

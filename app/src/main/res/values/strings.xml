@@ -67,5 +67,8 @@
     <string name="description_image_menu_restaurant">Image Menu Restaurant</string>
     <string name="write_a_comment">Tulis komentar</string>
     <string name="terjual">Terjual</string>
+    <string name="choose_ticket">Pilih Tiket</string>
+    <string name="detail">Detail</string>
+    <string name="start_from">Mulai dari</string>
 
 </resources>

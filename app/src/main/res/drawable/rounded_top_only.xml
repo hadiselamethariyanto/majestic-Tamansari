@@ -5,4 +5,8 @@
     <corners
         android:topLeftRadius="24dp"
         android:topRightRadius="24dp" />
+
+    <stroke
+        android:width="0.5dp"
+        android:color="@color/color_grey" />
 </shape>

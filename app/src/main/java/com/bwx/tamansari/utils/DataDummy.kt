@@ -469,4 +469,12 @@ object DataDummy {
         )
         return wisata
     }
+
+    fun generateTicketWisata():List<TicketWisataDomain>{
+        val arrayList = arrayListOf<TicketWisataDomain>()
+        arrayList.add(TicketWisataDomain("1","Tiket Domestik",5000))
+        arrayList.add(TicketWisataDomain("2","Tiket Manca",25000))
+        arrayList.add(TicketWisataDomain("3","Tiket Spesial",100000))
+        return arrayList
+    }
 }

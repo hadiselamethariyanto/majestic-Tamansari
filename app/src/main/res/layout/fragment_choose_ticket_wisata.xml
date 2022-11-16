@@ -11,9 +11,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:padding="16dp"
         android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="80dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_choose_ticket_wisata" />
+
+    <LinearLayout
+        android:id="@+id/ll_book"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_top_only"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/book"
+            android:textAllCaps="false" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

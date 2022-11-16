@@ -55,7 +55,11 @@
         android:id="@+id/navigation_detail_wisata"
         android:name="com.bwx.tamansari.ui.wisata.detail.DetailWisataFragment"
         android:label="@string/navigation_detail_wisata"
-        tools:layout="@layout/fragment_detail_wisata" />
+        tools:layout="@layout/fragment_detail_wisata" >
+        <action
+            android:id="@+id/action_navigation_detail_wisata_to_navigation_choose_ticket_wisata"
+            app:destination="@id/navigation_choose_ticket_wisata" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_homestay"
@@ -124,6 +128,11 @@
         android:name="com.bwx.tamansari.ui.akun.AkunFragment"
         android:label="fragment_akun"
         tools:layout="@layout/fragment_akun" />
+    <fragment
+        android:id="@+id/navigation_choose_ticket_wisata"
+        android:name="com.bwx.tamansari.ui.wisata.choose_ticket.ChooseTicketWisataFragment"
+        android:label="@string/navigation_choose_ticket"
+        tools:layout="@layout/fragment_choose_ticket_wisata" />
 
 
 </navigation>

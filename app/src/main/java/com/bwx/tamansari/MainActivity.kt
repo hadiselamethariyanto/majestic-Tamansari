@@ -73,6 +73,9 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }
+                R.id.navigation_choose_ticket_wisata->{
+                    binding.bottomNav.visibility = View.GONE
+                }
                 else -> {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.VISIBLE

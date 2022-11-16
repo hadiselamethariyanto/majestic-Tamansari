@@ -50,27 +50,73 @@
             android:id="@+id/tv_ticket_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/detail"
-            android:textSize="12sp"
-            android:textColor="@color/biru_tua"
             android:fontFamily="@font/poppins_semi_bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:text="@string/detail"
+            android:textColor="@color/biru_tua"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btn_choose_ticket"
             android:layout_width="wrap_content"
             android:layout_height="28dp"
             android:layout_marginTop="16dp"
-            android:text="@string/choose_ticket"
-            android:textColor="@color/white"
-            android:textSize="12sp"
+            android:fontFamily="@font/poppins_semi_bold"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/choose_ticket"
             android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/v1" />
+
+        <LinearLayout
+            android:id="@+id/ll_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/tv_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="-"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="1.5dp"
+                android:background="@drawable/circle"
+                android:textColor="@color/biru_tua"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                tools:text="5" />
+
+            <TextView
+                android:id="@+id/tv_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="+"
+                android:background="@drawable/circle"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:textColor="@color/biru_tua"
+                android:textSize="12sp" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

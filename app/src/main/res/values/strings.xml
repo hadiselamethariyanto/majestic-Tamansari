@@ -20,6 +20,7 @@
     <string name="navigation_detail_travel_package">Detail Paket Wisata</string>
     <string name="navigation_detail_restaurant">Detail Restoran</string>
     <string name="navigation_maps">Peta</string>
+    <string name="navigation_choose_ticket">Pilih Tiket</string>
     <string name="homestay">Homestay</string>
     <string name="waktu_checkin">Waktu Check-in:</string>
     <string name="waktu_checkout">Waktu Chek-out:</string>
@@ -70,5 +71,6 @@
     <string name="choose_ticket">Pilih Tiket</string>
     <string name="detail">Detail</string>
     <string name="start_from">Mulai dari</string>
+    <string name="book">Pesan</string>
 
 </resources>

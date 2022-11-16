@@ -2,9 +2,13 @@ package com.bwx.tamansari.ui.wisata.choose_ticket
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
+import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentChooseTicketWisataBinding
 import com.bwx.tamansari.model.ChartDomain
 import com.bwx.tamansari.model.TicketWisataDomain
+import com.bwx.tamansari.model.WisataDomain
 import com.bwx.tamansari.ui.base.BaseFragment
 
 
@@ -18,6 +22,7 @@ class ChooseTicketWisataFragment :
 
         val tickets =
             arguments?.getParcelableArrayList<TicketWisataDomain>("tickets") ?: arrayListOf()
+        val wisata = arguments?.getParcelable<WisataDomain>("wisata")
 
         val chooseTicketWisataAdapter = ChooseTicketWisataAdapter(tickets)
         chooseTicketWisataAdapter.setOnItemClickCallback(object :
@@ -35,8 +40,8 @@ class ChooseTicketWisataFragment :
             }
 
             override fun onPlusTicket(data: TicketWisataDomain) {
-                for (x in 0 until chartTicket.size){
-                    if (chartTicket[x].idProduct == data.id){
+                for (x in 0 until chartTicket.size) {
+                    if (chartTicket[x].idProduct == data.id) {
                         chartTicket[x].total++
                     }
                 }
@@ -44,12 +49,12 @@ class ChooseTicketWisataFragment :
             }
 
             override fun onMinusTicket(data: TicketWisataDomain) {
-                for (x in 0 until chartTicket.size){
-                    if (chartTicket[x].idProduct == data.id){
+                for (x in 0 until chartTicket.size) {
+                    if (chartTicket[x].idProduct == data.id) {
                         val total = chartTicket[x].total
-                        if (total==1){
+                        if (total == 1) {
                             chartTicket.removeAt(x)
-                        }else{
+                        } else {
                             chartTicket[x].total--
                         }
                     }
@@ -60,6 +65,13 @@ class ChooseTicketWisataFragment :
         })
         binding.rvTicketWisata.adapter = chooseTicketWisataAdapter
 
+        binding.btnBook.setOnClickListener {
+            val bundle = bundleOf("wisata" to wisata, "charts" to chartTicket)
+            findNavController().navigate(
+                R.id.action_navigation_choose_ticket_wisata_to_navigation_review_transaction_wisata,
+                bundle
+            )
+        }
     }
 
 }

@@ -132,7 +132,17 @@
         android:id="@+id/navigation_choose_ticket_wisata"
         android:name="com.bwx.tamansari.ui.wisata.choose_ticket.ChooseTicketWisataFragment"
         android:label="@string/navigation_choose_ticket"
-        tools:layout="@layout/fragment_choose_ticket_wisata" />
+        tools:layout="@layout/fragment_choose_ticket_wisata" >
+        <action
+            android:id="@+id/action_navigation_choose_ticket_wisata_to_navigation_review_transaction_wisata"
+            app:destination="@id/navigation_review_transaction_wisata" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_review_transaction_wisata"
+        android:name="com.bwx.tamansari.ui.wisata.review.ReviewTransactionWisataFragment"
+        android:label="@string/navigation_review_transaction"
+        tools:layout="@layout/fragment_review_transaction_wisata" />
 
 
 </navigation>

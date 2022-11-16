@@ -21,6 +21,7 @@
     <string name="navigation_detail_restaurant">Detail Restoran</string>
     <string name="navigation_maps">Peta</string>
     <string name="navigation_choose_ticket">Pilih Tiket</string>
+    <string name="navigation_review_transaction">Review Transaksi</string>
     <string name="homestay">Homestay</string>
     <string name="waktu_checkin">Waktu Check-in:</string>
     <string name="waktu_checkout">Waktu Chek-out:</string>
@@ -72,5 +73,10 @@
     <string name="detail">Detail</string>
     <string name="start_from">Mulai dari</string>
     <string name="book">Pesan</string>
+    <string name="detail_transaction">Detail Transaction</string>
+    <string name="detail_customer">Detail Pemesan</string>
+    <string name="ticket_cannot_be_refunded">Tiket tidak bisa refund</string>
+    <string name="lanjut_ke_pembayaran">Lanjut ke Pembayaran</string>
+    <string name="total_payment">Total Pembayaran</string>
 
 </resources>

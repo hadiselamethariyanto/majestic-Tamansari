@@ -26,7 +26,7 @@ class DetailWisataFragment :
         binding.tvWisataRating.text = "${wisata?.rating} (${wisata?.vote_count})"
         Glide.with(requireActivity()).load(wisata?.foto).centerCrop().into(binding.imageWisata)
 
-        val pagerAdapter = DetailWisataPagerAdapter(requireActivity(),wisata)
+        val pagerAdapter = DetailWisataPagerAdapter(requireActivity(), wisata)
         binding.pager.adapter = pagerAdapter
         val tabLayoutTitle = arrayListOf("Overview", "Gallery", "Rating")
         TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
@@ -34,16 +34,19 @@ class DetailWisataFragment :
         }.attach()
 
         val tickets = DataDummy.generateTicketWisata()
-        if (tickets.isNotEmpty()){
+        if (tickets.isNotEmpty()) {
             binding.rlChooseTicket.visibility = View.VISIBLE
             binding.tvPriceStartFrom.text = "IDR ${Utils.thousandSeparator(tickets[0].price)}"
-        }else{
+        } else {
             binding.rlChooseTicket.visibility = View.GONE
         }
 
         binding.btnChooseTicket.setOnClickListener {
-            val bundle = bundleOf("tickets" to tickets)
-            findNavController().navigate(R.id.action_navigation_detail_wisata_to_navigation_choose_ticket_wisata, bundle)
+            val bundle = bundleOf("tickets" to tickets, "wisata" to wisata)
+            findNavController().navigate(
+                R.id.action_navigation_detail_wisata_to_navigation_choose_ticket_wisata,
+                bundle
+            )
         }
     }
 

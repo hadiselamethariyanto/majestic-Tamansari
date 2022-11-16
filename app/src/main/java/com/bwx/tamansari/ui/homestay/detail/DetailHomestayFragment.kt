@@ -2,11 +2,15 @@ package com.bwx.tamansari.ui.homestay.detail
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentDetailHomestayBinding
 import com.bwx.tamansari.model.HomestayDomain
 import com.bwx.tamansari.ui.base.BaseFragment
+import com.bwx.tamansari.utils.DataDummy
+import com.bwx.tamansari.utils.Utils
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -45,6 +49,24 @@ class DetailHomestayFragment :
 
         val facilitiesAdapter = FacilitiesAdapter(homestay?.facilities ?: arrayListOf())
         binding.rvFasilitas.adapter = facilitiesAdapter
+
+        val rooms = DataDummy.generateRooms()
+        rooms.sortedBy { it.price }
+
+        if (rooms.isNotEmpty()){
+            binding.rlChooseRoom.visibility = View.VISIBLE
+            binding.tvPriceStartFrom.text = "IDR ${Utils.thousandSeparator(rooms[0].price)}"
+        }else{
+            binding.rlChooseRoom.visibility = View.GONE
+        }
+
+        binding.btnChooseRoom.setOnClickListener {
+            val bundle = bundleOf("homestay" to homestay, "rooms" to rooms)
+            findNavController().navigate(
+                R.id.action_navigation_detail_homestay_to_navigation_choose_room,
+                bundle
+            )
+        }
 
         binding.maps.onCreate(savedInstanceState)
         binding.maps.getMapAsync(this)

@@ -426,7 +426,7 @@ object DataDummy {
         return berita
     }
 
-    fun generateWisata():List<WisataDomain>{
+    fun generateWisata(): List<WisataDomain> {
         val wisata = arrayListOf<WisataDomain>()
         wisata.add(
             WisataDomain(
@@ -470,11 +470,52 @@ object DataDummy {
         return wisata
     }
 
-    fun generateTicketWisata():List<TicketWisataDomain>{
+    fun generateTicketWisata(): List<TicketWisataDomain> {
         val arrayList = arrayListOf<TicketWisataDomain>()
-        arrayList.add(TicketWisataDomain("1","Tiket Domestik",5000))
-        arrayList.add(TicketWisataDomain("2","Tiket Manca",25000))
-        arrayList.add(TicketWisataDomain("3","Tiket Spesial",100000))
+        arrayList.add(TicketWisataDomain("1", "Tiket Domestik", 5000))
+        arrayList.add(TicketWisataDomain("2", "Tiket Manca", 25000))
+        arrayList.add(TicketWisataDomain("3", "Tiket Spesial", 100000))
         return arrayList
+    }
+
+    fun generateRooms(): List<RoomDomain> {
+        val list = arrayListOf<RoomDomain>()
+        list.add(
+            RoomDomain(
+                "1",
+                "Kamar Standard Single",
+                16,
+                1,
+                "2 Single beds",
+                false,
+                250000,
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/349212196.jpg?k=b67c576d2fc996d5ab58d7dfd612fb63d3a2e64b6ad0cde4564dbb96173c3f7a&o=&hp=1"
+            )
+        )
+        list.add(
+            RoomDomain(
+                "2",
+                "Kamar Standard Double",
+                16,
+                1,
+                "1 Double",
+                false,
+                250000,
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/349212196.jpg?k=b67c576d2fc996d5ab58d7dfd612fb63d3a2e64b6ad0cde4564dbb96173c3f7a&o=&hp=1"
+            )
+        )
+        list.add(
+            RoomDomain(
+                "3",
+                "Kamar Standard Twin",
+                16,
+                2,
+                "1 Twin",
+                false,
+                250000,
+                "https://cf.bstatic.com/xdata/images/hotel/max1024x768/349212196.jpg?k=b67c576d2fc996d5ab58d7dfd612fb63d3a2e64b6ad0cde4564dbb96173c3f7a&o=&hp=1"
+            )
+        )
+        return list
     }
 }

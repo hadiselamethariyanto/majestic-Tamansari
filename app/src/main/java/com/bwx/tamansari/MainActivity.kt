@@ -38,45 +38,48 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_detail_homestay -> {
                     binding.bottomNav.visibility = View.GONE
                 }
-                R.id.navigation_detail_restaurant->{
+                R.id.navigation_detail_restaurant -> {
                     binding.bottomNav.visibility = View.GONE
                 }
-                R.id.navigation_dashboard->{
+                R.id.navigation_dashboard -> {
                     supportActionBar?.hide()
                 }
-                R.id.navigation_notifications->{
+                R.id.navigation_notifications -> {
                     supportActionBar?.hide()
                 }
-                R.id.navigation_account->{
+                R.id.navigation_account -> {
                     supportActionBar?.hide()
                 }
-                R.id.navigation_daftar_wisata->{
+                R.id.navigation_daftar_wisata -> {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }
-                R.id.navigation_detail_wisata->{
+                R.id.navigation_detail_wisata -> {
                     binding.bottomNav.visibility = View.GONE
                 }
-                R.id.navigation_homestay->{
+                R.id.navigation_homestay -> {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }
-                R.id.navigation_travel_package->{
+                R.id.navigation_travel_package -> {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }
-                R.id.navigation_restaurant->{
+                R.id.navigation_restaurant -> {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }
-                R.id.navigation_news->{
+                R.id.navigation_news -> {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }
-                R.id.navigation_choose_ticket_wisata->{
+                R.id.navigation_choose_ticket_wisata -> {
                     binding.bottomNav.visibility = View.GONE
                 }
-                R.id.navigation_review_transaction_wisata->{
+                R.id.navigation_review_transaction_wisata -> {
+                    binding.bottomNav.visibility = View.GONE
+                }
+                R.id.navigation_choose_room -> {
                     binding.bottomNav.visibility = View.GONE
                 }
                 else -> {

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp">
+
+    <ImageView
+        android:id="@+id/img_room"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:contentDescription="@string/description_image_room"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/tv_room_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/img_room"
+        tools:text="Kamar Standard Double" />
+
+    <TextView
+        android:id="@+id/tv_room_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_room_name"
+        tools:text="16m2" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border_info_transaction"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_room_area">
+
+        <TextView
+            android:id="@+id/tv_room_name_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Kamar Standard Double" />
+
+        <TextView
+            android:id="@+id/label_refund"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/tidak_bisa_refund_dan_reschedule"
+            android:textSize="11sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_room_name_2" />
+
+        <View
+            android:id="@+id/v1"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/label_refund" />
+
+        <TextView
+            android:id="@+id/room_capacity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="12sp"
+            app:drawableStartCompat="@drawable/ic_baseline_person_24"
+            app:layout_constraintTop_toBottomOf="@id/v1"
+            tools:text="1 Tamu" />
+
+        <TextView
+            android:id="@+id/bed_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="12sp"
+            app:drawableStartCompat="@drawable/ic_baseline_bed_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/room_capacity"
+            tools:text="2 single beds" />
+
+        <TextView
+            android:id="@+id/tv_breakfast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="12sp"
+            app:drawableStartCompat="@drawable/ic_breakfast"
+            app:layout_constraintTop_toBottomOf="@id/bed_type"
+            tools:text="Sarapan tidak tersedia" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textColor="@color/red"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_breakfast"
+            tools:text="IDR 250.000" />
+
+        <Button
+            android:id="@+id/btn_book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/book"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_price"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

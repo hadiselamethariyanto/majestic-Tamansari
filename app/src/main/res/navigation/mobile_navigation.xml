@@ -55,7 +55,7 @@
         android:id="@+id/navigation_detail_wisata"
         android:name="com.bwx.tamansari.ui.wisata.detail.DetailWisataFragment"
         android:label="@string/navigation_detail_wisata"
-        tools:layout="@layout/fragment_detail_wisata" >
+        tools:layout="@layout/fragment_detail_wisata">
         <action
             android:id="@+id/action_navigation_detail_wisata_to_navigation_choose_ticket_wisata"
             app:destination="@id/navigation_choose_ticket_wisata" />
@@ -65,7 +65,7 @@
         android:id="@+id/navigation_homestay"
         android:name="com.bwx.tamansari.ui.homestay.list.HomestayFragment"
         android:label="@string/navigation_list_homestay"
-        tools:layout="@layout/fragment_homestay" >
+        tools:layout="@layout/fragment_homestay">
         <action
             android:id="@+id/action_navigation_homestay_to_navigation_detail_homestay"
             app:destination="@id/navigation_detail_homestay" />
@@ -75,7 +75,7 @@
         android:id="@+id/navigation_travel_package"
         android:name="com.bwx.tamansari.ui.paket.list.PaketFragment"
         android:label="@string/navigation_list_travel_package"
-        tools:layout="@layout/fragment_paket" >
+        tools:layout="@layout/fragment_paket">
         <action
             android:id="@+id/action_navigation_travel_package_to_navigation_detail_travel_packaage"
             app:destination="@id/navigation_detail_travel_packaage" />
@@ -84,7 +84,7 @@
         android:id="@+id/navigation_restaurant"
         android:name="com.bwx.tamansari.ui.restaurant.list.RestaurantFragment"
         android:label="@string/navigation_list_restaurant"
-        tools:layout="@layout/fragment_restaurant" >
+        tools:layout="@layout/fragment_restaurant">
         <action
             android:id="@+id/action_navigation_restaurant_to_navigation_detail_restaurant"
             app:destination="@id/navigation_detail_restaurant" />
@@ -98,7 +98,7 @@
         android:id="@+id/navigation_news"
         android:name="com.bwx.tamansari.ui.berita.list.BeritaFragment"
         android:label="@string/navigation_news"
-        tools:layout="@layout/fragment_berita" >
+        tools:layout="@layout/fragment_berita">
         <action
             android:id="@+id/action_navigation_news_to_navigation_detail_news"
             app:destination="@id/navigation_detail_news" />
@@ -112,7 +112,11 @@
         android:id="@+id/navigation_detail_homestay"
         android:name="com.bwx.tamansari.ui.homestay.detail.DetailHomestayFragment"
         android:label="@string/navigation_detail_homestay"
-        tools:layout="@layout/fragment_detail_homestay" />
+        tools:layout="@layout/fragment_detail_homestay" >
+        <action
+            android:id="@+id/action_navigation_detail_homestay_to_navigation_choose_room"
+            app:destination="@id/navigation_choose_room" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_detail_travel_packaage"
         android:name="com.bwx.tamansari.ui.paket.detail.DetailTravelPackageFragment"
@@ -132,7 +136,7 @@
         android:id="@+id/navigation_choose_ticket_wisata"
         android:name="com.bwx.tamansari.ui.wisata.choose_ticket.ChooseTicketWisataFragment"
         android:label="@string/navigation_choose_ticket"
-        tools:layout="@layout/fragment_choose_ticket_wisata" >
+        tools:layout="@layout/fragment_choose_ticket_wisata">
         <action
             android:id="@+id/action_navigation_choose_ticket_wisata_to_navigation_review_transaction_wisata"
             app:destination="@id/navigation_review_transaction_wisata" />
@@ -143,6 +147,11 @@
         android:name="com.bwx.tamansari.ui.wisata.review.ReviewTransactionWisataFragment"
         android:label="@string/navigation_review_transaction"
         tools:layout="@layout/fragment_review_transaction_wisata" />
+    <fragment
+        android:id="@+id/navigation_choose_room"
+        android:name="com.bwx.tamansari.ui.homestay.choose_room.ChooseRoomFragment"
+        android:label="@string/navigation_choose_room"
+        tools:layout="@layout/fragment_choose_room" />
 
 
 </navigation>

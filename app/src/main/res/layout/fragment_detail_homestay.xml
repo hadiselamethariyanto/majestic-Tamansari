@@ -1,228 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.homestay.detail.DetailHomestayFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="40dp">
-
-        <ImageView
-            android:id="@+id/img_first_homestay"
-            android:layout_width="0dp"
-            android:layout_height="210dp"
-            android:contentDescription="@string/description_image_homestay"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toStartOf="@id/img_secondary_homestay"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic" />
-
-        <ImageView
-            android:id="@+id/img_secondary_homestay"
-            android:layout_width="120dp"
-            android:layout_height="105dp"
-            android:contentDescription="@string/description_image_homestay"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/img_first_homestay"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic" />
-
-        <ImageView
-            android:id="@+id/img_third_homestay"
-            android:layout_width="120dp"
-            android:layout_height="105dp"
-            android:contentDescription="@string/description_image_homestay"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_secondary_homestay"
-            tools:src="@tools:sample/backgrounds/scenic" />
-
-        <TextView
-            android:id="@+id/tv_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/homestay"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_first_homestay" />
-
-        <TextView
-            android:id="@+id/tv_homestay_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/poppins_bold"
-            android:includeFontPadding="false"
-            android:maxLines="2"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_category"
-            tools:text="Hadi Homestay" />
-
-        <RatingBar
-            android:id="@+id/star"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:progressTint="@color/yellow"
-            android:rating="5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_homestay_name" />
-
-        <View
-            android:id="@+id/v1"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/color_grey"
-            app:layout_constraintTop_toBottomOf="@id/star" />
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_tentang_akomodasi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@drawable/recteangle_tentang_akomodasi"
-            android:padding="16dp"
-            app:layout_constraintTop_toBottomOf="@id/v1">
+            android:layout_height="match_parent"
+            android:paddingBottom="100dp">
 
-            <TextView
-                android:id="@+id/tv_label_check_in"
+            <ImageView
+                android:id="@+id/img_first_homestay"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/waktu_checkin"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toStartOf="@id/tv_label_check_out"
+                android:layout_height="210dp"
+                android:contentDescription="@string/description_image_homestay"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toStartOf="@id/img_secondary_homestay"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <ImageView
+                android:id="@+id/img_secondary_homestay"
+                android:layout_width="120dp"
+                android:layout_height="105dp"
+                android:contentDescription="@string/description_image_homestay"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_first_homestay"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <ImageView
+                android:id="@+id/img_third_homestay"
+                android:layout_width="120dp"
+                android:layout_height="105dp"
+                android:contentDescription="@string/description_image_homestay"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_secondary_homestay"
+                tools:src="@tools:sample/backgrounds/scenic" />
 
             <TextView
-                android:id="@+id/tv_label_check_out"
-                android:layout_width="0dp"
+                android:id="@+id/tv_category"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="@string/waktu_checkout"
+                android:text="@string/homestay"
                 android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintStart_toEndOf="@id/tv_label_check_in"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_check_in"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:textColor="@color/biru_tua"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toStartOf="@id/tv_check_out"
-                app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_label_check_in"
-                tools:text="14:00-23:59" />
+                app:layout_constraintTop_toBottomOf="@id/img_first_homestay" />
 
             <TextView
-                android:id="@+id/tv_check_out"
-                android:layout_width="0dp"
+                android:id="@+id/tv_homestay_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:textColor="@color/biru_tua"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintStart_toEndOf="@id/tv_check_in"
-                app:layout_constraintTop_toBottomOf="@id/tv_label_check_out"
-                tools:text="12:00" />
+                android:layout_marginStart="16dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_bold"
+                android:includeFontPadding="false"
+                android:maxLines="2"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_category"
+                tools:text="Hadi Homestay" />
 
+            <RatingBar
+                android:id="@+id/star"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:progressTint="@color/yellow"
+                android:rating="5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_homestay_name" />
+
+            <View
+                android:id="@+id/v1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/color_grey"
+                app:layout_constraintTop_toBottomOf="@id/star" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_tentang_akomodasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@drawable/recteangle_tentang_akomodasi"
+                android:padding="16dp"
+                app:layout_constraintTop_toBottomOf="@id/v1">
+
+                <TextView
+                    android:id="@+id/tv_label_check_in"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/waktu_checkin"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toStartOf="@id/tv_label_check_out"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_label_check_out"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/waktu_checkout"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@id/tv_label_check_in"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_check_in"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:textColor="@color/biru_tua"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/tv_check_out"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_label_check_in"
+                    tools:text="14:00-23:59" />
+
+                <TextView
+                    android:id="@+id/tv_check_out"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:textColor="@color/biru_tua"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@id/tv_check_in"
+                    app:layout_constraintTop_toBottomOf="@id/tv_label_check_out"
+                    tools:text="12:00" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/v2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/color_grey"
+                app:layout_constraintTop_toBottomOf="@id/cl_tentang_akomodasi" />
+
+            <TextView
+                android:id="@+id/label_fasilitas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/fasilitas"
+                android:textColor="@color/biru_tua"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v2" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_fasilitas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:paddingHorizontal="16dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/label_fasilitas"
+                app:spanCount="4"
+                tools:listitem="@layout/item_fasilitas" />
+
+            <View
+                android:id="@+id/v3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/color_grey"
+                app:layout_constraintTop_toBottomOf="@id/rv_fasilitas" />
+
+            <TextView
+                android:id="@+id/label_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/lokasi"
+                android:textColor="@color/biru_tua"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v3" />
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/maps"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/label_location" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:drawablePadding="8dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_regular"
+                android:maxLines="2"
+                android:textSize="12sp"
+                app:drawableStartCompat="@drawable/ic_maps_and_flags"
+                app:layout_constraintTop_toBottomOf="@id/maps"
+                tools:text="Dusun Sumberwatu, RT.001/RW.002, Tamansari, Kec. Licin, Kabupaten Banyuwangi, Jawa Timur 68485" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
-        <View
-            android:id="@+id/v2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/color_grey"
-            app:layout_constraintTop_toBottomOf="@id/cl_tentang_akomodasi" />
+    <RelativeLayout
+        android:id="@+id/rl_choose_room"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rounded_top_only"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp">
 
         <TextView
-            android:id="@+id/label_fasilitas"
+            android:id="@+id/label_start_from"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/fasilitas"
-            android:textColor="@color/biru_tua"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/v2" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_fasilitas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:paddingHorizontal="16dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/label_fasilitas"
-            app:spanCount="4"
-            tools:listitem="@layout/item_fasilitas" />
-
-        <View
-            android:id="@+id/v3"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/color_grey"
-            app:layout_constraintTop_toBottomOf="@id/rv_fasilitas" />
-
-        <TextView
-            android:id="@+id/label_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/lokasi"
-            android:textColor="@color/biru_tua"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/v3" />
-
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/maps"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/label_location" />
-
-        <TextView
-            android:id="@+id/tv_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:drawablePadding="8dp"
-            android:ellipsize="end"
             android:fontFamily="@font/poppins_regular"
-            android:maxLines="2"
-            android:textSize="12sp"
-            app:drawableStartCompat="@drawable/ic_maps_and_flags"
-            app:layout_constraintTop_toBottomOf="@id/maps"
-            tools:text="Dusun Sumberwatu, RT.001/RW.002, Tamansari, Kec. Licin, Kabupaten Banyuwangi, Jawa Timur 68485" />
+            android:text="@string/start_from"
+            android:textSize="12sp" />
 
+        <TextView
+            android:id="@+id/tv_price_start_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label_start_from"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textColor="@color/red"
+            android:textSize="14sp"
+            tools:text="IDR 250.000" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+        <Button
+            android:id="@+id/btn_choose_room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/choose_room"
+            android:textAllCaps="false"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+</RelativeLayout>
+

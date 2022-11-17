@@ -518,4 +518,13 @@ object DataDummy {
         )
         return list
     }
+
+    fun generateTravelPackageTicket(): List<TravelPackageDomain> {
+        val list = arrayListOf<TravelPackageDomain>()
+        list.add(TravelPackageDomain("1", "1", "Private Trip 6 Orang", 190000, ""))
+        list.add(TravelPackageDomain("2", "1", "Private Trip 5 Orang", 225000, ""))
+        list.add(TravelPackageDomain("3", "1", "Private Trip 4 Orang", 280000, ""))
+        list.add(TravelPackageDomain("4", "1", "Private Trip 3 Orang", 345000, ""))
+        return list
+    }
 }

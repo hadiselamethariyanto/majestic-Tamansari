@@ -23,6 +23,7 @@
     <string name="navigation_choose_ticket">Pilih Tiket</string>
     <string name="navigation_choose_room">Pilih Kamar</string>
     <string name="navigation_review_transaction">Review Transaksi</string>
+    <string name="navigation_choose_travel_package">Pilih Paket</string>
     <string name="homestay">Homestay</string>
     <string name="waktu_checkin">Waktu Check-in:</string>
     <string name="waktu_checkout">Waktu Chek-out:</string>
@@ -72,6 +73,7 @@
     <string name="write_a_comment">Tulis komentar</string>
     <string name="terjual">Terjual</string>
     <string name="choose_ticket">Pilih Tiket</string>
+    <string name="choose_travel_package">Pilih paket</string>
     <string name="choose_room">Pilih Kamar</string>
     <string name="detail">Detail</string>
     <string name="start_from">Mulai dari</string>

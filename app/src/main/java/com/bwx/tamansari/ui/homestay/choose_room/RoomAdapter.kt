@@ -12,7 +12,14 @@ import com.bwx.tamansari.utils.Utils
 class RoomAdapter(private val rooms: List<RoomDomain>) :
     RecyclerView.Adapter<RoomAdapter.ViewHolder>() {
 
-    class ViewHolder(private val binding: ItemRoomBinding) : RecyclerView.ViewHolder(binding.root) {
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    inner class ViewHolder(private val binding: ItemRoomBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(room: RoomDomain) {
             binding.tvRoomName.text = room.name
             binding.tvRoomName2.text = room.name
@@ -25,7 +32,7 @@ class RoomAdapter(private val rooms: List<RoomDomain>) :
             Glide.with(itemView.context).load(room.image).placeholder(R.drawable.placeholder)
                 .into(binding.imgRoom)
             binding.btnBook.setOnClickListener {
-
+                onItemClickCallback.onItemClicked(room)
             }
         }
     }
@@ -40,4 +47,8 @@ class RoomAdapter(private val rooms: List<RoomDomain>) :
     }
 
     override fun getItemCount(): Int = rooms.size
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: RoomDomain)
+    }
 }

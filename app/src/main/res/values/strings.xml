@@ -82,5 +82,7 @@
     <string name="lanjut_ke_pembayaran">Lanjut ke Pembayaran</string>
     <string name="total_payment">Total Pembayaran</string>
     <string name="tidak_bisa_refund_dan_reschedule">Tidak bisa refund dan reschedule</string>
+    <string name="checkin_date">Check-in</string>
+    <string name="checkout_date">Check-out</string>
 
 </resources>

@@ -82,6 +82,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_choose_room -> {
                     binding.bottomNav.visibility = View.GONE
                 }
+                R.id.navigation_review_transaction_homestay->{
+                    binding.bottomNav.visibility = View.GONE
+                }
                 else -> {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.VISIBLE

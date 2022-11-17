@@ -1,5 +1,7 @@
 package com.bwx.tamansari.utils
 
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.math.floor
 import kotlin.math.log10
 
@@ -28,5 +30,10 @@ object Utils {
             str.reverse()
         } else str.append(t.toString())
         return str.toString()
+    }
+
+    fun formatCalendarToStringDate(time:Long):String{
+        val formatter = SimpleDateFormat("dd MMM yy", Locale.getDefault())
+        return formatter.format(time)
     }
 }

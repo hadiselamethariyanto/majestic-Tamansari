@@ -151,7 +151,16 @@
         android:id="@+id/navigation_choose_room"
         android:name="com.bwx.tamansari.ui.homestay.choose_room.ChooseRoomFragment"
         android:label="@string/navigation_choose_room"
-        tools:layout="@layout/fragment_choose_room" />
+        tools:layout="@layout/fragment_choose_room" >
+        <action
+            android:id="@+id/action_navigation_choose_room_to_navigation_review_transaction_homestay"
+            app:destination="@id/navigation_review_transaction_homestay" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_review_transaction_homestay"
+        android:name="com.bwx.tamansari.ui.homestay.review_transaction.ReviewTransactionHomestayFragment"
+        android:label="@string/navigation_review_transaction"
+        tools:layout="@layout/fragment_review_transaction_homestay" />
 
 
 </navigation>

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.ItemBeritaBinding
 import com.bwx.tamansari.model.BeritaModel
 
@@ -31,7 +32,8 @@ class BeritaAdapter : RecyclerView.Adapter<BeritaAdapter.ViewHolder>() {
         fun bindItem(berita: BeritaModel) {
             Glide.with(itemView.context)
                 .load(berita.foto)
-                .transform(CenterCrop(), RoundedCorners(70))
+                .placeholder(R.drawable.placeholder)
+                .transform(CenterCrop(), RoundedCorners(24))
                 .into(binding.imgBerita)
 
             binding.tvJudul.text = berita.judul

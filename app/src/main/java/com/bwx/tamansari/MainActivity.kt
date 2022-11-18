@@ -85,7 +85,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_review_transaction_homestay->{
                     binding.bottomNav.visibility = View.GONE
                 }
+                R.id.navigation_detail_travel_packaage->{
+                    binding.bottomNav.visibility = View.GONE
+                }
                 R.id.navigation_choose_travel_package->{
+                    binding.bottomNav.visibility = View.GONE
+                }
+                R.id.navigation_review_transaction_travel_package->{
                     binding.bottomNav.visibility = View.GONE
                 }
                 else -> {

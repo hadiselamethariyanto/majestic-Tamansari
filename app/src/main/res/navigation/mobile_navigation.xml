@@ -170,7 +170,16 @@
         android:id="@+id/navigation_choose_travel_package"
         android:name="com.bwx.tamansari.ui.paket.choose_paket.ChooseTravelPackageFragment"
         android:label="@string/navigation_choose_travel_package"
-        tools:layout="@layout/fragment_choose_travel_package" />
+        tools:layout="@layout/fragment_choose_travel_package" >
+        <action
+            android:id="@+id/action_navigation_choose_travel_package_to_navigation_review_transaction_travel_package"
+            app:destination="@id/navigation_review_transaction_travel_package" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_review_transaction_travel_package"
+        android:name="com.bwx.tamansari.ui.paket.review.ReviewTransactionTravelPackageFragment"
+        android:label="@string/navigation_review_transaction"
+        tools:layout="@layout/fragment_review_transaction_travel_package" />
 
 
 </navigation>

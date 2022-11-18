@@ -10,11 +10,21 @@ import com.bwx.tamansari.utils.Utils
 class TravelPackageAdapter(private val list: List<TravelPackageDomain>) :
     RecyclerView.Adapter<TravelPackageAdapter.ViewHolder>() {
 
-    class ViewHolder(private val binding: ItemChooseTravelPackageBinding) :
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+
+    inner class ViewHolder(private val binding: ItemChooseTravelPackageBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: TravelPackageDomain) {
             binding.tvPackageName.text = data.name
             binding.tvPackagePrice.text = "IDR ${Utils.thousandSeparator(data.price)}"
+            binding.btnChoosePackage.setOnClickListener {
+                onItemClickCallback.onItemClicked(data)
+            }
         }
     }
 
@@ -32,4 +42,8 @@ class TravelPackageAdapter(private val list: List<TravelPackageDomain>) :
     }
 
     override fun getItemCount(): Int = list.size
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: TravelPackageDomain)
+    }
 }

@@ -22,7 +22,7 @@ class MenuRestaurantAdapter(private val list: List<MenuRestaurantDomain>) :
 
             Glide.with(itemView.context).load(data.photoUrl)
                 .placeholder(R.drawable.placeholder)
-                .transform(CenterCrop(), RoundedCorners(70))
+                .transform(CenterCrop(), RoundedCorners(24))
                 .into(binding.imgMenu)
         }
     }

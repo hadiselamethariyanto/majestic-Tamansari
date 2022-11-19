@@ -2,8 +2,8 @@ package com.bwx.tamansari.ui.wisata.detail
 
 import android.os.Bundle
 import android.view.View
+import banyuwangi.digital.core.domain.model.WisataDomain
 import com.bwx.tamansari.databinding.FragmentOverviewWisataBinding
-import com.bwx.tamansari.model.WisataDomain
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -64,7 +64,7 @@ class OverviewWisataFragment :
         mMap.addMarker(
             MarkerOptions()
                 .position(startLocation)
-                .title(wisata?.nama)
+                .title(wisata?.name)
         )
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(startLocation, 17f))
 

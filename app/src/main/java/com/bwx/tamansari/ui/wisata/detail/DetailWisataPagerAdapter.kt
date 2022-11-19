@@ -3,7 +3,7 @@ package com.bwx.tamansari.ui.wisata.detail
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.bwx.tamansari.model.WisataDomain
+import banyuwangi.digital.core.domain.model.WisataDomain
 import com.google.gson.Gson
 
 class DetailWisataPagerAdapter(activity: FragmentActivity, val wisata: WisataDomain?) :

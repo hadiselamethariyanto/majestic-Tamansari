@@ -3,9 +3,10 @@ package com.bwx.tamansari.ui.wisata.detail
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
+import banyuwangi.digital.core.domain.model.WisataDomain
 import com.bwx.tamansari.databinding.FragmentGalleryWisataBinding
 import com.bwx.tamansari.ui.base.BaseFragment
-import com.bwx.tamansari.utils.DataDummy
+import com.google.gson.Gson
 
 private const val ARG_PARAM_WISATA = "wisata"
 
@@ -23,9 +24,11 @@ class GalleryWisataFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val galleryWisataAdapter = GalleryWisataAdapter(DataDummy.generateGalleryWisata())
+        val wisataDomain = Gson().fromJson(wisata, WisataDomain::class.java)
+        val galleryWisataAdapter = GalleryWisataAdapter(wisataDomain.photos)
         binding.rvGalleryWisata.adapter = galleryWisataAdapter
-        binding.rvGalleryWisata.layoutManager = GridLayoutManager(requireActivity(), 2, GridLayoutManager.VERTICAL, false)
+        binding.rvGalleryWisata.layoutManager =
+            GridLayoutManager(requireActivity(), 2, GridLayoutManager.VERTICAL, false)
     }
 
     companion object {

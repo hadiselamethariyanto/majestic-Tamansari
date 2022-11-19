@@ -11,14 +11,14 @@ import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.ItemGalleryWisataBinding
 import com.bwx.tamansari.model.GalleryWisataDomain
 
-class GalleryWisataAdapter(private val list: List<GalleryWisataDomain>) :
+class GalleryWisataAdapter(private val list: List<String>) :
     RecyclerView.Adapter<GalleryWisataAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: ItemGalleryWisataBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun binding(data: GalleryWisataDomain) {
+        fun binding(url: String) {
             val requestOptions = RequestOptions().transform(CenterCrop(), RoundedCorners(36))
-            Glide.with(itemView.context).load(data.photoUrl).placeholder(R.drawable.placeholder)
+            Glide.with(itemView.context).load(url).placeholder(R.drawable.placeholder)
                 .apply(requestOptions)
                 .into(binding.imageWisata)
         }

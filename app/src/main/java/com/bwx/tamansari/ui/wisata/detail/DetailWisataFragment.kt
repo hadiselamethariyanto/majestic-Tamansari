@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import banyuwangi.digital.core.domain.model.WisataDomain
 import com.bumptech.glide.Glide
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentDetailWisataBinding
-import com.bwx.tamansari.model.WisataDomain
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.utils.DataDummy
 import com.bwx.tamansari.utils.Utils
@@ -22,9 +22,12 @@ class DetailWisataFragment :
 
         val wisata = arguments?.getParcelable<WisataDomain>("wisata")
 
-        binding.tvWisataName.text = wisata?.nama
-        binding.tvWisataRating.text = "${wisata?.rating} (${wisata?.vote_count})"
-        Glide.with(requireActivity()).load(wisata?.foto).centerCrop().into(binding.imageWisata)
+        binding.tvWisataName.text = wisata?.name
+        binding.tvWisataRating.text = "${wisata?.rating} (${wisata?.voteCount})"
+        val photos = wisata?.photos ?: arrayListOf()
+        if (photos.isNotEmpty()) {
+            Glide.with(requireActivity()).load(photos[0]).centerCrop().into(binding.imageWisata)
+        }
 
         val pagerAdapter = DetailWisataPagerAdapter(requireActivity(), wisata)
         binding.pager.adapter = pagerAdapter

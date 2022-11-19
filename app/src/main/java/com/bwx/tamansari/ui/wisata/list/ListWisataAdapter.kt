@@ -1,18 +1,13 @@
 package com.bwx.tamansari.ui.wisata.list
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RatingBar
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import banyuwangi.digital.core.domain.model.WisataDomain
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.ItemListWisataBinding
-import com.bwx.tamansari.model.WisataDomain
 import com.bwx.tamansari.utils.Utils
 
 class ListWisataAdapter : RecyclerView.Adapter<ListWisataAdapter.ViewHolder>() {
@@ -34,12 +29,15 @@ class ListWisataAdapter : RecyclerView.Adapter<ListWisataAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(data: WisataDomain) {
-            binding.tvWisataName.text = data.nama
+            binding.tvWisataName.text = data.name
             binding.ratingbar.rating = data.rating
-            binding.tvTotalReview.text = "(${data.vote_count} Review)"
-            binding.tvPrice.text = "IDR ${Utils.thousandSeparator(data.price)}"
-            Glide.with(itemView.context).load(data.foto).transform(CenterCrop(), RoundedCorners(24))
-                .into(binding.imgWisata)
+            binding.tvTotalReview.text = "(${data.voteCount} Review)"
+//            binding.tvPrice.text = "IDR ${Utils.thousandSeparator(data.price)}"
+            if (data.photos.isNotEmpty()) {
+                Glide.with(itemView.context).load(data.photos[0])
+                    .transform(CenterCrop(), RoundedCorners(24))
+                    .into(binding.imgWisata)
+            }
         }
     }
 

@@ -1,26 +1,45 @@
 package com.bwx.tamansari.ui.wisata.list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import banyuwangi.digital.core.data.Resource
+import banyuwangi.digital.core.domain.model.WisataDomain
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentDaftarWisataBinding
-import com.bwx.tamansari.model.WisataDomain
 import com.bwx.tamansari.ui.base.BaseFragment
-import com.bwx.tamansari.utils.DataDummy
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DaftarWisataFragment : BaseFragment<FragmentDaftarWisataBinding>(FragmentDaftarWisataBinding::inflate) {
+class DaftarWisataFragment :
+    BaseFragment<FragmentDaftarWisataBinding>(FragmentDaftarWisataBinding::inflate) {
+
+    private val viewModel: ListWisataViewModel by viewModel()
+    private lateinit var adapter: ListWisataAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupWisata()
+        viewModel.getWisata().observe(viewLifecycleOwner) { res ->
+            when (res) {
+                is Resource.Loading -> {
+
+                }
+                is Resource.Success -> {
+                    val wisatas = res.data?: arrayListOf()
+                    adapter.updateData(wisatas)
+                }
+                is Resource.Error -> {
+                    Log.d("UHT", res.message.toString())
+                }
+            }
+        }
     }
 
     private fun setupWisata() {
-        val adapter = ListWisataAdapter()
-        adapter.updateData(DataDummy.generateWisata())
+        adapter = ListWisataAdapter()
         adapter.setOnItemClickCallback(object : ListWisataAdapter.OnItemClickCallback {
             override fun onItemClicked(data: WisataDomain) {
                 val bundle = bundleOf("wisata" to data)

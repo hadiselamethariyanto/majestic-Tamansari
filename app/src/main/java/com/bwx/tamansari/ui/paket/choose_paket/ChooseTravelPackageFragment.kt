@@ -27,7 +27,9 @@ class ChooseTravelPackageFragment :
         val adapter = TravelPackageAdapter(travelPackages)
         adapter.setOnItemClickCallback(object : TravelPackageAdapter.OnItemClickCallback {
             override fun onItemClicked(data: TravelPackageDomain) {
-                val bundle = bundleOf("package_type" to data, "package" to travelPackage)
+                val date = binding.etDate.text.toString()
+                val bundle =
+                    bundleOf("package_type" to data, "package" to travelPackage, "date" to date)
                 findNavController().navigate(
                     R.id.action_navigation_choose_travel_package_to_navigation_review_transaction_travel_package,
                     bundle

@@ -87,5 +87,6 @@
     <string name="checkin_date">Check-in</string>
     <string name="checkout_date">Check-out</string>
     <string name="choose_date">Pilih tanggal</string>
+    <string name="date">Tanggal</string>
 
 </resources>

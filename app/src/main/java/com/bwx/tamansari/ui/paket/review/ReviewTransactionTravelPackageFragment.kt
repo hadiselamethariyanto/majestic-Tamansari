@@ -23,6 +23,7 @@ class ReviewTransactionTravelPackageFragment :
 
         val travelPackageDomain = arguments?.getParcelable<TravelPackageDomain>("package_type")
         val travelPackage = arguments?.getParcelable<PaketWisataModel>("package")
+        val date = arguments?.getString("date")
 
         binding.tvTravelPackageName.text = travelPackage?.nama
         val photos = travelPackage?.photos ?: arrayListOf()
@@ -32,6 +33,7 @@ class ReviewTransactionTravelPackageFragment :
                 .into(binding.imgTravelPackage)
         }
         binding.tvPackageType.text = travelPackageDomain?.name
+        binding.tvDate.text = date
 
         binding.tvCustomerName.text = "Muhammad Hadi"
         binding.tvCustomerPhone.text = "+6282244087798"

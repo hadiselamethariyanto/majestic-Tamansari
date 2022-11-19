@@ -25,17 +25,23 @@ class DaftarWisataFragment :
         viewModel.getWisata().observe(viewLifecycleOwner) { res ->
             when (res) {
                 is Resource.Loading -> {
-
+                    setLoading(true)
                 }
                 is Resource.Success -> {
+                    setLoading(false)
                     val wisatas = res.data?: arrayListOf()
                     adapter.updateData(wisatas)
                 }
                 is Resource.Error -> {
-                    Log.d("UHT", res.message.toString())
+                    setLoading(false)
                 }
             }
         }
+    }
+
+    private fun setLoading(isLoading:Boolean){
+        binding.llLoading.visibility = if(isLoading) View.VISIBLE else View.GONE
+        binding.rvWisata.visibility = if (isLoading) View.GONE else View.VISIBLE
     }
 
     private fun setupWisata() {

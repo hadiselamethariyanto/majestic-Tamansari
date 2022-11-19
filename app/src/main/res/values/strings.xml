@@ -88,5 +88,6 @@
     <string name="checkout_date">Check-out</string>
     <string name="choose_date">Pilih tanggal</string>
     <string name="date">Tanggal</string>
+    <string name="mohon_tunggu_sebentar">Mohon tunggu sebentar</string>
 
 </resources>

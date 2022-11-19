@@ -1,5 +1,6 @@
 package com.bwx.tamansari.utils
 
+import banyuwangi.digital.core.domain.model.TicketWisataDomain
 import banyuwangi.digital.core.domain.model.WisataDomain
 import com.bwx.tamansari.model.*
 

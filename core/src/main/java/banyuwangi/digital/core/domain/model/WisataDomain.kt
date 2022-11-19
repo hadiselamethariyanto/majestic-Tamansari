@@ -12,5 +12,6 @@ data class WisataDomain(
     val voteCount: Int,
     val latitude: Double,
     val longitude: Double,
-    val description: String
+    val description: String,
+    val tickets: List<TicketWisataDomain>? = arrayListOf()
 ) : Parcelable

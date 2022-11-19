@@ -36,7 +36,8 @@ class DetailWisataFragment :
             tab.text = tabLayoutTitle[position].split(" ")[0]
         }.attach()
 
-        val tickets = DataDummy.generateTicketWisata()
+        val tickets = wisata?.tickets ?: arrayListOf()
+        tickets.sortedBy { it.price }
         if (tickets.isNotEmpty()) {
             binding.rlChooseTicket.visibility = View.VISIBLE
             binding.tvPriceStartFrom.text = "IDR ${Utils.thousandSeparator(tickets[0].price)}"

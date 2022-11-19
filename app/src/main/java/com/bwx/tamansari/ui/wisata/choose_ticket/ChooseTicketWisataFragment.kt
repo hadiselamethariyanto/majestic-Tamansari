@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import banyuwangi.digital.core.domain.model.TicketWisataDomain
 import banyuwangi.digital.core.domain.model.WisataDomain
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentChooseTicketWisataBinding
 import com.bwx.tamansari.model.ChartDomain
-import com.bwx.tamansari.model.TicketWisataDomain
 import com.bwx.tamansari.ui.base.BaseFragment
 
 

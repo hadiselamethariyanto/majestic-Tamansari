@@ -13,5 +13,6 @@ data class WisataItem(
     val longitude: Double,
     val description: String,
     val address: String,
-    val photos: List<String>
+    val photos: List<String>,
+    val tickets: List<TicketWisataItem>
 )

@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import banyuwangi.digital.core.domain.model.TicketWisataDomain
 import com.bwx.tamansari.databinding.ItemChooseTicketWisataBinding
 import com.bwx.tamansari.model.ChartDomain
-import com.bwx.tamansari.model.TicketWisataDomain
 import com.bwx.tamansari.utils.Utils
 
 class ChooseTicketWisataAdapter(private val tickets: List<TicketWisataDomain>) :

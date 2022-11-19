@@ -10,6 +10,8 @@ import com.bwx.tamansari.databinding.FragmentChooseTravelPackageBinding
 import com.bwx.tamansari.model.PaketWisataModel
 import com.bwx.tamansari.model.TravelPackageDomain
 import com.bwx.tamansari.ui.base.BaseFragment
+import com.bwx.tamansari.utils.Utils
+import java.util.*
 
 class ChooseTravelPackageFragment :
     BaseFragment<FragmentChooseTravelPackageBinding>(FragmentChooseTravelPackageBinding::inflate) {
@@ -34,6 +36,11 @@ class ChooseTravelPackageFragment :
         })
         binding.rvTravelPackage.adapter = adapter
 
+        getToday()
+    }
 
+    private fun getToday() {
+        val calendar = Calendar.getInstance()
+        binding.etDate.setText(Utils.formatCalendarToStringDate(calendar.timeInMillis))
     }
 }

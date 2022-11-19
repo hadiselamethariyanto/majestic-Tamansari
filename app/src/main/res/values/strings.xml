@@ -86,5 +86,6 @@
     <string name="tidak_bisa_refund_dan_reschedule">Tidak bisa refund dan reschedule</string>
     <string name="checkin_date">Check-in</string>
     <string name="checkout_date">Check-out</string>
+    <string name="choose_date">Pilih tanggal</string>
 
 </resources>

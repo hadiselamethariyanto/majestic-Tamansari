@@ -4,6 +4,7 @@ import banyuwangi.digital.core.domain.usecase.HomestayInteractor
 import banyuwangi.digital.core.domain.usecase.HomestayUseCase
 import banyuwangi.digital.core.domain.usecase.WisataInteractor
 import banyuwangi.digital.core.domain.usecase.WisataUseCase
+import com.bwx.tamansari.ui.homestay.choose_room.ChooseRoomViewModel
 import com.bwx.tamansari.ui.homestay.list.HomestayViewModel
 import com.bwx.tamansari.ui.wisata.choose_ticket.ChooseTicketWisataViewModel
 import com.bwx.tamansari.ui.wisata.detail.rating.RatingWisataViewModel
@@ -22,4 +23,5 @@ val viewModelModule = module {
     viewModel { ChooseTicketWisataViewModel() }
     viewModel { RatingWisataViewModel(get()) }
     viewModel { HomestayViewModel(get()) }
+    viewModel { ChooseRoomViewModel(get()) }
 }

@@ -15,5 +15,6 @@ data class HomestayDomain(
     val address: String,
     val photos: List<String>,
     val checkIn: String,
-    val checkOut: String
+    val checkOut: String,
+    val rooms: List<RoomDomain>
 ) : Parcelable

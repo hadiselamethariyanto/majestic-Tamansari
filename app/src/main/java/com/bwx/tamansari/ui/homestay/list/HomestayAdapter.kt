@@ -30,7 +30,11 @@ class HomestayAdapter : RecyclerView.Adapter<HomestayAdapter.ViewHolder>() {
             binding.tvHomestayName.text = data.name
 //            binding.tvDistance.text = "• ${data.jarak} km dari lokasimu"
             binding.tvHomestayRating.text = data.rating.toString()
-//            binding.tvPrice.text = "IDR ${Utils.thousandSeparator(data.harga)}"
+            val rooms = data.rooms
+            rooms.sortedBy { it.price }
+            if (rooms.isNotEmpty()) {
+                binding.tvPrice.text = "IDR ${Utils.thousandSeparator(rooms[0].price)}"
+            }
             binding.tvTotalReview.text = "${data.voteCount} (Review)"
             binding.homestayStar.numStars = data.rating.toInt()
             binding.homestayStar.rating = data.rating

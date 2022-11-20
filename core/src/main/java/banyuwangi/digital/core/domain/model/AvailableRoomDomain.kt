@@ -1,16 +1,17 @@
-package com.bwx.tamansari.model
+package banyuwangi.digital.core.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class RoomDomain(
+data class AvailableRoomDomain(
     val id: String,
     val name: String,
+    val price: Int,
     val area: Int,
-    val roomCapacity: Int,
+    val capacity: Int,
     val bedType: String,
     val breakfast: Boolean,
-    val price: Int,
-    val image:String
+    val roomsAvailable: Int,
+    val photos: List<String>
 ):Parcelable

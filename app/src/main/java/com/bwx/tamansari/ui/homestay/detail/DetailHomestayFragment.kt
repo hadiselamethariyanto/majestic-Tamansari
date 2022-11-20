@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentDetailHomestayBinding
 import com.bwx.tamansari.ui.base.BaseFragment
-import com.bwx.tamansari.utils.DataDummy
 import com.bwx.tamansari.utils.Utils
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -50,7 +49,7 @@ class DetailHomestayFragment :
 //        val facilitiesAdapter = FacilitiesAdapter(homestay?.facilities ?: arrayListOf())
 //        binding.rvFasilitas.adapter = facilitiesAdapter
 
-        val rooms = DataDummy.generateRooms()
+        val rooms = homestay?.rooms?: arrayListOf()
         rooms.sortedBy { it.price }
 
         if (rooms.isNotEmpty()) {
@@ -61,7 +60,7 @@ class DetailHomestayFragment :
         }
 
         binding.btnChooseRoom.setOnClickListener {
-            val bundle = bundleOf("homestay" to homestay, "rooms" to rooms)
+            val bundle = bundleOf("homestay" to homestay)
             findNavController().navigate(
                 R.id.action_navigation_detail_homestay_to_navigation_choose_room,
                 bundle

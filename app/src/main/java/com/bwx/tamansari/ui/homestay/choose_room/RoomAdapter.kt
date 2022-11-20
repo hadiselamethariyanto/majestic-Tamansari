@@ -3,14 +3,20 @@ package com.bwx.tamansari.ui.homestay.choose_room
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bwx.tamansari.R
+import banyuwangi.digital.core.domain.model.AvailableRoomDomain
 import com.bwx.tamansari.databinding.ItemRoomBinding
-import com.bwx.tamansari.model.RoomDomain
 import com.bwx.tamansari.utils.Utils
 
-class RoomAdapter(private val rooms: List<RoomDomain>) :
+class RoomAdapter :
     RecyclerView.Adapter<RoomAdapter.ViewHolder>() {
+
+    private val rooms = ArrayList<AvailableRoomDomain>()
+
+    fun updateData(newList: List<AvailableRoomDomain>) {
+        rooms.clear()
+        rooms.addAll(newList)
+        notifyDataSetChanged()
+    }
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -20,17 +26,18 @@ class RoomAdapter(private val rooms: List<RoomDomain>) :
 
     inner class ViewHolder(private val binding: ItemRoomBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(room: RoomDomain) {
+        fun bind(room: AvailableRoomDomain) {
             binding.tvRoomName.text = room.name
             binding.tvRoomName2.text = room.name
             binding.tvRoomArea.text = "${room.area} m2"
             binding.bedType.text = room.bedType
             binding.tvBreakfast.text =
                 if (room.breakfast) "Sarapan tersedia" else "Sarapan tidak tersedia"
-            binding.roomCapacity.text = "${room.roomCapacity} Tamu"
+            binding.roomCapacity.text = "${room.capacity} Tamu"
             binding.tvPrice.text = "IDR ${Utils.thousandSeparator(room.price)}"
-            Glide.with(itemView.context).load(room.image).placeholder(R.drawable.placeholder)
-                .into(binding.imgRoom)
+
+            val imageAdapter = ImageRoomAdapter(room.photos)
+            binding.rvImageRoom.adapter = imageAdapter
             binding.btnBook.setOnClickListener {
                 onItemClickCallback.onItemClicked(room)
             }
@@ -49,6 +56,6 @@ class RoomAdapter(private val rooms: List<RoomDomain>) :
     override fun getItemCount(): Int = rooms.size
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: RoomDomain)
+        fun onItemClicked(data: AvailableRoomDomain)
     }
 }

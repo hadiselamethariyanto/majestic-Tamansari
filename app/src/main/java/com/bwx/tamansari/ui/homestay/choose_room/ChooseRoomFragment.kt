@@ -4,26 +4,33 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import banyuwangi.digital.core.data.Resource
+import banyuwangi.digital.core.domain.model.AvailableRoomDomain
 import banyuwangi.digital.core.domain.model.HomestayDomain
+import banyuwangi.digital.core.domain.model.RoomDomain
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentChooseRoomBinding
-import com.bwx.tamansari.model.RoomDomain
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.utils.Utils
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 
 class ChooseRoomFragment :
     BaseFragment<FragmentChooseRoomBinding>(FragmentChooseRoomBinding::inflate) {
+
+    private val viewModel: ChooseRoomViewModel by viewModel()
+
+    private lateinit var adapter: RoomAdapter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val rooms = arguments?.getParcelableArrayList<RoomDomain>("rooms") ?: arrayListOf()
         val homestay = arguments?.getParcelable<HomestayDomain>("homestay")
 
-        val adapter = RoomAdapter(rooms)
+        adapter = RoomAdapter()
         adapter.setOnItemClickCallback(object : RoomAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: RoomDomain) {
+            override fun onItemClicked(data: AvailableRoomDomain) {
                 val checkinDate = binding.etCheckIn.text.toString()
                 val checkoutDate = binding.etCheckout.text.toString()
                 val bundle =
@@ -42,7 +49,32 @@ class ChooseRoomFragment :
         binding.rvRooms.adapter = adapter
 
         getToday()
+
+        homestay?.let {
+            viewModel.getAvailabilityRooms(it.id).observe(viewLifecycleOwner, roomsObserver)
+        }
     }
+
+    private val roomsObserver =
+        androidx.lifecycle.Observer<Resource<List<AvailableRoomDomain>>> { res ->
+            when (res) {
+                is Resource.Loading -> {
+
+                }
+                is Resource.Success -> {
+                    val rooms = res.data ?: arrayListOf()
+                    if (rooms.isNotEmpty()) {
+                        adapter.updateData(rooms)
+                        binding.rvRooms.visibility = View.VISIBLE
+                    } else {
+                        binding.rvRooms.visibility = View.GONE
+                    }
+                }
+                is Resource.Error -> {
+
+                }
+            }
+        }
 
     private fun getToday() {
         val calendar = Calendar.getInstance()

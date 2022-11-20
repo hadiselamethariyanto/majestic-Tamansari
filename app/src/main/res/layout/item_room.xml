@@ -6,15 +6,14 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="16dp">
 
-    <ImageView
-        android:id="@+id/img_room"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_image_room"
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:contentDescription="@string/description_image_room"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        tools:listitem="@layout/item_image_room" />
 
     <TextView
         android:id="@+id/tv_room_name"
@@ -25,7 +24,7 @@
         android:fontFamily="@font/poppins_semi_bold"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/img_room"
+        app:layout_constraintTop_toBottomOf="@id/rv_image_room"
         tools:text="Kamar Standard Double" />
 
     <TextView

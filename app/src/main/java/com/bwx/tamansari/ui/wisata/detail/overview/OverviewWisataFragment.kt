@@ -1,4 +1,4 @@
-package com.bwx.tamansari.ui.wisata.detail
+package com.bwx.tamansari.ui.wisata.detail.overview
 
 import android.os.Bundle
 import android.view.View

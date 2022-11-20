@@ -1,4 +1,4 @@
-package com.bwx.tamansari.ui.wisata.detail
+package com.bwx.tamansari.ui.wisata.detail.gallery
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,6 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.ItemGalleryWisataBinding
-import com.bwx.tamansari.model.GalleryWisataDomain
 
 class GalleryWisataAdapter(private val list: List<String>) :
     RecyclerView.Adapter<GalleryWisataAdapter.ViewHolder>() {

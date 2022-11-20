@@ -1,9 +1,10 @@
-package com.bwx.tamansari.ui.wisata.detail
+package com.bwx.tamansari.ui.wisata.detail.gallery
 
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import banyuwangi.digital.core.domain.model.WisataDomain
+import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentGalleryWisataBinding
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.google.gson.Gson
@@ -25,10 +26,20 @@ class GalleryWisataFragment :
         super.onViewCreated(view, savedInstanceState)
 
         val wisataDomain = Gson().fromJson(wisata, WisataDomain::class.java)
-        val galleryWisataAdapter = GalleryWisataAdapter(wisataDomain.photos)
-        binding.rvGalleryWisata.adapter = galleryWisataAdapter
-        binding.rvGalleryWisata.layoutManager =
-            GridLayoutManager(requireActivity(), 2, GridLayoutManager.VERTICAL, false)
+
+        val photos = wisataDomain.photos
+        if (photos.isNotEmpty()) {
+            val galleryWisataAdapter = GalleryWisataAdapter(wisataDomain.photos)
+            binding.rvGalleryWisata.adapter = galleryWisataAdapter
+            binding.rvGalleryWisata.layoutManager =
+                GridLayoutManager(requireActivity(), 2, GridLayoutManager.VERTICAL, false)
+            binding.rvGalleryWisata.visibility = View.VISIBLE
+            binding.tvMessage.visibility = View.GONE
+        } else {
+            binding.rvGalleryWisata.visibility = View.GONE
+            binding.tvMessage.visibility = View.VISIBLE
+            binding.tvMessage.text = getString(R.string.empty_data)
+        }
     }
 
     companion object {

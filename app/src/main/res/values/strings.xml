@@ -89,5 +89,6 @@
     <string name="choose_date">Pilih tanggal</string>
     <string name="date">Tanggal</string>
     <string name="mohon_tunggu_sebentar">Mohon tunggu sebentar</string>
+    <string name="empty_data">Tidak ada data untuk ditampilkan</string>
 
 </resources>

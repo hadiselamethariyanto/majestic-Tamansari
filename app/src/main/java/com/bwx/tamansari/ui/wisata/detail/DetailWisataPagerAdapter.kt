@@ -4,6 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import banyuwangi.digital.core.domain.model.WisataDomain
+import com.bwx.tamansari.ui.wisata.detail.gallery.GalleryWisataFragment
+import com.bwx.tamansari.ui.wisata.detail.overview.OverviewWisataFragment
+import com.bwx.tamansari.ui.wisata.detail.rating.RatingWisataFragment
 import com.google.gson.Gson
 
 class DetailWisataPagerAdapter(activity: FragmentActivity, val wisata: WisataDomain?) :

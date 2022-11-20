@@ -3,12 +3,12 @@ package com.bwx.tamansari.ui.homestay.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import banyuwangi.digital.core.domain.model.HomestayDomain
 import com.bwx.tamansari.databinding.ItemHomestayBinding
-import com.bwx.tamansari.model.HomestayDomain
 import com.bwx.tamansari.utils.Utils
 
 class HomestayAdapter : RecyclerView.Adapter<HomestayAdapter.ViewHolder>() {
-    private val homestay = mutableListOf<HomestayDomain>()
+    private val homestay = arrayListOf<HomestayDomain>()
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -27,15 +27,15 @@ class HomestayAdapter : RecyclerView.Adapter<HomestayAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(data: HomestayDomain) {
-            binding.tvHomestayName.text = data.nama
-            binding.tvDistance.text = "• ${data.jarak} km dari lokasimu"
+            binding.tvHomestayName.text = data.name
+//            binding.tvDistance.text = "• ${data.jarak} km dari lokasimu"
             binding.tvHomestayRating.text = data.rating.toString()
-            binding.tvPrice.text = "IDR ${Utils.thousandSeparator(data.harga)}"
-            binding.tvTotalReview.text = "${data.totalReview} (Review)"
-            binding.homestayStar.numStars = data.star.toInt()
-            binding.homestayStar.rating = data.star
+//            binding.tvPrice.text = "IDR ${Utils.thousandSeparator(data.harga)}"
+            binding.tvTotalReview.text = "${data.voteCount} (Review)"
+            binding.homestayStar.numStars = data.rating.toInt()
+            binding.homestayStar.rating = data.rating
 
-            binding.rvImage.adapter = ImageHomestayAdapter(data.foto)
+            binding.rvImage.adapter = ImageHomestayAdapter(data.photos)
         }
     }
 

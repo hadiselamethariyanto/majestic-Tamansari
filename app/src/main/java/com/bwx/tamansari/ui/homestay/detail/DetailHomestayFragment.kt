@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import banyuwangi.digital.core.domain.model.HomestayDomain
 import com.bumptech.glide.Glide
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentDetailHomestayBinding
-import com.bwx.tamansari.model.HomestayDomain
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.utils.DataDummy
 import com.bwx.tamansari.utils.Utils
@@ -30,7 +30,7 @@ class DetailHomestayFragment :
 
         homestay = arguments?.getParcelable("homestay")
 
-        val photos = homestay?.foto ?: arrayListOf()
+        val photos = homestay?.photos ?: arrayListOf()
         if (photos.isNotEmpty() && photos.size >= 3) {
             Glide.with(requireActivity()).load(photos[0]).placeholder(R.drawable.placeholder)
                 .into(binding.imgFirstHomestay)
@@ -40,23 +40,23 @@ class DetailHomestayFragment :
                 .into(binding.imgThirdHomestay)
         }
 
-        binding.tvHomestayName.text = homestay?.nama
-        binding.star.numStars = homestay?.star?.toInt() ?: 1
-        binding.star.rating = homestay?.star ?: 1f
+        binding.tvHomestayName.text = homestay?.name
+        binding.star.numStars = homestay?.rating?.toInt() ?: 1
+        binding.star.rating = homestay?.rating ?: 1f
         binding.tvCheckIn.text = homestay?.checkIn
         binding.tvCheckOut.text = homestay?.checkOut
         binding.tvAddress.text = homestay?.address
 
-        val facilitiesAdapter = FacilitiesAdapter(homestay?.facilities ?: arrayListOf())
-        binding.rvFasilitas.adapter = facilitiesAdapter
+//        val facilitiesAdapter = FacilitiesAdapter(homestay?.facilities ?: arrayListOf())
+//        binding.rvFasilitas.adapter = facilitiesAdapter
 
         val rooms = DataDummy.generateRooms()
         rooms.sortedBy { it.price }
 
-        if (rooms.isNotEmpty()){
+        if (rooms.isNotEmpty()) {
             binding.rlChooseRoom.visibility = View.VISIBLE
             binding.tvPriceStartFrom.text = "IDR ${Utils.thousandSeparator(rooms[0].price)}"
-        }else{
+        } else {
             binding.rlChooseRoom.visibility = View.GONE
         }
 
@@ -84,7 +84,7 @@ class DetailHomestayFragment :
         mMap.addMarker(
             MarkerOptions()
                 .position(startLocation)
-                .title(homestay?.nama)
+                .title(homestay?.name)
         )
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(startLocation, 17f))
     }

@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import banyuwangi.digital.core.domain.model.HomestayDomain
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentChooseRoomBinding
-import com.bwx.tamansari.model.HomestayDomain
 import com.bwx.tamansari.model.RoomDomain
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.utils.Utils

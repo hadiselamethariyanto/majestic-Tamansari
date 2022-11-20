@@ -32,8 +32,13 @@ object Utils {
         return str.toString()
     }
 
-    fun formatCalendarToStringDate(time:Long):String{
+    fun formatCalendarToStringDate(time: Long): String {
         val formatter = SimpleDateFormat("dd MMM yy", Locale.getDefault())
+        return formatter.format(time)
+    }
+
+    fun formatCalendarYYYYMMDD(time: Long): String {
+        val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         return formatter.format(time)
     }
 }

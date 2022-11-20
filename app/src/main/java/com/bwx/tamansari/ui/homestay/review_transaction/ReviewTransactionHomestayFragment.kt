@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import banyuwangi.digital.core.domain.model.AvailableRoomDomain
 import banyuwangi.digital.core.domain.model.HomestayDomain
-import banyuwangi.digital.core.domain.model.RoomDomain
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners

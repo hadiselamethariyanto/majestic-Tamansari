@@ -112,9 +112,10 @@ class ChooseRoomFragment :
         androidx.lifecycle.Observer<Resource<List<AvailableRoomDomain>>> { res ->
             when (res) {
                 is Resource.Loading -> {
-
+                    setLoading(true)
                 }
                 is Resource.Success -> {
+                    setLoading(false)
                     val rooms = res.data ?: arrayListOf()
                     if (rooms.isNotEmpty()) {
                         adapter.updateData(rooms)
@@ -124,10 +125,16 @@ class ChooseRoomFragment :
                     }
                 }
                 is Resource.Error -> {
-
+                    setLoading(false)
                 }
             }
         }
+
+    private fun setLoading(isLoading: Boolean) {
+        binding.llLoading.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.rvRooms.visibility = if (isLoading) View.GONE else View.VISIBLE
+        binding.clDate.visibility = if (isLoading) View.GONE else View.VISIBLE
+    }
 
     private fun getToday() {
         val calendar = Calendar.getInstance()

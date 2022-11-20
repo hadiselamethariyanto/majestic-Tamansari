@@ -25,9 +25,10 @@ class HomestayFragment : BaseFragment<FragmentHomestayBinding>(FragmentHomestayB
         viewModel.getHomestay().observe(viewLifecycleOwner) { res ->
             when (res) {
                 is Resource.Loading -> {
-
+                    setLoading(true)
                 }
                 is Resource.Success -> {
+                    setLoading(false)
                     val homestays = res.data ?: arrayListOf()
                     if (homestays.isNotEmpty()) {
                         binding.rvHomestay.visibility = View.VISIBLE
@@ -37,10 +38,15 @@ class HomestayFragment : BaseFragment<FragmentHomestayBinding>(FragmentHomestayB
                     }
                 }
                 is Resource.Error -> {
-
+                    setLoading(false)
                 }
             }
         }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        binding.llLoading.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.rvHomestay.visibility = if (isLoading) View.GONE else View.VISIBLE
     }
 
     private fun setupHomestay() {

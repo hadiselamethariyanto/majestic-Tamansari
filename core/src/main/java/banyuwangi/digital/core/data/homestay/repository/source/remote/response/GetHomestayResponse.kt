@@ -20,5 +20,6 @@ data class HomestayItem(
     val photos: List<String>,
     @field:SerializedName("check_in") val checkIn: String,
     @field:SerializedName("check_out") val checkOut: String,
-    val rooms: List<RoomItem>
+    val rooms: List<RoomItem>,
+    val facilities: List<FacilityItem>
 )

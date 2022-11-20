@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bwx.tamansari.databinding.ItemFasilitasBinding
-import com.bwx.tamansari.model.FacilityDomain
+import banyuwangi.digital.core.domain.model.FacilityDomain
 
 class FacilitiesAdapter(private val facilities: List<FacilityDomain>) :
     RecyclerView.Adapter<FacilitiesAdapter.ViewHolder>() {

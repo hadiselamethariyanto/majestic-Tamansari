@@ -1,9 +1,11 @@
 package banyuwangi.digital.core.data.homestay.mapper
 
 import banyuwangi.digital.core.data.homestay.repository.source.remote.response.AvailableRoomItem
+import banyuwangi.digital.core.data.homestay.repository.source.remote.response.FacilityItem
 import banyuwangi.digital.core.data.homestay.repository.source.remote.response.HomestayItem
 import banyuwangi.digital.core.data.homestay.repository.source.remote.response.RoomItem
 import banyuwangi.digital.core.domain.model.AvailableRoomDomain
+import banyuwangi.digital.core.domain.model.FacilityDomain
 import banyuwangi.digital.core.domain.model.HomestayDomain
 import banyuwangi.digital.core.domain.model.RoomDomain
 
@@ -23,8 +25,14 @@ object HomestayMapper {
                 photos = it.photos,
                 checkIn = it.checkIn,
                 checkOut = it.checkOut,
-                rooms = mapRoomItemToDomain(it.rooms)
+                rooms = mapRoomItemToDomain(it.rooms),
+                facilities = mapFacilitiesItemToDomain(it.facilities)
             )
+        }
+
+    fun mapFacilitiesItemToDomain(facilities: List<FacilityItem>): List<FacilityDomain> =
+        facilities.map {
+            FacilityDomain(name = it.name, iconUrl = it.url)
         }
 
     fun mapRoomItemToDomain(rooms: List<RoomItem>): List<RoomDomain> = rooms.map {

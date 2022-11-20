@@ -46,8 +46,17 @@ class DetailHomestayFragment :
         binding.tvCheckOut.text = homestay?.checkOut
         binding.tvAddress.text = homestay?.address
 
-//        val facilitiesAdapter = FacilitiesAdapter(homestay?.facilities ?: arrayListOf())
-//        binding.rvFasilitas.adapter = facilitiesAdapter
+        val facilities = homestay?.facilities?: arrayListOf()
+
+        if (facilities.isNotEmpty()){
+            val facilitiesAdapter = FacilitiesAdapter(facilities)
+            binding.rvFasilitas.adapter = facilitiesAdapter
+            binding.labelFasilitas.visibility = View.VISIBLE
+            binding.rvFasilitas.visibility = View.VISIBLE
+        }else{
+            binding.labelFasilitas.visibility = View.GONE
+            binding.rvFasilitas.visibility = View.GONE
+        }
 
         val rooms = homestay?.rooms?: arrayListOf()
         rooms.sortedBy { it.price }

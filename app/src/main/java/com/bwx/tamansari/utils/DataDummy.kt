@@ -1,5 +1,6 @@
 package com.bwx.tamansari.utils
 
+import banyuwangi.digital.core.domain.model.ItineraryDomain
 import banyuwangi.digital.core.domain.model.TicketWisataDomain
 import banyuwangi.digital.core.domain.model.WisataDomain
 import com.bwx.tamansari.model.*
@@ -50,92 +51,7 @@ object DataDummy {
 
 
 
-    fun generateTravelPackage(): List<PaketWisataModel> {
-        val paket = arrayListOf<PaketWisataModel>()
-        paket.add(
-            PaketWisataModel(
-                "Nikmati Sedikit Waktu Luang",
-                250000,
-                4.0f,
-                arrayListOf(
-                    "https://farm1.staticflickr.com/579/20221640953_532b833a80_b.jpg",
-                    "https://tamansariijen.com/wp-content/uploads/2019/10/WhatsApp-Image-2019-09-24-at-21.38.02-1.jpeg",
-                    "https://cdn.nativeindonesia.com/foto/2018/11/Kawah-Ijen-Blue.jpg",
-                    "https://asset.kompas.com/crops/7-0zX9IZsHSzcZZz3bMTdMZq-oE=/0x0:1200x800/750x500/data/photo/2021/08/19/611e162fed8b4.jpg"
-                ),
-                11,
-                20,
-                arrayListOf(
-                    ItineraryDomain("1", "00:00 - 00.30 WIB", "Penjemputan peserta"),
-                    ItineraryDomain("2", "00.30 - 02.30 WIB", "Perjalanan ke Basecamp Jeep"),
-                    ItineraryDomain(
-                        "3",
-                        "02.30 - 03.30 WIB",
-                        "Perjalanan ke sunrise point menggunakan Jeep"
-                    )
-                ),
-                114.245907,
-                -8.1727349,
-                "Dusun Sumberwatu, RT.001/RW.002, Tamansari, Kec. Licin, Kabupaten Banyuwangi, Jawa Timur 68485",
-            )
-        )
-        paket.add(
-            PaketWisataModel(
-                "Nikmati Destinasi Wisata Tamansari",
-                500000,
-                4.0f,
-                arrayListOf(
-                    "https://tamansariijen.com/wp-content/uploads/2020/10/runi.jpg",
-                    "https://farm1.staticflickr.com/579/20221640953_532b833a80_b.jpg",
-                    "https://cdn.nativeindonesia.com/foto/2018/11/Kawah-Ijen-Blue.jpg",
-                    "https://asset.kompas.com/crops/7-0zX9IZsHSzcZZz3bMTdMZq-oE=/0x0:1200x800/750x500/data/photo/2021/08/19/611e162fed8b4.jpg"
-                ),
-                21,
-                30,
-                arrayListOf(
-                    ItineraryDomain("1", "00:00 - 00.30 WIB", "Penjemputan peserta"),
-                    ItineraryDomain("2", "00.30 - 02.30 WIB", "Perjalanan ke Basecamp Jeep"),
-                    ItineraryDomain(
-                        "3",
-                        "02.30 - 03.30 WIB",
-                        "Perjalanan ke sunrise point menggunakan Jeep"
-                    )
-                ),
-                114.245907,
-                -8.1727349,
-                "Dusun Sumberwatu, RT.001/RW.002, Tamansari, Kec. Licin, Kabupaten Banyuwangi, Jawa Timur 68485",
-            )
-        )
-        paket.add(
-            PaketWisataModel(
-                "Budaya dan Edukasi Tamansari",
-                750000,
-                4.0f,
-                arrayListOf(
-                    "https://tamansariijen.com/wp-content/uploads/2020/11/DSC06920-scaled.jpg",
-                    "https://farm1.staticflickr.com/579/20221640953_532b833a80_b.jpg",
-                    "https://cdn.nativeindonesia.com/foto/2018/11/Kawah-Ijen-Blue.jpg",
-                    "https://asset.kompas.com/crops/7-0zX9IZsHSzcZZz3bMTdMZq-oE=/0x0:1200x800/750x500/data/photo/2021/08/19/611e162fed8b4.jpg"
-                ),
-                14,
-                15,
-                arrayListOf(
-                    ItineraryDomain("1", "00:00 - 00.30 WIB", "Penjemputan peserta"),
-                    ItineraryDomain("2", "00.30 - 02.30 WIB", "Perjalanan ke Basecamp Jeep"),
-                    ItineraryDomain(
-                        "3",
-                        "02.30 - 03.30 WIB",
-                        "Perjalanan ke sunrise point menggunakan Jeep"
-                    )
-                ),
-                114.245907,
-                -8.1727349,
-                "Dusun Sumberwatu, RT.001/RW.002, Tamansari, Kec. Licin, Kabupaten Banyuwangi, Jawa Timur 68485",
-            )
-        )
 
-        return paket
-    }
 
     fun generateRestaurant(): List<RestaurantDomain> {
         val list = ArrayList<RestaurantDomain>()
@@ -320,12 +236,12 @@ object DataDummy {
     }
 
 
-    fun generateTravelPackageTicket(): List<TravelPackageDomain> {
-        val list = arrayListOf<TravelPackageDomain>()
-        list.add(TravelPackageDomain("1", "1", "Private Trip 6 Orang", 190000, ""))
-        list.add(TravelPackageDomain("2", "1", "Private Trip 5 Orang", 225000, ""))
-        list.add(TravelPackageDomain("3", "1", "Private Trip 4 Orang", 280000, ""))
-        list.add(TravelPackageDomain("4", "1", "Private Trip 3 Orang", 345000, ""))
-        return list
-    }
+//    fun generateTravelPackageTicket(): List<TravelPackageDomain> {
+//        val list = arrayListOf<TravelPackageDomain>()
+//        list.add(TravelPackageDomain("1", "1", "Private Trip 6 Orang", 190000, ""))
+//        list.add(TravelPackageDomain("2", "1", "Private Trip 5 Orang", 225000, ""))
+//        list.add(TravelPackageDomain("3", "1", "Private Trip 4 Orang", 280000, ""))
+//        list.add(TravelPackageDomain("4", "1", "Private Trip 3 Orang", 345000, ""))
+//        return list
+//    }
 }

@@ -1,12 +1,11 @@
-package com.bwx.tamansari.model
+package banyuwangi.digital.core.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class TravelPackageDomain(
+data class TravelPackageTypeDomain(
     val id: String,
-    val idPaket: String,
     val name: String,
     val price: Int,
     val detail: String

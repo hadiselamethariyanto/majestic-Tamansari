@@ -1,17 +1,18 @@
 package com.bwx.tamansari.ui.paket.list
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import banyuwangi.digital.core.domain.model.TravelPackageDomain
 import com.bwx.tamansari.databinding.ItemPaketWisataBinding
-import com.bwx.tamansari.model.PaketWisataModel
 import com.bwx.tamansari.ui.homestay.list.ImageHomestayAdapter
 import com.bwx.tamansari.utils.Utils
 
-class PaketAdapter : RecyclerView.Adapter<PaketAdapter.Viewholder>() {
-    private val paket = arrayListOf<PaketWisataModel>()
+class PaketAdapter : RecyclerView.Adapter<PaketAdapter.ViewHolder>() {
+    private val paket = arrayListOf<TravelPackageDomain>()
 
-    fun updateData(new: List<PaketWisataModel>) {
+    fun updateData(new: List<TravelPackageDomain>) {
         paket.clear()
         paket.addAll(new)
         notifyDataSetChanged()
@@ -23,21 +24,30 @@ class PaketAdapter : RecyclerView.Adapter<PaketAdapter.Viewholder>() {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    class Viewholder(private val binding: ItemPaketWisataBinding) :
+    class ViewHolder(private val binding: ItemPaketWisataBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bindItem(data: PaketWisataModel) {
-            binding.tvPackageName.text = data.nama
-            binding.tvPrice.text = "IDR ${Utils.thousandSeparator(data.harga)}"
+        fun bindItem(data: TravelPackageDomain) {
+            binding.tvPackageName.text = data.name
+            val travelPackageTypes = data.travelPackageType
+            travelPackageTypes.sortedBy { it.price }
+            if (travelPackageTypes.isNotEmpty()) {
+                binding.tvPrice.text = "IDR ${Utils.thousandSeparator(travelPackageTypes[0].price)}"
+                binding.tvPrice.visibility = View.VISIBLE
+                binding.tvDescriptionPrice.visibility = View.VISIBLE
+            } else {
+                binding.tvPrice.visibility = View.GONE
+                binding.tvDescriptionPrice.visibility = View.GONE
+            }
             binding.ratingbar.rating = data.rating
-            binding.tvTotalReview.text = "(${data.totalReview} Review)"
+            binding.tvTotalReview.text = "(${data.voteCount} Review)"
 
             val imageAdapter = ImageHomestayAdapter(data.photos)
             binding.rvImage.adapter = imageAdapter
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = Viewholder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
         ItemPaketWisataBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -45,7 +55,7 @@ class PaketAdapter : RecyclerView.Adapter<PaketAdapter.Viewholder>() {
         )
     )
 
-    override fun onBindViewHolder(holder: Viewholder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItem(paket[position])
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(paket[position])
@@ -55,6 +65,6 @@ class PaketAdapter : RecyclerView.Adapter<PaketAdapter.Viewholder>() {
     override fun getItemCount() = paket.size
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: PaketWisataModel)
+        fun onItemClicked(data: TravelPackageDomain)
     }
 }

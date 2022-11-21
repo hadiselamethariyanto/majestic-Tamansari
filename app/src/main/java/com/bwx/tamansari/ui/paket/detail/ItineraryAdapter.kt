@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bwx.tamansari.databinding.ItemIteneraryBinding
-import com.bwx.tamansari.model.ItineraryDomain
+import banyuwangi.digital.core.domain.model.ItineraryDomain
 
 class ItineraryAdapter(private val list: List<ItineraryDomain>) :
     RecyclerView.Adapter<ItineraryAdapter.ViewHolder>() {

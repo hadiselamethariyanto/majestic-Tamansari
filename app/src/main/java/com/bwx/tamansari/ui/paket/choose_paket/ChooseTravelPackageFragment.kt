@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import banyuwangi.digital.core.domain.model.TravelPackageDomain
+import banyuwangi.digital.core.domain.model.TravelPackageTypeDomain
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentChooseTravelPackageBinding
-import com.bwx.tamansari.model.PaketWisataModel
-import com.bwx.tamansari.model.TravelPackageDomain
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.utils.Utils
 import java.util.*
@@ -20,13 +20,13 @@ class ChooseTravelPackageFragment :
         super.onViewCreated(view, savedInstanceState)
 
 
-        val travelPackage = arguments?.getParcelable<PaketWisataModel>("package")
-        val travelPackages =
-            arguments?.getParcelableArrayList<TravelPackageDomain>("packages") ?: arrayListOf()
+        val travelPackage = arguments?.getParcelable<TravelPackageDomain>("package")
+        val travelPackageType =
+            arguments?.getParcelableArrayList<TravelPackageTypeDomain>("packages") ?: arrayListOf()
 
-        val adapter = TravelPackageAdapter(travelPackages)
+        val adapter = TravelPackageAdapter(travelPackageType)
         adapter.setOnItemClickCallback(object : TravelPackageAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: TravelPackageDomain) {
+            override fun onItemClicked(data: TravelPackageTypeDomain) {
                 val date = binding.etDate.text.toString()
                 val bundle =
                     bundleOf("package_type" to data, "package" to travelPackage, "date" to date)

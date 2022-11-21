@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import banyuwangi.digital.core.domain.model.TravelPackageDomain
 import com.bumptech.glide.Glide
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentDetailTravelPackageBinding
-import com.bwx.tamansari.model.PaketWisataModel
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.ui.homestay.list.ImageHomestayAdapter
 import com.bwx.tamansari.utils.DataDummy
@@ -24,16 +24,16 @@ class DetailTravelPackageFragment :
     OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
-    private var travelPackage: PaketWisataModel? = null
+    private var travelPackage: TravelPackageDomain? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         travelPackage = arguments?.getParcelable("paket")
 
-        binding.tvPackageName.text = travelPackage?.nama
+        binding.tvPackageName.text = travelPackage?.name
         binding.tvRating.text = travelPackage?.rating.toString()
-        binding.tvTotalReview.text = "(${travelPackage?.totalReview} Review)"
+        binding.tvTotalReview.text = "(${travelPackage?.voteCount} Review)"
         binding.tvSold.text = travelPackage?.totalSold.toString()
         binding.tvAddress.text = travelPackage?.address
 
@@ -51,21 +51,21 @@ class DetailTravelPackageFragment :
             }
         }
 
-        val itineraries = travelPackage?.itineraries ?: arrayListOf()
+        val itineraries = travelPackage?.itinerary ?: arrayListOf()
         val itineraryAdapter = ItineraryAdapter(itineraries)
         binding.rvItinerary.adapter = itineraryAdapter
 
-        val travelPackages = DataDummy.generateTravelPackageTicket()
-        if (travelPackages.isNotEmpty()) {
+        val travelPackageTypes = travelPackage?.travelPackageType?: arrayListOf()
+        if (travelPackageTypes.isNotEmpty()) {
             binding.rlChooseTicket.visibility = View.VISIBLE
             binding.tvPriceStartFrom.text =
-                "IDR ${Utils.thousandSeparator(travelPackages[0].price)}"
+                "IDR ${Utils.thousandSeparator(travelPackageTypes[0].price)}"
         } else {
             binding.rlChooseTicket.visibility = View.GONE
         }
 
         binding.btnChooseTicket.setOnClickListener {
-            val bundle = bundleOf("package" to travelPackage, "packages" to travelPackages)
+            val bundle = bundleOf("package" to travelPackage, "packages" to travelPackageTypes)
             findNavController().navigate(
                 R.id.action_navigation_detail_travel_packaage_to_navigation_choose_travel_package,
                 bundle
@@ -88,7 +88,7 @@ class DetailTravelPackageFragment :
         mMap.addMarker(
             MarkerOptions()
                 .position(startLocation)
-                .title(travelPackage?.nama)
+                .title(travelPackage?.name)
         )
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(startLocation, 17f))
     }

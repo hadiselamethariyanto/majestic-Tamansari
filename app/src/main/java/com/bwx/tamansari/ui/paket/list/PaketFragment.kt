@@ -39,9 +39,10 @@ class PaketFragment : BaseFragment<FragmentPaketBinding>(FragmentPaketBinding::i
         viewModel.getTravelPackage().observe(viewLifecycleOwner) { res ->
             when (res) {
                 is Resource.Loading -> {
-
+                    setLoading(true)
                 }
                 is Resource.Success -> {
+                    setLoading(false)
                     val packages = res.data ?: arrayListOf()
                     if (packages.isNotEmpty()) {
                         binding.rvPaket.visibility = View.VISIBLE
@@ -51,9 +52,15 @@ class PaketFragment : BaseFragment<FragmentPaketBinding>(FragmentPaketBinding::i
                     }
                 }
                 is Resource.Error -> {
-
+                    setLoading(false)
                 }
             }
         }
     }
+
+    private fun setLoading(isLoading: Boolean) {
+        binding.llLoading.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.rvPaket.visibility = if (isLoading) View.GONE else View.VISIBLE
+    }
+
 }

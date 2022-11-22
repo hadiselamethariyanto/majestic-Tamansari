@@ -1,4 +1,4 @@
-package com.bwx.tamansari.model
+package banyuwangi.digital.core.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -12,6 +12,6 @@ data class RestaurantDomain(
     val longitude: Double,
     val photoUrl: String,
     val rating: Float,
-    val distance: Double,
-    val totalReview:Int
+    val voteCount: Int,
+    val menus: List<MenuRestaurantDomain>
 ) : Parcelable

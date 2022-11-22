@@ -8,7 +8,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.ItemRestaurantBinding
-import com.bwx.tamansari.model.RestaurantDomain
+import banyuwangi.digital.core.domain.model.RestaurantDomain
 
 class RestaurantAdapter : RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
 
@@ -33,7 +33,7 @@ class RestaurantAdapter : RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
             binding.tvRestaurantName.text = data.name
             binding.tvRestaurantCategory.text = data.category
             binding.tvRating.text = data.rating.toString()
-            binding.tvDistance.text = "${data.distance} Km dari lokasimu"
+//            binding.tvDistance.text = "${data.distance} Km dari lokasimu"
 
             Glide.with(itemView.context).load(data.photoUrl).placeholder(R.drawable.placeholder)
                 .transform(

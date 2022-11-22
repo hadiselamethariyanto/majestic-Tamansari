@@ -8,7 +8,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.ItemMenuRestaurantBinding
-import com.bwx.tamansari.model.MenuRestaurantDomain
+import banyuwangi.digital.core.domain.model.MenuRestaurantDomain
 import com.bwx.tamansari.utils.Utils
 
 class MenuRestaurantAdapter(private val list: List<MenuRestaurantDomain>) :

@@ -4,6 +4,7 @@ import banyuwangi.digital.core.domain.usecase.*
 import com.bwx.tamansari.ui.homestay.choose_room.ChooseRoomViewModel
 import com.bwx.tamansari.ui.homestay.list.HomestayViewModel
 import com.bwx.tamansari.ui.paket.list.PaketViewModel
+import com.bwx.tamansari.ui.restaurant.list.RestaurantViewModel
 import com.bwx.tamansari.ui.wisata.choose_ticket.ChooseTicketWisataViewModel
 import com.bwx.tamansari.ui.wisata.detail.rating.RatingWisataViewModel
 import com.bwx.tamansari.ui.wisata.list.ListWisataViewModel
@@ -15,6 +16,7 @@ val useCaseModule = module {
     factory<WisataUseCase> { WisataInteractor(get()) }
     factory<HomestayUseCase> { HomestayInteractor(get()) }
     factory<TravelPackageUseCase> { TravelPackageInteractor(get()) }
+    factory<RestaurantUseCase> { RestaurantInteractor(get()) }
 }
 
 val viewModelModule = module {
@@ -24,4 +26,5 @@ val viewModelModule = module {
     viewModel { HomestayViewModel(get()) }
     viewModel { ChooseRoomViewModel(get()) }
     viewModel { PaketViewModel(get()) }
+    viewModel { RestaurantViewModel(get()) }
 }

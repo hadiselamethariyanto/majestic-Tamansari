@@ -3,7 +3,7 @@ package com.bwx.tamansari.ui.restaurant.detail
 import android.os.Bundle
 import android.view.View
 import com.bwx.tamansari.databinding.FragmentDetailRestaurantBinding
-import com.bwx.tamansari.model.RestaurantDomain
+import banyuwangi.digital.core.domain.model.RestaurantDomain
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.utils.DataDummy
 
@@ -19,9 +19,9 @@ class DetailRestaurantFragment : BaseFragment<FragmentDetailRestaurantBinding>(
 
         binding.tvRestaurantName.text = restaurant?.name
         binding.tvRestaurantCategory.text = restaurant?.category
-        binding.tvDistance.text = "${restaurant?.distance} km"
+//        binding.tvDistance.text = "${restaurant?.distance} km"
         binding.tvRating.text = restaurant?.rating.toString()
-        binding.tvTotalReview.text = "${restaurant?.totalReview} rating"
+        binding.tvTotalReview.text = "${restaurant?.voteCount} rating"
 
         val menuRestaurantAdapter = MenuRestaurantAdapter(DataDummy.generateMenuRestaurant())
         binding.rvMenusRestaurant.adapter = menuRestaurantAdapter

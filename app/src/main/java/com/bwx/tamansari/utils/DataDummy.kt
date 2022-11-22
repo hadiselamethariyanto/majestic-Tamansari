@@ -1,6 +1,7 @@
 package com.bwx.tamansari.utils
 
-import banyuwangi.digital.core.domain.model.ItineraryDomain
+import banyuwangi.digital.core.domain.model.MenuRestaurantDomain
+import banyuwangi.digital.core.domain.model.RestaurantDomain
 import banyuwangi.digital.core.domain.model.TicketWisataDomain
 import banyuwangi.digital.core.domain.model.WisataDomain
 import com.bwx.tamansari.model.*
@@ -53,49 +54,49 @@ object DataDummy {
 
 
 
-    fun generateRestaurant(): List<RestaurantDomain> {
-        val list = ArrayList<RestaurantDomain>()
-        list.add(
-            RestaurantDomain(
-                "1",
-                "Warung Oseng",
-                "Traditional Food, Ayam & Bebek",
-                0.0,
-                0.0,
-                "https://asset.kompas.com/crops/A7H0vt6v6p95MQfOQTqIhMqhklE=/41x0:554x256/375x240/data/photo/2019/10/15/5da5188e04c2c.png",
-                4f,
-                1.4,
-                12
-            )
-        )
-        list.add(
-            RestaurantDomain(
-                "2",
-                "Warung Oseng 2",
-                "Traditional Food, Bakmie, Aneka Nasi",
-                0.0,
-                0.0,
-                "https://asset.kompas.com/crops/A7H0vt6v6p95MQfOQTqIhMqhklE=/41x0:554x256/375x240/data/photo/2019/10/15/5da5188e04c2c.png",
-                4f,
-                1.8,
-                21
-            )
-        )
-        list.add(
-            RestaurantDomain(
-                "3",
-                "Sarine Kopi",
-                "Aneka kopi, Minuman",
-                0.0,
-                0.0,
-                "https://tamansariijen.com/wp-content/uploads/2021/10/v60-sarine-kopi.jpg",
-                4f,
-                2.0,
-                30
-            )
-        )
-        return list
-    }
+//    fun generateRestaurant(): List<RestaurantDomain> {
+//        val list = ArrayList<RestaurantDomain>()
+//        list.add(
+//            RestaurantDomain(
+//                "1",
+//                "Warung Oseng",
+//                "Traditional Food, Ayam & Bebek",
+//                0.0,
+//                0.0,
+//                "https://asset.kompas.com/crops/A7H0vt6v6p95MQfOQTqIhMqhklE=/41x0:554x256/375x240/data/photo/2019/10/15/5da5188e04c2c.png",
+//                4f,
+//                1.4,
+//                12
+//            )
+//        )
+//        list.add(
+//            RestaurantDomain(
+//                "2",
+//                "Warung Oseng 2",
+//                "Traditional Food, Bakmie, Aneka Nasi",
+//                0.0,
+//                0.0,
+//                "https://asset.kompas.com/crops/A7H0vt6v6p95MQfOQTqIhMqhklE=/41x0:554x256/375x240/data/photo/2019/10/15/5da5188e04c2c.png",
+//                4f,
+//                1.8,
+//                21
+//            )
+//        )
+//        list.add(
+//            RestaurantDomain(
+//                "3",
+//                "Sarine Kopi",
+//                "Aneka kopi, Minuman",
+//                0.0,
+//                0.0,
+//                "https://tamansariijen.com/wp-content/uploads/2021/10/v60-sarine-kopi.jpg",
+//                4f,
+//                2.0,
+//                30
+//            )
+//        )
+//        return list
+//    }
 
     fun generateMenuRestaurant(): List<MenuRestaurantDomain> {
         val menus = arrayListOf<MenuRestaurantDomain>()

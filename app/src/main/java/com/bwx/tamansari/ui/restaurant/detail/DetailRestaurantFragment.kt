@@ -22,8 +22,8 @@ class DetailRestaurantFragment : BaseFragment<FragmentDetailRestaurantBinding>(
 //        binding.tvDistance.text = "${restaurant?.distance} km"
         binding.tvRating.text = restaurant?.rating.toString()
         binding.tvTotalReview.text = "${restaurant?.voteCount} rating"
-
-        val menuRestaurantAdapter = MenuRestaurantAdapter(DataDummy.generateMenuRestaurant())
+        val menus = restaurant?.menus ?: arrayListOf()
+        val menuRestaurantAdapter = MenuRestaurantAdapter(menus)
         binding.rvMenusRestaurant.adapter = menuRestaurantAdapter
     }
 

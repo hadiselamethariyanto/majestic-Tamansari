@@ -8,11 +8,11 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.ItemBeritaBinding
-import com.bwx.tamansari.model.BeritaModel
+import banyuwangi.digital.core.domain.model.NewsDomain
 
 class BeritaAdapter : RecyclerView.Adapter<BeritaAdapter.ViewHolder>() {
 
-    private val berita = ArrayList<BeritaModel>()
+    private val berita = ArrayList<NewsDomain>()
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -20,7 +20,7 @@ class BeritaAdapter : RecyclerView.Adapter<BeritaAdapter.ViewHolder>() {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    fun updateData(new: List<BeritaModel>) {
+    fun updateData(new: List<NewsDomain>) {
         berita.clear()
         berita.addAll(new)
         notifyDataSetChanged()
@@ -29,16 +29,16 @@ class BeritaAdapter : RecyclerView.Adapter<BeritaAdapter.ViewHolder>() {
     class ViewHolder(private val binding: ItemBeritaBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bindItem(berita: BeritaModel) {
+        fun bindItem(berita: NewsDomain) {
             Glide.with(itemView.context)
-                .load(berita.foto)
+                .load(berita.photo)
                 .placeholder(R.drawable.placeholder)
                 .transform(CenterCrop(), RoundedCorners(24))
                 .into(binding.imgBerita)
 
-            binding.tvJudul.text = berita.judul
+            binding.tvJudul.text = berita.title
             binding.tvNewsCategory.text = "${berita.category} \u2022 "
-            binding.tvTanggal.text = berita.tanggal
+            binding.tvTanggal.text = berita.createdDate.toString()
         }
     }
 
@@ -60,6 +60,6 @@ class BeritaAdapter : RecyclerView.Adapter<BeritaAdapter.ViewHolder>() {
     override fun getItemCount() = berita.size
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: BeritaModel)
+        fun onItemClicked(data: NewsDomain)
     }
 }

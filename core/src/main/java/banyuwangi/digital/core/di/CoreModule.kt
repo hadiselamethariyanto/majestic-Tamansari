@@ -1,6 +1,9 @@
 package banyuwangi.digital.core.di
 
 import banyuwangi.digital.core.BuildConfig
+import banyuwangi.digital.core.data.berita.repository.NewsRepositoryImpl
+import banyuwangi.digital.core.data.berita.repository.source.remote.NewsRemoteDataSource
+import banyuwangi.digital.core.data.berita.repository.source.remote.nework.NewsService
 import banyuwangi.digital.core.data.homestay.repository.HomestayRepositoryImpl
 import banyuwangi.digital.core.data.homestay.repository.source.remote.HomestayRemoteDataSource
 import banyuwangi.digital.core.data.homestay.repository.source.remote.network.HomestayService
@@ -13,10 +16,7 @@ import banyuwangi.digital.core.data.travel_package.repository.source.remote.netw
 import banyuwangi.digital.core.data.wisata.repository.WisataRepositoryImpl
 import banyuwangi.digital.core.data.wisata.repository.source.remote.WisataRemoteDataSource
 import banyuwangi.digital.core.data.wisata.repository.source.remote.network.WisataService
-import banyuwangi.digital.core.domain.repository.HomestayRepository
-import banyuwangi.digital.core.domain.repository.RestaurantRepository
-import banyuwangi.digital.core.domain.repository.TravelPackageRepository
-import banyuwangi.digital.core.domain.repository.WisataRepository
+import banyuwangi.digital.core.domain.repository.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -67,6 +67,15 @@ val networkModule = module {
             .build()
         retrofit.create(RestaurantService::class.java)
     }
+
+    single {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(get())
+            .build()
+        retrofit.create(NewsService::class.java)
+    }
 }
 
 val repositoryModule = module {
@@ -74,9 +83,11 @@ val repositoryModule = module {
     single { HomestayRemoteDataSource(get()) }
     single { TravelPackageRemoteDataSource(get()) }
     single { RestaurantRemoteDataSource(get()) }
+    single { NewsRemoteDataSource(get()) }
 
     single<WisataRepository> { WisataRepositoryImpl(get()) }
     single<HomestayRepository> { HomestayRepositoryImpl(get()) }
     single<TravelPackageRepository> { TravelPackageRepositoryImpl(get()) }
     single<RestaurantRepository> { RestaurantRepositoryImpl(get()) }
+    single<NewsRepository> { NewsRepositoryImpl(get()) }
 }

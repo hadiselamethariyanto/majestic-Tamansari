@@ -1,9 +1,6 @@
 package com.bwx.tamansari.utils
 
-import banyuwangi.digital.core.domain.model.MenuRestaurantDomain
-import banyuwangi.digital.core.domain.model.RestaurantDomain
-import banyuwangi.digital.core.domain.model.TicketWisataDomain
-import banyuwangi.digital.core.domain.model.WisataDomain
+import banyuwangi.digital.core.domain.model.*
 import com.bwx.tamansari.model.*
 
 object DataDummy {
@@ -143,49 +140,6 @@ object DataDummy {
         return menus
     }
 
-    fun generateNews(): List<BeritaModel> {
-        val berita = arrayListOf<BeritaModel>()
-        berita.add(
-            BeritaModel(
-                "Tamansari Banyuwangi Masuk 50 Besar Anugerah Desa Wisata Indonesia Tahun 2021 dari Kemenparekraf",
-                "25 Agustus 2021",
-                "https://assets.promediateknologi.com/crop/0x0:0x0/x/photo/2021/08/25/1875519396.png",
-                "Wisata alam menjadi salah satu andalan dunia Pariwisata Banyuwangi. Terdapat puluhan wisata alam, mulai pantai, gunung, air terjun hingga pemandian alam. Salah satunya adalah wisata alam Sendang Seruni. Wisata alam ini menyajikan keindahan alam plus kolam pemandian dengan air langsung dari mata air. Airnya dijamin dingin dan menyegarkan.\n" +
-                        "\n" +
-                        "Sendang Seruni berada di Dusun Sumberwatu, Desa Tamansari, Kecamatan Licin, Banyuwangi. Desa Tamansari ini merupakan satu dari 50 Desa Wisata terbaik di Indonesia. Lokasi ini berada 19km arah barat Kota Banyuwangi di ketinggian kurang lebih 600 meter di atas permukaan laut.  ",
-                54,
-                12,
-                "Prestasi"
-            )
-        )
-        berita.add(
-            BeritaModel(
-                "Desa Tamansari Banyuwangi Menuju Ajang ADWI 2021",
-                "28 Agustus 2021",
-                "https://grafikanews.com/foto_berita/14WhatsApp%20Image%202021-08-28%20at%2019.35.55.jpeg",
-                "Wisata alam menjadi salah satu andalan dunia Pariwisata Banyuwangi. Terdapat puluhan wisata alam, mulai pantai, gunung, air terjun hingga pemandian alam. Salah satunya adalah wisata alam Sendang Seruni. Wisata alam ini menyajikan keindahan alam plus kolam pemandian dengan air langsung dari mata air. Airnya dijamin dingin dan menyegarkan.\n" +
-                        "\n" +
-                        "Sendang Seruni berada di Dusun Sumberwatu, Desa Tamansari, Kecamatan Licin, Banyuwangi. Desa Tamansari ini merupakan satu dari 50 Desa Wisata terbaik di Indonesia. Lokasi ini berada 19km arah barat Kota Banyuwangi di ketinggian kurang lebih 600 meter di atas permukaan laut.  ",
-                54,
-                12,
-                "Wisata"
-            )
-        )
-        berita.add(
-            BeritaModel(
-                "Kawan Ijen dan 14 Lokasi Wisata di Banyuwangi Resmi Dibuka Kembali",
-                "10 September 2021",
-                "https://img.idxchannel.com/media/700/images/idx/2021/06/10/SBY_Wisata_Kawah_Ijen_Ali_Masduki__14___1_.jpg",
-                "Wisata alam menjadi salah satu andalan dunia Pariwisata Banyuwangi. Terdapat puluhan wisata alam, mulai pantai, gunung, air terjun hingga pemandian alam. Salah satunya adalah wisata alam Sendang Seruni. Wisata alam ini menyajikan keindahan alam plus kolam pemandian dengan air langsung dari mata air. Airnya dijamin dingin dan menyegarkan.\n" +
-                        "\n" +
-                        "Sendang Seruni berada di Dusun Sumberwatu, Desa Tamansari, Kecamatan Licin, Banyuwangi. Desa Tamansari ini merupakan satu dari 50 Desa Wisata terbaik di Indonesia. Lokasi ini berada 19km arah barat Kota Banyuwangi di ketinggian kurang lebih 600 meter di atas permukaan laut.  ",
-                54,
-                12,
-                "Pengumuman"
-            )
-        )
-        return berita
-    }
 
     fun generateWisata(): List<WisataDomain> {
         val wisata = arrayListOf<WisataDomain>()

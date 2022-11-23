@@ -9,7 +9,7 @@ object NewsMapper {
         NewsDomain(
             id = it.id,
             title = it.title,
-            createdDate = it.createdDate,
+            createdDate = it.createdDate * 1000,
             photo = it.photoUrl,
             content = it.content,
             totalComments = it.totalComment,

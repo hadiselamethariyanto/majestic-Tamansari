@@ -9,6 +9,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.ItemBeritaBinding
 import banyuwangi.digital.core.domain.model.NewsDomain
+import com.bwx.tamansari.utils.Utils
 
 class BeritaAdapter : RecyclerView.Adapter<BeritaAdapter.ViewHolder>() {
 
@@ -38,7 +39,7 @@ class BeritaAdapter : RecyclerView.Adapter<BeritaAdapter.ViewHolder>() {
 
             binding.tvJudul.text = berita.title
             binding.tvNewsCategory.text = "${berita.category} \u2022 "
-            binding.tvTanggal.text = berita.createdDate.toString()
+            binding.tvTanggal.text = Utils.formatCalendarToStringDate(berita.createdDate)
         }
     }
 

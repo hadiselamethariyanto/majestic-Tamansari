@@ -7,6 +7,7 @@ import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentDetailBeritaBinding
 import banyuwangi.digital.core.domain.model.NewsDomain
 import com.bwx.tamansari.ui.base.BaseFragment
+import com.bwx.tamansari.utils.Utils
 
 
 class DetailBeritaFragment :
@@ -21,7 +22,7 @@ class DetailBeritaFragment :
         binding.tvTotalLikes.text = news?.totalLikes.toString()
         binding.tvTotalComments.text = news?.totalComments.toString()
         binding.tvNews.text = news?.content
-        binding.tvNewsDate.text = news?.createdDate.toString()
+        binding.tvNewsDate.text = Utils.formatCalendarToStringDate(news?.createdDate ?: 0)
         binding.tvNewsCategory.text = news?.category
 
         Glide.with(requireActivity()).load(news?.photo).placeholder(R.drawable.placeholder)

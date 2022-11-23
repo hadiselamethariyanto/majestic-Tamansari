@@ -12,7 +12,6 @@ import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentBeritaBinding
 import banyuwangi.digital.core.domain.model.NewsDomain
 import com.bwx.tamansari.ui.base.BaseFragment
-import com.bwx.tamansari.utils.DataDummy
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

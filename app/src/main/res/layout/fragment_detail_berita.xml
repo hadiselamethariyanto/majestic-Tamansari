@@ -1,168 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.berita.detail.DetailBeritaFragment">
 
-    <ImageView
-        android:id="@+id/img_news"
-        android:layout_width="match_parent"
-        android:layout_height="310dp"
-        android:contentDescription="@string/description_image_news"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@drawable/gradient_black"
-        app:layout_constraintBottom_toBottomOf="@id/img_news" />
-
-    <TextView
-        android:id="@+id/tv_news_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="4dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/poppins_bold"
-        android:maxLines="2"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/tv_news_date"
-        tools:text="Murninya Air Sendang Seruni, Banyuwangi, Bikin Adem dan Segar " />
-
-    <TextView
-        android:id="@+id/tv_news_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="8dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/poppins_regular"
-        android:maxLines="1"
-        android:textColor="@color/grey"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@id/layout_content"
-        tools:text="12 Nov 2022" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-24dp"
-        android:background="@drawable/rounded_top_only"
-        android:padding="24dp"
-        app:layout_constraintTop_toBottomOf="@id/img_news">
+        android:layout_height="match_parent"
+        tools:context=".ui.berita.detail.DetailBeritaFragment">
 
-        <TextView
-            android:id="@+id/tv_news_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawablePadding="8dp"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:gravity="center_vertical"
-            android:includeFontPadding="false"
-            android:textColor="@color/biru_tua"
-            app:drawableStartCompat="@drawable/ic_baseline_category_24"
-            app:layout_constraintBottom_toBottomOf="@id/tv_total_likes"
+        <ImageView
+            android:id="@+id/img_news"
+            android:layout_width="match_parent"
+            android:layout_height="310dp"
+            android:contentDescription="@string/description_image_news"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_total_likes"
-            tools:text="Prestasi" />
-
-        <TextView
-            android:id="@+id/tv_total_comments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rectengle_border"
-            android:drawablePadding="8dp"
-            android:includeFontPadding="false"
-            android:padding="10dp"
-            android:textColor="@color/grey"
-            android:textSize="12sp"
-            app:drawableStartCompat="@drawable/ic_baseline_comment_24"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="54" />
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/gradient_black"
+            app:layout_constraintBottom_toBottomOf="@id/img_news" />
 
         <TextView
-            android:id="@+id/tv_total_likes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/rectengle_border"
-            android:drawablePadding="8dp"
-            android:fontFamily="@font/poppins_regular"
-            android:includeFontPadding="false"
-            android:padding="10dp"
-            android:textColor="@color/grey"
-            android:textSize="12sp"
-            app:drawableStartCompat="@drawable/ic_baseline_thumb_up_24"
-            app:layout_constraintEnd_toStartOf="@id/tv_total_comments"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="54" />
-
-        <TextView
-            android:id="@+id/tv_news"
+            android:id="@+id/tv_news_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_bold"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_news_date"
+            tools:text="Murninya Air Sendang Seruni, Banyuwangi, Bikin Adem dan Segar " />
+
+        <TextView
+            android:id="@+id/tv_news_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="8dp"
+            android:ellipsize="end"
             android:fontFamily="@font/poppins_regular"
+            android:maxLines="1"
+            android:textColor="@color/grey"
             android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_total_likes"
-            tools:text="@tools:sample/lorem/random" />
+            app:layout_constraintBottom_toTopOf="@id/layout_content"
+            tools:text="12 Nov 2022" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-24dp"
+            android:background="@drawable/rounded_top_only"
+            android:padding="24dp"
+            app:layout_constraintTop_toBottomOf="@id/img_news">
+
+            <TextView
+                android:id="@+id/tv_news_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:textColor="@color/biru_tua"
+                app:drawableStartCompat="@drawable/ic_baseline_category_24"
+                app:layout_constraintBottom_toBottomOf="@id/tv_total_likes"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_total_likes"
+                tools:text="Prestasi" />
+
+            <TextView
+                android:id="@+id/tv_total_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectengle_border"
+                android:drawablePadding="8dp"
+                android:includeFontPadding="false"
+                android:padding="10dp"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                app:drawableStartCompat="@drawable/ic_baseline_comment_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="54" />
+
+            <TextView
+                android:id="@+id/tv_total_likes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/rectengle_border"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false"
+                android:padding="10dp"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                app:drawableStartCompat="@drawable/ic_baseline_thumb_up_24"
+                app:layout_constraintEnd_toStartOf="@id/tv_total_comments"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="54" />
+
+            <TextView
+                android:id="@+id/tv_news"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_total_likes"
+                tools:text="@tools:sample/lorem/random" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/nama"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="@string/write_a_comment"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="12dp"
+                    android:singleLine="true"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginVertical="0dp"
+                android:backgroundTint="@color/biru_tua"
+                android:contentDescription="@string/write_a_comment"
+                android:foregroundTint="@color/biru_tua"
+                android:src="@drawable/ic_baseline_send_24"
+                app:fabSize="mini"
+                app:maxImageSize="18dp" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:paddingVertical="8dp"
-        android:paddingHorizontal="24dp"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tl1"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="4dp">
-
-            <EditText
-                android:id="@+id/nama"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:fontFamily="@font/poppins_regular"
-                android:hint="@string/write_a_comment"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:maxLines="1"
-                android:padding="12dp"
-                android:singleLine="true"
-                android:textSize="12sp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fabSize="mini"
-            app:maxImageSize="18dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginVertical="0dp"
-            android:backgroundTint="@color/biru_tua"
-            android:foregroundTint="@color/biru_tua"
-            android:src="@drawable/ic_baseline_send_24"
-            android:contentDescription="@string/write_a_comment" />
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

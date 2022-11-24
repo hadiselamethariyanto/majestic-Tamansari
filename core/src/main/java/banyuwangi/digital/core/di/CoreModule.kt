@@ -1,6 +1,7 @@
 package banyuwangi.digital.core.di
 
 import banyuwangi.digital.core.BuildConfig
+import banyuwangi.digital.core.data.auth.repository.AuthRepositoryImpl
 import banyuwangi.digital.core.data.berita.repository.NewsRepositoryImpl
 import banyuwangi.digital.core.data.berita.repository.source.remote.NewsRemoteDataSource
 import banyuwangi.digital.core.data.berita.repository.source.remote.nework.NewsService
@@ -17,6 +18,7 @@ import banyuwangi.digital.core.data.wisata.repository.WisataRepositoryImpl
 import banyuwangi.digital.core.data.wisata.repository.source.remote.WisataRemoteDataSource
 import banyuwangi.digital.core.data.wisata.repository.source.remote.network.WisataService
 import banyuwangi.digital.core.domain.repository.*
+import com.google.firebase.auth.FirebaseAuth
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -90,4 +92,12 @@ val repositoryModule = module {
     single<TravelPackageRepository> { TravelPackageRepositoryImpl(get()) }
     single<RestaurantRepository> { RestaurantRepositoryImpl(get()) }
     single<NewsRepository> { NewsRepositoryImpl(get()) }
+    single<AuthRepository> { AuthRepositoryImpl(get()) }
 }
+
+val firebaseModule =
+    module {
+        single {
+            FirebaseAuth.getInstance()
+        }
+    }

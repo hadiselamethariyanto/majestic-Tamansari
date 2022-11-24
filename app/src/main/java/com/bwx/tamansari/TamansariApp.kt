@@ -1,6 +1,7 @@
 package com.bwx.tamansari
 
 import android.app.Application
+import banyuwangi.digital.core.di.firebaseModule
 import banyuwangi.digital.core.di.networkModule
 import banyuwangi.digital.core.di.repositoryModule
 import com.bwx.tamansari.di.useCaseModule
@@ -22,6 +23,7 @@ class TamansariApp:Application() {
                     repositoryModule,
                     useCaseModule,
                     viewModelModule,
+                    firebaseModule
                 )
             )
         }

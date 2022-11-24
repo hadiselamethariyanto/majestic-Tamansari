@@ -19,6 +19,7 @@ val useCaseModule = module {
     factory<TravelPackageUseCase> { TravelPackageInteractor(get()) }
     factory<RestaurantUseCase> { RestaurantInteractor(get()) }
     factory<NewsUseCase> { NewsInteractor(get()) }
+    factory<AuthUseCase> { AuthInteractor(get()) }
 }
 
 val viewModelModule = module {

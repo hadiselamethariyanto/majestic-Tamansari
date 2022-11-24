@@ -70,6 +70,7 @@
     <string name="description_image_room">Image Room</string>
     <string name="description_image_travel_package">Image Paket Wisata</string>
     <string name="description_image_menu_restaurant">Image Menu Restaurant</string>
+    <string name="description_image_notification">Notifikasi</string>
     <string name="write_a_comment">Tulis komentar</string>
     <string name="terjual">Terjual</string>
     <string name="choose_ticket">Pilih Tiket</string>
@@ -90,5 +91,7 @@
     <string name="date">Tanggal</string>
     <string name="mohon_tunggu_sebentar">Mohon tunggu sebentar</string>
     <string name="empty_data">Tidak ada data untuk ditampilkan</string>
+    <string name="cari_wisata_tamansari">Cari tempat wisata di Tamansari</string>
+    <string name="cek_penawaran">Cek penawaran sebelum bepergian, kuy!</string>
 
 </resources>

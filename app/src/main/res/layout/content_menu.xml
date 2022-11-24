@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="76dp"
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
@@ -13,14 +14,16 @@
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="4dp"
-        android:contentDescription="@string/app_name" />
+        android:contentDescription="@string/app_name"
+        tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvNamaMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
-        android:textColor="@color/black"
         android:gravity="center"
-        android:textSize="12sp" />
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        tools:text="Menu" />
 </LinearLayout>

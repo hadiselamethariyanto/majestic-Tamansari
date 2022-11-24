@@ -21,7 +21,7 @@ class PromoAdapter : RecyclerView.Adapter<PromoAdapter.ViewHolder>() {
 
             Glide.with(itemView.context)
                 .load(data.foto)
-                .transform(CenterCrop(), RoundedCorners(36))
+                .transform(CenterCrop(), RoundedCorners(24))
                 .into(imgFoto)
 
         }

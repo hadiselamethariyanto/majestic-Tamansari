@@ -16,28 +16,12 @@ import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentHomeBinding
 import com.bwx.tamansari.model.MenuModel
 import com.bwx.tamansari.model.PromoModel
+import com.bwx.tamansari.ui.base.BaseFragment
 
-class HomeFragment : Fragment() {
-
-    private lateinit var homeViewModel: HomeViewModel
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupProfile()
         setupMenu()
         setupPromo()
     }
@@ -114,15 +98,4 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun setupProfile() {
-        Glide.with(this)
-            .load("https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png")
-            .transform(CenterCrop(), RoundedCorners(50))
-            .into(binding.imgProfile)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

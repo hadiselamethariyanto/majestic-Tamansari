@@ -28,22 +28,6 @@ class MenuGridAdapter(val list: List<MenuModel>, val context: Context) :
         holder.bindItem(list[position])
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(list[position], position)
-//            if (position == 0) {
-//                context.startActivity(Intent(context, DashboardWisata::class.java))
-//            }
-//            else if (position == 1) {
-//                context.startActivity(Intent(context, SpbuActivity::class.java))
-//            } else if (position == 2) {
-//                context.startActivity(Intent(context, BumdesActivity::class.java))
-//            } else if (position == 3) {
-//                context.startActivity(Intent(context, PetaActivity::class.java))
-//            } else if (position == 4) {
-//                context.startActivity(Intent(context, DashboardWisata::class.java))
-//            } else if (position == 5) {
-//                context.startActivity(Intent(context, BeritaActivity::class.java))
-//            } else if (position == 6) {
-//                context.startActivity(Intent(context, TpsrActivity::class.java))
-//            }
         }
     }
 

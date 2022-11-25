@@ -1,9 +1,11 @@
 package com.bwx.tamansari.di
 
 import banyuwangi.digital.core.domain.usecase.*
+import com.bwx.tamansari.ui.akun.AccountViewModel
 import com.bwx.tamansari.ui.berita.list.NewsViewModel
 import com.bwx.tamansari.ui.homestay.choose_room.ChooseRoomViewModel
 import com.bwx.tamansari.ui.homestay.list.HomestayViewModel
+import com.bwx.tamansari.ui.login.LoginViewModel
 import com.bwx.tamansari.ui.paket.list.PaketViewModel
 import com.bwx.tamansari.ui.restaurant.list.RestaurantViewModel
 import com.bwx.tamansari.ui.wisata.choose_ticket.ChooseTicketWisataViewModel
@@ -31,4 +33,6 @@ val viewModelModule = module {
     viewModel { PaketViewModel(get()) }
     viewModel { RestaurantViewModel(get()) }
     viewModel { NewsViewModel(get()) }
+    viewModel { AccountViewModel(get()) }
+    viewModel { LoginViewModel(get()) }
 }

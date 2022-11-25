@@ -5,18 +5,43 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentAkunBinding
-import com.bwx.tamansari.databinding.FragmentHomeBinding
+import com.bwx.tamansari.ui.login.LoginFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AkunFragment : Fragment() {
 
+    private val viewModel: AccountViewModel by viewModel()
 
     private var _binding: FragmentAkunBinding? = null
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val navController = findNavController()
+
+        val currentBackStackEntry = navController.currentBackStackEntry!!
+        val savedStateHandle = currentBackStackEntry.savedStateHandle
+        savedStateHandle.getLiveData<Boolean>(LoginFragment.LOGIN_SUCCESSFUL)
+            .observe(currentBackStackEntry, Observer { success ->
+                if (!success) {
+                    val startDestination = navController.graph.startDestinationId
+                    val navOptions = NavOptions.Builder()
+                        .setPopUpTo(startDestination, true)
+                        .build()
+                    navController.navigate(startDestination, null, navOptions)
+                }
+            })
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +54,13 @@ class AkunFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupProfile()
+
+        viewModel.getUser()
+        viewModel.user.observe(viewLifecycleOwner) { firebaseUser ->
+            if (firebaseUser == null) {
+                findNavController().navigate(R.id.loginFragment)
+            }
+        }
     }
 
     private fun setupProfile() {

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "575747892421",
+    "project_id": "ijentamansari-b2a3a",
+    "storage_bucket": "ijentamansari-b2a3a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575747892421:android:bf3ff835a90b5f56a23cac",
+        "android_client_info": {
+          "package_name": "banyuwangi.digital.ijentamansari"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575747892421-9e3kl0tjv14b2rvjcj9q5b9kghujn3e9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "banyuwangi.digital.ijentamansari",
+            "certificate_hash": "896375a2a1ff09a00d2d7b333630ce935615950c"
+          }
+        },
+        {
+          "client_id": "575747892421-npft8t6mgvvgfq3qku8iq74iccb0f1ar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWFDE6uTWIXB5gsiJQ86T35Fe__ycuhDQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575747892421-npft8t6mgvvgfq3qku8iq74iccb0f1ar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

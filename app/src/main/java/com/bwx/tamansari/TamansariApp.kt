@@ -6,6 +6,7 @@ import banyuwangi.digital.core.di.networkModule
 import banyuwangi.digital.core.di.repositoryModule
 import com.bwx.tamansari.di.useCaseModule
 import com.bwx.tamansari.di.viewModelModule
+import com.google.firebase.FirebaseApp
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -14,6 +15,7 @@ import org.koin.core.logger.Level
 class TamansariApp:Application() {
     override fun onCreate() {
         super.onCreate()
+
         startKoin {
             androidLogger(Level.NONE)
             androidContext(this@TamansariApp)

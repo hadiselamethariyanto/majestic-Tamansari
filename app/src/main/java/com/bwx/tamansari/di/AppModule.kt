@@ -5,6 +5,7 @@ import com.bwx.tamansari.ui.akun.AccountViewModel
 import com.bwx.tamansari.ui.berita.list.NewsViewModel
 import com.bwx.tamansari.ui.homestay.choose_room.ChooseRoomViewModel
 import com.bwx.tamansari.ui.homestay.list.HomestayViewModel
+import com.bwx.tamansari.ui.homestay.review_transaction.ReviewTransactionHomestayViewModel
 import com.bwx.tamansari.ui.login.LoginViewModel
 import com.bwx.tamansari.ui.paket.list.PaketViewModel
 import com.bwx.tamansari.ui.restaurant.list.RestaurantViewModel
@@ -37,4 +38,5 @@ val viewModelModule = module {
     viewModel { AccountViewModel(get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { ReviewWisataViewModel(get()) }
+    viewModel { ReviewTransactionHomestayViewModel(get()) }
 }

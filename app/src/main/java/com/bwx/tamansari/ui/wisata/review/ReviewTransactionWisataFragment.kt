@@ -82,7 +82,8 @@ class ReviewTransactionWisataFragment :
                 fee = totalPayment,
                 convenienceFee = 5000,
                 totalFee = totalPayment + 5000,
-                idWisata = wisata?.id ?: ""
+                idWisata = wisata?.id ?: "",
+                charts = charts
             ).observe(viewLifecycleOwner) { res ->
                 when (res) {
                     is Resource.Loading -> {

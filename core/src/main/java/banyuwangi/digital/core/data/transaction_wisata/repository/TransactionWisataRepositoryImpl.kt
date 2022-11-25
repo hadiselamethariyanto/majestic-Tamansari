@@ -5,6 +5,7 @@ import banyuwangi.digital.core.data.mechanism.NetworkOnlyResource
 import banyuwangi.digital.core.data.network.ApiResponseOnly
 import banyuwangi.digital.core.data.transaction_wisata.repository.source.remote.TransactionWisataRemoteDataSource
 import banyuwangi.digital.core.data.transaction_wisata.repository.source.remote.response.InsertTransactionWisataResponse
+import banyuwangi.digital.core.domain.model.ChartDomain
 import banyuwangi.digital.core.domain.repository.TransactionWisataRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -18,7 +19,8 @@ class TransactionWisataRepositoryImpl(private val remoteDataSource: TransactionW
         fee: Int,
         convenienceFee: Int,
         totalFee: Int,
-        idWisata: String
+        idWisata: String,
+        charts:List<ChartDomain>
     ): Flow<Resource<Boolean>> {
         return object : NetworkOnlyResource<Boolean, InsertTransactionWisataResponse>() {
             override fun loadFromNetwork(data: InsertTransactionWisataResponse): Flow<Boolean> {
@@ -33,7 +35,8 @@ class TransactionWisataRepositoryImpl(private val remoteDataSource: TransactionW
                     fee,
                     convenienceFee,
                     totalFee,
-                    idWisata
+                    idWisata,
+                    charts
                 )
 
         }.asFlow()

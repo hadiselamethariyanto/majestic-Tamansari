@@ -3,6 +3,7 @@ package banyuwangi.digital.core.data.transaction_wisata.repository.source.remote
 import banyuwangi.digital.core.data.network.ApiResponseOnly
 import banyuwangi.digital.core.data.transaction_wisata.repository.source.remote.network.TransactionWisataService
 import banyuwangi.digital.core.data.transaction_wisata.repository.source.remote.response.InsertTransactionWisataResponse
+import banyuwangi.digital.core.domain.model.ChartDomain
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -20,19 +21,20 @@ class TransactionWisataRemoteDataSource(private val service: TransactionWisataSe
         fee: Int,
         convenienceFee: Int,
         totalFee: Int,
-        idWisata: String
+        idWisata: String,
+        charts: List<ChartDomain>
     ): Flow<ApiResponseOnly<InsertTransactionWisataResponse>> {
         return flow {
             try {
                 val chartMap: HashMap<String, RequestBody> = HashMap()
-//                for ((index, room) in rooms.withIndex()) {
-//                    roomsMap["rooms[${index}][id]"] =
-//                        room.idRoom.toRequestBody("text/plain".toMediaType())
-//                    roomsMap["rooms[${index}][quantity]"] =
-//                        room.quantity.toString().toRequestBody("text/plain".toMediaType())
-//                    roomsMap["rooms[${index}][price]"] =
-//                        room.price.toString().toRequestBody("text/plain".toMediaType())
-//                }
+                for ((index, chart) in charts.withIndex()) {
+                    chartMap["chart[${index}][id_product]"] =
+                        chart.idProduct.toRequestBody("text/plain".toMediaType())
+                    chartMap["chart[${index}][product_price]"] =
+                        chart.productPrice.toString().toRequestBody("text/plain".toMediaType())
+                    chartMap["chart[${index}][total]"] =
+                        chart.total.toString().toRequestBody("text/plain".toMediaType())
+                }
 
                 val response =
                     service.insertTransactionWisata(

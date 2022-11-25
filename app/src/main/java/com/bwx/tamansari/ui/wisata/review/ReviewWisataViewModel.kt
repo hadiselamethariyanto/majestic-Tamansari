@@ -1,6 +1,7 @@
 package com.bwx.tamansari.ui.wisata.review
 
 import androidx.lifecycle.*
+import banyuwangi.digital.core.domain.model.ChartDomain
 import banyuwangi.digital.core.domain.usecase.AuthUseCase
 import banyuwangi.digital.core.domain.usecase.TransactionWisataUsecase
 import com.google.firebase.auth.FirebaseUser
@@ -26,7 +27,8 @@ class ReviewWisataViewModel(
         fee: Int,
         convenienceFee: Int,
         totalFee: Int,
-        idWisata: String
+        idWisata: String,
+        charts: List<ChartDomain>
     ) = transactionWisataUseCase.insertTransactionWisata(
         customerName,
         customerEmail,
@@ -34,7 +36,8 @@ class ReviewWisataViewModel(
         fee,
         convenienceFee,
         totalFee,
-        idWisata
+        idWisata,
+        charts
     ).asLiveData()
 
 }

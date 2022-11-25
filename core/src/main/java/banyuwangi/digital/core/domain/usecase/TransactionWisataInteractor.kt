@@ -1,6 +1,7 @@
 package banyuwangi.digital.core.domain.usecase
 
 import banyuwangi.digital.core.data.Resource
+import banyuwangi.digital.core.domain.model.ChartDomain
 import banyuwangi.digital.core.domain.repository.TransactionWisataRepository
 import kotlinx.coroutines.flow.Flow
 
@@ -13,7 +14,8 @@ class TransactionWisataInteractor(private val repository: TransactionWisataRepos
         fee: Int,
         convenienceFee: Int,
         totalFee: Int,
-        idWisata: String
+        idWisata: String,
+        charts:List<ChartDomain>
     ): Flow<Resource<Boolean>> = repository.insertTransactionWisata(
         customerName,
         customerEmail,
@@ -21,6 +23,7 @@ class TransactionWisataInteractor(private val repository: TransactionWisataRepos
         fee,
         convenienceFee,
         totalFee,
-        idWisata
+        idWisata,
+        charts
     )
 }

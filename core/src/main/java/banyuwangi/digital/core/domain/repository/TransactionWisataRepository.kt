@@ -1,6 +1,7 @@
 package banyuwangi.digital.core.domain.repository
 
 import banyuwangi.digital.core.data.Resource
+import banyuwangi.digital.core.domain.model.ChartDomain
 import kotlinx.coroutines.flow.Flow
 
 interface TransactionWisataRepository {
@@ -12,6 +13,7 @@ interface TransactionWisataRepository {
         fee: Int,
         convenienceFee: Int,
         totalFee: Int,
-        idWisata: String
+        idWisata: String,
+        charts:List<ChartDomain>
     ): Flow<Resource<Boolean>>
 }

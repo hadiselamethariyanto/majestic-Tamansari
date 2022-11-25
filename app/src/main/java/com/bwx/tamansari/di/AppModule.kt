@@ -11,6 +11,7 @@ import com.bwx.tamansari.ui.restaurant.list.RestaurantViewModel
 import com.bwx.tamansari.ui.wisata.choose_ticket.ChooseTicketWisataViewModel
 import com.bwx.tamansari.ui.wisata.detail.rating.RatingWisataViewModel
 import com.bwx.tamansari.ui.wisata.list.ListWisataViewModel
+import com.bwx.tamansari.ui.wisata.review.ReviewWisataViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -35,4 +36,5 @@ val viewModelModule = module {
     viewModel { NewsViewModel(get()) }
     viewModel { AccountViewModel(get()) }
     viewModel { LoginViewModel(get()) }
+    viewModel { ReviewWisataViewModel(get()) }
 }

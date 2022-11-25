@@ -102,15 +102,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.navigation_home,
-//                R.id.navigation_dashboard,
-//                R.id.navigation_notifications,
-//                R.id.navigation_daftar_wisata,
-//            ),
-//        )
-
         setupActionBarWithNavController(navController)
         binding.bottomNav.setupWithNavController(navController)
 

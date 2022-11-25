@@ -21,7 +21,6 @@ class AuthRepositoryImpl(private val firebaseAuth: FirebaseAuth) : AuthRepositor
         }
     }
 
-
     override fun logout() {
         firebaseAuth.signOut()
     }

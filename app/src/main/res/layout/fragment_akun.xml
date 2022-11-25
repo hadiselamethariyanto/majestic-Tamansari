@@ -22,36 +22,40 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:contentDescription="@string/app_name"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/username"
+                android:id="@+id/tv_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_toEndOf="@id/imgProfile"
-                android:fontFamily="sans-serif-black"
-                android:text="@string/placeholder_username"
+                android:fontFamily="@font/poppins_semi_bold"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:text="@string/placeholder_username" />
 
             <TextView
+                android:id="@+id/tv_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/username"
+                android:layout_below="@id/tv_username"
                 android:layout_marginStart="16dp"
                 android:layout_toEndOf="@id/imgProfile"
-                android:fontFamily="sans-serif"
-                android:text="@string/placeholder_email"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:text="@string/placeholder_email" />
 
         </RelativeLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_akun" />
+    <include
+        android:id="@+id/content"
+        layout="@layout/content_akun" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -72,19 +76,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppins_regular"
                 android:gravity="center"
+                android:includeFontPadding="false"
                 android:text="@string/saldo"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvSaldo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/poppins_semi_bold"
                 android:gravity="center"
+                android:includeFontPadding="false"
                 android:text="@string/placeholder_saldo"
-                android:textSize="22sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

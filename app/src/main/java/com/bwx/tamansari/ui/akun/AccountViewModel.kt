@@ -10,12 +10,17 @@ import kotlinx.coroutines.launch
 
 class AccountViewModel(private val authUseCase: AuthUseCase) : ViewModel() {
 
-    private val _user = MutableLiveData<FirebaseUser>()
+    private val _user = MutableLiveData<FirebaseUser?>()
 
-    val user: LiveData<FirebaseUser> get() = _user
+    val user: LiveData<FirebaseUser?> get() = _user
 
     fun getUser() = viewModelScope.launch {
         _user.value = authUseCase.currentUser
+    }
+
+    fun logout() = viewModelScope.launch {
+        authUseCase.logout()
+        _user.value = null
     }
 
 }

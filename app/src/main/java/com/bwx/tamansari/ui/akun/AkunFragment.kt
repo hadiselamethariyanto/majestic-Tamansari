@@ -1,10 +1,7 @@
 package com.bwx.tamansari.ui.akun
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
@@ -13,15 +10,14 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentAkunBinding
+import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.ui.login.LoginFragment
+import com.google.firebase.auth.FirebaseUser
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AkunFragment : Fragment() {
+class AkunFragment : BaseFragment<FragmentAkunBinding>(FragmentAkunBinding::inflate) {
 
     private val viewModel: AccountViewModel by viewModel()
-
-    private var _binding: FragmentAkunBinding? = null
-    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +27,7 @@ class AkunFragment : Fragment() {
         val currentBackStackEntry = navController.currentBackStackEntry!!
         val savedStateHandle = currentBackStackEntry.savedStateHandle
         savedStateHandle.getLiveData<Boolean>(LoginFragment.LOGIN_SUCCESSFUL)
-            .observe(currentBackStackEntry, Observer { success ->
+            .observe(currentBackStackEntry) { success ->
                 if (!success) {
                     val startDestination = navController.graph.startDestinationId
                     val navOptions = NavOptions.Builder()
@@ -39,33 +35,35 @@ class AkunFragment : Fragment() {
                         .build()
                     navController.navigate(startDestination, null, navOptions)
                 }
-            })
+            }
 
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentAkunBinding.inflate(inflater, container, false)
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupProfile()
+
 
         viewModel.getUser()
         viewModel.user.observe(viewLifecycleOwner) { firebaseUser ->
             if (firebaseUser == null) {
                 findNavController().navigate(R.id.loginFragment)
+            } else {
+                setupProfile(firebaseUser)
             }
         }
+
+        binding.content.tvLogout.setOnClickListener {
+            viewModel.logout()
+        }
+
     }
 
-    private fun setupProfile() {
+    private fun setupProfile(user: FirebaseUser) {
+        binding.tvUsername.text = user.displayName
+        binding.tvEmail.text = user.email
+
         Glide.with(this)
-            .load("https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png")
+            .load(user.photoUrl)
             .transform(CenterCrop(), RoundedCorners(70))
             .into(binding.imgProfile)
     }

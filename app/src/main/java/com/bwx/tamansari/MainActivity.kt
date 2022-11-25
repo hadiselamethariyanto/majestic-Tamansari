@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.hide()
                 }
                 R.id.navigation_home -> {
+                    binding.bottomNav.visibility = View.VISIBLE
                     supportActionBar?.hide()
                 }
                 R.id.navigation_detail_homestay -> {

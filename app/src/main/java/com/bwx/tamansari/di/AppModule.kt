@@ -25,6 +25,7 @@ val useCaseModule = module {
     factory<RestaurantUseCase> { RestaurantInteractor(get()) }
     factory<NewsUseCase> { NewsInteractor(get()) }
     factory<AuthUseCase> { AuthInteractor(get()) }
+    factory<TransactionWisataUsecase> { TransactionWisataInteractor(get()) }
 }
 
 val viewModelModule = module {
@@ -38,7 +39,7 @@ val viewModelModule = module {
     viewModel { NewsViewModel(get()) }
     viewModel { AccountViewModel(get()) }
     viewModel { LoginViewModel(get()) }
-    viewModel { ReviewWisataViewModel(get()) }
+    viewModel { ReviewWisataViewModel(get(),get()) }
     viewModel { ReviewTransactionHomestayViewModel(get()) }
     viewModel { ReviewTransactionTravelPackageViewModel(get()) }
 }

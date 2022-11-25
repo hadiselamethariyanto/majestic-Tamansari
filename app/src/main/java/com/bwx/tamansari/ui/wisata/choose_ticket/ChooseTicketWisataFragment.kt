@@ -8,7 +8,7 @@ import banyuwangi.digital.core.domain.model.TicketWisataDomain
 import banyuwangi.digital.core.domain.model.WisataDomain
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentChooseTicketWisataBinding
-import com.bwx.tamansari.model.ChartDomain
+import banyuwangi.digital.core.domain.model.ChartDomain
 import com.bwx.tamansari.ui.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

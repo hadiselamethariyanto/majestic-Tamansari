@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bwx.tamansari.databinding.ItemChartItemBinding
-import com.bwx.tamansari.model.ChartDomain
+import banyuwangi.digital.core.domain.model.ChartDomain
 import com.bwx.tamansari.utils.Utils
 
 class ReviewTransactionWisataAdapter(private val list: List<ChartDomain>) :

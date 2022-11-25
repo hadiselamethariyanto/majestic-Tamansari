@@ -2,13 +2,15 @@ package com.bwx.tamansari.ui.wisata.review
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.WisataDomain
 import com.bumptech.glide.Glide
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentReviewTransactionWisataBinding
-import com.bwx.tamansari.model.ChartDomain
+import banyuwangi.digital.core.domain.model.ChartDomain
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.ui.login.LoginFragment
 import com.bwx.tamansari.utils.Utils
@@ -69,6 +71,40 @@ class ReviewTransactionWisataFragment :
 
         val adapter = ReviewTransactionWisataAdapter(charts)
         binding.rvChart.adapter = adapter
+
+        val user = viewModel.user.value
+
+        binding.btnPayment.setOnClickListener {
+            viewModel.insertTransactionWisata(
+                customerName = user?.displayName ?: "",
+                customerEmail = user?.email ?: "",
+                customerPhoneNumber = "123",
+                fee = totalPayment,
+                convenienceFee = 5000,
+                totalFee = totalPayment + 5000,
+                idWisata = wisata?.id ?: ""
+            ).observe(viewLifecycleOwner) { res ->
+                when (res) {
+                    is Resource.Loading -> {
+                        setLoading(true)
+                    }
+                    is Resource.Success -> {
+                        setLoading(false)
+                        if (res.data == true) {
+                            Toast.makeText(requireActivity(), "success", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                    is Resource.Error -> {
+                        setLoading(false)
+                        Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        binding.btnPayment.isEnabled = !isLoading
     }
 
     private fun setupProfile(user: FirebaseUser) {

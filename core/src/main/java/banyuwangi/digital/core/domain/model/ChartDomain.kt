@@ -1,4 +1,4 @@
-package com.bwx.tamansari.model
+package banyuwangi.digital.core.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

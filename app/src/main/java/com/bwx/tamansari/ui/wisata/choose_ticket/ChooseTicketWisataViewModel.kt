@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import banyuwangi.digital.core.domain.model.TicketWisataDomain
-import com.bwx.tamansari.model.ChartDomain
+import banyuwangi.digital.core.domain.model.ChartDomain
 
 class ChooseTicketWisataViewModel : ViewModel() {
     private val _chart = MutableLiveData<ArrayList<ChartDomain>>()

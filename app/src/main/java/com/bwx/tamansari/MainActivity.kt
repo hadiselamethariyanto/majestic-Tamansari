@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_detail_restaurant -> {
                     binding.bottomNav.visibility = View.GONE
                 }
-                R.id.navigation_dashboard -> {
+                R.id.navigation_transaction -> {
                     supportActionBar?.hide()
                 }
                 R.id.navigation_notifications -> {
@@ -91,6 +91,10 @@ class MainActivity : AppCompatActivity() {
                     binding.bottomNav.visibility = View.GONE
                 }
                 R.id.navigation_review_transaction_travel_package -> {
+                    binding.bottomNav.visibility = View.GONE
+                }
+                R.id.navigation_choose_payment_method->{
+                    supportActionBar?.hide()
                     binding.bottomNav.visibility = View.GONE
                 }
                 else -> {

@@ -23,12 +23,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_bold"
+        android:text="@string/lanjutkan_pembayaran"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/back"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Lanjutkan Pembayaran" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_order_id"

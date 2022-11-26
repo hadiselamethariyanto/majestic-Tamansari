@@ -1,28 +1,19 @@
-package com.bwx.tamansari.ui.riwayat
+package com.bwx.tamansari.ui.transaction
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentRiwayatBinding
 import com.bwx.tamansari.model.TransaksiModel
+import com.bwx.tamansari.ui.base.BaseFragment
 
-class RiwayatFragment : Fragment() {
+class TransactionFragment : BaseFragment<FragmentRiwayatBinding>(FragmentRiwayatBinding::inflate) {
 
-    private var _binding: FragmentRiwayatBinding? = null
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        _binding = FragmentRiwayatBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,11 +21,10 @@ class RiwayatFragment : Fragment() {
     }
 
 
-
     private fun setupTransaksi() {
 
         val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        val adapter = RiwayatAdapter()
+        val adapter = TransactionAdapter()
 
         val transaksi = ArrayList<TransaksiModel>()
         transaksi.add(
@@ -63,13 +53,15 @@ class RiwayatFragment : Fragment() {
         )
 
         adapter.updateData(transaksi)
+        adapter.setOnItemClickCallback(object : TransactionAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: TransaksiModel) {
+                findNavController().navigate(R.id.action_navigation_transaction_to_navigation_choose_payment_method)
+            }
+        })
 
         binding.rvTransaksi.layoutManager = linearLayoutManager
         binding.rvTransaksi.adapter = adapter
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 }

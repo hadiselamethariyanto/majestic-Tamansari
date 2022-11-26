@@ -10,4 +10,5 @@ object Constant {
     const val API_GET_NEWS = "news/get_news"
     const val API_INSERT_TRANSACTION_WISATA = "transaction_wisata/insert_transaction"
     const val API_GET_PAYMENT_METHOD = "payment_method/get_payment_method"
+    const val API_GET_TRANSACTIONS = "transactions/get_transactions"
 }

@@ -3,6 +3,8 @@ package com.bwx.tamansari.di
 import banyuwangi.digital.core.domain.usecase.*
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodInteractor
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodUseCase
+import banyuwangi.digital.core.domain.usecase.transactions.TransactionsInteractor
+import banyuwangi.digital.core.domain.usecase.transactions.TransactionsUseCase
 import com.bwx.tamansari.ui.akun.AccountViewModel
 import com.bwx.tamansari.ui.berita.list.NewsViewModel
 import com.bwx.tamansari.ui.homestay.choose_room.ChooseRoomViewModel
@@ -13,6 +15,7 @@ import com.bwx.tamansari.ui.paket.list.PaketViewModel
 import com.bwx.tamansari.ui.paket.review.ReviewTransactionTravelPackageViewModel
 import com.bwx.tamansari.ui.payment.choose_payment_method.ChoosePaymentMethodViewModel
 import com.bwx.tamansari.ui.restaurant.list.RestaurantViewModel
+import com.bwx.tamansari.ui.transaction.TransactionsViewModel
 import com.bwx.tamansari.ui.wisata.choose_ticket.ChooseTicketWisataViewModel
 import com.bwx.tamansari.ui.wisata.detail.rating.RatingWisataViewModel
 import com.bwx.tamansari.ui.wisata.list.ListWisataViewModel
@@ -30,6 +33,7 @@ val useCaseModule = module {
     factory<AuthUseCase> { AuthInteractor(get()) }
     factory<TransactionWisataUsecase> { TransactionWisataInteractor(get()) }
     factory<PaymentMethodUseCase> { PaymentMethodInteractor(get()) }
+    factory<TransactionsUseCase> { TransactionsInteractor(get()) }
 }
 
 val viewModelModule = module {
@@ -47,4 +51,5 @@ val viewModelModule = module {
     viewModel { ReviewTransactionHomestayViewModel(get()) }
     viewModel { ReviewTransactionTravelPackageViewModel(get()) }
     viewModel { ChoosePaymentMethodViewModel(get()) }
+    viewModel { TransactionsViewModel(get(),get()) }
 }

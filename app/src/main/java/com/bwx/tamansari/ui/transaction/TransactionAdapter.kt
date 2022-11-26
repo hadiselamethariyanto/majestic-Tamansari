@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bwx.tamansari.databinding.ItemTransaksiBinding
-import com.bwx.tamansari.model.TransaksiModel
+import banyuwangi.digital.core.domain.model.TransactionDomain
 
 class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
-    private val transaksi = mutableListOf<TransaksiModel>()
+    private val transaksi = mutableListOf<TransactionDomain>()
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -27,7 +27,7 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.ViewHolder>()
 
     override fun getItemCount() = transaksi.size
 
-    fun updateData(new: MutableList<TransaksiModel>) {
+    fun updateData(new: List<TransactionDomain>) {
         transaksi.clear()
         transaksi.addAll(new)
         notifyDataSetChanged()
@@ -36,11 +36,11 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.ViewHolder>()
     inner class ViewHolder(private val binding: ItemTransaksiBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bindItem(data: TransaksiModel) {
+        fun bindItem(data: TransactionDomain) {
             binding.tvId.text = data.id
-            binding.tvBiaya.text = data.biaya
-            binding.tvTanggal.text = data.tanggal
-            binding.tvDeskripsi.text = data.deskripsi
+//            binding.tvBiaya.text = data.biaya
+//            binding.tvTanggal.text = data.tanggal
+//            binding.tvDeskripsi.text = data.deskripsi
 
             itemView.setOnClickListener {
                 onItemClickCallback.onItemClicked(data)
@@ -49,7 +49,7 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.ViewHolder>()
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: TransaksiModel)
+        fun onItemClicked(data: TransactionDomain)
     }
 
 }

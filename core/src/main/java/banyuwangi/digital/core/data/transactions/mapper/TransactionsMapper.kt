@@ -16,7 +16,9 @@ object TransactionsMapper {
                 fee = it.fee ?: 0,
                 convenienceFee = it.convenienceFee ?: 0,
                 totalFee = it.totalFee ?: 0,
-                type = it.type ?: 0
+                type = it.type ?: 0,
+                title = it.title ?: "",
+                subTitle = it.subTitle ?: ""
             )
         }
 }

@@ -18,7 +18,12 @@ data class TransactionItem(
     val customerPhoneNumber: String? = null,
     val status: Int? = 0,
     val fee: Int? = 0,
+    @field:SerializedName("convenience_fee")
     val convenienceFee: Int? = 0,
+    @field:SerializedName("total_fee")
     val totalFee: Int? = 0,
-    val type: Int? = 0
+    val type: Int? = 0,
+    val title: String? = null,
+    @field:SerializedName("sub_title")
+    val subTitle: String? = null
 )

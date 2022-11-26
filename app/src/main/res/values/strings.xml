@@ -71,6 +71,7 @@
     <string name="description_image_travel_package">Image Paket Wisata</string>
     <string name="description_image_menu_restaurant">Image Menu Restaurant</string>
     <string name="description_image_notification">Notifikasi</string>
+    <string name="description_image_method_payment">Image metode pembayaran</string>
     <string name="write_a_comment">Tulis komentar</string>
     <string name="terjual">Terjual</string>
     <string name="choose_ticket">Pilih Tiket</string>

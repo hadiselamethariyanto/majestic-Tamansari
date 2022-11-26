@@ -8,6 +8,9 @@ import banyuwangi.digital.core.data.berita.repository.source.remote.nework.NewsS
 import banyuwangi.digital.core.data.homestay.repository.HomestayRepositoryImpl
 import banyuwangi.digital.core.data.homestay.repository.source.remote.HomestayRemoteDataSource
 import banyuwangi.digital.core.data.homestay.repository.source.remote.network.HomestayService
+import banyuwangi.digital.core.data.payment_method.repository.PaymentMethodRepositoryImpl
+import banyuwangi.digital.core.data.payment_method.repository.source.remote.PaymentMethodRemoteDataSource
+import banyuwangi.digital.core.data.payment_method.repository.source.remote.network.PaymentMethodService
 import banyuwangi.digital.core.data.restoran.repository.RestaurantRepositoryImpl
 import banyuwangi.digital.core.data.restoran.repository.source.remote.RestaurantRemoteDataSource
 import banyuwangi.digital.core.data.restoran.repository.source.remote.network.RestaurantService
@@ -90,6 +93,15 @@ val networkModule = module {
             .build()
         retrofit.create(TransactionWisataService::class.java)
     }
+
+    single {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(get())
+            .build()
+        retrofit.create(PaymentMethodService::class.java)
+    }
 }
 
 val repositoryModule = module {
@@ -99,6 +111,7 @@ val repositoryModule = module {
     single { RestaurantRemoteDataSource(get()) }
     single { NewsRemoteDataSource(get()) }
     single { TransactionWisataRemoteDataSource(get()) }
+    single { PaymentMethodRemoteDataSource(get()) }
 
     single<WisataRepository> { WisataRepositoryImpl(get()) }
     single<HomestayRepository> { HomestayRepositoryImpl(get()) }
@@ -107,6 +120,7 @@ val repositoryModule = module {
     single<NewsRepository> { NewsRepositoryImpl(get()) }
     single<AuthRepository> { AuthRepositoryImpl(get()) }
     single<TransactionWisataRepository> { TransactionWisataRepositoryImpl(get()) }
+    single<PaymentMethodRepository> { PaymentMethodRepositoryImpl(get()) }
 }
 
 val firebaseModule =

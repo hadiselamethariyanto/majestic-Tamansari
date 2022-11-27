@@ -5,14 +5,14 @@ import com.google.gson.annotations.SerializedName
 data class GetWisataResponse(val success: Boolean, val message: String, val data: List<WisataItem>)
 
 data class WisataItem(
-    val id: String,
-    val name: String,
-    val rating: Float,
-    @field:SerializedName("vote_count") val voteCount: Int,
-    val latitude: Double,
-    val longitude: Double,
-    val description: String,
-    val address: String,
-    val photos: List<String>,
-    val tickets: List<TicketWisataItem>
+    val id: String? = null,
+    val name: String? = null,
+    val rating: Float? = null,
+    @field:SerializedName("vote_count") val voteCount: Int? = null,
+    val latitude: Double? = null,
+    val longitude: Double? = null,
+    val description: String? = null,
+    val address: String? = null,
+    val photos: List<String>? = arrayListOf(),
+    val tickets: List<TicketWisataItem>? = arrayListOf()
 )

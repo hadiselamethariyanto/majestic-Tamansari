@@ -11,15 +11,15 @@ object WisataMapper {
 
     fun mapWisataResponseToDomain(wisatas: List<WisataItem>): List<WisataDomain> = wisatas.map {
         WisataDomain(
-            id = it.id,
-            name = it.name,
-            photos = it.photos,
-            rating = it.rating,
-            voteCount = it.voteCount,
-            latitude = it.latitude,
-            longitude = it.longitude,
-            description = it.description,
-            tickets = mapTicketWisataItemToDomain(it.tickets)
+            id = it.id ?: "",
+            name = it.name ?: "",
+            photos = it.photos ?: arrayListOf(),
+            rating = it.rating ?: 0f,
+            voteCount = it.voteCount ?: 0,
+            latitude = it.latitude ?: 0.0,
+            longitude = it.longitude ?: 0.0,
+            description = it.description ?: "",
+            tickets = mapTicketWisataItemToDomain(it.tickets ?: arrayListOf())
         )
     }
 

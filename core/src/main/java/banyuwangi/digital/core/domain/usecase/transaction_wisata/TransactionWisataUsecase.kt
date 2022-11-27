@@ -1,7 +1,8 @@
-package banyuwangi.digital.core.domain.usecase
+package banyuwangi.digital.core.domain.usecase.transaction_wisata
 
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.ChartDomain
+import banyuwangi.digital.core.domain.model.TransactionDomain
 import kotlinx.coroutines.flow.Flow
 
 interface TransactionWisataUsecase {
@@ -14,7 +15,7 @@ interface TransactionWisataUsecase {
         convenienceFee: Int,
         totalFee: Int,
         idWisata: String,
-        charts:List<ChartDomain>
-    ): Flow<Resource<Boolean>>
+        charts: List<ChartDomain>
+    ): Flow<Resource<TransactionDomain>>
 
 }

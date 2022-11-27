@@ -34,7 +34,7 @@
         android:id="@+id/navigation_transaction"
         android:name="com.bwx.tamansari.ui.transaction.TransactionFragment"
         android:label="@string/title_transaksi"
-        tools:layout="@layout/fragment_riwayat" >
+        tools:layout="@layout/fragment_riwayat">
         <action
             android:id="@+id/action_navigation_transaction_to_navigation_choose_payment_method"
             app:destination="@id/navigation_choose_payment_method" />
@@ -154,7 +154,12 @@
         android:id="@+id/navigation_review_transaction_wisata"
         android:name="com.bwx.tamansari.ui.wisata.review.ReviewTransactionWisataFragment"
         android:label="@string/navigation_review_transaction"
-        tools:layout="@layout/fragment_review_transaction_wisata" />
+        tools:layout="@layout/fragment_review_transaction_wisata">
+        <action
+            android:id="@+id/action_navigation_review_transaction_wisata_to_navigation_choose_payment_method"
+            app:destination="@id/navigation_choose_payment_method"
+            app:popUpTo="@id/navigation_home" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_choose_room"
         android:name="com.bwx.tamansari.ui.homestay.choose_room.ChooseRoomFragment"
@@ -164,17 +169,18 @@
             android:id="@+id/action_navigation_choose_room_to_navigation_review_transaction_homestay"
             app:destination="@id/navigation_review_transaction_homestay" />
     </fragment>
+
     <fragment
         android:id="@+id/navigation_review_transaction_homestay"
         android:name="com.bwx.tamansari.ui.homestay.review_transaction.ReviewTransactionHomestayFragment"
         android:label="@string/navigation_review_transaction"
-        tools:layout="@layout/fragment_review_transaction_homestay" />
+        tools:layout="@layout/fragment_review_transaction_homestay"></fragment>
 
     <fragment
         android:id="@+id/navigation_choose_travel_package"
         android:name="com.bwx.tamansari.ui.paket.choose_paket.ChooseTravelPackageFragment"
         android:label="@string/navigation_choose_travel_package"
-        tools:layout="@layout/fragment_choose_travel_package" >
+        tools:layout="@layout/fragment_choose_travel_package">
         <action
             android:id="@+id/action_navigation_choose_travel_package_to_navigation_review_transaction_travel_package"
             app:destination="@id/navigation_review_transaction_travel_package" />

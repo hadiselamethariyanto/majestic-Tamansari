@@ -3,6 +3,8 @@ package com.bwx.tamansari.di
 import banyuwangi.digital.core.domain.usecase.*
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodInteractor
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodUseCase
+import banyuwangi.digital.core.domain.usecase.transaction_wisata.TransactionWisataInteractor
+import banyuwangi.digital.core.domain.usecase.transaction_wisata.TransactionWisataUsecase
 import banyuwangi.digital.core.domain.usecase.transactions.TransactionsInteractor
 import banyuwangi.digital.core.domain.usecase.transactions.TransactionsUseCase
 import com.bwx.tamansari.ui.akun.AccountViewModel

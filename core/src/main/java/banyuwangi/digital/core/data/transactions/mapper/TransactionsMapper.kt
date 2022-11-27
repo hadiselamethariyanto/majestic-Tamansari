@@ -21,4 +21,18 @@ object TransactionsMapper {
                 subTitle = it.subTitle ?: ""
             )
         }
+
+    fun mapTransactionItemToDomain(data: TransactionItem): TransactionDomain = TransactionDomain(
+        id = data.id ?: "",
+        customerName = data.customerName ?: "",
+        customerEmail = data.customerEmail ?: "",
+        customerPhoneNumber = data.customerPhoneNumber ?: "",
+        status = data.status ?: 0,
+        fee = data.fee ?: 0,
+        convenienceFee = data.convenienceFee ?: 0,
+        totalFee = data.totalFee ?: 0,
+        type = data.type ?: 0,
+        title = data.title ?: "",
+        subTitle = data.subTitle ?: ""
+    )
 }

@@ -3,6 +3,7 @@ package com.bwx.tamansari.ui.wisata.review
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import banyuwangi.digital.core.data.Resource
@@ -91,8 +92,12 @@ class ReviewTransactionWisataFragment :
                     }
                     is Resource.Success -> {
                         setLoading(false)
-                        if (res.data == true) {
-                            Toast.makeText(requireActivity(), "success", Toast.LENGTH_LONG).show()
+                        if (res.data != null) {
+                            val bundle = bundleOf("transaction" to res.data)
+                            findNavController().navigate(
+                                R.id.action_navigation_review_transaction_wisata_to_navigation_choose_payment_method,
+                                bundle
+                            )
                         }
                     }
                     is Resource.Error -> {

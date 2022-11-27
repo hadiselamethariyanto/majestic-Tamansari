@@ -15,5 +15,7 @@ data class TransactionDomain(
     val totalFee: Int,
     val type: Int,
     val title:String,
-    val subTitle:String
+    val subTitle:String,
+    val createdDate:Long,
+    val expiredAt:Long
 ) : Parcelable

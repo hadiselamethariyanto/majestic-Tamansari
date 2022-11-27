@@ -18,7 +18,9 @@ object TransactionsMapper {
                 totalFee = it.totalFee ?: 0,
                 type = it.type ?: 0,
                 title = it.title ?: "",
-                subTitle = it.subTitle ?: ""
+                subTitle = it.subTitle ?: "",
+                expiredAt = it.expiredAt ?: 0,
+                createdDate = it.createdDate ?: 0
             )
         }
 
@@ -33,6 +35,8 @@ object TransactionsMapper {
         totalFee = data.totalFee ?: 0,
         type = data.type ?: 0,
         title = data.title ?: "",
-        subTitle = data.subTitle ?: ""
+        subTitle = data.subTitle ?: "",
+        expiredAt = data.expiredAt ?: 0,
+        createdDate = data.createdDate ?: 0
     )
 }

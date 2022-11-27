@@ -25,5 +25,9 @@ data class TransactionItem(
     val type: Int? = 0,
     val title: String? = null,
     @field:SerializedName("sub_title")
-    val subTitle: String? = null
+    val subTitle: String? = null,
+    @field:SerializedName("expired_at")
+    val expiredAt: Long? = 0,
+    @field:SerializedName("created_date")
+    val createdDate: Long? = 0
 )

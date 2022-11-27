@@ -97,5 +97,6 @@
     <string name="cek_penawaran">Cek penawaran sebelum bepergian, kuy!</string>
     <string name="keluar">Keluar</string>
     <string name="lanjutkan_pembayaran">Lanjutkan Pembayaran</string>
+    <string name="empty_transactions">Tidak ada transaksi</string>
 
 </resources>

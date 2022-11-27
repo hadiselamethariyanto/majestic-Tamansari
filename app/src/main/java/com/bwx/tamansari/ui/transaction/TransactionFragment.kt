@@ -54,21 +54,33 @@ class TransactionFragment : BaseFragment<FragmentRiwayatBinding>(FragmentRiwayat
                     .observe(viewLifecycleOwner) { res ->
                         when (res) {
                             is Resource.Loading -> {
-
+                                setLoading(true)
                             }
                             is Resource.Success -> {
+                                setLoading(false)
                                 val transactions = res.data ?: arrayListOf()
                                 if (transactions.isNotEmpty()) {
                                     adapter.updateData(transactions)
+                                } else {
+                                    binding.rvTransaksi.visibility = View.GONE
+                                    binding.llEmpty.visibility = View.VISIBLE
                                 }
                             }
                             is Resource.Error -> {
-                                Toast.makeText(requireActivity(),res.message,Toast.LENGTH_LONG).show()
+                                setLoading(false)
+                                Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG)
+                                    .show()
                             }
                         }
                     }
             }
         }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        binding.llLoading.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.rvTransaksi.visibility = if (isLoading) View.GONE else View.VISIBLE
+        binding.llEmpty.visibility = View.GONE
     }
 
 

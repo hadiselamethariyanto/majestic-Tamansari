@@ -11,17 +11,34 @@ class ChoosePaymentMethodAdapter : RecyclerView.Adapter<ChoosePaymentMethodAdapt
 
     private val list = ArrayList<PaymentMethodDomain>()
 
+    var selectedPosition = -1
+
+    fun setPaymentMethod(position: Int) {
+        selectedPosition = position
+        notifyDataSetChanged()
+    }
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     fun updateData(newList: List<PaymentMethodDomain>) {
         list.clear()
         list.addAll(newList)
         notifyDataSetChanged()
     }
 
-    class ViewHolder(private val binding: ItemPaymentMethodBinding) :
+    inner class ViewHolder(private val binding: ItemPaymentMethodBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: PaymentMethodDomain) {
+        fun bind(data: PaymentMethodDomain, position: Int) {
             binding.tvMethodName.text = data.name
+            binding.radio.isChecked = selectedPosition == position
+            binding.radio.setOnClickListener {
+                onItemClickCallback.onItemClicked(data, position)
+            }
             Glide.with(itemView.context).load(data.logo).fitCenter().into(binding.imgLogo)
         }
     }
@@ -33,8 +50,12 @@ class ChoosePaymentMethodAdapter : RecyclerView.Adapter<ChoosePaymentMethodAdapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(list[position], position)
     }
 
     override fun getItemCount(): Int = list.size
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: PaymentMethodDomain, position: Int)
+    }
 }

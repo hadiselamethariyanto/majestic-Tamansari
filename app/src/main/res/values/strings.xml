@@ -98,5 +98,6 @@
     <string name="keluar">Keluar</string>
     <string name="lanjutkan_pembayaran">Lanjutkan Pembayaran</string>
     <string name="empty_transactions">Tidak ada transaksi</string>
+    <string name="bayar">Bayar</string>
 
 </resources>

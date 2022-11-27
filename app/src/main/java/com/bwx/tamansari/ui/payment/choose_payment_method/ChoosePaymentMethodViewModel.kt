@@ -1,7 +1,10 @@
 package com.bwx.tamansari.ui.payment.choose_payment_method
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
+import banyuwangi.digital.core.domain.model.PaymentMethodDomain
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodUseCase
 import banyuwangi.digital.core.domain.usecase.transaction_wisata.TransactionWisataUsecase
 
@@ -11,8 +14,16 @@ class ChoosePaymentMethodViewModel(
 ) :
     ViewModel() {
 
+    private val _selectedPaymentMethod = MutableLiveData<PaymentMethodDomain?>()
+    val selectedPaymentMethod: LiveData<PaymentMethodDomain?> get() = _selectedPaymentMethod
+
     fun getPaymentMethod() = paymentMethodUseCase.getPaymentMethod().asLiveData()
 
     fun getTransactionWisata(id: String) =
         transactionWisataUsecase.getTransactionWisata(id).asLiveData()
+
+    fun selectPaymentMethod(paymentMethod: PaymentMethodDomain) {
+        _selectedPaymentMethod.value = paymentMethod
+    }
+
 }

@@ -2,6 +2,7 @@ package com.bwx.tamansari.ui.payment.choose_payment_method
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.PaymentMethodDomain
@@ -13,6 +14,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentChoosePaymentMethodBinding
 import com.bwx.tamansari.ui.base.BaseFragment
+import com.bwx.tamansari.utils.Utils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -28,8 +30,29 @@ class ChoosePaymentMethodFragment :
         val transaction = arguments?.getParcelable<TransactionDomain>("transaction")
 
         binding.tvOrderId.text = "Order ID: ${transaction?.id?.uppercase()}"
+        binding.tvTotalFee.text = "IDR ${Utils.thousandSeparator(transaction?.totalFee ?: 0)}"
+        binding.btnPayment.setOnClickListener {
+            val paymentMethodDomain = viewModel.selectedPaymentMethod.value
+            if (paymentMethodDomain != null) {
+                Toast.makeText(requireActivity(), paymentMethodDomain.code, Toast.LENGTH_LONG)
+                    .show()
+            } else {
+                Toast.makeText(
+                    requireActivity(),
+                    "Mohon pilih metode pembayaran",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
 
         adapter = ChoosePaymentMethodAdapter()
+        adapter.setOnItemClickCallback(object : ChoosePaymentMethodAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: PaymentMethodDomain, position: Int) {
+                viewModel.selectPaymentMethod(data)
+                adapter.setPaymentMethod(position)
+            }
+        })
+
         binding.rvPaymentMethod.adapter = adapter
 
         if (transaction?.type == 1) {

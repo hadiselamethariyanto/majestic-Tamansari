@@ -23,6 +23,18 @@ object WisataMapper {
         )
     }
 
+    fun mapWisataResponseToDomain(it: WisataItem): WisataDomain = WisataDomain(
+        id = it.id ?: "",
+        name = it.name ?: "",
+        photos = it.photos ?: arrayListOf(),
+        rating = it.rating ?: 0f,
+        voteCount = it.voteCount ?: 0,
+        latitude = it.latitude ?: 0.0,
+        longitude = it.longitude ?: 0.0,
+        description = it.description ?: "",
+        tickets = mapTicketWisataItemToDomain(it.tickets ?: arrayListOf())
+    )
+
     fun mapTicketWisataItemToDomain(tickets: List<TicketWisataItem>): List<TicketWisataDomain> =
         tickets.map {
             TicketWisataDomain(

@@ -2,6 +2,7 @@ package banyuwangi.digital.core.data.transaction_wisata.repository.source.remote
 
 import banyuwangi.digital.core.data.network.ApiResponseOnly
 import banyuwangi.digital.core.data.transaction_wisata.repository.source.remote.network.TransactionWisataService
+import banyuwangi.digital.core.data.transaction_wisata.repository.source.remote.response.GetTransactionWisataResponse
 import banyuwangi.digital.core.data.transaction_wisata.repository.source.remote.response.InsertTransactionWisataResponse
 import banyuwangi.digital.core.domain.model.ChartDomain
 import kotlinx.coroutines.Dispatchers
@@ -48,6 +49,21 @@ class TransactionWisataRemoteDataSource(private val service: TransactionWisataSe
                         idWisata = idWisata.toRequestBody("text/plain".toMediaType()),
                         chart = chartMap
                     )
+                if (response.success) {
+                    emit(ApiResponseOnly.Success(response))
+                } else {
+                    emit(ApiResponseOnly.Error(response.message))
+                }
+            } catch (e: Exception) {
+                emit(ApiResponseOnly.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getTransactionWisata(id: String): Flow<ApiResponseOnly<GetTransactionWisataResponse>> {
+        return flow {
+            try {
+                val response = service.getTransactionWisata(id)
                 if (response.success) {
                     emit(ApiResponseOnly.Success(response))
                 } else {

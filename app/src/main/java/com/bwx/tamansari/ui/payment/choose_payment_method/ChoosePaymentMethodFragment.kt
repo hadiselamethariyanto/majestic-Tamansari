@@ -6,6 +6,11 @@ import androidx.lifecycle.Observer
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.PaymentMethodDomain
 import banyuwangi.digital.core.domain.model.TransactionDomain
+import banyuwangi.digital.core.domain.model.TransactionWisataDomain
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentChoosePaymentMethodBinding
 import com.bwx.tamansari.ui.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -27,7 +32,37 @@ class ChoosePaymentMethodFragment :
         adapter = ChoosePaymentMethodAdapter()
         binding.rvPaymentMethod.adapter = adapter
 
+        if (transaction?.type == 1) {
+            viewModel.getTransactionWisata(transaction.id)
+                .observe(viewLifecycleOwner, transactionWisataObserver)
+        }
+
         viewModel.getPaymentMethod().observe(viewLifecycleOwner, paymentMethodObserver)
+    }
+
+    private val transactionWisataObserver = Observer<Resource<TransactionWisataDomain>> { res ->
+        when (res) {
+            is Resource.Loading -> {
+                setLoadingOutlet(true)
+            }
+            is Resource.Success -> {
+                setLoadingOutlet(false)
+                val wisata = res.data?.wisata
+                val wisataPhotos = wisata?.photos
+
+                binding.tvOutletName.text = wisata?.name
+                if (wisataPhotos?.isNotEmpty() == true) {
+                    Glide.with(requireActivity())
+                        .load(wisataPhotos[0])
+                        .placeholder(R.drawable.placeholder)
+                        .transform(CenterCrop(), RoundedCorners(12))
+                        .into(binding.imgOutlet)
+                }
+            }
+            is Resource.Error -> {
+                setLoadingOutlet(false)
+            }
+        }
     }
 
     private val paymentMethodObserver = Observer<Resource<List<PaymentMethodDomain>>> { res ->
@@ -63,13 +98,29 @@ class ChoosePaymentMethodFragment :
         }
     }
 
+    private fun setLoadingOutlet(isLoading: Boolean) {
+        if (isLoading) {
+            binding.shimmerOutlet.apply {
+                visibility = View.VISIBLE
+                startShimmer()
+            }
+        } else {
+            binding.shimmerOutlet.apply {
+                stopShimmer()
+                visibility = View.GONE
+            }
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         binding.shimmerPaymentMethod.startShimmer()
+        binding.shimmerOutlet.startShimmer()
     }
 
     override fun onPause() {
         binding.shimmerPaymentMethod.stopShimmer()
+        binding.shimmerOutlet.stopShimmer()
         super.onPause()
     }
 }

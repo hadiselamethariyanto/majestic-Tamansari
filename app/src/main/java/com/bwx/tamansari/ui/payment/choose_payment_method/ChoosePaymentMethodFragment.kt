@@ -20,7 +20,7 @@ class ChoosePaymentMethodFragment :
 
         val transaction = arguments?.getParcelable<TransactionDomain>("transaction")
 
-        binding.tvOrderId.text = "Order ID: ${transaction?.id}"
+        binding.tvOrderId.text = "Order ID: ${transaction?.id?.uppercase()}"
 
         adapter = ChoosePaymentMethodAdapter()
         binding.rvPaymentMethod.adapter = adapter

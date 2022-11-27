@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.navigation_transaction -> {
                     supportActionBar?.hide()
+                    binding.bottomNav.visibility = View.VISIBLE
                 }
                 R.id.navigation_notifications -> {
                     supportActionBar?.hide()

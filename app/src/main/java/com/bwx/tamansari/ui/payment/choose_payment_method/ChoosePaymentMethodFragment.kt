@@ -2,7 +2,9 @@ package com.bwx.tamansari.ui.payment.choose_payment_method
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import banyuwangi.digital.core.data.Resource
+import banyuwangi.digital.core.domain.model.PaymentMethodDomain
 import banyuwangi.digital.core.domain.model.TransactionDomain
 import com.bwx.tamansari.databinding.FragmentChoosePaymentMethodBinding
 import com.bwx.tamansari.ui.base.BaseFragment
@@ -25,21 +27,49 @@ class ChoosePaymentMethodFragment :
         adapter = ChoosePaymentMethodAdapter()
         binding.rvPaymentMethod.adapter = adapter
 
-        viewModel.getPaymentMethod().observe(viewLifecycleOwner) { res ->
-            when (res) {
-                is Resource.Loading -> {
+        viewModel.getPaymentMethod().observe(viewLifecycleOwner, paymentMethodObserver)
+    }
 
-                }
-                is Resource.Success -> {
-                    val paymentMethods = res.data ?: arrayListOf()
-                    if (paymentMethods.isNotEmpty()) {
-                        adapter.updateData(paymentMethods)
-                    }
-                }
-                is Resource.Error -> {
-
+    private val paymentMethodObserver = Observer<Resource<List<PaymentMethodDomain>>> { res ->
+        when (res) {
+            is Resource.Loading -> {
+                setLoadingPayment(true)
+            }
+            is Resource.Success -> {
+                setLoadingPayment(false)
+                val paymentMethods = res.data ?: arrayListOf()
+                if (paymentMethods.isNotEmpty()) {
+                    adapter.updateData(paymentMethods)
                 }
             }
+            is Resource.Error -> {
+                setLoadingPayment(false)
+            }
         }
+
+    }
+
+    private fun setLoadingPayment(isLoading: Boolean) {
+        if (isLoading) {
+            binding.shimmerPaymentMethod.apply {
+                visibility = View.VISIBLE
+                startShimmer()
+            }
+        } else {
+            binding.shimmerPaymentMethod.apply {
+                stopShimmer()
+                visibility = View.GONE
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.shimmerPaymentMethod.startShimmer()
+    }
+
+    override fun onPause() {
+        binding.shimmerPaymentMethod.stopShimmer()
+        super.onPause()
     }
 }

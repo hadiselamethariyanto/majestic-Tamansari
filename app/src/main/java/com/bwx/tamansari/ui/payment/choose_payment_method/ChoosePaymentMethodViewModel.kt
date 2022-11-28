@@ -5,12 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import banyuwangi.digital.core.domain.model.PaymentMethodDomain
+import banyuwangi.digital.core.domain.usecase.payment.PaymentUseCase
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodUseCase
 import banyuwangi.digital.core.domain.usecase.transaction_wisata.TransactionWisataUsecase
 
 class ChoosePaymentMethodViewModel(
     private val paymentMethodUseCase: PaymentMethodUseCase,
-    private val transactionWisataUsecase: TransactionWisataUsecase
+    private val transactionWisataUsecase: TransactionWisataUsecase,
+    private val paymentUseCase: PaymentUseCase
 ) :
     ViewModel() {
 
@@ -25,5 +27,8 @@ class ChoosePaymentMethodViewModel(
     fun selectPaymentMethod(paymentMethod: PaymentMethodDomain) {
         _selectedPaymentMethod.value = paymentMethod
     }
+
+    fun chargeEWallet(orderId: String, channelCode: String, amount: Int) =
+        paymentUseCase.chargeEWallet(orderId, channelCode, amount).asLiveData()
 
 }

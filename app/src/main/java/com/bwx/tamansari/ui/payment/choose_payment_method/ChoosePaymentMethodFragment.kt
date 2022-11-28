@@ -3,7 +3,9 @@ package com.bwx.tamansari.ui.payment.choose_payment_method
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.PaymentMethodDomain
 import banyuwangi.digital.core.domain.model.TransactionDomain
@@ -34,8 +36,13 @@ class ChoosePaymentMethodFragment :
         binding.btnPayment.setOnClickListener {
             val paymentMethodDomain = viewModel.selectedPaymentMethod.value
             if (paymentMethodDomain != null) {
-                Toast.makeText(requireActivity(), paymentMethodDomain.code, Toast.LENGTH_LONG)
-                    .show()
+                transaction?.let { it1 ->
+                    viewModel.chargeEWallet(
+                        it1.id,
+                        paymentMethodDomain.code,
+                        it1.totalFee
+                    ).observe(viewLifecycleOwner, chargeEWalletObserver)
+                }
             } else {
                 Toast.makeText(
                     requireActivity(),
@@ -61,6 +68,26 @@ class ChoosePaymentMethodFragment :
         }
 
         viewModel.getPaymentMethod().observe(viewLifecycleOwner, paymentMethodObserver)
+    }
+
+    private val chargeEWalletObserver = Observer<Resource<String>> { res ->
+        when (res) {
+            is Resource.Loading -> {
+                binding.btnPayment.isEnabled = false
+            }
+            is Resource.Success -> {
+                binding.btnPayment.isEnabled = true
+                val bundle = bundleOf("checkout_url" to res.data)
+                findNavController().navigate(
+                    R.id.action_navigation_choose_payment_method_to_navigation_payment_ewallet,
+                    bundle
+                )
+            }
+            is Resource.Error -> {
+                binding.btnPayment.isEnabled = true
+                Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     private val transactionWisataObserver = Observer<Resource<TransactionWisataDomain>> { res ->

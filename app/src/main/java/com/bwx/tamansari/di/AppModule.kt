@@ -1,6 +1,8 @@
 package com.bwx.tamansari.di
 
 import banyuwangi.digital.core.domain.usecase.*
+import banyuwangi.digital.core.domain.usecase.payment.PaymentInteractor
+import banyuwangi.digital.core.domain.usecase.payment.PaymentUseCase
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodInteractor
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodUseCase
 import banyuwangi.digital.core.domain.usecase.transaction_wisata.TransactionWisataInteractor
@@ -36,6 +38,7 @@ val useCaseModule = module {
     factory<TransactionWisataUsecase> { TransactionWisataInteractor(get()) }
     factory<PaymentMethodUseCase> { PaymentMethodInteractor(get()) }
     factory<TransactionsUseCase> { TransactionsInteractor(get()) }
+    factory<PaymentUseCase> { PaymentInteractor(get()) }
 }
 
 val viewModelModule = module {
@@ -52,6 +55,6 @@ val viewModelModule = module {
     viewModel { ReviewWisataViewModel(get(), get()) }
     viewModel { ReviewTransactionHomestayViewModel(get()) }
     viewModel { ReviewTransactionTravelPackageViewModel(get()) }
-    viewModel { ChoosePaymentMethodViewModel(get(),get()) }
+    viewModel { ChoosePaymentMethodViewModel(get(),get(),get()) }
     viewModel { TransactionsViewModel(get(),get()) }
 }

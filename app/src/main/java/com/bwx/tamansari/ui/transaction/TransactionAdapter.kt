@@ -49,25 +49,43 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.ViewHolder>()
             binding.tvTitle.text = data.title
             binding.tvTotalFee.text = "IDR ${Utils.thousandSeparator(data.totalFee)}"
 
-            val currentTime = Calendar.getInstance()
-            val different = (data.expiredAt * 1000) - currentTime.time.time
+            if (data.status == 3) {
+                binding.tvTimeRemaining.background = ContextCompat.getDrawable(
+                    itemView.context,
+                    R.drawable.background_success_transaction
+                )
+                binding.tvTimeRemaining.text = "Transaksi Berhasil"
+            } else if (data.status == 4) {
+                binding.tvTimeRemaining.background = ContextCompat.getDrawable(
+                    itemView.context,
+                    R.drawable.background_failed_transaction
+                )
+                binding.tvTimeRemaining.text = "Transaksi Gagal"
+            } else {
+                val currentTime = Calendar.getInstance()
+                val different = (data.expiredAt * 1000) - currentTime.time.time
 
-            timer = object : CountDownTimer(different, 1000) {
-                override fun onTick(millisUntilFinished: Long) {
-                    val minutes = (millisUntilFinished / 1000) / 60
-                    val seconds = (millisUntilFinished / 1000) % 60
-                    binding.tvTimeRemaining.text = "Selesaikan pembayaran $minutes:$seconds"
-                }
+                timer = object : CountDownTimer(different, 1000) {
+                    override fun onTick(millisUntilFinished: Long) {
+                        val minutes = (millisUntilFinished / 1000) / 60
+                        val seconds = (millisUntilFinished / 1000) % 60
+                        binding.tvTimeRemaining.text = "Selesaikan pembayaran $minutes:$seconds"
+                    }
 
-                override fun onFinish() {
-                    binding.tvTimeRemaining.background = ContextCompat.getDrawable(
-                        itemView.context,
-                        R.drawable.background_time_remaining_finished
-                    )
-                    binding.tvTimeRemaining.text = "Pembayaran berakhir 00:00:00"
+                    override fun onFinish() {
+                        binding.tvTimeRemaining.background = ContextCompat.getDrawable(
+                            itemView.context,
+                            R.drawable.background_time_remaining_finished
+                        )
+                        binding.tvTimeRemaining.text = "Pembayaran berakhir 00:00:00"
+
+                        if (data.status == 1) {
+                            onItemClickCallback.onUpdateExpired(data)
+                        }
+                    }
                 }
+                timer?.start()
             }
-            timer?.start()
 
             Glide.with(itemView.context).load(R.drawable.ic_ticket_transaction)
                 .into(binding.imgIcon)
@@ -80,6 +98,7 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.ViewHolder>()
 
     interface OnItemClickCallback {
         fun onItemClicked(data: TransactionDomain)
+        fun onUpdateExpired(data: TransactionDomain)
     }
 
     override fun onViewRecycled(holder: ViewHolder) {

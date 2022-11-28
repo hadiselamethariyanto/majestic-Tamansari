@@ -95,6 +95,10 @@ class TransactionFragment : BaseFragment<FragmentRiwayatBinding>(FragmentRiwayat
                     bundle
                 )
             }
+
+            override fun onUpdateExpired(data: TransactionDomain) {
+                TODO("Not yet implemented")
+            }
         })
 
         binding.rvTransaksi.layoutManager = linearLayoutManager

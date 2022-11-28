@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_navigation_transaction_to_navigation_choose_payment_method"
             app:destination="@id/navigation_choose_payment_method" />
+        <action
+            android:id="@+id/action_navigation_transaction_to_navigation_my_ticket_wisata"
+            app:destination="@id/navigation_my_ticket_wisata" />
     </fragment>
 
     <fragment
@@ -211,5 +214,11 @@
         android:name="com.bwx.tamansari.ui.payment.pay_ewallet.PaymentEWalletFragment"
         android:label="@string/navigation_payment"
         tools:layout="@layout/fragment_payment_e_wallet" />
+
+    <fragment
+        android:id="@+id/navigation_my_ticket_wisata"
+        android:name="com.bwx.tamansari.ui.ticket.MyTicketWisataFragment"
+        android:label="@string/navigation_my_ticket_wisata"
+        tools:layout="@layout/fragment_my_ticket_wisata" />
 
 </navigation>

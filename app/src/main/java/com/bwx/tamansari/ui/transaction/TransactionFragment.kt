@@ -90,10 +90,17 @@ class TransactionFragment : BaseFragment<FragmentRiwayatBinding>(FragmentRiwayat
         adapter.setOnItemClickCallback(object : TransactionAdapter.OnItemClickCallback {
             override fun onItemClicked(data: TransactionDomain) {
                 val bundle = bundleOf("transaction" to data)
-                findNavController().navigate(
-                    R.id.action_navigation_transaction_to_navigation_choose_payment_method,
-                    bundle
-                )
+                if (data.status == 3) {
+                    findNavController().navigate(
+                        R.id.action_navigation_transaction_to_navigation_my_ticket_wisata,
+                        bundle
+                    )
+                } else {
+                    findNavController().navigate(
+                        R.id.action_navigation_transaction_to_navigation_choose_payment_method,
+                        bundle
+                    )
+                }
             }
 
             override fun onUpdateExpired(data: TransactionDomain) {

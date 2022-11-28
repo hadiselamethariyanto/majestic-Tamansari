@@ -24,6 +24,7 @@
     <string name="navigation_choose_room">Pilih Kamar</string>
     <string name="navigation_review_transaction">Review Transaksi</string>
     <string name="navigation_choose_travel_package">Pilih Paket</string>
+    <string name="navigation_payment">Pembayaran</string>
     <string name="homestay">Homestay</string>
     <string name="waktu_checkin">Waktu Check-in:</string>
     <string name="waktu_checkout">Waktu Chek-out:</string>

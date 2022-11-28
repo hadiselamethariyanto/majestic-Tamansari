@@ -94,8 +94,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_review_transaction_travel_package -> {
                     binding.bottomNav.visibility = View.GONE
                 }
-                R.id.navigation_choose_payment_method->{
+                R.id.navigation_choose_payment_method -> {
                     supportActionBar?.hide()
+                    binding.bottomNav.visibility = View.GONE
+                }
+                R.id.navigation_payment_ewallet -> {
+                    supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }
                 else -> {

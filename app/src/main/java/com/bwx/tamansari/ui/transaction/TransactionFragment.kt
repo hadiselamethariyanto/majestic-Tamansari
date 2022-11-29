@@ -95,6 +95,11 @@ class TransactionFragment : BaseFragment<FragmentRiwayatBinding>(FragmentRiwayat
                         R.id.action_navigation_transaction_to_navigation_my_ticket_wisata,
                         bundle
                     )
+                } else if (data.status == 4) {
+                    findNavController().navigate(
+                        R.id.action_navigation_transaction_to_navigation_my_failed_ticket_wisata,
+                        bundle
+                    )
                 } else {
                     findNavController().navigate(
                         R.id.action_navigation_transaction_to_navigation_choose_payment_method,

@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_navigation_transaction_to_navigation_my_ticket_wisata"
             app:destination="@id/navigation_my_ticket_wisata" />
+        <action
+            android:id="@+id/action_navigation_transaction_to_navigation_my_failed_ticket_wisata"
+            app:destination="@id/navigation_my_failed_ticket_wisata" />
     </fragment>
 
     <fragment
@@ -217,8 +220,14 @@
 
     <fragment
         android:id="@+id/navigation_my_ticket_wisata"
-        android:name="com.bwx.tamansari.ui.ticket.MyTicketWisataFragment"
+        android:name="com.bwx.tamansari.ui.ticket.wisata.MyTicketWisataFragment"
         android:label="@string/navigation_my_ticket_wisata"
         tools:layout="@layout/fragment_my_ticket_wisata" />
+
+    <fragment
+        android:id="@+id/navigation_my_failed_ticket_wisata"
+        android:name="com.bwx.tamansari.ui.ticket.wisata.MyFailedTicketWisataFragment"
+        android:label="@string/navigation_my_ticket_wisata"
+        tools:layout="@layout/fragment_my_failed_ticket_wisata" />
 
 </navigation>

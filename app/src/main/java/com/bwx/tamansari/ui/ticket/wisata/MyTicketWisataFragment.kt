@@ -1,4 +1,4 @@
-package com.bwx.tamansari.ui.ticket
+package com.bwx.tamansari.ui.ticket.wisata
 
 import android.graphics.Bitmap
 import android.graphics.Color

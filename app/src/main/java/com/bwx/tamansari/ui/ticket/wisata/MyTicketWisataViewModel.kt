@@ -1,4 +1,4 @@
-package com.bwx.tamansari.ui.ticket
+package com.bwx.tamansari.ui.ticket.wisata
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

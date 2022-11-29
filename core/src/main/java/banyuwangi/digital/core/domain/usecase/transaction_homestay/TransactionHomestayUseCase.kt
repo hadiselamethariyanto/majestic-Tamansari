@@ -2,6 +2,7 @@ package banyuwangi.digital.core.domain.usecase.transaction_homestay
 
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.TransactionDomain
+import banyuwangi.digital.core.domain.model.TransactionHomestayDomain
 import kotlinx.coroutines.flow.Flow
 
 interface TransactionHomestayUseCase {
@@ -19,5 +20,7 @@ interface TransactionHomestayUseCase {
         checkOut: String,
         totalPerson: Int
     ): Flow<Resource<TransactionDomain>>
+
+    fun getTransactionHomestay(id: String): Flow<Resource<TransactionHomestayDomain>>
 
 }

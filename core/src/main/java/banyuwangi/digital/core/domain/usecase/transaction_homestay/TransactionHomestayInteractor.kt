@@ -2,6 +2,7 @@ package banyuwangi.digital.core.domain.usecase.transaction_homestay
 
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.TransactionDomain
+import banyuwangi.digital.core.domain.model.TransactionHomestayDomain
 import banyuwangi.digital.core.domain.repository.TransactionHomestayRepository
 import kotlinx.coroutines.flow.Flow
 
@@ -32,4 +33,8 @@ class TransactionHomestayInteractor(private val repository: TransactionHomestayR
         checkOut,
         totalPerson
     )
+
+    override fun getTransactionHomestay(id: String): Flow<Resource<TransactionHomestayDomain>> {
+        return repository.getTransactionHomestay(id)
+    }
 }

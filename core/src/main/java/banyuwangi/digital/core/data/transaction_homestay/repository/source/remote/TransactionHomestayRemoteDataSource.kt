@@ -2,6 +2,7 @@ package banyuwangi.digital.core.data.transaction_homestay.repository.source.remo
 
 import banyuwangi.digital.core.data.network.ApiResponseOnly
 import banyuwangi.digital.core.data.transaction_homestay.repository.source.remote.network.TransactionHomestayService
+import banyuwangi.digital.core.data.transaction_homestay.repository.source.remote.response.GetTransactionHomestayResponse
 import banyuwangi.digital.core.data.transaction_wisata.repository.source.remote.response.InsertTransactionWisataResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -38,6 +39,21 @@ class TransactionHomestayRemoteDataSource(private val service: TransactionHomest
                     checkOut,
                     totalPerson
                 )
+                if (response.success) {
+                    emit(ApiResponseOnly.Success(response))
+                } else {
+                    emit(ApiResponseOnly.Error(response.message))
+                }
+            } catch (e: Exception) {
+                emit(ApiResponseOnly.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getTransactionHomestay(id: String): Flow<ApiResponseOnly<GetTransactionHomestayResponse>> {
+        return flow {
+            try {
+                val response = service.getTransactionHomestay(id)
                 if (response.success) {
                     emit(ApiResponseOnly.Success(response))
                 } else {

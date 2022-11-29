@@ -59,7 +59,7 @@ val viewModelModule = module {
     viewModel { ReviewWisataViewModel(get(), get()) }
     viewModel { ReviewTransactionHomestayViewModel(get(),get()) }
     viewModel { ReviewTransactionTravelPackageViewModel(get()) }
-    viewModel { ChoosePaymentMethodViewModel(get(), get(), get()) }
+    viewModel { ChoosePaymentMethodViewModel(get(), get(), get(),get()) }
     viewModel { TransactionsViewModel(get(), get()) }
     viewModel { MyTicketWisataViewModel(get()) }
 }

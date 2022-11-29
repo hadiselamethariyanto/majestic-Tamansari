@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.PaymentMethodDomain
 import banyuwangi.digital.core.domain.model.TransactionDomain
+import banyuwangi.digital.core.domain.model.TransactionHomestayDomain
 import banyuwangi.digital.core.domain.model.TransactionWisataDomain
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -65,6 +66,9 @@ class ChoosePaymentMethodFragment :
         if (transaction?.type == 1) {
             viewModel.getTransactionWisata(transaction.id)
                 .observe(viewLifecycleOwner, transactionWisataObserver)
+        } else if (transaction?.type == 5) {
+            viewModel.getTransactionHomestay(transaction.id)
+                .observe(viewLifecycleOwner, transactionHomestayObserver)
         }
 
         viewModel.getPaymentMethod().observe(viewLifecycleOwner, paymentMethodObserver)
@@ -113,6 +117,33 @@ class ChoosePaymentMethodFragment :
                 setLoadingOutlet(false)
             }
         }
+    }
+
+    private val transactionHomestayObserver = Observer<Resource<TransactionHomestayDomain>> { res ->
+        when (res) {
+            is Resource.Loading -> {
+                setLoadingOutlet(true)
+            }
+            is Resource.Success -> {
+                setLoadingOutlet(false)
+                val homestay = res.data?.homestay
+                val homestayPhotos = homestay?.photos
+
+                binding.tvOutletName.text = homestay?.name
+                if (homestayPhotos?.isNotEmpty() == true) {
+                    Glide.with(requireActivity())
+                        .load(homestayPhotos[0])
+                        .placeholder(R.drawable.placeholder)
+                        .transform(CenterCrop(), RoundedCorners(12))
+                        .into(binding.imgOutlet)
+                }
+            }
+            is Resource.Error -> {
+                setLoadingOutlet(false)
+                Toast.makeText(requireActivity(),res.message,Toast.LENGTH_LONG).show()
+            }
+        }
+
     }
 
     private val paymentMethodObserver = Observer<Resource<List<PaymentMethodDomain>>> { res ->

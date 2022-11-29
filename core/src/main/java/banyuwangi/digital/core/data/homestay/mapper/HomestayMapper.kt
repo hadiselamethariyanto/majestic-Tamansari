@@ -14,21 +14,37 @@ object HomestayMapper {
     fun mapHomestayItemToDomain(homestays: List<HomestayItem>): List<HomestayDomain> =
         homestays.map {
             HomestayDomain(
-                id = it.id,
-                name = it.name,
-                rating = it.rating,
-                voteCount = it.voteCount,
-                latitude = it.latitude,
-                longitude = it.longitude,
-                description = it.description,
-                address = it.address,
-                photos = it.photos,
-                checkIn = it.checkIn,
-                checkOut = it.checkOut,
-                rooms = mapRoomItemToDomain(it.rooms),
-                facilities = mapFacilitiesItemToDomain(it.facilities)
+                id = it.id ?: "",
+                name = it.name ?: "",
+                rating = it.rating ?: 0f,
+                voteCount = it.voteCount ?: 0,
+                latitude = it.latitude ?: 0.0,
+                longitude = it.longitude ?: 0.0,
+                description = it.description ?: "",
+                address = it.address ?: "",
+                photos = it.photos ?: arrayListOf(),
+                checkIn = it.checkIn ?: "",
+                checkOut = it.checkOut ?: "",
+                rooms = mapRoomItemToDomain(it.rooms ?: arrayListOf()),
+                facilities = mapFacilitiesItemToDomain(it.facilities ?: arrayListOf())
             )
         }
+
+    fun mapHomestayItemToDomain(it: HomestayItem): HomestayDomain = HomestayDomain(
+        id = it.id ?: "",
+        name = it.name ?: "",
+        rating = it.rating ?: 0f,
+        voteCount = it.voteCount ?: 0,
+        latitude = it.latitude ?: 0.0,
+        longitude = it.longitude ?: 0.0,
+        description = it.description ?: "",
+        address = it.address ?: "",
+        photos = it.photos ?: arrayListOf(),
+        checkIn = it.checkIn ?: "",
+        checkOut = it.checkOut ?: "",
+        rooms = mapRoomItemToDomain(it.rooms ?: arrayListOf()),
+        facilities = mapFacilitiesItemToDomain(it.facilities ?: arrayListOf())
+    )
 
     fun mapFacilitiesItemToDomain(facilities: List<FacilityItem>): List<FacilityDomain> =
         facilities.map {

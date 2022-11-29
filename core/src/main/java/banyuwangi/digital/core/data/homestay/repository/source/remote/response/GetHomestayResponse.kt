@@ -9,17 +9,17 @@ data class GetHomestayResponse(
 )
 
 data class HomestayItem(
-    val id: String,
-    val name: String,
-    val rating: Float,
-    @field:SerializedName("vote_count") val voteCount: Int,
-    val latitude: Double,
-    val longitude: Double,
-    val description: String,
-    val address: String,
-    val photos: List<String>,
-    @field:SerializedName("check_in") val checkIn: String,
-    @field:SerializedName("check_out") val checkOut: String,
-    val rooms: List<RoomItem>,
-    val facilities: List<FacilityItem>
+    val id: String? = null,
+    val name: String? = null,
+    val rating: Float? = 0f,
+    @field:SerializedName("vote_count") val voteCount: Int? = 0,
+    val latitude: Double? = 0.0,
+    val longitude: Double? = 0.0,
+    val description: String? = null,
+    val address: String? = null,
+    val photos: List<String>? = arrayListOf(),
+    @field:SerializedName("check_in") val checkIn: String? = null,
+    @field:SerializedName("check_out") val checkOut: String? = null,
+    val rooms: List<RoomItem>? = arrayListOf(),
+    val facilities: List<FacilityItem>? = arrayListOf()
 )

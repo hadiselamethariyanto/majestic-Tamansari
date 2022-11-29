@@ -22,6 +22,7 @@ import com.bwx.tamansari.ui.paket.review.ReviewTransactionTravelPackageViewModel
 import com.bwx.tamansari.ui.payment.choose_payment_method.ChoosePaymentMethodViewModel
 import com.bwx.tamansari.ui.restaurant.list.RestaurantViewModel
 import com.bwx.tamansari.ui.ticket.wisata.MyTicketWisataViewModel
+import com.bwx.tamansari.ui.ticket_homestay.MyTicketHomestayViewModel
 import com.bwx.tamansari.ui.transaction.TransactionsViewModel
 import com.bwx.tamansari.ui.wisata.choose_ticket.ChooseTicketWisataViewModel
 import com.bwx.tamansari.ui.wisata.detail.rating.RatingWisataViewModel
@@ -62,4 +63,5 @@ val viewModelModule = module {
     viewModel { ChoosePaymentMethodViewModel(get(), get(), get(),get()) }
     viewModel { TransactionsViewModel(get(), get()) }
     viewModel { MyTicketWisataViewModel(get()) }
+    viewModel { MyTicketHomestayViewModel(get()) }
 }

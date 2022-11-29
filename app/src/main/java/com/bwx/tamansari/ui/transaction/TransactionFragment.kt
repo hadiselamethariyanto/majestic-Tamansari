@@ -91,10 +91,14 @@ class TransactionFragment : BaseFragment<FragmentRiwayatBinding>(FragmentRiwayat
             override fun onItemClicked(data: TransactionDomain) {
                 val bundle = bundleOf("transaction" to data)
                 if (data.status == 3) {
-                    findNavController().navigate(
-                        R.id.action_navigation_transaction_to_navigation_my_ticket_wisata,
-                        bundle
-                    )
+                    if (data.type == 1) {
+                        findNavController().navigate(
+                            R.id.action_navigation_transaction_to_navigation_my_ticket_wisata,
+                            bundle
+                        )
+                    } else if (data.type == 5) {
+                        findNavController().navigate(R.id.navigation_my_ticket_homestay, bundle)
+                    }
                 } else if (data.status == 4) {
                     findNavController().navigate(
                         R.id.action_navigation_transaction_to_navigation_my_failed_ticket_wisata,

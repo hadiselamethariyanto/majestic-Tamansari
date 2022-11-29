@@ -11,6 +11,7 @@ object TransactionHomestayMapper {
             homestay = HomestayMapper.mapHomestayItemToDomain(trx.homestay),
             checkIn = trx.checkIn,
             checkOut = trx.checkOut,
-            totalPerson = trx.totalPerson
+            totalPerson = trx.totalPerson,
+            room = HomestayMapper.mapRoomItemToDomain(trx.room)
         )
 }

@@ -63,6 +63,16 @@ object HomestayMapper {
         )
     }
 
+    fun mapRoomItemToDomain(it: RoomItem): RoomDomain = RoomDomain(
+        id = it.id,
+        name = it.name,
+        area = it.area,
+        roomCapacity = it.capacity,
+        bedType = it.bedType,
+        breakfast = it.breakfast == 1,
+        price = it.price
+    )
+
     fun mapAvailableRoomItemToDomain(rooms: List<AvailableRoomItem>): List<AvailableRoomDomain> =
         rooms.map {
             AvailableRoomDomain(

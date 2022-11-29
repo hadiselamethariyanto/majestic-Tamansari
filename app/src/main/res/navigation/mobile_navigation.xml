@@ -241,5 +241,10 @@
         android:name="com.bwx.tamansari.ui.ticket.wisata.MyFailedTicketWisataFragment"
         android:label="@string/navigation_my_ticket_wisata"
         tools:layout="@layout/fragment_my_failed_ticket_wisata" />
+    <fragment
+        android:id="@+id/navigation_my_ticket_homestay"
+        android:name="com.bwx.tamansari.ui.ticket_homestay.MyTicketHomestayFragment"
+        android:label="@string/navigation_my_ticket_wisata"
+        tools:layout="@layout/fragment_my_ticket_homestay" />
 
 </navigation>

@@ -28,7 +28,7 @@ class MyTicketWisataFragment :
 
         binding.tvOrderId.text = transaction?.id
 
-        Glide.with(requireActivity()).load(getQrCodeBitmap(transaction?.id ?: "")).centerCrop()
+        Glide.with(requireActivity()).load(Utils.getQrCodeBitmap(transaction?.id ?: "")).centerCrop()
             .into(binding.imgQr)
 
         binding.tvCustomerName.text = "Nama lengkap: ${transaction?.customerName}"
@@ -60,15 +60,4 @@ class MyTicketWisataFragment :
         }
     }
 
-    private fun getQrCodeBitmap(orderId: String): Bitmap {
-        val size = 512 //pixels
-        val bits = QRCodeWriter().encode(orderId, BarcodeFormat.QR_CODE, size, size)
-        return Bitmap.createBitmap(size, size, Bitmap.Config.RGB_565).also {
-            for (x in 0 until size) {
-                for (y in 0 until size) {
-                    it.setPixel(x, y, if (bits[x, y]) Color.BLACK else Color.WHITE)
-                }
-            }
-        }
-    }
 }

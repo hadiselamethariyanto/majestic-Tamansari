@@ -70,7 +70,8 @@ class ReviewTransactionWisataFragment :
         binding.tvTotalFee.text = "IDR ${Utils.thousandSeparator(totalPayment)}"
         binding.tvTotalPayment.text = "IDR ${Utils.thousandSeparator(totalPayment)}"
 
-        val adapter = ReviewTransactionWisataAdapter(charts)
+        val adapter = ReviewTransactionWisataAdapter()
+        adapter.updateData(charts)
         binding.rvChart.adapter = adapter
 
         val user = viewModel.user.value

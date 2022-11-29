@@ -7,15 +7,25 @@ import com.bwx.tamansari.databinding.ItemChartItemBinding
 import banyuwangi.digital.core.domain.model.ChartDomain
 import com.bwx.tamansari.utils.Utils
 
-class ReviewTransactionWisataAdapter(private val list: List<ChartDomain>) :
+class ReviewTransactionWisataAdapter :
     RecyclerView.Adapter<ReviewTransactionWisataAdapter.ViewHolder>() {
+
+    private val list = ArrayList<ChartDomain>()
+
+    fun updateData(newList: List<ChartDomain>) {
+        list.clear()
+        list.addAll(newList)
+        notifyDataSetChanged()
+    }
 
     class ViewHolder(private val binding: ItemChartItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: ChartDomain) {
             binding.tvItemName.text = data.productName
-            binding.tvTotalItem.text = data.total.toString()
-            binding.tvTotalFee.text = "IDR ${Utils.thousandSeparator(data.productPrice)}"
+            binding.tvTotalItem.text = "${data.total} Tiket"
+            binding.tvFee.text = "x ${Utils.thousandSeparator(data.productPrice)}"
+            binding.tvTotalFee.text =
+                "IDR ${Utils.thousandSeparator(data.productPrice * data.total)}"
         }
     }
 

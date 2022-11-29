@@ -41,4 +41,24 @@ object Utils {
         val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         return formatter.format(time)
     }
+
+    fun formatStringDateToLong(date: String): Long {
+        return try {
+            val dateFormatted: Date =
+                SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).parse(date) ?: Date()
+            dateFormatted.time
+        } catch (e: Exception) {
+            0
+        }
+    }
+
+    fun formatStringDateToYYYYMMDD(date: String): String {
+        return try {
+            val dateFormatted: Date =
+                SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).parse(date) ?: Date()
+            SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(dateFormatted)
+        } catch (e: Exception) {
+            "2022-01-01"
+        }
+    }
 }

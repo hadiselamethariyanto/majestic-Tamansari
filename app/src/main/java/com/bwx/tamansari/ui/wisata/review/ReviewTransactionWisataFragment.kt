@@ -82,8 +82,8 @@ class ReviewTransactionWisataFragment :
                 customerEmail = user?.email ?: "",
                 customerPhoneNumber = "123",
                 fee = totalPayment,
-                convenienceFee = 5000,
-                totalFee = totalPayment + 5000,
+                convenienceFee = 0,
+                totalFee = totalPayment,
                 idWisata = wisata?.id ?: "",
                 charts = charts
             ).observe(viewLifecycleOwner) { res ->

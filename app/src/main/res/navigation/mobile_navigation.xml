@@ -180,7 +180,12 @@
         android:id="@+id/navigation_review_transaction_homestay"
         android:name="com.bwx.tamansari.ui.homestay.review_transaction.ReviewTransactionHomestayFragment"
         android:label="@string/navigation_review_transaction"
-        tools:layout="@layout/fragment_review_transaction_homestay"></fragment>
+        tools:layout="@layout/fragment_review_transaction_homestay">
+        <action
+            android:id="@+id/action_navigation_review_transaction_homestay_to_navigation_choose_payment_method"
+            app:destination="@id/navigation_choose_payment_method"
+            app:popUpTo="@id/navigation_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_choose_travel_package"
@@ -216,7 +221,14 @@
         android:id="@+id/navigation_payment_ewallet"
         android:name="com.bwx.tamansari.ui.payment.pay_ewallet.PaymentEWalletFragment"
         android:label="@string/navigation_payment"
-        tools:layout="@layout/fragment_payment_e_wallet" />
+        tools:layout="@layout/fragment_payment_e_wallet">
+
+        <action
+            android:id="@+id/action_navigation_ewallet_to_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_my_ticket_wisata"

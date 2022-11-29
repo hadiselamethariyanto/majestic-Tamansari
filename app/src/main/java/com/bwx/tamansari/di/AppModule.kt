@@ -5,6 +5,8 @@ import banyuwangi.digital.core.domain.usecase.payment.PaymentInteractor
 import banyuwangi.digital.core.domain.usecase.payment.PaymentUseCase
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodInteractor
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodUseCase
+import banyuwangi.digital.core.domain.usecase.transaction_homestay.TransactionHomestayInteractor
+import banyuwangi.digital.core.domain.usecase.transaction_homestay.TransactionHomestayUseCase
 import banyuwangi.digital.core.domain.usecase.transaction_wisata.TransactionWisataInteractor
 import banyuwangi.digital.core.domain.usecase.transaction_wisata.TransactionWisataUsecase
 import banyuwangi.digital.core.domain.usecase.transactions.TransactionsInteractor
@@ -40,6 +42,7 @@ val useCaseModule = module {
     factory<PaymentMethodUseCase> { PaymentMethodInteractor(get()) }
     factory<TransactionsUseCase> { TransactionsInteractor(get()) }
     factory<PaymentUseCase> { PaymentInteractor(get()) }
+    factory<TransactionHomestayUseCase> { TransactionHomestayInteractor(get()) }
 }
 
 val viewModelModule = module {
@@ -54,7 +57,7 @@ val viewModelModule = module {
     viewModel { AccountViewModel(get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { ReviewWisataViewModel(get(), get()) }
-    viewModel { ReviewTransactionHomestayViewModel(get()) }
+    viewModel { ReviewTransactionHomestayViewModel(get(),get()) }
     viewModel { ReviewTransactionTravelPackageViewModel(get()) }
     viewModel { ChoosePaymentMethodViewModel(get(), get(), get()) }
     viewModel { TransactionsViewModel(get(), get()) }

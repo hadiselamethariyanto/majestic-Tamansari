@@ -109,7 +109,7 @@ class TransactionFragment : BaseFragment<FragmentRiwayatBinding>(FragmentRiwayat
             }
 
             override fun onUpdateExpired(data: TransactionDomain) {
-                TODO("Not yet implemented")
+
             }
         })
 

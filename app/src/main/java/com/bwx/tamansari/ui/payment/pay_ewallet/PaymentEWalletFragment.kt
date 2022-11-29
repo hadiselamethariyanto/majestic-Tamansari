@@ -29,7 +29,7 @@ class PaymentEWalletFragment :
             ): Boolean {
                 val url = request?.url.toString()
                 if (url == "https://google.com/") {
-                    findNavController().navigate(R.id.navigation_transaction)
+                    findNavController().navigate(R.id.action_navigation_ewallet_to_home)
                     return false
                 }
                 view?.loadUrl(url)

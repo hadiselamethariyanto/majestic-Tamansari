@@ -2,9 +2,7 @@ package com.bwx.tamansari.ui.payment.pay_ewallet
 
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -31,7 +29,7 @@ class PaymentEWalletFragment :
             ): Boolean {
                 val url = request?.url.toString()
                 if (url == "https://google.com/") {
-                    findNavController().navigate(R.id.navigation_home)
+                    findNavController().navigate(R.id.navigation_transaction)
                     return false
                 }
                 view?.loadUrl(url)

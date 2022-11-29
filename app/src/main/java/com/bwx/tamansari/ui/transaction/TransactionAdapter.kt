@@ -87,8 +87,22 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.ViewHolder>()
                 timer?.start()
             }
 
-            Glide.with(itemView.context).load(R.drawable.ic_ticket_transaction)
-                .into(binding.imgIcon)
+            when (data.type) {
+                1 -> {
+                    Glide.with(itemView.context).load(R.drawable.ic_ticket_transaction)
+                        .into(binding.imgIcon)
+
+                }
+                5 -> {
+                    Glide.with(itemView.context).load(R.drawable.ic_ticket_homestay)
+                        .into(binding.imgIcon)
+                }
+                else -> {
+                    Glide.with(itemView.context).load(R.drawable.ic_ticket_transaction)
+                        .into(binding.imgIcon)
+
+                }
+            }
 
             itemView.setOnClickListener {
                 onItemClickCallback.onItemClicked(data)

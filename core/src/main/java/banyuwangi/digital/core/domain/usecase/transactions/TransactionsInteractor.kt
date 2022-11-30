@@ -8,4 +8,7 @@ import kotlinx.coroutines.flow.Flow
 class TransactionsInteractor(private val repository: TransactionsRepository) : TransactionsUseCase {
     override fun getTransactions(email: String): Flow<Resource<List<TransactionDomain>>> =
         repository.getTransactions(email)
+
+    override fun updateExpiredTransaction(id: String): Flow<Resource<TransactionDomain>> =
+        repository.updateExpiredTransaction(id)
 }

@@ -13,6 +13,9 @@ class TransactionsViewModel(
 
     fun getTransactions(email: String) = transactionsUseCase.getTransactions(email).asLiveData()
 
+    fun updateExpiredTransaction(id: String) =
+        transactionsUseCase.updateExpiredTransaction(id).asLiveData()
+
     private val _user = MutableLiveData<FirebaseUser?>()
 
     val user: LiveData<FirebaseUser?> get() = _user

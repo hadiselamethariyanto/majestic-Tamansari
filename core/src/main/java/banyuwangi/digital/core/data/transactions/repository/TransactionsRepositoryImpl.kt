@@ -6,6 +6,7 @@ import banyuwangi.digital.core.data.network.ApiResponseOnly
 import banyuwangi.digital.core.data.transactions.mapper.TransactionsMapper
 import banyuwangi.digital.core.data.transactions.repository.source.remote.TransactionsRemoteDataSource
 import banyuwangi.digital.core.data.transactions.repository.source.remote.response.GetTransactionsResponse
+import banyuwangi.digital.core.data.transactions.repository.source.remote.response.UpdateExpiredTransactionResponse
 import banyuwangi.digital.core.domain.model.TransactionDomain
 import banyuwangi.digital.core.domain.repository.TransactionsRepository
 import kotlinx.coroutines.flow.Flow
@@ -22,6 +23,19 @@ class TransactionsRepositoryImpl(private val remoteDataSource: TransactionsRemot
 
             override suspend fun createCall(): Flow<ApiResponseOnly<GetTransactionsResponse>> =
                 remoteDataSource.getTransactions(email)
+
+        }.asFlow()
+    }
+
+    override fun updateExpiredTransaction(id: String): Flow<Resource<TransactionDomain>> {
+        return object : NetworkOnlyResource<TransactionDomain, UpdateExpiredTransactionResponse>() {
+            override fun loadFromNetwork(data: UpdateExpiredTransactionResponse): Flow<TransactionDomain> {
+                val response = TransactionsMapper.mapTransactionItemToDomain(data.data)
+                return flowOf(response)
+            }
+
+            override suspend fun createCall(): Flow<ApiResponseOnly<UpdateExpiredTransactionResponse>> =
+                remoteDataSource.updateExpiredTransaction(id)
 
         }.asFlow()
     }

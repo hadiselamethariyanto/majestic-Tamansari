@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -99,13 +100,13 @@ class TransactionFragment : BaseFragment<FragmentRiwayatBinding>(FragmentRiwayat
                     } else if (data.type == 5) {
                         findNavController().navigate(R.id.navigation_my_ticket_homestay, bundle)
                     }
-                } else if (data.status == 4) {
-                    if (data.type == 1){
+                } else if (data.status == 4 || data.status == 2) {
+                    if (data.type == 1) {
                         findNavController().navigate(
                             R.id.action_navigation_transaction_to_navigation_my_failed_ticket_wisata,
                             bundle
                         )
-                    }else if (data.type ==5){
+                    } else if (data.type == 5) {
                         findNavController().navigate(
                             R.id.navigation_my_failed_ticket_homestay,
                             bundle
@@ -120,12 +121,27 @@ class TransactionFragment : BaseFragment<FragmentRiwayatBinding>(FragmentRiwayat
             }
 
             override fun onUpdateExpired(data: TransactionDomain) {
-
+                viewModel.updateExpiredTransaction(data.id)
+                    .observe(viewLifecycleOwner, updateExpiredTransactionObserver)
             }
         })
 
         binding.rvTransaksi.layoutManager = linearLayoutManager
         binding.rvTransaksi.adapter = adapter
+    }
+
+    private val updateExpiredTransactionObserver = Observer<Resource<TransactionDomain>> { res ->
+        when (res) {
+            is Resource.Loading -> {
+
+            }
+            is Resource.Success -> {
+
+            }
+            is Resource.Error -> {
+
+            }
+        }
     }
 
 

@@ -1,0 +1,20 @@
+package banyuwangi.digital.core.domain.repository
+
+import banyuwangi.digital.core.data.Resource
+import banyuwangi.digital.core.domain.model.TransactionDomain
+import kotlinx.coroutines.flow.Flow
+
+interface TransactionTravelPackageRepository {
+
+    fun insertTransactionTravelPackage(
+        customerName: String,
+        customerEmail: String,
+        customerPhoneNumber: String,
+        fee: Int,
+        convenienceFee: Int,
+        totalFee: Int,
+        idTravelPackage: String,
+        idTravelPackageType: String,
+        selectedDate: String
+    ): Flow<Resource<TransactionDomain>>
+}

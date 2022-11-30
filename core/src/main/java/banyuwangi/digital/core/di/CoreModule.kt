@@ -20,6 +20,9 @@ import banyuwangi.digital.core.data.restoran.repository.source.remote.network.Re
 import banyuwangi.digital.core.data.transaction_homestay.repository.TransactionHomestayRepositoryImpl
 import banyuwangi.digital.core.data.transaction_homestay.repository.source.remote.TransactionHomestayRemoteDataSource
 import banyuwangi.digital.core.data.transaction_homestay.repository.source.remote.network.TransactionHomestayService
+import banyuwangi.digital.core.data.transaction_travel_package.repository.TransactionTravelPackageRepositoryImpl
+import banyuwangi.digital.core.data.transaction_travel_package.repository.source.remote.TransactionTravelPackageRemoteDataSource
+import banyuwangi.digital.core.data.transaction_travel_package.repository.source.remote.network.TransactionTravelPackageService
 import banyuwangi.digital.core.data.transaction_wisata.repository.TransactionWisataRepositoryImpl
 import banyuwangi.digital.core.data.transaction_wisata.repository.source.remote.TransactionWisataRemoteDataSource
 import banyuwangi.digital.core.data.transaction_wisata.repository.source.remote.network.TransactionWisataService
@@ -137,6 +140,15 @@ val networkModule = module {
             .build()
         retrofit.create(TransactionHomestayService::class.java)
     }
+
+    single {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(get())
+            .build()
+        retrofit.create(TransactionTravelPackageService::class.java)
+    }
 }
 
 val repositoryModule = module {
@@ -150,6 +162,7 @@ val repositoryModule = module {
     single { TransactionsRemoteDataSource(get()) }
     single { PaymentRemoteDataSource(get()) }
     single { TransactionHomestayRemoteDataSource(get()) }
+    single { TransactionTravelPackageRemoteDataSource(get()) }
 
     single<WisataRepository> { WisataRepositoryImpl(get()) }
     single<HomestayRepository> { HomestayRepositoryImpl(get()) }
@@ -162,6 +175,7 @@ val repositoryModule = module {
     single<TransactionsRepository> { TransactionsRepositoryImpl(get()) }
     single<PaymentRepository> { PaymentRepositoryImpl(get()) }
     single<TransactionHomestayRepository> { TransactionHomestayRepositoryImpl(get()) }
+    single<TransactionTravelPackageRepository> { TransactionTravelPackageRepositoryImpl(get()) }
 }
 
 val firebaseModule =

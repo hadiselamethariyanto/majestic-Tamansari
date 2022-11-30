@@ -7,4 +7,6 @@ import kotlinx.coroutines.flow.Flow
 interface TransactionsUseCase {
 
     fun getTransactions(email: String): Flow<Resource<List<TransactionDomain>>>
+
+    fun updateExpiredTransaction(id: String): Flow<Resource<TransactionDomain>>
 }

@@ -2,8 +2,11 @@ package com.bwx.tamansari.ui.paket.review
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.TravelPackageDomain
 import banyuwangi.digital.core.domain.model.TravelPackageTypeDomain
 import com.bumptech.glide.Glide
@@ -73,6 +76,46 @@ class ReviewTransactionTravelPackageFragment :
 
         binding.tvTotalFee.text = "IDR ${Utils.thousandSeparator(travelPackageDomain?.price ?: 0)}"
 
+        binding.btnPayment.setOnClickListener {
+            val user = viewModel.user.value
+            val totalFee = travelPackageDomain?.price
+
+            viewModel.insertTransaction(
+                customerName = user?.displayName ?: "",
+                customerEmail = user?.email ?: "",
+                customerPhoneNumber = "123",
+                fee = totalFee ?: 0,
+                convenienceFee = 0,
+                totalFee = totalFee ?: 0,
+                idTravelPackage = travelPackage?.id ?: "",
+                idTravelPackageType = travelPackageDomain?.id ?: "",
+                selectedDate = date ?: ""
+            ).observe(viewLifecycleOwner) { res ->
+                when (res) {
+                    is Resource.Loading -> {
+                        setLoading(true)
+                    }
+                    is Resource.Success -> {
+                        setLoading(false)
+                        if (res.data != null) {
+                            val bundle = bundleOf("transaction" to res.data)
+                            findNavController().navigate(
+                                R.id.navigation_choose_payment_method,
+                                bundle
+                            )
+                        }
+                    }
+                    is Resource.Error -> {
+                        setLoading(false)
+                        Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        binding.btnPayment.isEnabled = !isLoading
     }
 
     private fun setupProfile(user: FirebaseUser) {

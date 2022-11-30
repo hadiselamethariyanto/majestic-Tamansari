@@ -1,4 +1,4 @@
-package com.bwx.tamansari.ui.ticket_homestay
+package com.bwx.tamansari.ui.ticket.homestay
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

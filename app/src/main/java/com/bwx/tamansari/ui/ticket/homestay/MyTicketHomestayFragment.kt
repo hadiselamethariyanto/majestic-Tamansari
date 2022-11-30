@@ -1,4 +1,4 @@
-package com.bwx.tamansari.ui.ticket_homestay
+package com.bwx.tamansari.ui.ticket.homestay
 
 import android.os.Bundle
 import android.view.View

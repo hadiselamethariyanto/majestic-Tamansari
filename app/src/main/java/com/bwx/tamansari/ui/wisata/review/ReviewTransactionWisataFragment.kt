@@ -15,6 +15,7 @@ import banyuwangi.digital.core.domain.model.ChartDomain
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.ui.login.LoginFragment
 import com.bwx.tamansari.utils.Utils
+import com.bwx.tamansari.utils.Utils.afterTextChanged
 import com.google.firebase.auth.FirebaseUser
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -67,6 +68,26 @@ class ReviewTransactionWisataFragment :
             }
         }
 
+        viewModel.userFormState.observe(viewLifecycleOwner) {
+            val formState = it ?: return@observe
+
+            if (formState.username != null) {
+                binding.etCustomerName.error = getString(formState.username)
+            } else if (formState.phoneNumber != null) {
+                binding.etCustomerPhone.error = getString(formState.phoneNumber)
+            }
+
+            binding.btnPayment.isEnabled = formState.isDataValid
+        }
+
+        binding.etCustomerName.afterTextChanged {
+            triggerDataChanged()
+        }
+
+        binding.etCustomerPhone.afterTextChanged {
+            triggerDataChanged()
+        }
+
         binding.tvTotalFee.text = "IDR ${Utils.thousandSeparator(totalPayment)}"
         binding.tvTotalPayment.text = "IDR ${Utils.thousandSeparator(totalPayment)}"
 
@@ -77,10 +98,13 @@ class ReviewTransactionWisataFragment :
         val user = viewModel.user.value
 
         binding.btnPayment.setOnClickListener {
+            val username = binding.etCustomerName.text.toString()
+            val phoneNumber = binding.etCustomerPhone.text.toString()
+
             viewModel.insertTransactionWisata(
-                customerName = user?.displayName ?: "",
+                customerName = username,
                 customerEmail = user?.email ?: "",
-                customerPhoneNumber = "123",
+                customerPhoneNumber = phoneNumber,
                 fee = totalPayment,
                 convenienceFee = 0,
                 totalFee = totalPayment,
@@ -114,9 +138,15 @@ class ReviewTransactionWisataFragment :
         binding.btnPayment.isEnabled = !isLoading
     }
 
+    private fun triggerDataChanged() {
+        val username = binding.etCustomerName.text.toString()
+        val phoneNumber = binding.etCustomerPhone.text.toString()
+        viewModel.userDataChanged(username, phoneNumber)
+    }
+
     private fun setupProfile(user: FirebaseUser) {
-        binding.tvCustomerName.text = user.displayName
-        binding.tvCustomerPhone.text = user.phoneNumber
-        binding.tvCustomerEmail.text = user.email
+        binding.etCustomerName.setText(user.displayName)
+        binding.etCustomerPhone.setText(user.phoneNumber)
+        binding.etCustomerEmail.setText(user.email)
     }
 }

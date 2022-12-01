@@ -102,4 +102,7 @@
     <string name="empty_transactions">Tidak ada transaksi</string>
     <string name="bayar">Bayar</string>
 
+    <string name="warning_empty_username">Mohon isi username</string>
+    <string name="warning_empty_phone_number">Mohon isi nomor ponsel</string>
+
 </resources>

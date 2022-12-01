@@ -2,6 +2,9 @@ package com.bwx.tamansari.utils
 
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.EditText
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 import java.text.SimpleDateFormat
@@ -77,4 +80,17 @@ object Utils {
             }
         }
     }
+
+    fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
+        this.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(editable: Editable?) {
+                afterTextChanged.invoke(editable.toString())
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+        })
+    }
+
 }

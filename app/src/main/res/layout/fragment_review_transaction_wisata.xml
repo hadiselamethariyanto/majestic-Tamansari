@@ -37,7 +37,6 @@
                 android:fontFamily="@font/poppins_semi_bold"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
                 app:layout_constraintBottom_toBottomOf="@id/img_wisata"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img_wisata"

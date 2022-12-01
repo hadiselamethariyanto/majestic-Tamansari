@@ -14,6 +14,8 @@ import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentReviewTransactionWisataBinding
 import banyuwangi.digital.core.domain.model.ChartDomain
 import banyuwangi.digital.core.domain.model.TransactionDomain
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.ui.login.LoginFragment
 import com.bwx.tamansari.utils.Utils
@@ -56,7 +58,10 @@ class ReviewTransactionWisataFragment :
         val totalPayment = charts.sumOf { it.total * it.productPrice }
         val photos = wisata?.photos ?: arrayListOf()
         if (photos.isNotEmpty()) {
-            Glide.with(requireActivity()).load(photos[0]).placeholder(R.drawable.placeholder)
+            Glide.with(requireActivity())
+                .load(photos[0])
+                .placeholder(R.drawable.placeholder)
+                .transform(CenterCrop(), RoundedCorners(20))
                 .into(binding.imgWisata)
         }
         binding.tvWisataName.text = wisata?.name

@@ -30,9 +30,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         val list = ArrayList<MenuModel>()
         list.add(MenuModel("Wisata", R.drawable.ic_wisata))
         list.add(MenuModel("Homestay", R.drawable.ic_homestay))
-        list.add(MenuModel("Paket", R.drawable.ic_luggage))
+        list.add(MenuModel("Paket", R.drawable.ic_travel_package))
         list.add(MenuModel("Restoran", R.drawable.ic_restaurant))
-        list.add(MenuModel("Peta", R.drawable.ic_map))
+        list.add(MenuModel("Peta", R.drawable.ic_maps))
         list.add(MenuModel("Berita", R.drawable.ic_berita))
         list.add(MenuModel("TPS3R", R.drawable.ic_tps3r))
 

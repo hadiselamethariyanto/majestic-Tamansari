@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.AvailableRoomDomain
 import banyuwangi.digital.core.domain.model.HomestayDomain
+import banyuwangi.digital.core.domain.model.TransactionDomain
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -17,6 +19,7 @@ import com.bwx.tamansari.databinding.FragmentReviewTransactionHomestayBinding
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.ui.login.LoginFragment
 import com.bwx.tamansari.utils.Utils
+import com.bwx.tamansari.utils.Utils.afterTextChanged
 import com.google.firebase.auth.FirebaseUser
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -78,6 +81,26 @@ class ReviewTransactionHomestayFragment : BaseFragment<FragmentReviewTransaction
             }
         }
 
+        viewModel.userFormState.observe(viewLifecycleOwner) {
+            val formState = it ?: return@observe
+
+            if (formState.username != null) {
+                binding.etCustomerName.error = getString(formState.username)
+            } else if (formState.phoneNumber != null) {
+                binding.etCustomerPhone.error = getString(formState.phoneNumber)
+            }
+
+            binding.btnPayment.isEnabled = formState.isDataValid
+        }
+
+        binding.etCustomerName.afterTextChanged {
+            triggerDataChanged()
+        }
+
+        binding.etCustomerPhone.afterTextChanged {
+            triggerDataChanged()
+        }
+
         val photo = homestay?.photos ?: arrayListOf()
         Glide.with(requireActivity()).load(photo[0]).placeholder(R.drawable.placeholder)
             .transform(
@@ -89,55 +112,63 @@ class ReviewTransactionHomestayFragment : BaseFragment<FragmentReviewTransaction
 
         binding.btnPayment.setOnClickListener {
             val user = viewModel.user.value
+            val username = binding.etCustomerName.text.toString()
+            val phoneNumber = binding.etCustomerPhone.text.toString()
 
-            user.let {
-                viewModel.insertTransaction(
-                    customerName = it?.displayName ?: "",
-                    customerEmail = it?.email ?: "",
-                    customerPhoneNumber = "08213231",
-                    fee = totalFee,
-                    convenienceFee = 0,
-                    totalFee = totalFee,
-                    idHomestay = homestay?.id ?: "",
-                    idRoom = room?.id ?: "",
-                    checkIn = Utils.formatStringDateToYYYYMMDD(checkinDate ?: ""),
-                    checkOut = Utils.formatStringDateToYYYYMMDD(checkoutDate ?: ""),
-                    totalPerson = 1
-                ).observe(viewLifecycleOwner) { res ->
-                    when (res) {
-                        is Resource.Loading -> {
-                            setLoading(true)
-                        }
-                        is Resource.Success -> {
-                            setLoading(false)
-                            if (res.data != null) {
-                                val bundle = bundleOf("transaction" to res.data)
-                                findNavController().navigate(
-                                    R.id.action_navigation_review_transaction_homestay_to_navigation_choose_payment_method,
-                                    bundle
-                                )
-                            }
-                        }
-                        is Resource.Error -> {
-                            setLoading(false)
-                            Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
-                        }
-                    }
-                }
-            }
+            viewModel.insertTransaction(
+                customerName = username,
+                customerEmail = user?.email ?: "",
+                customerPhoneNumber = phoneNumber,
+                fee = totalFee,
+                convenienceFee = 0,
+                totalFee = totalFee,
+                idHomestay = homestay?.id ?: "",
+                idRoom = room?.id ?: "",
+                checkIn = Utils.formatStringDateToYYYYMMDD(checkinDate ?: ""),
+                checkOut = Utils.formatStringDateToYYYYMMDD(checkoutDate ?: ""),
+                totalPerson = 1
+            ).observe(viewLifecycleOwner, insertTransactionObserver)
         }
 
+    }
+
+    private val insertTransactionObserver = Observer<Resource<TransactionDomain>> { res ->
+        when (res) {
+            is Resource.Loading -> {
+                setLoading(true)
+            }
+            is Resource.Success -> {
+                setLoading(false)
+                if (res.data != null) {
+                    val bundle = bundleOf("transaction" to res.data)
+                    findNavController().navigate(
+                        R.id.action_navigation_review_transaction_homestay_to_navigation_choose_payment_method,
+                        bundle
+                    )
+                }
+            }
+            is Resource.Error -> {
+                setLoading(false)
+                Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     private fun setLoading(isLoading: Boolean) {
         binding.btnPayment.isEnabled = !isLoading
     }
 
+    private fun triggerDataChanged() {
+        val username = binding.etCustomerName.text.toString()
+        val phoneNumber = binding.etCustomerPhone.text.toString()
+        viewModel.userDataChanged(username, phoneNumber)
+    }
+
 
     private fun setupProfile(user: FirebaseUser) {
-        binding.tvCustomerName.text = user.displayName
-        binding.tvCustomerPhone.text = user.phoneNumber
-        binding.tvCustomerEmail.text = user.email
+        binding.etCustomerName.setText(user.displayName)
+        binding.etCustomerPhone.setText(user.phoneNumber)
+        binding.etCustomerEmail.setText(user.email)
     }
 
     private fun getDateDifference(firstDate: String, secondDate: String): Int {

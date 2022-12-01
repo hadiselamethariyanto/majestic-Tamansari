@@ -7,10 +7,7 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import banyuwangi.digital.core.data.Resource
-import banyuwangi.digital.core.domain.model.PaymentMethodDomain
-import banyuwangi.digital.core.domain.model.TransactionDomain
-import banyuwangi.digital.core.domain.model.TransactionHomestayDomain
-import banyuwangi.digital.core.domain.model.TransactionWisataDomain
+import banyuwangi.digital.core.domain.model.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -63,12 +60,19 @@ class ChoosePaymentMethodFragment :
 
         binding.rvPaymentMethod.adapter = adapter
 
-        if (transaction?.type == 1) {
-            viewModel.getTransactionWisata(transaction.id)
-                .observe(viewLifecycleOwner, transactionWisataObserver)
-        } else if (transaction?.type == 5) {
-            viewModel.getTransactionHomestay(transaction.id)
-                .observe(viewLifecycleOwner, transactionHomestayObserver)
+        when (transaction?.type) {
+            1 -> {
+                viewModel.getTransactionWisata(transaction.id)
+                    .observe(viewLifecycleOwner, transactionWisataObserver)
+            }
+            3 -> {
+                viewModel.getTransactionTravelPackage(transaction.id)
+                    .observe(viewLifecycleOwner, transactionTravelPackageObserver)
+            }
+            5 -> {
+                viewModel.getTransactionHomestay(transaction.id)
+                    .observe(viewLifecycleOwner, transactionHomestayObserver)
+            }
         }
 
         viewModel.getPaymentMethod().observe(viewLifecycleOwner, paymentMethodObserver)
@@ -140,11 +144,39 @@ class ChoosePaymentMethodFragment :
             }
             is Resource.Error -> {
                 setLoadingOutlet(false)
-                Toast.makeText(requireActivity(),res.message,Toast.LENGTH_LONG).show()
+                Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
             }
         }
 
     }
+
+    private val transactionTravelPackageObserver =
+        Observer<Resource<TransactionTravelPackageDomain>> { res ->
+
+            when (res) {
+                is Resource.Loading -> {
+                    setLoadingOutlet(true)
+                }
+                is Resource.Success -> {
+                    setLoadingOutlet(false)
+                    val travelPackage = res.data?.travelPackage
+                    val travelPackagePhotos = travelPackage?.photos
+
+                    binding.tvOutletName.text = travelPackage?.name
+                    if (travelPackagePhotos?.isNotEmpty() == true) {
+                        Glide.with(requireActivity())
+                            .load(travelPackagePhotos[0])
+                            .placeholder(R.drawable.placeholder)
+                            .transform(CenterCrop(), RoundedCorners(12))
+                            .into(binding.imgOutlet)
+                    }
+                }
+                is Resource.Error -> {
+                    setLoadingOutlet(false)
+                    Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
+                }
+            }
+        }
 
     private val paymentMethodObserver = Observer<Resource<List<PaymentMethodDomain>>> { res ->
         when (res) {

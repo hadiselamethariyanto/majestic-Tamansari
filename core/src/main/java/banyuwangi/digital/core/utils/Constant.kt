@@ -18,4 +18,6 @@ object Constant {
     const val API_UPDATE_EXPIRED_TRANSACTION = "transactions/update_expired_transaction"
     const val API_INSERT_TRANSACTION_TRAVEL_PACKAGE =
         "transaction_travel_package/insert_transaction"
+    const val API_GET_TRANSACTION_TRAVEL_PACKAGE =
+        "transaction_travel_package/get_transaction_travel_package"
 }

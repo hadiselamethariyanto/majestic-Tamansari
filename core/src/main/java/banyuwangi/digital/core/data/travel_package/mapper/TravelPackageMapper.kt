@@ -27,6 +27,22 @@ object TravelPackageMapper {
             )
         }
 
+    fun mapTravelPackageItemToDomain(it: TravelPackageItem): TravelPackageDomain =
+        TravelPackageDomain(
+            id = it.id,
+            name = it.name,
+            rating = it.rating,
+            voteCount = it.voteCount,
+            totalSold = it.totalSold,
+            latitude = it.latitude,
+            longitude = it.longitude,
+            address = it.address,
+            meetingPoint = it.meetingPoint,
+            photos = it.photos,
+            itinerary = mapItineraryItemToDomain(it.itinerary),
+            travelPackageType = mapTravelPackageTypeItemToDomain(it.travelPackageTypes)
+        )
+
     private fun mapItineraryItemToDomain(itineraries: List<ItineraryItem>): List<ItineraryDomain> =
         itineraries.map {
             ItineraryDomain(time = it.time, description = it.description)
@@ -41,4 +57,12 @@ object TravelPackageMapper {
                 detail = it.detail
             )
         }
+
+    fun mapTravelPackageTypeItemToDomain(it: TravelPackageTypeItem): TravelPackageTypeDomain =
+        TravelPackageTypeDomain(
+            id = it.id,
+            name = it.name,
+            price = it.price,
+            detail = it.detail
+        )
 }

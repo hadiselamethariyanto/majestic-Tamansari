@@ -1,5 +1,6 @@
 package banyuwangi.digital.core.data.transaction_travel_package.repository.source.remote.network
 
+import banyuwangi.digital.core.data.transaction_travel_package.repository.source.remote.response.GetTransactionTravelPackageResponse
 import banyuwangi.digital.core.data.transaction_wisata.repository.source.remote.response.InsertTransactionWisataResponse
 import banyuwangi.digital.core.utils.Constant
 import retrofit2.http.Field
@@ -21,4 +22,8 @@ interface TransactionTravelPackageService {
         @Field("id_travel_package_type") idTravelPackageType: String,
         @Field("selected_date") selectedDate: String
     ): InsertTransactionWisataResponse
+
+    @FormUrlEncoded
+    @POST(Constant.API_GET_TRANSACTION_TRAVEL_PACKAGE)
+    suspend fun getTransactionTravelPackage(@Field("id") id: String): GetTransactionTravelPackageResponse
 }

@@ -2,6 +2,7 @@ package banyuwangi.digital.core.domain.usecase.transaction_travel_package
 
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.TransactionDomain
+import banyuwangi.digital.core.domain.model.TransactionTravelPackageDomain
 import banyuwangi.digital.core.domain.repository.TransactionTravelPackageRepository
 import kotlinx.coroutines.flow.Flow
 
@@ -28,4 +29,8 @@ class TransactionTravelPackageInteractor(private val repository: TransactionTrav
         idTravelPackageType,
         selectedDate
     )
+
+    override fun getTransactionTravelPackage(id: String): Flow<Resource<TransactionTravelPackageDomain>> {
+        return repository.getTransactionTravelPackage(id)
+    }
 }

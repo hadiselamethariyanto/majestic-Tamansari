@@ -2,6 +2,7 @@ package banyuwangi.digital.core.domain.usecase.transaction_travel_package
 
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.TransactionDomain
+import banyuwangi.digital.core.domain.model.TransactionTravelPackageDomain
 import kotlinx.coroutines.flow.Flow
 
 interface TransactionTravelPackageUseCase {
@@ -17,4 +18,7 @@ interface TransactionTravelPackageUseCase {
         idTravelPackageType: String,
         selectedDate: String
     ): Flow<Resource<TransactionDomain>>
+
+    fun getTransactionTravelPackage(id:String):Flow<Resource<TransactionTravelPackageDomain>>
+
 }

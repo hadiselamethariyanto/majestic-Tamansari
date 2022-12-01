@@ -50,4 +50,11 @@
         android:label="@string/navigation_my_ticket_wisata"
         tools:layout="@layout/fragment_my_ticket_travel_package" />
 
+    <fragment
+        android:id="@+id/navigation_my_failed_ticket_travel_package"
+        android:name="com.bwx.tamansari.ui.ticket.travel_package.MyFailedTicketTravelPackageFragment"
+        android:label="@string/navigation_my_ticket_wisata"
+        tools:layout="@layout/fragment_my_failed_ticket_travel_package" />
+
+
 </navigation>

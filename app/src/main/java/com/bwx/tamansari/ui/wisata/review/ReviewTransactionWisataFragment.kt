@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import banyuwangi.digital.core.data.Resource
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentReviewTransactionWisataBinding
 import banyuwangi.digital.core.domain.model.ChartDomain
+import banyuwangi.digital.core.domain.model.TransactionDomain
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.ui.login.LoginFragment
 import com.bwx.tamansari.utils.Utils
@@ -110,26 +112,28 @@ class ReviewTransactionWisataFragment :
                 totalFee = totalPayment,
                 idWisata = wisata?.id ?: "",
                 charts = charts
-            ).observe(viewLifecycleOwner) { res ->
-                when (res) {
-                    is Resource.Loading -> {
-                        setLoading(true)
-                    }
-                    is Resource.Success -> {
-                        setLoading(false)
-                        if (res.data != null) {
-                            val bundle = bundleOf("transaction" to res.data)
-                            findNavController().navigate(
-                                R.id.action_navigation_review_transaction_wisata_to_navigation_choose_payment_method,
-                                bundle
-                            )
-                        }
-                    }
-                    is Resource.Error -> {
-                        setLoading(false)
-                        Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
-                    }
+            ).observe(viewLifecycleOwner, insertTransactionObserver)
+        }
+    }
+
+    private val insertTransactionObserver = Observer<Resource<TransactionDomain>> { res ->
+        when (res) {
+            is Resource.Loading -> {
+                setLoading(true)
+            }
+            is Resource.Success -> {
+                setLoading(false)
+                if (res.data != null) {
+                    val bundle = bundleOf("transaction" to res.data)
+                    findNavController().navigate(
+                        R.id.action_navigation_review_transaction_wisata_to_navigation_choose_payment_method,
+                        bundle
+                    )
                 }
+            }
+            is Resource.Error -> {
+                setLoading(false)
+                Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
             }
         }
     }

@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import banyuwangi.digital.core.data.Resource
+import banyuwangi.digital.core.domain.model.TransactionDomain
 import banyuwangi.digital.core.domain.model.TravelPackageDomain
 import banyuwangi.digital.core.domain.model.TravelPackageTypeDomain
 import com.bumptech.glide.Glide
@@ -17,6 +19,7 @@ import com.bwx.tamansari.databinding.FragmentReviewTransactionTravelPackageBindi
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.ui.login.LoginFragment
 import com.bwx.tamansari.utils.Utils
+import com.bwx.tamansari.utils.Utils.afterTextChanged
 import com.google.firebase.auth.FirebaseUser
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -74,54 +77,86 @@ class ReviewTransactionTravelPackageFragment :
             }
         }
 
+        viewModel.userFormState.observe(viewLifecycleOwner) {
+            val formState = it ?: return@observe
+
+            if (formState.username != null) {
+                binding.etCustomerName.error = getString(formState.username)
+            } else if (formState.phoneNumber != null) {
+                binding.etCustomerPhone.error = getString(formState.phoneNumber)
+            }
+
+            binding.btnPayment.isEnabled = formState.isDataValid
+        }
+
+        binding.etCustomerName.afterTextChanged {
+            triggerDataChanged()
+        }
+
+        binding.etCustomerPhone.afterTextChanged {
+            triggerDataChanged()
+        }
+
         binding.tvTotalFee.text = "IDR ${Utils.thousandSeparator(travelPackageDomain?.price ?: 0)}"
 
         binding.btnPayment.setOnClickListener {
             val user = viewModel.user.value
             val totalFee = travelPackageDomain?.price
+            val username = binding.etCustomerName.text.toString()
+            val phoneNumber = binding.etCustomerPhone.text.toString()
 
             viewModel.insertTransaction(
-                customerName = user?.displayName ?: "",
+                customerName = username,
                 customerEmail = user?.email ?: "",
-                customerPhoneNumber = "123",
+                customerPhoneNumber = phoneNumber,
                 fee = totalFee ?: 0,
                 convenienceFee = 0,
                 totalFee = totalFee ?: 0,
                 idTravelPackage = travelPackage?.id ?: "",
                 idTravelPackageType = travelPackageDomain?.id ?: "",
                 selectedDate = date ?: ""
-            ).observe(viewLifecycleOwner) { res ->
-                when (res) {
-                    is Resource.Loading -> {
-                        setLoading(true)
-                    }
-                    is Resource.Success -> {
-                        setLoading(false)
-                        if (res.data != null) {
-                            val bundle = bundleOf("transaction" to res.data)
-                            findNavController().navigate(
-                                R.id.navigation_choose_payment_method,
-                                bundle
-                            )
-                        }
-                    }
-                    is Resource.Error -> {
-                        setLoading(false)
-                        Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
-                    }
+            ).observe(viewLifecycleOwner, insertTransactionObserver)
+        }
+    }
+
+    private val insertTransactionObserver = Observer<Resource<TransactionDomain>> { res ->
+        when (res) {
+            is Resource.Loading -> {
+                setLoading(true)
+            }
+            is Resource.Success -> {
+                setLoading(false)
+                if (res.data != null) {
+                    val bundle = bundleOf("transaction" to res.data)
+                    findNavController().navigate(
+                        R.id.navigation_choose_payment_method,
+                        bundle
+                    )
                 }
             }
+            is Resource.Error -> {
+                setLoading(false)
+                Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
+            }
         }
+
     }
 
     private fun setLoading(isLoading: Boolean) {
         binding.btnPayment.isEnabled = !isLoading
     }
 
+    private fun triggerDataChanged() {
+        val username = binding.etCustomerName.text.toString()
+        val phoneNumber = binding.etCustomerPhone.text.toString()
+        viewModel.userDataChanged(username, phoneNumber)
+    }
+
+
     private fun setupProfile(user: FirebaseUser) {
-        binding.tvCustomerName.text = user.displayName
-        binding.tvCustomerPhone.text = user.phoneNumber
-        binding.tvCustomerEmail.text = user.email
+        binding.etCustomerName.setText(user.displayName)
+        binding.etCustomerPhone.setText(user.phoneNumber)
+        binding.etCustomerEmail.setText(user.email)
     }
 
 }

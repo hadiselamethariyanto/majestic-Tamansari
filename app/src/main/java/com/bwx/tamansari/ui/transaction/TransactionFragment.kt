@@ -97,6 +97,11 @@ class TransactionFragment : BaseFragment<FragmentRiwayatBinding>(FragmentRiwayat
                             R.id.action_navigation_transaction_to_navigation_my_ticket_wisata,
                             bundle
                         )
+                    } else if (data.type == 3) {
+                        findNavController().navigate(
+                            R.id.navigation_my_ticket_travel_package,
+                            bundle
+                        )
                     } else if (data.type == 5) {
                         findNavController().navigate(R.id.navigation_my_ticket_homestay, bundle)
                     }

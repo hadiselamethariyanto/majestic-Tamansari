@@ -30,21 +30,6 @@
             app:destination="@id/navigation_news" />
     </fragment>
 
-    <fragment
-        android:id="@+id/navigation_transaction"
-        android:name="com.bwx.tamansari.ui.transaction.TransactionFragment"
-        android:label="@string/title_transaksi"
-        tools:layout="@layout/fragment_riwayat">
-        <action
-            android:id="@+id/action_navigation_transaction_to_navigation_choose_payment_method"
-            app:destination="@id/navigation_choose_payment_method" />
-        <action
-            android:id="@+id/action_navigation_transaction_to_navigation_my_ticket_wisata"
-            app:destination="@id/navigation_my_ticket_wisata" />
-        <action
-            android:id="@+id/action_navigation_transaction_to_navigation_my_failed_ticket_wisata"
-            app:destination="@id/navigation_my_failed_ticket_wisata" />
-    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -230,27 +215,7 @@
 
     </fragment>
 
-    <fragment
-        android:id="@+id/navigation_my_ticket_wisata"
-        android:name="com.bwx.tamansari.ui.ticket.wisata.MyTicketWisataFragment"
-        android:label="@string/navigation_my_ticket_wisata"
-        tools:layout="@layout/fragment_my_ticket_wisata" />
+    <include app:graph="@navigation/navigation_transaction" />
 
-    <fragment
-        android:id="@+id/navigation_my_failed_ticket_wisata"
-        android:name="com.bwx.tamansari.ui.ticket.wisata.MyFailedTicketWisataFragment"
-        android:label="@string/navigation_my_ticket_wisata"
-        tools:layout="@layout/fragment_my_failed_ticket_wisata" />
-    <fragment
-        android:id="@+id/navigation_my_ticket_homestay"
-        android:name="com.bwx.tamansari.ui.ticket.homestay.MyTicketHomestayFragment"
-        android:label="@string/navigation_my_ticket_wisata"
-        tools:layout="@layout/fragment_my_ticket_homestay" />
-
-    <fragment
-        android:id="@+id/navigation_my_failed_ticket_homestay"
-        android:name="com.bwx.tamansari.ui.ticket.homestay.MyFailedTicketHomestayFragment"
-        android:label="@string/navigation_my_ticket_wisata"
-        tools:layout="@layout/fragment_my_failed_ticket_homestay" />
 
 </navigation>

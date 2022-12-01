@@ -101,6 +101,10 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.ViewHolder>()
                         .into(binding.imgIcon)
 
                 }
+                3->{
+                    Glide.with(itemView.context).load(R.drawable.ic_luggage)
+                        .into(binding.imgIcon)
+                }
                 5 -> {
                     Glide.with(itemView.context).load(R.drawable.ic_ticket_homestay)
                         .into(binding.imgIcon)

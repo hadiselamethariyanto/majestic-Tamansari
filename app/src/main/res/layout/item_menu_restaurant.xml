@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginTop="16dp">
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="8dp">
 
     <ImageView
         android:id="@+id/img_menu"
@@ -40,5 +40,65 @@
         app:layout_constraintTop_toBottomOf="@id/menu_name"
         tools:ignore="SmallSp"
         tools:text="12.000" />
+
+    <Button
+        android:id="@+id/btn_add_menu"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/add"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/menu_price" />
+
+    <LinearLayout
+        android:id="@+id/ll_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/menu_price">
+
+        <TextView
+            android:id="@+id/tv_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/circle"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="1.5dp"
+            android:text="-"
+            android:textColor="@color/biru_tua"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            tools:text="5" />
+
+        <TextView
+            android:id="@+id/tv_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="2dp"
+            android:text="+"
+            android:textColor="@color/biru_tua"
+            android:textSize="12sp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

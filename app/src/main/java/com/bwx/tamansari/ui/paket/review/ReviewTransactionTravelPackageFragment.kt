@@ -114,7 +114,7 @@ class ReviewTransactionTravelPackageFragment :
                 totalFee = totalFee ?: 0,
                 idTravelPackage = travelPackage?.id ?: "",
                 idTravelPackageType = travelPackageDomain?.id ?: "",
-                selectedDate = date ?: ""
+                selectedDate = Utils.formatStringDateToYYYYMMDD(date?: "")
             ).observe(viewLifecycleOwner, insertTransactionObserver)
         }
     }

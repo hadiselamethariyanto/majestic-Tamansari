@@ -62,8 +62,8 @@ object Utils {
     fun formatStringDateToYYYYMMDD(date: String): String {
         return try {
             val dateFormatted: Date =
-                SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).parse(date) ?: Date()
-            SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(dateFormatted)
+                SimpleDateFormat("dd MMM yy", Locale.getDefault()).parse(date) ?: Date()
+            SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(dateFormatted.time)
         } catch (e: Exception) {
             "2022-01-01"
         }

@@ -13,7 +13,7 @@ class ImageRoomAdapter(private val list: List<String>) :
     class ViewHolder(private val binding: ItemImageRoomBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(url: String, index: Int, total: Int) {
-            binding.tvIndexTotalImage.text = "$index/$total"
+            binding.tvIndexTotalImage.text = "${index + 1}/$total"
             Glide.with(itemView.context).load(url).placeholder(R.drawable.placeholder).centerCrop()
                 .into(binding.imgRoom)
         }

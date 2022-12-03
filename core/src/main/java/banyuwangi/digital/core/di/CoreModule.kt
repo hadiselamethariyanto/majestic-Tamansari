@@ -20,6 +20,9 @@ import banyuwangi.digital.core.data.restoran.repository.source.remote.network.Re
 import banyuwangi.digital.core.data.transaction_homestay.repository.TransactionHomestayRepositoryImpl
 import banyuwangi.digital.core.data.transaction_homestay.repository.source.remote.TransactionHomestayRemoteDataSource
 import banyuwangi.digital.core.data.transaction_homestay.repository.source.remote.network.TransactionHomestayService
+import banyuwangi.digital.core.data.transaction_restaurant.repository.TransactionRestaurantRepositoryImpl
+import banyuwangi.digital.core.data.transaction_restaurant.repository.source.remote.TransactionRestaurantRemoteDataSource
+import banyuwangi.digital.core.data.transaction_restaurant.repository.source.remote.network.TransactionRestaurantService
 import banyuwangi.digital.core.data.transaction_travel_package.repository.TransactionTravelPackageRepositoryImpl
 import banyuwangi.digital.core.data.transaction_travel_package.repository.source.remote.TransactionTravelPackageRemoteDataSource
 import banyuwangi.digital.core.data.transaction_travel_package.repository.source.remote.network.TransactionTravelPackageService
@@ -149,6 +152,15 @@ val networkModule = module {
             .build()
         retrofit.create(TransactionTravelPackageService::class.java)
     }
+
+    single {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(get())
+            .build()
+        retrofit.create(TransactionRestaurantService::class.java)
+    }
 }
 
 val repositoryModule = module {
@@ -163,6 +175,7 @@ val repositoryModule = module {
     single { PaymentRemoteDataSource(get()) }
     single { TransactionHomestayRemoteDataSource(get()) }
     single { TransactionTravelPackageRemoteDataSource(get()) }
+    single { TransactionRestaurantRemoteDataSource(get()) }
 
     single<WisataRepository> { WisataRepositoryImpl(get()) }
     single<HomestayRepository> { HomestayRepositoryImpl(get()) }
@@ -176,6 +189,7 @@ val repositoryModule = module {
     single<PaymentRepository> { PaymentRepositoryImpl(get()) }
     single<TransactionHomestayRepository> { TransactionHomestayRepositoryImpl(get()) }
     single<TransactionTravelPackageRepository> { TransactionTravelPackageRepositoryImpl(get()) }
+    single<TransactionRestaurantRepository> { TransactionRestaurantRepositoryImpl(get()) }
 }
 
 val firebaseModule =

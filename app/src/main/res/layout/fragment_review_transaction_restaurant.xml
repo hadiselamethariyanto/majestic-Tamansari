@@ -211,58 +211,68 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/v4" />
 
-            <EditText
-                android:id="@+id/et_customer_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="@color/color_grey"
-                android:drawableStart="@drawable/ic_account_customer"
-                android:drawablePadding="8dp"
-                android:drawableTint="@color/grey"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:inputType="text"
-                android:textColor="@color/black"
-                android:textCursorDrawable="@null"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/label_customer"
-                tools:text="Muhammad Hadi" />
-
-            <EditText
-                android:id="@+id/et_customer_email"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:backgroundTint="@color/color_grey"
-                android:drawableStart="@drawable/ic_email_customer"
-                android:drawablePadding="8dp"
-                android:drawableTint="@color/grey"
-                android:enabled="false"
-                android:fontFamily="@font/poppins_regular"
-                android:inputType="textEmailAddress"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_customer_name"
-                tools:text="adybeldex@gmail.com" />
+                android:layout_marginTop="8dp"
+                android:background="@drawable/border_info_transaction"
+                android:padding="16dp"
+                app:layout_constraintTop_toBottomOf="@id/label_customer">
 
-            <EditText
-                android:id="@+id/et_customer_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:backgroundTint="@color/color_grey"
-                android:drawableStart="@drawable/ic_phone_customer"
-                android:drawablePadding="8dp"
-                android:drawableTint="@color/grey"
-                android:fontFamily="@font/poppins_regular"
-                android:inputType="phone"
-                android:textCursorDrawable="@null"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_customer_email"
-                tools:text="+6282244087798" />
+                <EditText
+                    android:id="@+id/et_customer_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/color_grey"
+                    android:drawableStart="@drawable/ic_account_customer"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/grey"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:inputType="text"
+                    android:textCursorDrawable="@null"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Muhammad Hadi" />
+
+                <EditText
+                    android:id="@+id/et_customer_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/color_grey"
+                    android:drawableStart="@drawable/ic_email_customer"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/grey"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="12sp"
+                    android:enabled="false"
+                    android:inputType="textEmailAddress"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_customer_name"
+                    tools:text="adybeldex@gmail.com"
+                    android:autofillHints="" />
+
+                <EditText
+                    android:id="@+id/et_customer_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/color_grey"
+                    android:drawableStart="@drawable/ic_phone_customer"
+                    android:drawablePadding="8dp"
+                    android:inputType="phone"
+                    android:drawableTint="@color/grey"
+                    android:textCursorDrawable="@null"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_customer_email"
+                    tools:text="+6282244087798"
+                    android:autofillHints="" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

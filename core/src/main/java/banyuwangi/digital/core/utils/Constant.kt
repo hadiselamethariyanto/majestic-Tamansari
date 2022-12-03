@@ -20,4 +20,5 @@ object Constant {
         "transaction_travel_package/insert_transaction"
     const val API_GET_TRANSACTION_TRAVEL_PACKAGE =
         "transaction_travel_package/get_transaction_travel_package"
+    const val API_INSERT_TRANSACTION_RESTAURANT = "transaction_restaurant/insert_transaction"
 }

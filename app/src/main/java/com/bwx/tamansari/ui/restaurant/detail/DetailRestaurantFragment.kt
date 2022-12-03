@@ -72,7 +72,7 @@ class DetailRestaurantFragment : BaseFragment<FragmentDetailRestaurantBinding>(
 
         binding.llBook.setOnClickListener {
             val cart = viewModel.chart.value
-            val bundle = bundleOf("cart" to cart)
+            val bundle = bundleOf("cart" to cart, "restaurant" to restaurant)
             findNavController().navigate(
                 R.id.action_navigation_detail_restaurant_to_navigation_review_transaction_restaurant,
                 bundle

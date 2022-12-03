@@ -1,16 +1,21 @@
 package com.bwx.tamansari.ui.restaurant.review
 
 import androidx.lifecycle.*
+import banyuwangi.digital.core.domain.model.CartRestaurantDomain
+import banyuwangi.digital.core.domain.model.ChartDomain
 import banyuwangi.digital.core.domain.model.HomestayDomain
 import banyuwangi.digital.core.domain.usecase.AuthUseCase
 import banyuwangi.digital.core.domain.usecase.HomestayUseCase
+import banyuwangi.digital.core.domain.usecase.transaction_restaurant.TransactionRestaurantUseCase
 import com.bwx.tamansari.R
 import com.bwx.tamansari.ui.wisata.review.UserFormState
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.launch
 
 class ReviewTransactionRestaurantViewModel(
-    private val homestayUseCase: HomestayUseCase, private val authUseCase: AuthUseCase,
+    private val homestayUseCase: HomestayUseCase,
+    private val authUseCase: AuthUseCase,
+    private val transactionRestaurantUseCase: TransactionRestaurantUseCase
 ) :
     ViewModel() {
 
@@ -50,4 +55,28 @@ class ReviewTransactionRestaurantViewModel(
             _userFormState.value = UserFormState(isDataValid = true)
         }
     }
+
+    fun insertTransactionRestaurant(
+        customerName: String,
+        customerEmail: String,
+        customerPhoneNumber: String,
+        fee: Int,
+        convenienceFee: Int,
+        totalFee: Int,
+        idHomestay: String,
+        idRestaurant: String,
+        carts: List<CartRestaurantDomain>,
+        ongkir:Int
+    ) = transactionRestaurantUseCase.insertTransaction(
+        customerName,
+        customerEmail,
+        customerPhoneNumber,
+        fee,
+        convenienceFee,
+        totalFee,
+        idHomestay,
+        idRestaurant,
+        carts,
+        ongkir
+    ).asLiveData()
 }

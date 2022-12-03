@@ -2,9 +2,14 @@ package com.bwx.tamansari.ui.restaurant.review
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.CartRestaurantDomain
+import banyuwangi.digital.core.domain.model.RestaurantDomain
+import banyuwangi.digital.core.domain.model.TransactionDomain
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentReviewTransactionRestaurantBinding
 import com.bwx.tamansari.ui.base.BaseFragment
@@ -25,6 +30,7 @@ class ReviewTransactionRestaurantFragment :
         super.onViewCreated(view, savedInstanceState)
 
         val cart = arguments?.getParcelableArrayList<CartRestaurantDomain>("cart") ?: arrayListOf()
+        val restaurant = arguments?.getParcelable<RestaurantDomain>("restaurant")
 
         val adapter = ReviewTransactionRestaurantAdapter()
         adapter.updateData(cart)
@@ -73,7 +79,7 @@ class ReviewTransactionRestaurantFragment :
                     setLoadingDeliveryLocation(false)
                     val homestays = res.data ?: arrayListOf()
                     viewModel.setDataHomestays(homestays)
-                    if (homestays.isNotEmpty()){
+                    if (homestays.isNotEmpty()) {
                         viewModel.setSelectedHomestay(homestays[0])
                     }
                 }
@@ -95,7 +101,53 @@ class ReviewTransactionRestaurantFragment :
             findNavController().navigate(R.id.navigation_choose_location_bottom_sheet_dialog)
         }
 
+        val user = viewModel.user.value
 
+        binding.btnPayment.setOnClickListener {
+            val username = binding.etCustomerName.text.toString()
+            val phoneNumber = binding.etCustomerPhone.text.toString()
+            val homestay = viewModel.selectedHomestay.value
+
+            viewModel.insertTransactionRestaurant(
+                customerName = username,
+                customerEmail = user?.email ?: "",
+                customerPhoneNumber = phoneNumber,
+                fee = fee,
+                convenienceFee = 0,
+                totalFee = fee + ongkir,
+                idHomestay = homestay?.id ?: "",
+                idRestaurant = restaurant?.id ?: "",
+                carts = cart,
+                ongkir = ongkir
+            ).observe(viewLifecycleOwner, insertTransactionObserver)
+        }
+
+    }
+
+    private val insertTransactionObserver = Observer<Resource<TransactionDomain>> { res ->
+        when (res) {
+            is Resource.Loading -> {
+                setLoading(true)
+            }
+            is Resource.Success -> {
+                setLoading(false)
+                if (res.data != null) {
+                    val bundle = bundleOf("transaction" to res.data)
+                    findNavController().navigate(
+                        R.id.action_navigation_review_transaction_wisata_to_navigation_choose_payment_method,
+                        bundle
+                    )
+                }
+            }
+            is Resource.Error -> {
+                setLoading(false)
+                Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        binding.btnPayment.isEnabled = !isLoading
     }
 
     private fun setLoadingDeliveryLocation(isLoading: Boolean) {

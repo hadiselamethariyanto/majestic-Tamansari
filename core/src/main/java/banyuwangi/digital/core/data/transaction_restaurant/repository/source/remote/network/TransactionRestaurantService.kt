@@ -1,5 +1,6 @@
 package banyuwangi.digital.core.data.transaction_restaurant.repository.source.remote.network
 
+import banyuwangi.digital.core.data.transaction_restaurant.repository.source.remote.response.GetTransactionRestaurantResponse
 import banyuwangi.digital.core.data.transaction_wisata.repository.source.remote.response.InsertTransactionWisataResponse
 import banyuwangi.digital.core.utils.Constant
 import okhttp3.RequestBody
@@ -21,4 +22,8 @@ interface TransactionRestaurantService {
         @PartMap cart: HashMap<String, RequestBody>,
         @Part("ongkir") ongkir: RequestBody
     ): InsertTransactionWisataResponse
+
+    @FormUrlEncoded
+    @POST(Constant.API_GET_TRANSACTION_RESTAURANT)
+    suspend fun getTransactionRestaurant(@Field("id") id: String): GetTransactionRestaurantResponse
 }

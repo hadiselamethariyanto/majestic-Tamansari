@@ -65,6 +65,10 @@ class ChoosePaymentMethodFragment :
                 viewModel.getTransactionWisata(transaction.id)
                     .observe(viewLifecycleOwner, transactionWisataObserver)
             }
+            2 -> {
+                viewModel.getTransactionRestaurant(transaction.id)
+                    .observe(viewLifecycleOwner, transactionRestaurantObserver)
+            }
             3 -> {
                 viewModel.getTransactionTravelPackage(transaction.id)
                     .observe(viewLifecycleOwner, transactionTravelPackageObserver)
@@ -122,6 +126,28 @@ class ChoosePaymentMethodFragment :
             }
         }
     }
+
+    private val transactionRestaurantObserver =
+        Observer<Resource<TransactionRestaurantDomain>> { res ->
+            when (res) {
+                is Resource.Loading -> {
+                    setLoadingOutlet(true)
+                }
+                is Resource.Success -> {
+                    setLoadingOutlet(false)
+                    val restaurant = res.data?.restaurant
+                    binding.tvOutletName.text = restaurant?.name
+                    Glide.with(requireActivity())
+                        .load(restaurant?.photoUrl)
+                        .placeholder(R.drawable.placeholder)
+                        .transform(CenterCrop(), RoundedCorners(12))
+                        .into(binding.imgOutlet)
+                }
+                is Resource.Error -> {
+                    setLoadingOutlet(false)
+                }
+            }
+        }
 
     private val transactionHomestayObserver = Observer<Resource<TransactionHomestayDomain>> { res ->
         when (res) {

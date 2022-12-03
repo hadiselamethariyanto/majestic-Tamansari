@@ -3,6 +3,7 @@ package banyuwangi.digital.core.domain.usecase.transaction_restaurant
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.CartRestaurantDomain
 import banyuwangi.digital.core.domain.model.TransactionDomain
+import banyuwangi.digital.core.domain.model.TransactionRestaurantDomain
 import kotlinx.coroutines.flow.Flow
 
 interface TransactionRestaurantUseCase {
@@ -19,4 +20,7 @@ interface TransactionRestaurantUseCase {
         carts: List<CartRestaurantDomain>,
         ongkir:Int
     ): Flow<Resource<TransactionDomain>>
+
+    fun getTransactionRestaurant(id: String): Flow<Resource<TransactionRestaurantDomain>>
+
 }

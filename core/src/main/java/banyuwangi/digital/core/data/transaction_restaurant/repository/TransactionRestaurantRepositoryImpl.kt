@@ -3,11 +3,14 @@ package banyuwangi.digital.core.data.transaction_restaurant.repository
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.data.mechanism.NetworkOnlyResource
 import banyuwangi.digital.core.data.network.ApiResponseOnly
+import banyuwangi.digital.core.data.transaction_restaurant.mapper.TransactionRestaurantMapper
 import banyuwangi.digital.core.data.transaction_restaurant.repository.source.remote.TransactionRestaurantRemoteDataSource
+import banyuwangi.digital.core.data.transaction_restaurant.repository.source.remote.response.GetTransactionRestaurantResponse
 import banyuwangi.digital.core.data.transaction_wisata.repository.source.remote.response.InsertTransactionWisataResponse
 import banyuwangi.digital.core.data.transactions.mapper.TransactionsMapper
 import banyuwangi.digital.core.domain.model.CartRestaurantDomain
 import banyuwangi.digital.core.domain.model.TransactionDomain
+import banyuwangi.digital.core.domain.model.TransactionRestaurantDomain
 import banyuwangi.digital.core.domain.repository.TransactionRestaurantRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -24,7 +27,7 @@ class TransactionRestaurantRepositoryImpl(private val remoteDataSource: Transact
         idHomestay: String,
         idRestaurant: String,
         carts: List<CartRestaurantDomain>,
-        ongkir:Int
+        ongkir: Int
     ): Flow<Resource<TransactionDomain>> {
         return object : NetworkOnlyResource<TransactionDomain, InsertTransactionWisataResponse>() {
             override fun loadFromNetwork(data: InsertTransactionWisataResponse): Flow<TransactionDomain> {
@@ -45,6 +48,21 @@ class TransactionRestaurantRepositoryImpl(private val remoteDataSource: Transact
                     carts,
                     ongkir
                 )
+
+        }.asFlow()
+    }
+
+    override fun getTransactionRestaurant(id: String): Flow<Resource<TransactionRestaurantDomain>> {
+        return object :
+            NetworkOnlyResource<TransactionRestaurantDomain, GetTransactionRestaurantResponse>() {
+            override fun loadFromNetwork(data: GetTransactionRestaurantResponse): Flow<TransactionRestaurantDomain> {
+                val response =
+                    TransactionRestaurantMapper.mapTransactionRestaurantItemToDomain(data.data)
+                return flowOf(response)
+            }
+
+            override suspend fun createCall(): Flow<ApiResponseOnly<GetTransactionRestaurantResponse>> =
+                remoteDataSource.getTransactionRestaurant(id)
 
         }.asFlow()
     }

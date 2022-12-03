@@ -8,6 +8,7 @@ import banyuwangi.digital.core.domain.model.PaymentMethodDomain
 import banyuwangi.digital.core.domain.usecase.payment.PaymentUseCase
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodUseCase
 import banyuwangi.digital.core.domain.usecase.transaction_homestay.TransactionHomestayUseCase
+import banyuwangi.digital.core.domain.usecase.transaction_restaurant.TransactionRestaurantUseCase
 import banyuwangi.digital.core.domain.usecase.transaction_travel_package.TransactionTravelPackageUseCase
 import banyuwangi.digital.core.domain.usecase.transaction_wisata.TransactionWisataUsecase
 
@@ -16,6 +17,7 @@ class ChoosePaymentMethodViewModel(
     private val transactionWisataUsecase: TransactionWisataUsecase,
     private val transactionHomestayUseCase: TransactionHomestayUseCase,
     private val transactionTravelPackageUseCase: TransactionTravelPackageUseCase,
+    private val transactionRestaurantUseCase: TransactionRestaurantUseCase,
     private val paymentUseCase: PaymentUseCase
 ) :
     ViewModel() {
@@ -33,6 +35,9 @@ class ChoosePaymentMethodViewModel(
 
     fun getTransactionTravelPackage(id: String) =
         transactionTravelPackageUseCase.getTransactionTravelPackage(id).asLiveData()
+
+    fun getTransactionRestaurant(id: String) =
+        transactionRestaurantUseCase.getTransactionRestaurant(id).asLiveData()
 
     fun selectPaymentMethod(paymentMethod: PaymentMethodDomain) {
         _selectedPaymentMethod.value = paymentMethod

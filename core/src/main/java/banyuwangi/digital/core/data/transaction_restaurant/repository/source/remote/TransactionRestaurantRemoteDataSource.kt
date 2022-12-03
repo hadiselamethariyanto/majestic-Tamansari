@@ -2,10 +2,14 @@ package banyuwangi.digital.core.data.transaction_restaurant.repository.source.re
 
 import banyuwangi.digital.core.data.network.ApiResponseOnly
 import banyuwangi.digital.core.data.transaction_restaurant.repository.source.remote.network.TransactionRestaurantService
+import banyuwangi.digital.core.data.transaction_restaurant.repository.source.remote.response.GetTransactionRestaurantResponse
 import banyuwangi.digital.core.data.transaction_wisata.repository.source.remote.response.InsertTransactionWisataResponse
 import banyuwangi.digital.core.domain.model.CartRestaurantDomain
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import okhttp3.Dispatcher
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -21,7 +25,7 @@ class TransactionRestaurantRemoteDataSource(private val service: TransactionRest
         idHomestay: String,
         idRestaurant: String,
         carts: List<CartRestaurantDomain>,
-        ongkir:Int
+        ongkir: Int
     ): Flow<ApiResponseOnly<InsertTransactionWisataResponse>> {
         return flow {
             try {
@@ -56,6 +60,21 @@ class TransactionRestaurantRemoteDataSource(private val service: TransactionRest
             } catch (e: Exception) {
                 emit(ApiResponseOnly.Error(e.message.toString()))
             }
-        }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getTransactionRestaurant(id: String): Flow<ApiResponseOnly<GetTransactionRestaurantResponse>> {
+        return flow {
+            try {
+                val response = service.getTransactionRestaurant(id)
+                if (response.success) {
+                    emit(ApiResponseOnly.Success(response))
+                } else {
+                    emit(ApiResponseOnly.Error(response.message))
+                }
+            } catch (e: Exception) {
+                emit(ApiResponseOnly.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
     }
 }

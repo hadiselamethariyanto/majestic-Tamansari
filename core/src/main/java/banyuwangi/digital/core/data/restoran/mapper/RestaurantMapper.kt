@@ -21,6 +21,18 @@ object RestaurantMapper {
         )
     }
 
+    fun mapRestaurantItemToDomain(it: RestaurantItem): RestaurantDomain = RestaurantDomain(
+        id = it.id,
+        name = it.name,
+        category = it.category,
+        latitude = it.latitude,
+        longitude = it.longitude,
+        photoUrl = it.photoUrl,
+        rating = it.rating,
+        voteCount = it.voteCount,
+        menus = mapMenuItemToDomain(it.menus)
+    )
+
     private fun mapMenuItemToDomain(menus: List<RestaurantMenuItem>): List<MenuRestaurantDomain> =
         menus.map {
             MenuRestaurantDomain(

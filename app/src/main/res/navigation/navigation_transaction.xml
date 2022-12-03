@@ -60,6 +60,10 @@
         android:id="@+id/navigation_my_ticket_restaurant"
         android:name="com.bwx.tamansari.ui.ticket.restaurant.MyTicketRestaurantFragment"
         android:label="@string/navigation_my_ticket_restaurant" />
+    <fragment
+        android:id="@+id/navigation_my_failed_ticket_restaurant"
+        android:name="com.bwx.tamansari.ui.ticket.restaurant.MyFailedTicketRestaurantFragment"
+        android:label="@string/navigation_my_ticket_restaurant" />
 
 
 </navigation>

@@ -108,21 +108,31 @@ class TransactionFragment : BaseFragment<FragmentRiwayatBinding>(FragmentRiwayat
                         findNavController().navigate(R.id.navigation_my_ticket_homestay, bundle)
                     }
                 } else if (data.status == 4 || data.status == 2) {
-                    if (data.type == 1) {
-                        findNavController().navigate(
-                            R.id.action_navigation_transaction_to_navigation_my_failed_ticket_wisata,
-                            bundle
-                        )
-                    } else if (data.type == 3) {
-                        findNavController().navigate(
-                            R.id.navigation_my_failed_ticket_travel_package,
-                            bundle
-                        )
-                    } else if (data.type == 5) {
-                        findNavController().navigate(
-                            R.id.navigation_my_failed_ticket_homestay,
-                            bundle
-                        )
+                    when (data.type) {
+                        1 -> {
+                            findNavController().navigate(
+                                R.id.action_navigation_transaction_to_navigation_my_failed_ticket_wisata,
+                                bundle
+                            )
+                        }
+                        2 -> {
+                            findNavController().navigate(
+                                R.id.navigation_my_failed_ticket_restaurant,
+                                bundle
+                            )
+                        }
+                        3 -> {
+                            findNavController().navigate(
+                                R.id.navigation_my_failed_ticket_travel_package,
+                                bundle
+                            )
+                        }
+                        5 -> {
+                            findNavController().navigate(
+                                R.id.navigation_my_failed_ticket_homestay,
+                                bundle
+                            )
+                        }
                     }
                 } else {
                     findNavController().navigate(

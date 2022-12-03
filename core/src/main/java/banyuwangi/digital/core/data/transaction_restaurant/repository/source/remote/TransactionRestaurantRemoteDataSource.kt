@@ -31,11 +31,11 @@ class TransactionRestaurantRemoteDataSource(private val service: TransactionRest
             try {
                 val cartMap: HashMap<String, RequestBody> = HashMap()
                 for ((index, cart) in carts.withIndex()) {
-                    cartMap["chart[${index}][id_product]"] =
+                    cartMap["cart[${index}][id_product]"] =
                         cart.idProduct.toRequestBody("text/plain".toMediaType())
-                    cartMap["chart[${index}][product_price]"] =
+                    cartMap["cart[${index}][product_price]"] =
                         cart.productPrice.toString().toRequestBody("text/plain".toMediaType())
-                    cartMap["chart[${index}][total]"] =
+                    cartMap["cart[${index}][total]"] =
                         cart.total.toString().toRequestBody("text/plain".toMediaType())
                 }
                 val response = service.insertTransaction(

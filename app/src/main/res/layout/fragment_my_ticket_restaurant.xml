@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_transaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_ticket"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/label_order_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Order ID:"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_order_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_order_id"
+                tools:text="312321sad" />
+
+
+            <TextView
+                android:id="@+id/label_detail_pengantaran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="Detail Pengantaran"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_order_id" />
+
+            <ImageView
+                android:id="@+id/img_restaurant_address"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_restaurant_address"
+                app:layout_constraintBottom_toBottomOf="@id/tv_restaurant_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/label_restaurant_address"
+                app:tint="@color/red" />
+
+            <TextView
+                android:id="@+id/label_restaurant_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Alamat Restorant"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_restaurant_address"
+                app:layout_constraintTop_toBottomOf="@id/label_detail_pengantaran" />
+
+            <TextView
+                android:id="@+id/tv_restaurant_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/img_restaurant_address"
+                app:layout_constraintTop_toBottomOf="@id/label_restaurant_address"
+                tools:text="Waroeng Osing" />
+
+            <View
+                android:id="@+id/divider_address"
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/color_grey"
+                app:layout_constraintEnd_toEndOf="@id/img_restaurant_address"
+                app:layout_constraintStart_toStartOf="@id/img_restaurant_address"
+                app:layout_constraintTop_toBottomOf="@id/img_restaurant_address" />
+
+            <ImageView
+                android:id="@+id/img_delivery_location"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_delivary_location"
+                app:layout_constraintStart_toStartOf="@id/img_restaurant_address"
+                app:layout_constraintTop_toBottomOf="@id/divider_address"
+                app:tint="@color/yellow" />
+
+            <TextView
+                android:id="@+id/label_delivery_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false"
+                android:text="Lokasi Tujuan"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/img_delivery_location"
+                app:layout_constraintTop_toTopOf="@id/img_delivery_location" />
+
+            <TextView
+                android:id="@+id/tv_location_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/img_restaurant_address"
+                app:layout_constraintTop_toBottomOf="@id/label_delivery_location"
+                tools:text="Vivi Homestay" />
+
+            <View
+                android:id="@+id/v1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/color_grey"
+                app:layout_constraintTop_toBottomOf="@id/tv_location_name" />
+
+
+            <TextView
+                android:id="@+id/label_customer_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="Informasi Pemesan"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v1" />
+
+            <TextView
+                android:id="@+id/tv_customer_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/label_customer_info"
+                tools:text="Nama lengkap: Muhammad Hadi" />
+
+            <TextView
+                android:id="@+id/tv_customer_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_customer_name"
+                tools:text="Nomor ponsel: 082244087798" />
+
+            <TextView
+                android:id="@+id/tv_customer_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_customer_phone"
+                tools:text="Alamat email: adybeldex@gmail.com" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_detail_transaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/border_ticket"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@id/cl_transaction">
+
+            <TextView
+                android:id="@+id/label_detail_transaction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="Detail Transaksi"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_chart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/label_detail_transaction"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_chart_item" />
+
+            <View
+                android:id="@+id/v3"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/color_grey"
+                app:layout_constraintTop_toBottomOf="@id/rv_chart" />
+
+            <TextView
+                android:id="@+id/label_total_payment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="@string/total_payment"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@id/tv_total_payment"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v3" />
+
+            <TextView
+                android:id="@+id/tv_total_payment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:gravity="end"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@id/label_total_payment"
+                app:layout_constraintTop_toBottomOf="@id/v3"
+                tools:text="IDR 100.000" />
+
+            <TextView
+                android:id="@+id/label_refund"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/ticket_cannot_be_refunded"
+                android:textSize="12sp"
+                app:drawableStartCompat="@drawable/ic_refund"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_total_payment" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

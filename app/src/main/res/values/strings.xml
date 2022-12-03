@@ -26,6 +26,7 @@
     <string name="navigation_choose_travel_package">Pilih Paket</string>
     <string name="navigation_payment">Pembayaran</string>
     <string name="navigation_my_ticket_wisata">Tiket saya</string>
+    <string name="navigation_my_ticket_restaurant">Pesanan saya</string>
     <string name="homestay">Homestay</string>
     <string name="waktu_checkin">Waktu Check-in:</string>
     <string name="waktu_checkout">Waktu Chek-out:</string>

@@ -14,7 +14,7 @@ object TransactionWisataMapper {
             detail = mapChartItemToDomain(data.detail)
         )
 
-    private fun mapChartItemToDomain(data: List<ChartItem>): List<ChartDomain> = data.map {
+     fun mapChartItemToDomain(data: List<ChartItem>): List<ChartDomain> = data.map {
         ChartDomain(
             idProduct = it.id,
             productName = it.name,

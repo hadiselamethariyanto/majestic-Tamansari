@@ -46,6 +46,7 @@ class MyTicketRestaurantFragment :
 
                         binding.tvRestaurantName.text = restaurant?.name
                         binding.tvLocationName.text = homestay?.name
+                        binding.tvOngkir.text = "IDR ${Utils.thousandSeparator(ongkir ?: 0)}"
                         reviewTransactionWisataAdapter.updateData(detail)
                     }
                     is Resource.Error -> {

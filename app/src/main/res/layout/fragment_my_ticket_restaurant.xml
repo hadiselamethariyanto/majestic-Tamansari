@@ -227,6 +227,36 @@
                 app:layout_constraintTop_toBottomOf="@id/rv_chart" />
 
             <TextView
+                android:id="@+id/label_ongkir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Ongkir"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v3" />
+
+            <TextView
+                android:id="@+id/tv_ongkir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/label_ongkir"
+                tools:text="IDR 10.000" />
+
+            <View
+                android:id="@+id/v4"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/color_grey"
+                app:layout_constraintTop_toBottomOf="@id/label_ongkir" />
+
+            <TextView
                 android:id="@+id/label_total_payment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -237,20 +267,19 @@
                 app:layout_constraintEnd_toStartOf="@id/tv_total_payment"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/v3" />
+                app:layout_constraintTop_toBottomOf="@id/v4" />
 
             <TextView
                 android:id="@+id/tv_total_payment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:gravity="end"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toEndOf="@id/label_total_payment"
-                app:layout_constraintTop_toBottomOf="@id/v3"
+                app:layout_constraintTop_toTopOf="@id/label_total_payment"
                 tools:text="IDR 100.000" />
 
             <TextView

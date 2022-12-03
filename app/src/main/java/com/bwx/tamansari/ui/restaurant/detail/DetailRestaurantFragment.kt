@@ -2,10 +2,14 @@ package com.bwx.tamansari.ui.restaurant.detail
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
+import banyuwangi.digital.core.domain.model.CartRestaurantDomain
 import banyuwangi.digital.core.domain.model.ChartDomain
 import banyuwangi.digital.core.domain.model.MenuRestaurantDomain
 import com.bwx.tamansari.databinding.FragmentDetailRestaurantBinding
 import banyuwangi.digital.core.domain.model.RestaurantDomain
+import com.bwx.tamansari.R
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.utils.DataDummy
 import com.bwx.tamansari.utils.Utils
@@ -31,13 +35,15 @@ class DetailRestaurantFragment : BaseFragment<FragmentDetailRestaurantBinding>(
         binding.tvTotalReview.text = "${restaurant?.voteCount} rating"
         val menus = restaurant?.menus ?: arrayListOf()
         menuRestaurantAdapter = MenuRestaurantAdapter(menus)
-        menuRestaurantAdapter.setOnItemClickCallback(object :MenuRestaurantAdapter.OnItemClickCallback{
+        menuRestaurantAdapter.setOnItemClickCallback(object :
+            MenuRestaurantAdapter.OnItemClickCallback {
             override fun onAddMenu(data: MenuRestaurantDomain) {
-                val chart = ChartDomain(
+                val chart = CartRestaurantDomain(
                     idProduct = data.id,
                     productName = data.name,
                     productPrice = data.price,
-                    total = 1
+                    total = 1,
+                    imgProduct = data.photoUrl
                 )
                 viewModel.addChart(chart)
             }
@@ -52,7 +58,7 @@ class DetailRestaurantFragment : BaseFragment<FragmentDetailRestaurantBinding>(
         })
         binding.rvMenusRestaurant.adapter = menuRestaurantAdapter
 
-        viewModel.chart.observe(viewLifecycleOwner) {cart->
+        viewModel.chart.observe(viewLifecycleOwner) { cart ->
             menuRestaurantAdapter.updateData(cart)
             if (cart.isNotEmpty()) {
                 val totalFee = cart.sumOf { it.productPrice * it.total }
@@ -62,6 +68,15 @@ class DetailRestaurantFragment : BaseFragment<FragmentDetailRestaurantBinding>(
             } else {
                 binding.llBook.visibility = View.GONE
             }
+        }
+
+        binding.llBook.setOnClickListener {
+            val cart = viewModel.chart.value
+            val bundle = bundleOf("cart" to cart)
+            findNavController().navigate(
+                R.id.action_navigation_detail_restaurant_to_navigation_review_transaction_restaurant,
+                bundle
+            )
         }
     }
 

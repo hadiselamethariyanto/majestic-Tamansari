@@ -105,5 +105,11 @@
 
     <string name="warning_empty_username">Mohon isi username</string>
     <string name="warning_empty_phone_number">Mohon isi nomor ponsel</string>
+    <string name="diantar_ke">Diantar ke</string>
+    <string name="ringkasan_pembayaran">Ringkasan Pembayaran</string>
+    <string name="price">Harga</string>
+    <string name="ongkir">Ongkir</string>
+    <string name="pesan_dan_antar_sekarang">Pesan dan antar sekarang</string>
+    <string name="choose_location">Pilih lokasi</string>
 
 </resources>

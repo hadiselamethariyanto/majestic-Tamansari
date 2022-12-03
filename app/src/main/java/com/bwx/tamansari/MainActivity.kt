@@ -126,6 +126,10 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }
+                R.id.navigation_review_transaction_restaurant->{
+                    supportActionBar?.show()
+                    binding.bottomNav.visibility = View.GONE
+                }
                 else -> {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.VISIBLE

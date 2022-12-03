@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import banyuwangi.digital.core.domain.model.CartRestaurantDomain
 import banyuwangi.digital.core.domain.model.ChartDomain
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -22,9 +23,9 @@ class MenuRestaurantAdapter(private val list: List<MenuRestaurantDomain>) :
         this.onItemClickCallback = onItemClickCallback
     }
 
-    private val chartTicket = arrayListOf<ChartDomain>()
+    private val chartTicket = arrayListOf<CartRestaurantDomain>()
 
-    fun updateData(newChart: List<ChartDomain>) {
+    fun updateData(newChart: List<CartRestaurantDomain>) {
         chartTicket.clear()
         chartTicket.addAll(newChart)
         notifyDataSetChanged()

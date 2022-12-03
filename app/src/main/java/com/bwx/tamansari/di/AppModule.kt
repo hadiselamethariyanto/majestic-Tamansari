@@ -72,5 +72,5 @@ val viewModelModule = module {
     viewModel { MyTicketHomestayViewModel(get()) }
     viewModel { MyTicketTravelPackageViewModel(get()) }
     viewModel { DetailRestaurantViewModel() }
-    viewModel { ReviewTransactionRestaurantViewModel(get()) }
+    viewModel { ReviewTransactionRestaurantViewModel(get(),get()) }
 }

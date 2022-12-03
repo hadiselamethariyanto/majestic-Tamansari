@@ -37,7 +37,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="38dp"
-                    android:background="@color/color_grey"/>
+                    android:background="@color/color_grey" />
 
             </com.facebook.shimmer.ShimmerFrameLayout>
 
@@ -95,7 +95,7 @@
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/label_detail_transaction"
-                tools:itemCount="10"
+                tools:itemCount="4"
                 tools:listitem="@layout/item_cart_restaurant" />
 
             <View
@@ -190,11 +190,86 @@
                 app:layout_constraintTop_toTopOf="@id/label_total_payment"
                 tools:text="55.000" />
 
+            <View
+                android:id="@+id/v4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/color_grey"
+                app:layout_constraintTop_toBottomOf="@id/label_total_payment" />
+
+
+            <TextView
+                android:id="@+id/label_customer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="@string/detail_customer"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/v4" />
+
+            <EditText
+                android:id="@+id/et_customer_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/color_grey"
+                android:drawableStart="@drawable/ic_account_customer"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/grey"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@null"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_customer"
+                tools:text="Muhammad Hadi" />
+
+            <EditText
+                android:id="@+id/et_customer_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:backgroundTint="@color/color_grey"
+                android:drawableStart="@drawable/ic_email_customer"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/grey"
+                android:enabled="false"
+                android:fontFamily="@font/poppins_regular"
+                android:inputType="textEmailAddress"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_customer_name"
+                tools:text="adybeldex@gmail.com" />
+
+            <EditText
+                android:id="@+id/et_customer_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:backgroundTint="@color/color_grey"
+                android:drawableStart="@drawable/ic_phone_customer"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/grey"
+                android:fontFamily="@font/poppins_regular"
+                android:inputType="phone"
+                android:textCursorDrawable="@null"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_customer_email"
+                tools:text="+6282244087798" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-    <TextView
+    <Button
+        android:id="@+id/btn_payment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -205,6 +280,7 @@
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp"
         android:text="@string/pesan_dan_antar_sekarang"
+        android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="14sp" />
 

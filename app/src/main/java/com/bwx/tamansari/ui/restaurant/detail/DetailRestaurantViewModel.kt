@@ -3,12 +3,14 @@ package com.bwx.tamansari.ui.restaurant.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import banyuwangi.digital.core.domain.model.CartRestaurantDomain
 import banyuwangi.digital.core.domain.model.ChartDomain
 import banyuwangi.digital.core.domain.model.MenuRestaurantDomain
 import banyuwangi.digital.core.domain.model.TicketWisataDomain
+import banyuwangi.digital.core.domain.usecase.restaurant.RestaurantUseCase
 
-class DetailRestaurantViewModel : ViewModel() {
+class DetailRestaurantViewModel(private val restaurantUseCase: RestaurantUseCase) : ViewModel() {
 
     private val _chart = MutableLiveData<ArrayList<CartRestaurantDomain>>()
     val chart: LiveData<ArrayList<CartRestaurantDomain>> get() = _chart
@@ -44,4 +46,7 @@ class DetailRestaurantViewModel : ViewModel() {
         }
         _chart.value = chartTicket
     }
+
+    fun getDetailRestaurant(idRestaurant: String) =
+        restaurantUseCase.getDetailRestaurant(idRestaurant).asLiveData()
 }

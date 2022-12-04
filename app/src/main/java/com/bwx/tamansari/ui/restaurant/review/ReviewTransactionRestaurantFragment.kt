@@ -134,7 +134,7 @@ class ReviewTransactionRestaurantFragment :
                 if (res.data != null) {
                     val bundle = bundleOf("transaction" to res.data)
                     findNavController().navigate(
-                        R.id.navigation_choose_payment_method,
+                        R.id.action_navigation_review_transaction_restaurant_to_choose_payment,
                         bundle
                     )
                 }

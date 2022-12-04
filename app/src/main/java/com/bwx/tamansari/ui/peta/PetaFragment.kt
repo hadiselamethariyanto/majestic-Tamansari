@@ -54,10 +54,10 @@ class PetaFragment : BaseFragment<FragmentPetaBinding>(FragmentPetaBinding::infl
                 val bundle = bundleOf("id" to data.id)
                 when (data.type) {
                     WISATA_TYPE -> {
-                        findNavController().navigate(R.id.navigation_detail_wisata, bundle)
+                        findNavController().navigate(R.id.action_navigation_maps_to_detail_wisata, bundle)
                     }
                     RESTAURANT_TYPE -> {
-                        findNavController().navigate(R.id.navigation_detail_restaurant, bundle)
+                        findNavController().navigate(R.id.action_navigation_maps_to_detail_restaurant, bundle)
                     }
                     HOMESTAY_TYPE -> {
                         findNavController().navigate(R.id.navigation_detail_homestay, bundle)

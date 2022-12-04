@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_payment"
+    app:startDestination="@id/navigation_choose_payment_method">
+
+    <fragment
+        android:id="@+id/navigation_choose_payment_method"
+        android:name="com.bwx.tamansari.ui.payment.choose_payment_method.ChoosePaymentMethodFragment"
+        android:label="fragment_choose_payment_method"
+        tools:layout="@layout/fragment_choose_payment_method">
+        <action
+            android:id="@+id/action_navigation_choose_payment_method_to_navigation_payment_ewallet"
+            app:destination="@id/navigation_payment_ewallet" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_payment_ewallet"
+        android:name="com.bwx.tamansari.ui.payment.pay_ewallet.PaymentEWalletFragment"
+        android:label="@string/navigation_payment"
+        tools:layout="@layout/fragment_payment_e_wallet">
+
+        <action
+            android:id="@+id/action_navigation_ewallet_to_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home" />
+    </fragment>
+
+</navigation>

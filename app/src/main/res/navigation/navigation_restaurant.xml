@@ -2,24 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_menu_restaurant"
-    app:startDestination="@id/navigation_restaurant">
-
-    <fragment
-        android:id="@+id/navigation_restaurant"
-        android:name="com.bwx.tamansari.ui.restaurant.list.RestaurantFragment"
-        android:label="@string/navigation_list_restaurant"
-        tools:layout="@layout/fragment_restaurant">
-        <action
-            android:id="@+id/action_navigation_restaurant_to_navigation_detail_restaurant"
-            app:destination="@id/navigation_detail_restaurant" />
-    </fragment>
+    android:id="@+id/navigation_restaurant"
+    app:startDestination="@id/navigation_detail_restaurant">
 
     <fragment
         android:id="@+id/navigation_detail_restaurant"
         android:name="com.bwx.tamansari.ui.restaurant.detail.DetailRestaurantFragment"
         android:label="@string/navigation_detail_restaurant"
-        tools:layout="@layout/fragment_detail_restaurant" >
+        tools:layout="@layout/fragment_detail_restaurant">
         <action
             android:id="@+id/action_navigation_detail_restaurant_to_navigation_review_transaction_restaurant"
             app:destination="@id/navigation_review_transaction_restaurant" />
@@ -29,7 +19,11 @@
         android:id="@+id/navigation_review_transaction_restaurant"
         android:name="com.bwx.tamansari.ui.restaurant.review.ReviewTransactionRestaurantFragment"
         android:label="@string/navigation_review_transaction"
-        tools:layout="@layout/fragment_review_transaction_restaurant" />
+        tools:layout="@layout/fragment_review_transaction_restaurant">
+        <action
+            android:id="@+id/action_navigation_review_transaction_restaurant_to_choose_payment"
+            app:destination="@id/navigation_payment" />
+    </fragment>
 
     <dialog
         android:id="@+id/navigation_choose_location_bottom_sheet_dialog"
@@ -37,5 +31,7 @@
         android:label="fragment_choose_location"
         tools:layout="@layout/fragment_choose_location" />
 
+
+    <include app:graph="@navigation/navigation_payment" />
 
 </navigation>

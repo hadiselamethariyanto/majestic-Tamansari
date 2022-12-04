@@ -2,6 +2,7 @@ package banyuwangi.digital.core.data.restoran.repository.source.remote
 
 import banyuwangi.digital.core.data.network.ApiResponseOnly
 import banyuwangi.digital.core.data.restoran.repository.source.remote.network.RestaurantService
+import banyuwangi.digital.core.data.restoran.repository.source.remote.response.GetDetailRestaurantResponse
 import banyuwangi.digital.core.data.restoran.repository.source.remote.response.GetRestaurantResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -14,6 +15,21 @@ class RestaurantRemoteDataSource(private val service: RestaurantService) {
         return flow {
             try {
                 val response = service.getRestaurant()
+                if (response.success) {
+                    emit(ApiResponseOnly.Success(response))
+                } else {
+                    emit(ApiResponseOnly.Error(response.message))
+                }
+            } catch (e: Exception) {
+                emit(ApiResponseOnly.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getDetailRestaurant(idRestaurant: String): Flow<ApiResponseOnly<GetDetailRestaurantResponse>> {
+        return flow {
+            try {
+                val response = service.getDetailRestaurant(idRestaurant)
                 if (response.success) {
                     emit(ApiResponseOnly.Success(response))
                 } else {

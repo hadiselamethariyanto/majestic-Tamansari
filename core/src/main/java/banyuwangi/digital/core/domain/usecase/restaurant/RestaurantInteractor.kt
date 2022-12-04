@@ -1,4 +1,4 @@
-package banyuwangi.digital.core.domain.usecase
+package banyuwangi.digital.core.domain.usecase.restaurant
 
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.RestaurantDomain
@@ -9,4 +9,8 @@ class RestaurantInteractor(private val repository: RestaurantRepository) : Resta
 
     override fun getRestaurants(): Flow<Resource<List<RestaurantDomain>>> =
         repository.getRestaurant()
+
+    override fun getDetailRestaurant(idRestaurant: String): Flow<Resource<RestaurantDomain>> {
+        return repository.getDetailRestaurant(idRestaurant)
+    }
 }

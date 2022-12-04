@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_maps"
+    app:startDestination="@id/navigation_peta">
+
+    <fragment
+        android:id="@+id/navigation_peta"
+        android:name="com.bwx.tamansari.ui.peta.PetaFragment"
+        android:label="@string/navigation_maps"
+        tools:layout="@layout/fragment_peta">
+
+        <action
+            android:id="@+id/action_navigation_maps_to_detail_restaurant"
+            app:destination="@id/navigation_restaurant" />
+
+        <action
+            android:id="@+id/action_navigation_maps_to_detail_wisata"
+            app:destination="@id/navigation_wisata" />
+
+    </fragment>
+
+    <include app:graph="@navigation/navigation_restaurant" />
+
+    <include app:graph="@navigation/navigation_wisata" />
+
+</navigation>

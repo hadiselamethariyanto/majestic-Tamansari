@@ -21,7 +21,7 @@
             app:destination="@id/navigation_travel_package" />
         <action
             android:id="@+id/action_navigation_home_to_navigation_restaurant"
-            app:destination="@id/navigation_restaurant" />
+            app:destination="@id/navigation_restaurant_list" />
         <action
             android:id="@+id/action_navigation_home_to_navigation_peta"
             app:destination="@id/navigation_peta" />
@@ -36,6 +36,7 @@
         android:name="com.bwx.tamansari.ui.pesan.PesanFragment"
         android:label="@string/title_pesan"
         tools:layout="@layout/fragment_pesan" />
+
     <fragment
         android:id="@+id/navigation_daftar_wisata"
         android:name="com.bwx.tamansari.ui.wisata.list.DaftarWisataFragment"
@@ -44,17 +45,19 @@
 
         <action
             android:id="@+id/action_navigation_daftar_wisata_to_navigation_detail_wisata"
-            app:destination="@id/navigation_detail_wisata" />
+            app:destination="@id/navigation_wisata" />
     </fragment>
+
     <fragment
-        android:id="@+id/navigation_detail_wisata"
-        android:name="com.bwx.tamansari.ui.wisata.detail.DetailWisataFragment"
-        android:label="@string/navigation_detail_wisata"
-        tools:layout="@layout/fragment_detail_wisata">
+        android:id="@+id/navigation_restaurant_list"
+        android:name="com.bwx.tamansari.ui.restaurant.list.RestaurantFragment"
+        android:label="@string/navigation_list_restaurant"
+        tools:layout="@layout/fragment_restaurant">
         <action
-            android:id="@+id/action_navigation_detail_wisata_to_navigation_choose_ticket_wisata"
-            app:destination="@id/navigation_choose_ticket_wisata" />
+            android:id="@+id/action_navigation_restaurant_to_navigation_detail_restaurant"
+            app:destination="@id/navigation_restaurant" />
     </fragment>
+
 
     <fragment
         android:id="@+id/navigation_homestay"
@@ -76,11 +79,6 @@
             app:destination="@id/navigation_detail_travel_packaage" />
     </fragment>
 
-    <fragment
-        android:id="@+id/navigation_peta"
-        android:name="com.bwx.tamansari.ui.peta.PetaFragment"
-        android:label="@string/navigation_maps"
-        tools:layout="@layout/fragment_peta" />
     <fragment
         android:id="@+id/navigation_news"
         android:name="com.bwx.tamansari.ui.berita.list.BeritaFragment"
@@ -119,26 +117,7 @@
         android:name="com.bwx.tamansari.ui.akun.AkunFragment"
         android:label="fragment_akun"
         tools:layout="@layout/fragment_akun" />
-    <fragment
-        android:id="@+id/navigation_choose_ticket_wisata"
-        android:name="com.bwx.tamansari.ui.wisata.choose_ticket.ChooseTicketWisataFragment"
-        android:label="@string/navigation_choose_ticket"
-        tools:layout="@layout/fragment_choose_ticket_wisata">
-        <action
-            android:id="@+id/action_navigation_choose_ticket_wisata_to_navigation_review_transaction_wisata"
-            app:destination="@id/navigation_review_transaction_wisata" />
-    </fragment>
 
-    <fragment
-        android:id="@+id/navigation_review_transaction_wisata"
-        android:name="com.bwx.tamansari.ui.wisata.review.ReviewTransactionWisataFragment"
-        android:label="@string/navigation_review_transaction"
-        tools:layout="@layout/fragment_review_transaction_wisata">
-        <action
-            android:id="@+id/action_navigation_review_transaction_wisata_to_navigation_choose_payment_method"
-            app:destination="@id/navigation_choose_payment_method"
-            app:popUpTo="@id/navigation_home" />
-    </fragment>
     <fragment
         android:id="@+id/navigation_choose_room"
         android:name="com.bwx.tamansari.ui.homestay.choose_room.ChooseRoomFragment"
@@ -180,32 +159,13 @@
         android:name="com.bwx.tamansari.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
-    <fragment
-        android:id="@+id/navigation_choose_payment_method"
-        android:name="com.bwx.tamansari.ui.payment.choose_payment_method.ChoosePaymentMethodFragment"
-        android:label="fragment_choose_payment_method"
-        tools:layout="@layout/fragment_choose_payment_method">
-        <action
-            android:id="@+id/action_navigation_choose_payment_method_to_navigation_payment_ewallet"
-            app:destination="@id/navigation_payment_ewallet" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_payment_ewallet"
-        android:name="com.bwx.tamansari.ui.payment.pay_ewallet.PaymentEWalletFragment"
-        android:label="@string/navigation_payment"
-        tools:layout="@layout/fragment_payment_e_wallet">
-
-        <action
-            android:id="@+id/action_navigation_ewallet_to_home"
-            app:destination="@id/navigation_home"
-            app:popUpTo="@id/navigation_home" />
-
-    </fragment>
 
     <include app:graph="@navigation/navigation_transaction" />
 
     <include app:graph="@navigation/navigation_restaurant" />
 
+    <include app:graph="@navigation/navigation_maps"/>
+
+    <include app:graph="@navigation/navigation_wisata"/>
 
 </navigation>

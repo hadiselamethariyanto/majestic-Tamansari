@@ -51,10 +51,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                         findNavController().navigate(R.id.action_navigation_home_to_navigation_travel_package)
                     }
                     3 -> {
-                        findNavController().navigate(R.id.navigation_menu_restaurant)
+                        findNavController().navigate(R.id.action_navigation_home_to_navigation_restaurant)
                     }
                     4 -> {
-                        findNavController().navigate(R.id.action_navigation_home_to_navigation_peta)
+                        findNavController().navigate(R.id.navigation_maps)
                     }
                     5 -> {
                         findNavController().navigate(R.id.action_navigation_home_to_navigation_news)

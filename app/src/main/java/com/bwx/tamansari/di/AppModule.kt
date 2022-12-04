@@ -9,6 +9,8 @@ import banyuwangi.digital.core.domain.usecase.payment.PaymentInteractor
 import banyuwangi.digital.core.domain.usecase.payment.PaymentUseCase
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodInteractor
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodUseCase
+import banyuwangi.digital.core.domain.usecase.restaurant.RestaurantInteractor
+import banyuwangi.digital.core.domain.usecase.restaurant.RestaurantUseCase
 import banyuwangi.digital.core.domain.usecase.transaction_homestay.TransactionHomestayInteractor
 import banyuwangi.digital.core.domain.usecase.transaction_homestay.TransactionHomestayUseCase
 import banyuwangi.digital.core.domain.usecase.transaction_restaurant.TransactionRestaurantInteractor
@@ -85,7 +87,7 @@ val viewModelModule = module {
     viewModel { MyTicketWisataViewModel(get()) }
     viewModel { MyTicketHomestayViewModel(get()) }
     viewModel { MyTicketTravelPackageViewModel(get()) }
-    viewModel { DetailRestaurantViewModel() }
+    viewModel { DetailRestaurantViewModel(get()) }
     viewModel { ReviewTransactionRestaurantViewModel(get(), get(), get()) }
     viewModel { MyTicketRestaurantViewModel(get()) }
     viewModel { MapsViewModel(get()) }

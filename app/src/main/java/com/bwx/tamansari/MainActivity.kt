@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_notifications -> {
                     supportActionBar?.hide()
                 }
-                R.id.navigation_account -> {
+                R.id.navigation_bottom_account -> {
                     supportActionBar?.hide()
                 }
                 R.id.navigation_daftar_wisata -> {
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_detail_wisata -> {
                     binding.bottomNav.visibility = View.GONE
                 }
-                R.id.navigation_homestay -> {
+                R.id.navigation_homestay_list -> {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }

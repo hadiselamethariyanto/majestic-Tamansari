@@ -106,11 +106,6 @@
             app:destination="@id/navigation_choose_travel_package" />
     </fragment>
 
-    <fragment
-        android:id="@+id/navigation_account"
-        android:name="com.bwx.tamansari.ui.akun.AkunFragment"
-        android:label="fragment_akun"
-        tools:layout="@layout/fragment_akun" />
 
     <fragment
         android:id="@+id/navigation_choose_travel_package"
@@ -142,6 +137,8 @@
     <include app:graph="@navigation/navigation_wisata"/>
 
     <include app:graph="@navigation/navigation_homestay"/>
+
+    <include app:graph="@navigation/navigation_account"/>
 
     <fragment
         android:id="@+id/navigation_tpsr"

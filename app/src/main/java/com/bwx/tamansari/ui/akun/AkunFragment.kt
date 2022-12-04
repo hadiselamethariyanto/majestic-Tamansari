@@ -51,6 +51,14 @@ class AkunFragment : BaseFragment<FragmentAkunBinding>(FragmentAkunBinding::infl
             }
         }
 
+        binding.content.tvAbout.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_bottom_account_to_navigation_about)
+        }
+
+        binding.content.tvCallCenter.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_bottom_account_to_navigation_call_center)
+        }
+
         binding.content.tvLogout.setOnClickListener {
             viewModel.logout()
         }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_account"
+    app:startDestination="@id/navigation_bottom_account">
+
+    <fragment
+        android:id="@+id/navigation_bottom_account"
+        android:name="com.bwx.tamansari.ui.akun.AkunFragment"
+        android:label="fragment_akun"
+        tools:layout="@layout/fragment_akun" >
+        <action
+            android:id="@+id/action_navigation_bottom_account_to_navigation_about"
+            app:destination="@id/navigation_about" />
+        <action
+            android:id="@+id/action_navigation_bottom_account_to_navigation_call_center"
+            app:destination="@id/navigation_call_center" />
+    </fragment>
+
+
+    <dialog
+        android:id="@+id/navigation_about"
+        android:name="com.bwx.tamansari.ui.akun.about.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+
+    <dialog
+        android:id="@+id/navigation_call_center"
+        android:name="com.bwx.tamansari.ui.akun.call_center.CallCenterFragment"
+        android:label="fragment_call_center"
+        tools:layout="@layout/fragment_call_center" />
+
+
+</navigation>

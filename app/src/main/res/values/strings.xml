@@ -67,6 +67,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="description_image_wisata">Image Wisata</string>
+    <string name="description_close_modal">Close modal</string>
     <string name="description_image_icon_transaction">Image icon transaction</string>
     <string name="description_image_rating">Image Rating</string>
     <string name="description_image_restaurant">Image Restaurant</string>
@@ -114,5 +115,7 @@
     <string name="pesan_dan_antar_sekarang">Pesan dan antar sekarang</string>
     <string name="choose_location">Pilih lokasi</string>
     <string name="navigation_login">Login</string>
+
+    <string name="about"></string>
 
 </resources>

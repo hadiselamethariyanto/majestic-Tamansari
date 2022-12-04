@@ -19,55 +19,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:text="@string/pengaturan"
+            android:text="@string/bantuan"
             android:textColor="@color/biru_tua"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/editData"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:drawablePadding="16dp"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:gravity="center_vertical"
-            android:text="@string/data_pribadi"
-            android:textSize="14sp"
-            app:drawableStartCompat="@drawable/ic_akun_user"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pengaturan" />
-
-        <TextView
-            android:id="@+id/notifikasi"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:drawablePadding="16dp"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:gravity="center_vertical"
-            android:text="@string/notifikasi"
-            android:textSize="14sp"
-            app:drawableStartCompat="@drawable/ic_akun_notifikasi"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editData" />
-
-        <TextView
-            android:id="@+id/bantuan"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/bantuan"
-            android:textColor="@color/biru_tua"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/notifikasi" />
 
         <TextView
             android:id="@+id/faq"
@@ -82,10 +40,10 @@
             app:drawableStartCompat="@drawable/ic_akun_faq"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bantuan" />
+            app:layout_constraintTop_toBottomOf="@id/pengaturan" />
 
         <TextView
-            android:id="@+id/pusat_bantuan"
+            android:id="@+id/tv_call_center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -100,7 +58,7 @@
             app:layout_constraintTop_toBottomOf="@id/faq" />
 
         <TextView
-            android:id="@+id/tentang"
+            android:id="@+id/tv_about"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -112,7 +70,7 @@
             app:drawableStartCompat="@drawable/ic_akun_tentang"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pusat_bantuan" />
+            app:layout_constraintTop_toBottomOf="@id/tv_call_center" />
 
         <TextView
             android:id="@+id/tv_logout"
@@ -126,7 +84,7 @@
             android:textSize="14sp"
             app:drawableStartCompat="@drawable/ic_baseline_logout_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tentang" />
+            app:layout_constraintTop_toBottomOf="@id/tv_about" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

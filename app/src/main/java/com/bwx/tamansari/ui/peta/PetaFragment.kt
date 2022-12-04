@@ -60,7 +60,7 @@ class PetaFragment : BaseFragment<FragmentPetaBinding>(FragmentPetaBinding::infl
                         findNavController().navigate(R.id.action_navigation_maps_to_detail_restaurant, bundle)
                     }
                     HOMESTAY_TYPE -> {
-                        findNavController().navigate(R.id.navigation_detail_homestay, bundle)
+                        findNavController().navigate(R.id.action_navigation_maps_to_detail_homestay, bundle)
                     }
                 }
             }

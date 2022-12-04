@@ -19,10 +19,17 @@
             android:id="@+id/action_navigation_maps_to_detail_wisata"
             app:destination="@id/navigation_wisata" />
 
+        <action
+            android:id="@+id/action_navigation_maps_to_detail_homestay"
+            app:destination="@id/navigation_homestay" />
+
+
     </fragment>
 
     <include app:graph="@navigation/navigation_restaurant" />
 
     <include app:graph="@navigation/navigation_wisata" />
+
+    <include app:graph="@navigation/navigation_homestay" />
 
 </navigation>

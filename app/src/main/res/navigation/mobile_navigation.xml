@@ -15,7 +15,7 @@
             app:destination="@id/navigation_daftar_wisata" />
         <action
             android:id="@+id/action_navigation_home_to_navigation_homestay"
-            app:destination="@id/navigation_homestay" />
+            app:destination="@id/navigation_homestay_list" />
         <action
             android:id="@+id/action_navigation_home_to_navigation_travel_package"
             app:destination="@id/navigation_travel_package" />
@@ -58,15 +58,14 @@
             app:destination="@id/navigation_restaurant" />
     </fragment>
 
-
     <fragment
-        android:id="@+id/navigation_homestay"
+        android:id="@+id/navigation_homestay_list"
         android:name="com.bwx.tamansari.ui.homestay.list.HomestayFragment"
         android:label="@string/navigation_list_homestay"
         tools:layout="@layout/fragment_homestay">
         <action
             android:id="@+id/action_navigation_homestay_to_navigation_detail_homestay"
-            app:destination="@id/navigation_detail_homestay" />
+            app:destination="@id/navigation_homestay" />
     </fragment>
 
     <fragment
@@ -93,15 +92,7 @@
         android:name="com.bwx.tamansari.ui.berita.detail.DetailBeritaFragment"
         android:label="@string/navigation_detail_news"
         tools:layout="@layout/fragment_detail_berita" />
-    <fragment
-        android:id="@+id/navigation_detail_homestay"
-        android:name="com.bwx.tamansari.ui.homestay.detail.DetailHomestayFragment"
-        android:label="@string/navigation_detail_homestay"
-        tools:layout="@layout/fragment_detail_homestay">
-        <action
-            android:id="@+id/action_navigation_detail_homestay_to_navigation_choose_room"
-            app:destination="@id/navigation_choose_room" />
-    </fragment>
+
     <fragment
         android:id="@+id/navigation_detail_travel_packaage"
         android:name="com.bwx.tamansari.ui.paket.detail.DetailTravelPackageFragment"
@@ -117,27 +108,6 @@
         android:name="com.bwx.tamansari.ui.akun.AkunFragment"
         android:label="fragment_akun"
         tools:layout="@layout/fragment_akun" />
-
-    <fragment
-        android:id="@+id/navigation_choose_room"
-        android:name="com.bwx.tamansari.ui.homestay.choose_room.ChooseRoomFragment"
-        android:label="@string/navigation_choose_room"
-        tools:layout="@layout/fragment_choose_room">
-        <action
-            android:id="@+id/action_navigation_choose_room_to_navigation_review_transaction_homestay"
-            app:destination="@id/navigation_review_transaction_homestay" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_review_transaction_homestay"
-        android:name="com.bwx.tamansari.ui.homestay.review_transaction.ReviewTransactionHomestayFragment"
-        android:label="@string/navigation_review_transaction"
-        tools:layout="@layout/fragment_review_transaction_homestay">
-        <action
-            android:id="@+id/action_navigation_review_transaction_homestay_to_navigation_choose_payment_method"
-            app:destination="@id/navigation_choose_payment_method"
-            app:popUpTo="@id/navigation_home" />
-    </fragment>
 
     <fragment
         android:id="@+id/navigation_choose_travel_package"
@@ -167,5 +137,7 @@
     <include app:graph="@navigation/navigation_maps"/>
 
     <include app:graph="@navigation/navigation_wisata"/>
+
+    <include app:graph="@navigation/navigation_homestay"/>
 
 </navigation>

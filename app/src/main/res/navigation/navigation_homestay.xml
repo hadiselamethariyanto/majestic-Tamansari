@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_homestay"
+    app:startDestination="@id/navigation_detail_homestay">
+
+    <fragment
+        android:id="@+id/navigation_detail_homestay"
+        android:name="com.bwx.tamansari.ui.homestay.detail.DetailHomestayFragment"
+        android:label="@string/navigation_detail_homestay"
+        tools:layout="@layout/fragment_detail_homestay">
+        <action
+            android:id="@+id/action_navigation_detail_homestay_to_navigation_choose_room"
+            app:destination="@id/navigation_choose_room" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_choose_room"
+        android:name="com.bwx.tamansari.ui.homestay.choose_room.ChooseRoomFragment"
+        android:label="@string/navigation_choose_room"
+        tools:layout="@layout/fragment_choose_room">
+        <action
+            android:id="@+id/action_navigation_choose_room_to_navigation_review_transaction_homestay"
+            app:destination="@id/navigation_review_transaction_homestay" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_review_transaction_homestay"
+        android:name="com.bwx.tamansari.ui.homestay.review_transaction.ReviewTransactionHomestayFragment"
+        android:label="@string/navigation_review_transaction"
+        tools:layout="@layout/fragment_review_transaction_homestay">
+        <action
+            android:id="@+id/action_navigation_review_transaction_homestay_to_navigation_choose_payment_method"
+            app:destination="@id/navigation_payment"
+             />
+    </fragment>
+
+    <include app:graph="@navigation/navigation_payment" />
+
+
+</navigation>

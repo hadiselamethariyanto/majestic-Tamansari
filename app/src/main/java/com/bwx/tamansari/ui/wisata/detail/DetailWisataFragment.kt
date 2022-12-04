@@ -94,7 +94,6 @@ class DetailWisataFragment :
         binding.llLoading.visibility = if (isLoading) View.VISIBLE else View.GONE
         binding.clContainer.visibility = if (isLoading) View.GONE else View.VISIBLE
         binding.btnChooseTicket.visibility = if (isLoading) View.GONE else View.VISIBLE
-
     }
 
 }

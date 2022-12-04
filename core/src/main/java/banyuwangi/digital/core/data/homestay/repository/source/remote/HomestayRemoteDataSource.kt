@@ -2,6 +2,7 @@ package banyuwangi.digital.core.data.homestay.repository.source.remote
 
 import banyuwangi.digital.core.data.homestay.repository.source.remote.network.HomestayService
 import banyuwangi.digital.core.data.homestay.repository.source.remote.response.GetAvailabilityRooms
+import banyuwangi.digital.core.data.homestay.repository.source.remote.response.GetDetailHomestayResponse
 import banyuwangi.digital.core.data.homestay.repository.source.remote.response.GetHomestayResponse
 import banyuwangi.digital.core.data.network.ApiResponseOnly
 import kotlinx.coroutines.Dispatchers
@@ -15,6 +16,21 @@ class HomestayRemoteDataSource(private val service: HomestayService) {
         return flow {
             try {
                 val response = service.getHomestay()
+                if (response.success) {
+                    emit(ApiResponseOnly.Success(response))
+                } else {
+                    emit(ApiResponseOnly.Error(response.message))
+                }
+            } catch (e: Exception) {
+                emit(ApiResponseOnly.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getDetailHomestay(idHomestay: String): Flow<ApiResponseOnly<GetDetailHomestayResponse>> {
+        return flow {
+            try {
+                val response = service.getDetailHomestay(idHomestay)
                 if (response.success) {
                     emit(ApiResponseOnly.Success(response))
                 } else {

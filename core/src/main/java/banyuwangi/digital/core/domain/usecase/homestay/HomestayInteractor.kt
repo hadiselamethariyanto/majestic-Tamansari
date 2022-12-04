@@ -1,4 +1,4 @@
-package banyuwangi.digital.core.domain.usecase
+package banyuwangi.digital.core.domain.usecase.homestay
 
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.AvailableRoomDomain
@@ -9,6 +9,9 @@ import kotlinx.coroutines.flow.Flow
 class HomestayInteractor(private val repository: HomestayRepository) : HomestayUseCase {
 
     override fun getHomestay(): Flow<Resource<List<HomestayDomain>>> = repository.getHomestay()
+
+    override fun getDetailHomestay(idHomestay: String): Flow<Resource<HomestayDomain>> =
+        repository.getDetailHomestay(idHomestay)
 
     override fun getAvailabilityRooms(
         idHomestay: String,

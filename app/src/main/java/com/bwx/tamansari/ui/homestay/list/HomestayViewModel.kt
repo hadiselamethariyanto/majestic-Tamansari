@@ -2,7 +2,7 @@ package com.bwx.tamansari.ui.homestay.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import banyuwangi.digital.core.domain.usecase.HomestayUseCase
+import banyuwangi.digital.core.domain.usecase.homestay.HomestayUseCase
 
 class HomestayViewModel(private val homestayUseCase: HomestayUseCase) : ViewModel() {
 

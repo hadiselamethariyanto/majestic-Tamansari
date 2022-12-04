@@ -4,6 +4,7 @@ import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.data.homestay.mapper.HomestayMapper
 import banyuwangi.digital.core.data.homestay.repository.source.remote.HomestayRemoteDataSource
 import banyuwangi.digital.core.data.homestay.repository.source.remote.response.GetAvailabilityRooms
+import banyuwangi.digital.core.data.homestay.repository.source.remote.response.GetDetailHomestayResponse
 import banyuwangi.digital.core.data.homestay.repository.source.remote.response.GetHomestayResponse
 import banyuwangi.digital.core.data.mechanism.NetworkOnlyResource
 import banyuwangi.digital.core.data.network.ApiResponseOnly
@@ -24,6 +25,19 @@ class HomestayRepositoryImpl(private val remoteDataSource: HomestayRemoteDataSou
 
             override suspend fun createCall(): Flow<ApiResponseOnly<GetHomestayResponse>> =
                 remoteDataSource.getHomestay()
+
+        }.asFlow()
+    }
+
+    override fun getDetailHomestay(idHomestay: String): Flow<Resource<HomestayDomain>> {
+        return object : NetworkOnlyResource<HomestayDomain, GetDetailHomestayResponse>() {
+            override fun loadFromNetwork(data: GetDetailHomestayResponse): Flow<HomestayDomain> {
+                val response = HomestayMapper.mapHomestayItemToDomain(data.data)
+                return flowOf(response)
+            }
+
+            override suspend fun createCall(): Flow<ApiResponseOnly<GetDetailHomestayResponse>> =
+                remoteDataSource.getDetailHomestay(idHomestay)
 
         }.asFlow()
     }

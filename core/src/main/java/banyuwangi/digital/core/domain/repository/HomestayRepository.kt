@@ -9,6 +9,8 @@ interface HomestayRepository {
 
     fun getHomestay(): Flow<Resource<List<HomestayDomain>>>
 
+    fun getDetailHomestay(idHomestay: String): Flow<Resource<HomestayDomain>>
+
     fun getAvailabilityRooms(
         idHomestay: String,
         checkin: String,

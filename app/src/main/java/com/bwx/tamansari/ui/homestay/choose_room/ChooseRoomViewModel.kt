@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.switchMap
-import banyuwangi.digital.core.domain.usecase.HomestayUseCase
+import banyuwangi.digital.core.domain.usecase.homestay.HomestayUseCase
 import com.bwx.tamansari.utils.DoubleTrigger
 
 class ChooseRoomViewModel(private val homestayUseCase: HomestayUseCase) : ViewModel() {

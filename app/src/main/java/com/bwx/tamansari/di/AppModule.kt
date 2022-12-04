@@ -1,6 +1,8 @@
 package com.bwx.tamansari.di
 
 import banyuwangi.digital.core.domain.usecase.*
+import banyuwangi.digital.core.domain.usecase.homestay.HomestayInteractor
+import banyuwangi.digital.core.domain.usecase.homestay.HomestayUseCase
 import banyuwangi.digital.core.domain.usecase.maps.MapsInteractor
 import banyuwangi.digital.core.domain.usecase.maps.MapsUseCase
 import banyuwangi.digital.core.domain.usecase.payment.PaymentInteractor
@@ -22,6 +24,7 @@ import banyuwangi.digital.core.domain.usecase.wisata.WisataUseCase
 import com.bwx.tamansari.ui.akun.AccountViewModel
 import com.bwx.tamansari.ui.berita.list.NewsViewModel
 import com.bwx.tamansari.ui.homestay.choose_room.ChooseRoomViewModel
+import com.bwx.tamansari.ui.homestay.detail.DetailHomestayViewModel
 import com.bwx.tamansari.ui.homestay.list.HomestayViewModel
 import com.bwx.tamansari.ui.homestay.review_transaction.ReviewTransactionHomestayViewModel
 import com.bwx.tamansari.ui.login.LoginViewModel
@@ -87,4 +90,5 @@ val viewModelModule = module {
     viewModel { MyTicketRestaurantViewModel(get()) }
     viewModel { MapsViewModel(get()) }
     viewModel { DetailWisataViewModel(get()) }
+    viewModel { DetailHomestayViewModel(get()) }
 }

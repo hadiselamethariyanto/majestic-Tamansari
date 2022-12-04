@@ -13,6 +13,9 @@ object MapsMapper {
             longitude = it.longitude ?: 0.0,
             address = it.address ?: "",
             type = it.type ?: 0,
+            typeName = it.typeName?:"",
+            rating = it.rating?:0f,
+            voteCount = it.voteCount?:0,
             photos = it.photos ?: arrayListOf()
         )
     }

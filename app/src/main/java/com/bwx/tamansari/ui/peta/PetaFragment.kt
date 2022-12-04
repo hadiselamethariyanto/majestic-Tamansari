@@ -31,16 +31,36 @@ class PetaFragment : BaseFragment<FragmentPetaBinding>(FragmentPetaBinding::infl
 
     private val viewModel: MapsViewModel by viewModel()
     private val boundsBuilder = LatLngBounds.Builder()
+    private lateinit var adapter: MapsAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.maps.onCreate(savedInstanceState)
         binding.maps.getMapAsync(this)
+
+        adapter = MapsAdapter()
+        adapter.setOnItemClickCallback(object :MapsAdapter.OnItemClickCallback{
+            override fun onItemDisplayed(data: MapsOutletDomain) {
+                val location = LatLng(data.latitude, data.longitude)
+                mMap.animateCamera(CameraUpdateFactory.newLatLng(location))
+            }
+        })
+        binding.rvMaps.adapter = adapter
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+
+        mMap.setOnMarkerClickListener {marker->
+            if (marker.isInfoWindowShown) {
+                marker.hideInfoWindow()
+            } else {
+                marker.showInfoWindow()
+            }
+            binding.rvMaps.scrollToPosition(marker.tag.toString().toInt())
+            true
+        }
 
         mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireActivity(), R.raw.map_style))
 
@@ -61,11 +81,13 @@ class PetaFragment : BaseFragment<FragmentPetaBinding>(FragmentPetaBinding::infl
             }
             is Resource.Success -> {
                 val outlets = res.data ?: arrayListOf()
-                for (x in outlets) {
-                    val location = LatLng(x.latitude, x.longitude)
+                adapter.updateData(outlets)
+
+                for (x in 0 until  outlets.size) {
+                    val location = LatLng(outlets[x].latitude, outlets[x].longitude)
                     boundsBuilder.include(location)
                     var icon = 0
-                    when (x.type) {
+                    when (outlets[x].type) {
                         1 -> {
                             icon = R.drawable.ic_map_attraction
                         }
@@ -80,10 +102,10 @@ class PetaFragment : BaseFragment<FragmentPetaBinding>(FragmentPetaBinding::infl
                     mMap.addMarker(
                         MarkerOptions()
                             .position(location)
-                            .title(x.name)
-                            .snippet(x.address)
+                            .title(outlets[x].name)
+                            .snippet(outlets[x].address)
                             .icon(vectorToBitmap(icon))
-                    )
+                    )?.tag = x
                 }
 
                 val bounds: LatLngBounds = boundsBuilder.build()

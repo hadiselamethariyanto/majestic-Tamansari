@@ -7,5 +7,8 @@ data class MapsOutletDomain(
     val longitude: Double,
     val address: String,
     val type: Int,
+    val typeName:String,
+    val rating:Float,
+    val voteCount:Int,
     val photos: List<String>
 )

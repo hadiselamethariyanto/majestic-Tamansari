@@ -113,5 +113,6 @@
     <string name="ongkir">Ongkir</string>
     <string name="pesan_dan_antar_sekarang">Pesan dan antar sekarang</string>
     <string name="choose_location">Pilih lokasi</string>
+    <string name="navigation_login">Login</string>
 
 </resources>

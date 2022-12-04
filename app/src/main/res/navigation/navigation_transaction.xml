@@ -19,6 +19,11 @@
         <action
             android:id="@+id/action_navigation_transaction_to_navigation_my_failed_ticket_wisata"
             app:destination="@id/navigation_my_failed_ticket_wisata" />
+
+        <action
+            android:id="@+id/action_navigation_transaction_to_navigation_payment_method"
+            app:destination="@id/navigation_payment" />
+
     </fragment>
 
     <fragment
@@ -64,6 +69,9 @@
         android:id="@+id/navigation_my_failed_ticket_restaurant"
         android:name="com.bwx.tamansari.ui.ticket.restaurant.MyFailedTicketRestaurantFragment"
         android:label="@string/navigation_my_ticket_restaurant" />
+
+    <include app:graph="@navigation/navigation_payment" />
+
 
 
 </navigation>

@@ -54,6 +54,13 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.ViewHolder>()
             binding.tvTotalFee.text = "IDR ${Utils.thousandSeparator(data.totalFee)}"
 
             when (data.status) {
+                2->{
+                    binding.tvTimeRemaining.background = ContextCompat.getDrawable(
+                        itemView.context,
+                        R.drawable.background_time_remaining_finished
+                    )
+                    binding.tvTimeRemaining.text = "Pembayaran berakhir 00:00:00"
+                }
                 3 -> {
                     binding.tvTimeRemaining.background = ContextCompat.getDrawable(
                         itemView.context,
@@ -76,6 +83,11 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.ViewHolder>()
                         override fun onTick(millisUntilFinished: Long) {
                             val minutes = (millisUntilFinished / 1000) / 60
                             val seconds = (millisUntilFinished / 1000) % 60
+                            binding.tvTimeRemaining.background = ContextCompat.getDrawable(
+                                itemView.context,
+                                R.drawable.background_time_remaining
+                            )
+
                             binding.tvTimeRemaining.text = "Selesaikan pembayaran $minutes:$seconds"
                         }
 

@@ -136,7 +136,7 @@ class TransactionFragment : BaseFragment<FragmentRiwayatBinding>(FragmentRiwayat
                     }
                 } else {
                     findNavController().navigate(
-                        R.id.action_navigation_transaction_to_navigation_choose_payment_method,
+                        R.id.action_navigation_transaction_to_navigation_payment_method,
                         bundle
                     )
                 }

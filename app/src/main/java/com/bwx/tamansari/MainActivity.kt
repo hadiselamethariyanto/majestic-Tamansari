@@ -138,6 +138,10 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }
+                R.id.navigation_peta->{
+                    supportActionBar?.show()
+                    binding.bottomNav.visibility = View.GONE
+                }
                 else -> {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.VISIBLE

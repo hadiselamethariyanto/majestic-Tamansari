@@ -1,6 +1,8 @@
 package com.bwx.tamansari.di
 
 import banyuwangi.digital.core.domain.usecase.*
+import banyuwangi.digital.core.domain.usecase.maps.MapsInteractor
+import banyuwangi.digital.core.domain.usecase.maps.MapsUseCase
 import banyuwangi.digital.core.domain.usecase.payment.PaymentInteractor
 import banyuwangi.digital.core.domain.usecase.payment.PaymentUseCase
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodInteractor
@@ -24,6 +26,7 @@ import com.bwx.tamansari.ui.login.LoginViewModel
 import com.bwx.tamansari.ui.paket.list.PaketViewModel
 import com.bwx.tamansari.ui.paket.review.ReviewTransactionTravelPackageViewModel
 import com.bwx.tamansari.ui.payment.choose_payment_method.ChoosePaymentMethodViewModel
+import com.bwx.tamansari.ui.peta.MapsViewModel
 import com.bwx.tamansari.ui.restaurant.detail.DetailRestaurantViewModel
 import com.bwx.tamansari.ui.restaurant.list.RestaurantViewModel
 import com.bwx.tamansari.ui.restaurant.review.ReviewTransactionRestaurantViewModel
@@ -54,6 +57,7 @@ val useCaseModule = module {
     factory<TransactionHomestayUseCase> { TransactionHomestayInteractor(get()) }
     factory<TransactionTravelPackageUseCase> { TransactionTravelPackageInteractor(get()) }
     factory<TransactionRestaurantUseCase> { TransactionRestaurantInteractor(get()) }
+    factory<MapsUseCase> { MapsInteractor(get()) }
 }
 
 val viewModelModule = module {
@@ -70,12 +74,13 @@ val viewModelModule = module {
     viewModel { ReviewWisataViewModel(get(), get()) }
     viewModel { ReviewTransactionHomestayViewModel(get(), get()) }
     viewModel { ReviewTransactionTravelPackageViewModel(get(), get()) }
-    viewModel { ChoosePaymentMethodViewModel(get(), get(), get(), get(), get(),get()) }
+    viewModel { ChoosePaymentMethodViewModel(get(), get(), get(), get(), get(), get()) }
     viewModel { TransactionsViewModel(get(), get()) }
     viewModel { MyTicketWisataViewModel(get()) }
     viewModel { MyTicketHomestayViewModel(get()) }
     viewModel { MyTicketTravelPackageViewModel(get()) }
     viewModel { DetailRestaurantViewModel() }
-    viewModel { ReviewTransactionRestaurantViewModel(get(), get(),get()) }
+    viewModel { ReviewTransactionRestaurantViewModel(get(), get(), get()) }
     viewModel { MyTicketRestaurantViewModel(get()) }
+    viewModel { MapsViewModel(get()) }
 }

@@ -20,7 +20,7 @@
             app:cardCornerRadius="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -33,9 +33,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:drawablePadding="12dp"
-                    android:includeFontPadding="false"
-                    android:gravity="center_vertical"
                     android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
                     android:text="@string/saldo"
                     android:textColor="@color/white"
                     android:textSize="16sp"
@@ -48,14 +48,14 @@
                     android:id="@+id/tvSaldo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="@string/placeholder_saldo"
                     android:textColor="@color/white"
                     android:textSize="24sp"
-                    android:layout_marginTop="4dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/saldo" />
+                    app:layout_constraintTop_toBottomOf="@id/saldo"
+                    tools:text="@string/placeholder_saldo" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -68,9 +68,9 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            android:textColor="@color/black"
             android:fontFamily="@font/poppins_semi_bold"
             android:text="@string/riwayat"
+            android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,11 +83,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            tools:listitem="@layout/item_riwayat_claim_sampah"
-            tools:itemCount="4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/riwayat" />
+            app:layout_constraintTop_toBottomOf="@id/riwayat"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_riwayat_claim_sampah" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

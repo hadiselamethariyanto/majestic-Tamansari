@@ -20,6 +20,9 @@ import banyuwangi.digital.core.data.peta.repository.source.remote.network.MapsSe
 import banyuwangi.digital.core.data.restoran.repository.RestaurantRepositoryImpl
 import banyuwangi.digital.core.data.restoran.repository.source.remote.RestaurantRemoteDataSource
 import banyuwangi.digital.core.data.restoran.repository.source.remote.network.RestaurantService
+import banyuwangi.digital.core.data.tpsr.repository.TpsrRepositoryImpl
+import banyuwangi.digital.core.data.tpsr.repository.source.remote.TpsrRemoteDataSource
+import banyuwangi.digital.core.data.tpsr.repository.source.remote.network.TpsrApiService
 import banyuwangi.digital.core.data.transaction_homestay.repository.TransactionHomestayRepositoryImpl
 import banyuwangi.digital.core.data.transaction_homestay.repository.source.remote.TransactionHomestayRemoteDataSource
 import banyuwangi.digital.core.data.transaction_homestay.repository.source.remote.network.TransactionHomestayService
@@ -173,6 +176,15 @@ val networkModule = module {
             .build()
         retrofit.create(MapsService::class.java)
     }
+
+    single {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(get())
+            .build()
+        retrofit.create(TpsrApiService::class.java)
+    }
 }
 
 val repositoryModule = module {
@@ -189,6 +201,7 @@ val repositoryModule = module {
     single { TransactionTravelPackageRemoteDataSource(get()) }
     single { TransactionRestaurantRemoteDataSource(get()) }
     single { MapsRemoteDataSource(get()) }
+    single { TpsrRemoteDataSource(get()) }
 
     single<WisataRepository> { WisataRepositoryImpl(get()) }
     single<HomestayRepository> { HomestayRepositoryImpl(get()) }
@@ -204,6 +217,7 @@ val repositoryModule = module {
     single<TransactionTravelPackageRepository> { TransactionTravelPackageRepositoryImpl(get()) }
     single<TransactionRestaurantRepository> { TransactionRestaurantRepositoryImpl(get()) }
     single<MapsRepository> { MapsRepositoryImpl(get()) }
+    single<TpsrRepository> { TpsrRepositoryImpl(get()) }
 }
 
 val firebaseModule =

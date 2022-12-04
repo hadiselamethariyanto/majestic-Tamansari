@@ -21,6 +21,7 @@
             android:fontFamily="@font/poppins_semi_bold"
             android:textColor="@color/black"
             android:textSize="14sp"
+            android:textAllCaps="true"
             app:layout_constraintEnd_toStartOf="@id/tvBiaya"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

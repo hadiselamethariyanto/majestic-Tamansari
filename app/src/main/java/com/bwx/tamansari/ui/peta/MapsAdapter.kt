@@ -60,11 +60,15 @@ class MapsAdapter : RecyclerView.Adapter<MapsAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding(list[position])
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(list[position])
+        }
     }
 
     override fun getItemCount(): Int = list.size
 
     interface OnItemClickCallback {
         fun onItemDisplayed(data: MapsOutletDomain)
+        fun onItemClicked(data: MapsOutletDomain)
     }
 }

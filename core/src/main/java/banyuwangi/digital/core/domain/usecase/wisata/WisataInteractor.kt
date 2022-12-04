@@ -1,4 +1,4 @@
-package banyuwangi.digital.core.domain.usecase
+package banyuwangi.digital.core.domain.usecase.wisata
 
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.WisataDomain
@@ -8,6 +8,9 @@ import kotlinx.coroutines.flow.Flow
 
 class WisataInteractor(private val repository: WisataRepository) : WisataUseCase {
     override fun getWisata(): Flow<Resource<List<WisataDomain>>> = repository.getWisata()
+
+    override fun getDetailWisata(idWisata: String): Flow<Resource<WisataDomain>> =
+        repository.getDetailWisata(idWisata)
 
     override fun getWisataRating(idWisata: String): Flow<Resource<List<WisataRatingDomain>>> =
         repository.getWisataRating(idWisata)

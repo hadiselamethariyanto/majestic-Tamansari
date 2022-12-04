@@ -5,6 +5,7 @@ import banyuwangi.digital.core.data.mechanism.NetworkOnlyResource
 import banyuwangi.digital.core.data.network.ApiResponseOnly
 import banyuwangi.digital.core.data.wisata.mapper.WisataMapper
 import banyuwangi.digital.core.data.wisata.repository.source.remote.WisataRemoteDataSource
+import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetDetailWisataResponse
 import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetWisataRatingResponse
 import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetWisataResponse
 import banyuwangi.digital.core.domain.model.WisataDomain
@@ -25,6 +26,19 @@ class WisataRepositoryImpl(private val remoteDataSource: WisataRemoteDataSource)
 
             override suspend fun createCall(): Flow<ApiResponseOnly<GetWisataResponse>> =
                 remoteDataSource.getWisata()
+
+        }.asFlow()
+    }
+
+    override fun getDetailWisata(idWisata: String): Flow<Resource<WisataDomain>> {
+        return object : NetworkOnlyResource<WisataDomain, GetDetailWisataResponse>() {
+            override fun loadFromNetwork(data: GetDetailWisataResponse): Flow<WisataDomain> {
+                val response = WisataMapper.mapWisataResponseToDomain(data.data)
+                return flowOf(response)
+            }
+
+            override suspend fun createCall(): Flow<ApiResponseOnly<GetDetailWisataResponse>> =
+                remoteDataSource.getDetailWisata(idWisata)
 
         }.asFlow()
     }

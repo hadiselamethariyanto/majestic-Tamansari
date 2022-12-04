@@ -17,6 +17,8 @@ import banyuwangi.digital.core.domain.usecase.transaction_wisata.TransactionWisa
 import banyuwangi.digital.core.domain.usecase.transaction_wisata.TransactionWisataUsecase
 import banyuwangi.digital.core.domain.usecase.transactions.TransactionsInteractor
 import banyuwangi.digital.core.domain.usecase.transactions.TransactionsUseCase
+import banyuwangi.digital.core.domain.usecase.wisata.WisataInteractor
+import banyuwangi.digital.core.domain.usecase.wisata.WisataUseCase
 import com.bwx.tamansari.ui.akun.AccountViewModel
 import com.bwx.tamansari.ui.berita.list.NewsViewModel
 import com.bwx.tamansari.ui.homestay.choose_room.ChooseRoomViewModel
@@ -36,6 +38,7 @@ import com.bwx.tamansari.ui.ticket.restaurant.MyTicketRestaurantViewModel
 import com.bwx.tamansari.ui.ticket.travel_package.MyTicketTravelPackageViewModel
 import com.bwx.tamansari.ui.transaction.TransactionsViewModel
 import com.bwx.tamansari.ui.wisata.choose_ticket.ChooseTicketWisataViewModel
+import com.bwx.tamansari.ui.wisata.detail.DetailWisataViewModel
 import com.bwx.tamansari.ui.wisata.detail.rating.RatingWisataViewModel
 import com.bwx.tamansari.ui.wisata.list.ListWisataViewModel
 import com.bwx.tamansari.ui.wisata.review.ReviewWisataViewModel
@@ -83,4 +86,5 @@ val viewModelModule = module {
     viewModel { ReviewTransactionRestaurantViewModel(get(), get(), get()) }
     viewModel { MyTicketRestaurantViewModel(get()) }
     viewModel { MapsViewModel(get()) }
+    viewModel { DetailWisataViewModel(get()) }
 }

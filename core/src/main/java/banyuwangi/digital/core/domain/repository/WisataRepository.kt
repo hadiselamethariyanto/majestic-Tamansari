@@ -9,5 +9,7 @@ interface WisataRepository {
 
     fun getWisata(): Flow<Resource<List<WisataDomain>>>
 
+    fun getDetailWisata(idWisata: String):Flow<Resource<WisataDomain>>
+
     fun getWisataRating(idWisata:String):Flow<Resource<List<WisataRatingDomain>>>
 }

@@ -1,6 +1,5 @@
 package com.bwx.tamansari.ui.peta
 
-import android.Manifest
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -12,12 +11,17 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.MapsOutletDomain
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentPetaBinding
 import com.bwx.tamansari.ui.base.BaseFragment
+import com.bwx.tamansari.utils.Constant.HOMESTAY_TYPE
+import com.bwx.tamansari.utils.Constant.RESTAURANT_TYPE
+import com.bwx.tamansari.utils.Constant.WISATA_TYPE
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -44,6 +48,21 @@ class PetaFragment : BaseFragment<FragmentPetaBinding>(FragmentPetaBinding::infl
             override fun onItemDisplayed(data: MapsOutletDomain) {
                 val location = LatLng(data.latitude, data.longitude)
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(location))
+            }
+
+            override fun onItemClicked(data: MapsOutletDomain) {
+                val bundle = bundleOf("id" to data.id)
+                when (data.type) {
+                    WISATA_TYPE -> {
+                        findNavController().navigate(R.id.navigation_detail_wisata, bundle)
+                    }
+                    RESTAURANT_TYPE -> {
+                        findNavController().navigate(R.id.navigation_detail_restaurant, bundle)
+                    }
+                    HOMESTAY_TYPE -> {
+                        findNavController().navigate(R.id.navigation_detail_homestay, bundle)
+                    }
+                }
             }
         })
         binding.rvMaps.adapter = adapter
@@ -88,13 +107,13 @@ class PetaFragment : BaseFragment<FragmentPetaBinding>(FragmentPetaBinding::infl
                     boundsBuilder.include(location)
                     var icon = 0
                     when (outlets[x].type) {
-                        1 -> {
+                        WISATA_TYPE -> {
                             icon = R.drawable.ic_map_attraction
                         }
-                        2 -> {
+                        RESTAURANT_TYPE -> {
                             icon = R.drawable.ic_maps_restaurant
                         }
-                        5 -> {
+                        HOMESTAY_TYPE -> {
                             icon = R.drawable.ic_maps_hotel
                         }
                     }

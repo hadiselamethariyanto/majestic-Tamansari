@@ -2,6 +2,7 @@ package banyuwangi.digital.core.data.wisata.repository.source.remote
 
 import banyuwangi.digital.core.data.network.ApiResponseOnly
 import banyuwangi.digital.core.data.wisata.repository.source.remote.network.WisataService
+import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetDetailWisataResponse
 import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetWisataRatingResponse
 import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetWisataResponse
 import kotlinx.coroutines.Dispatchers
@@ -15,6 +16,21 @@ class WisataRemoteDataSource(private val service: WisataService) {
         return flow {
             try {
                 val response = service.getWisata()
+                if (response.success) {
+                    emit(ApiResponseOnly.Success(response))
+                } else {
+                    emit(ApiResponseOnly.Error(response.message))
+                }
+            } catch (e: Exception) {
+                emit(ApiResponseOnly.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getDetailWisata(idWisata: String): Flow<ApiResponseOnly<GetDetailWisataResponse>> {
+        return flow {
+            try {
+                val response = service.getDetailWisata(idWisata)
                 if (response.success) {
                     emit(ApiResponseOnly.Success(response))
                 } else {

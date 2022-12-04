@@ -66,6 +66,7 @@ class DetailRestaurantFragment : BaseFragment<FragmentDetailRestaurantBinding>(
                 setRestaurantInfo(restaurant)
                 setRestaurantMenus(restaurant?.menus ?: arrayListOf())
                 navigateToReviewTransaction(restaurant)
+                binding.llBook.visibility = View.GONE
             }
             is Resource.Error -> {
                 setLoading(false)

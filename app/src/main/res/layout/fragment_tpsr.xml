@@ -1,31 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.tpsr.TpsrActivity">
+    tools:context=".ui.tpsr.TpsrFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary" />
-        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvSaldo"
@@ -37,7 +20,7 @@
             app:cardCornerRadius="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appBar">
+           app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -49,12 +32,13 @@
                     android:id="@+id/saldo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="16dp"
-                    android:fontFamily="sans-serif-black"
+                    android:drawablePadding="12dp"
+                    android:includeFontPadding="false"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="@string/saldo"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    app:drawableEndCompat="@drawable/ic_arrow_right_white"
                     app:drawableStartCompat="@drawable/ic_money"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -64,11 +48,11 @@
                     android:id="@+id/tvSaldo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:fontFamily="sans-serif-condensed"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="@string/placeholder_saldo"
                     android:textColor="@color/white"
-                    android:textSize="28sp"
+                    android:textSize="24sp"
+                    android:layout_marginTop="4dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/saldo" />
@@ -78,42 +62,19 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/harga_sampah"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/harga_sampah"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cvSaldo" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvHargaSampah"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/harga_sampah" />
-
-        <TextView
             android:id="@+id/riwayat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_semi_bold"
             android:text="@string/riwayat"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rvHargaSampah" />
+            app:layout_constraintTop_toBottomOf="@id/cvSaldo" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRiwayat"
@@ -122,10 +83,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            tools:listitem="@layout/item_riwayat_claim_sampah"
+            tools:itemCount="4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/riwayat" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

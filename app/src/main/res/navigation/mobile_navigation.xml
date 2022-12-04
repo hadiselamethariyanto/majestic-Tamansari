@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_news"
             app:destination="@id/navigation_news" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_tpsr"
+            app:destination="@id/navigation_tpsr" />
     </fragment>
 
 
@@ -139,5 +142,11 @@
     <include app:graph="@navigation/navigation_wisata"/>
 
     <include app:graph="@navigation/navigation_homestay"/>
+
+    <fragment
+        android:id="@+id/navigation_tpsr"
+        android:name="com.bwx.tamansari.ui.tpsr.TpsrFragment"
+        android:label="@string/navigation_tpsr"
+        tools:layout="@layout/fragment_tpsr" />
 
 </navigation>

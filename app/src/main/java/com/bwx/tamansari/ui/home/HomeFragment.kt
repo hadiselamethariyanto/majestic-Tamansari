@@ -1,17 +1,10 @@
 package com.bwx.tamansari.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentHomeBinding
 import com.bwx.tamansari.model.MenuModel
@@ -58,6 +51,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                     }
                     5 -> {
                         findNavController().navigate(R.id.action_navigation_home_to_navigation_news)
+                    }
+                    6 -> {
+                        findNavController().navigate(R.id.action_navigation_home_to_navigation_tpsr)
                     }
                 }
             }

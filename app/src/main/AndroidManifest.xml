@@ -20,11 +20,6 @@
             android:value="AIzaSyCwZ5DtmgANQ50se8OOK2bgTu1UlTDjP5w" />
 
         <activity
-            android:name=".ui.tpsr.TpsrActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
             android:name=".ui.splashscreen.SplashScreen"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">

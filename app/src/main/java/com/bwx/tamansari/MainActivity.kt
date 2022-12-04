@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }
-                R.id.navigation_restaurant -> {
+                R.id.navigation_restaurant_list -> {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }
@@ -139,6 +139,10 @@ class MainActivity : AppCompatActivity() {
                     binding.bottomNav.visibility = View.GONE
                 }
                 R.id.navigation_peta->{
+                    supportActionBar?.show()
+                    binding.bottomNav.visibility = View.GONE
+                }
+                R.id.navigation_tpsr->{
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }

@@ -39,9 +39,10 @@ class TpsrFragment : BaseFragment<FragmentTpsrBinding>(FragmentTpsrBinding::infl
     private val tpsrBalanceObserver = Observer<Resource<TpsrBalanceDomain>> { res ->
         when (res) {
             is Resource.Loading -> {
-
+                setLoading(true)
             }
             is Resource.Success -> {
+                setLoading(false)
                 val data = res.data
                 val saldo = data?.saldo
                 val history = data?.history?: arrayListOf()
@@ -49,10 +50,37 @@ class TpsrFragment : BaseFragment<FragmentTpsrBinding>(FragmentTpsrBinding::infl
                 adapter.updateData(history)
             }
             is Resource.Error -> {
-
+                setLoading(false)
             }
         }
     }
 
+    private fun setLoading(isLoading:Boolean){
+        if (isLoading){
+            binding.tvSaldo.visibility = View.GONE
+            binding.shimmerBalance.visibility = View.VISIBLE
+            binding.shimmerHistory.visibility = View.VISIBLE
+            binding.shimmerBalance.startShimmer()
+            binding.shimmerHistory.startShimmer()
+        }else{
+            binding.tvSaldo.visibility = View.VISIBLE
+            binding.shimmerBalance.stopShimmer()
+            binding.shimmerHistory.stopShimmer()
+            binding.shimmerHistory.visibility = View.GONE
+            binding.shimmerBalance.visibility = View.GONE
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.shimmerBalance.startShimmer()
+        binding.shimmerHistory.startShimmer()
+    }
+
+    override fun onPause() {
+        binding.shimmerBalance.stopShimmer()
+        binding.shimmerHistory.stopShimmer()
+        super.onPause()
+    }
 
 }

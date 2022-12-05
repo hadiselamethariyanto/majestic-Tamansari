@@ -11,6 +11,8 @@ import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodIntera
 import banyuwangi.digital.core.domain.usecase.payment_method.PaymentMethodUseCase
 import banyuwangi.digital.core.domain.usecase.restaurant.RestaurantInteractor
 import banyuwangi.digital.core.domain.usecase.restaurant.RestaurantUseCase
+import banyuwangi.digital.core.domain.usecase.search.SearchInteractor
+import banyuwangi.digital.core.domain.usecase.search.SearchUseCase
 import banyuwangi.digital.core.domain.usecase.tpsr.TpsrInteractor
 import banyuwangi.digital.core.domain.usecase.tpsr.TpsrUseCase
 import banyuwangi.digital.core.domain.usecase.transaction_homestay.TransactionHomestayInteractor
@@ -39,6 +41,7 @@ import com.bwx.tamansari.ui.peta.MapsViewModel
 import com.bwx.tamansari.ui.restaurant.detail.DetailRestaurantViewModel
 import com.bwx.tamansari.ui.restaurant.list.RestaurantViewModel
 import com.bwx.tamansari.ui.restaurant.review.ReviewTransactionRestaurantViewModel
+import com.bwx.tamansari.ui.search.SearchViewModel
 import com.bwx.tamansari.ui.ticket.wisata.MyTicketWisataViewModel
 import com.bwx.tamansari.ui.ticket.homestay.MyTicketHomestayViewModel
 import com.bwx.tamansari.ui.ticket.restaurant.MyTicketRestaurantViewModel
@@ -70,6 +73,7 @@ val useCaseModule = module {
     factory<TransactionRestaurantUseCase> { TransactionRestaurantInteractor(get()) }
     factory<MapsUseCase> { MapsInteractor(get()) }
     factory<TpsrUseCase> { TpsrInteractor(get()) }
+    factory<SearchUseCase> { SearchInteractor(get()) }
 }
 
 val viewModelModule = module {
@@ -98,4 +102,5 @@ val viewModelModule = module {
     viewModel { DetailWisataViewModel(get()) }
     viewModel { DetailHomestayViewModel(get()) }
     viewModel { TpsrViewModel(get(),get()) }
+    viewModel { SearchViewModel(get()) }
 }

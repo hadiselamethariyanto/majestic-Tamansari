@@ -146,4 +146,10 @@
         android:label="@string/navigation_tpsr"
         tools:layout="@layout/fragment_tpsr" />
 
+    <dialog
+        android:id="@+id/navigation_search"
+        android:name="com.bwx.tamansari.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+
 </navigation>

@@ -17,6 +17,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         super.onViewCreated(view, savedInstanceState)
         setupMenu()
         setupPromo()
+
+        binding.etSearch.isFocusable = false
+        binding.etSearch.isClickable = true
+        binding.etSearch.setOnClickListener {
+            findNavController().navigate(R.id.navigation_search)
+        }
+
     }
 
     private fun setupMenu() {

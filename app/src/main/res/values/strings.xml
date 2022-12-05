@@ -99,6 +99,8 @@
     <string name="date">Tanggal</string>
     <string name="mohon_tunggu_sebentar">Mohon tunggu sebentar</string>
     <string name="empty_data">Tidak ada data untuk ditampilkan</string>
+    <string name="no_search_result_found">Nggak ada yang sesuai \"%s\"</string>
+    <string name="no_search_result_found_sub_label">Yang kamu cari belum ketemu. coba cek keyword lain ya</string>
     <string name="cari_wisata_tamansari">Cari tempat wisata di Tamansari</string>
     <string name="cek_penawaran">Cek penawaran sebelum bepergian, kuy!</string>
     <string name="keluar">Keluar</string>

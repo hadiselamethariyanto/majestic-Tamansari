@@ -3,6 +3,8 @@ package com.bwx.tamansari.ui.ticket.homestay
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.HomestayDomain
 import banyuwangi.digital.core.domain.model.RoomDomain
@@ -10,6 +12,7 @@ import banyuwangi.digital.core.domain.model.TransactionDomain
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentMyFailedTicketHomestayBinding
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.utils.Utils
@@ -46,6 +49,12 @@ class MyFailedTicketHomestayFragment :
                         setupRoom(room)
                         binding.tvCheckIn.text = res.data?.checkIn
                         binding.tvCheckOut.text = res.data?.checkOut
+
+                        binding.btnBuyAgain.setOnClickListener {
+                            val bundle = bundleOf("id" to homestay?.id)
+                            findNavController().navigate(R.id.action_navigation_failed_homestay_to_navigation_homestay, bundle)
+                        }
+
                     }
                     is Resource.Error -> {
                         Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
@@ -53,6 +62,7 @@ class MyFailedTicketHomestayFragment :
                 }
             }
         }
+
 
     }
 

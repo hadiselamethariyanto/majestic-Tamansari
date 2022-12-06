@@ -2,6 +2,8 @@ package com.bwx.tamansari.ui.ticket.travel_package
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.TransactionDomain
 import banyuwangi.digital.core.domain.model.TransactionTravelPackageDomain
@@ -46,6 +48,14 @@ class MyFailedTicketTravelPackageFragment :
                                 setDetailTransaction(data)
                                 setTravelPackage(data)
                             }
+
+                            binding.btnBuyAgain.setOnClickListener {
+                                val bundle = bundleOf("id" to data?.travelPackage?.id)
+                                findNavController().navigate(
+                                    R.id.action_navigation_failed_travel_package_to_navigation_travel_package,
+                                    bundle
+                                )
+                            }
                         }
                         is Resource.Error -> {
 
@@ -53,6 +63,8 @@ class MyFailedTicketTravelPackageFragment :
                     }
                 }
         }
+
+
     }
 
     private fun setTravelPackage(data: TransactionTravelPackageDomain) {

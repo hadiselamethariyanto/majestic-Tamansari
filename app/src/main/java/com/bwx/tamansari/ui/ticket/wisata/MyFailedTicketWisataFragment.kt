@@ -58,9 +58,13 @@ class MyFailedTicketWisataFragment :
                                 .into(binding.imgWisata)
                         }
                         binding.tvWisataName.text = wisata?.name
+
                         binding.btnBuyAgain.setOnClickListener {
-                            val bundle = bundleOf("wisata" to wisata)
-                            findNavController().navigate(R.id.navigation_detail_wisata, bundle)
+                            val bundle = bundleOf("id" to wisata?.id)
+                            findNavController().navigate(
+                                R.id.action_navigation_failed_wisata_to_navigation_wisata,
+                                bundle
+                            )
                         }
                     }
                     is Resource.Error -> {
@@ -69,6 +73,7 @@ class MyFailedTicketWisataFragment :
                 }
             }
         }
+
 
     }
 

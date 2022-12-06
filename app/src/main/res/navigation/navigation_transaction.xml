@@ -36,7 +36,13 @@
         android:id="@+id/navigation_my_failed_ticket_wisata"
         android:name="com.bwx.tamansari.ui.ticket.wisata.MyFailedTicketWisataFragment"
         android:label="@string/navigation_my_ticket_wisata"
-        tools:layout="@layout/fragment_my_failed_ticket_wisata" />
+        tools:layout="@layout/fragment_my_failed_ticket_wisata" >
+        <action
+            android:id="@+id/action_navigation_failed_wisata_to_navigation_wisata"
+            app:destination="@id/navigation_wisata" />
+    </fragment>
+
+
     <fragment
         android:id="@+id/navigation_my_ticket_homestay"
         android:name="com.bwx.tamansari.ui.ticket.homestay.MyTicketHomestayFragment"
@@ -47,7 +53,11 @@
         android:id="@+id/navigation_my_failed_ticket_homestay"
         android:name="com.bwx.tamansari.ui.ticket.homestay.MyFailedTicketHomestayFragment"
         android:label="@string/navigation_my_ticket_wisata"
-        tools:layout="@layout/fragment_my_failed_ticket_homestay" />
+        tools:layout="@layout/fragment_my_failed_ticket_homestay">
+        <action
+            android:id="@+id/action_navigation_failed_homestay_to_navigation_homestay"
+            app:destination="@id/navigation_homestay" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_my_ticket_travel_package"
@@ -59,7 +69,11 @@
         android:id="@+id/navigation_my_failed_ticket_travel_package"
         android:name="com.bwx.tamansari.ui.ticket.travel_package.MyFailedTicketTravelPackageFragment"
         android:label="@string/navigation_my_ticket_wisata"
-        tools:layout="@layout/fragment_my_failed_ticket_travel_package" />
+        tools:layout="@layout/fragment_my_failed_ticket_travel_package">
+        <action
+            android:id="@+id/action_navigation_failed_travel_package_to_navigation_travel_package"
+            app:destination="@id/navigation_travel_package" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_my_ticket_restaurant"
@@ -68,10 +82,22 @@
     <fragment
         android:id="@+id/navigation_my_failed_ticket_restaurant"
         android:name="com.bwx.tamansari.ui.ticket.restaurant.MyFailedTicketRestaurantFragment"
-        android:label="@string/navigation_my_ticket_restaurant" />
+        android:label="@string/navigation_my_ticket_restaurant">
+
+        <action
+            android:id="@+id/action_navigation_failed_restaurant_to_navigation_restaurant"
+            app:destination="@id/navigation_restaurant" />
+    </fragment>
 
     <include app:graph="@navigation/navigation_payment" />
 
+    <include app:graph="@navigation/navigation_homestay" />
+
+    <include app:graph="@navigation/navigation_wisata" />
+
+    <include app:graph="@navigation/navigation_travel_package" />
+
+    <include app:graph="@navigation/navigation_restaurant" />
 
 
 </navigation>

@@ -33,7 +33,7 @@
         <action
             android:id="@+id/action_navigation_review_transaction_homestay_to_navigation_choose_payment_method"
             app:destination="@id/navigation_payment"
-             />
+            app:popUpTo="@+id/navigation_home" />
     </fragment>
 
     <include app:graph="@navigation/navigation_payment" />

@@ -3,11 +3,15 @@ package com.bwx.tamansari.ui.search
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import banyuwangi.digital.core.data.Resource
+import banyuwangi.digital.core.domain.model.MapsOutletDomain
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentSearchBinding
 import com.bwx.tamansari.ui.base.BaseBottomSheetDialog
+import com.bwx.tamansari.utils.Constant
 import com.bwx.tamansari.utils.Utils.textChanges
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -26,6 +30,23 @@ class SearchFragment :
         super.onViewCreated(view, savedInstanceState)
 
         adapter = SearchAdapter()
+        adapter.setOnItemClickCallback(object :SearchAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: MapsOutletDomain) {
+                val bundle = bundleOf("id" to data.id)
+                when (data.type) {
+                    Constant.WISATA_TYPE -> {
+                        findNavController().navigate(R.id.navigation_wisata, bundle)
+                    }
+                    Constant.RESTAURANT_TYPE -> {
+                        findNavController().navigate(R.id.navigation_restaurant, bundle)
+                    }
+                    Constant.HOMESTAY_TYPE -> {
+                        findNavController().navigate(R.id.navigation_homestay, bundle)
+                    }
+                }
+            }
+
+        })
         binding.rvLocation.adapter = adapter
 
         binding.etSearch.textChanges().debounce(300).filterNot { it.isNullOrBlank() }

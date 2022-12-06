@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import banyuwangi.digital.core.domain.model.MapsOutletDomain
 import com.bwx.tamansari.databinding.ItemLocationBinding
+import com.bwx.tamansari.ui.peta.MapsAdapter
 
 class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
@@ -14,6 +15,12 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
         list.clear()
         list.addAll(newList)
         notifyDataSetChanged()
+    }
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
     }
 
     class ViewHolder(private val binding: ItemLocationBinding) :
@@ -33,7 +40,15 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(list[position])
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(list[position])
+        }
+
     }
 
     override fun getItemCount(): Int = list.size
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: MapsOutletDomain)
+    }
 }

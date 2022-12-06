@@ -25,6 +25,8 @@ import banyuwangi.digital.core.domain.usecase.transaction_wisata.TransactionWisa
 import banyuwangi.digital.core.domain.usecase.transaction_wisata.TransactionWisataUsecase
 import banyuwangi.digital.core.domain.usecase.transactions.TransactionsInteractor
 import banyuwangi.digital.core.domain.usecase.transactions.TransactionsUseCase
+import banyuwangi.digital.core.domain.usecase.travel_package.TravelPackageInteractor
+import banyuwangi.digital.core.domain.usecase.travel_package.TravelPackageUseCase
 import banyuwangi.digital.core.domain.usecase.wisata.WisataInteractor
 import banyuwangi.digital.core.domain.usecase.wisata.WisataUseCase
 import com.bwx.tamansari.ui.akun.AccountViewModel
@@ -34,6 +36,7 @@ import com.bwx.tamansari.ui.homestay.detail.DetailHomestayViewModel
 import com.bwx.tamansari.ui.homestay.list.HomestayViewModel
 import com.bwx.tamansari.ui.homestay.review_transaction.ReviewTransactionHomestayViewModel
 import com.bwx.tamansari.ui.login.LoginViewModel
+import com.bwx.tamansari.ui.paket.detail.DetailTravelPackageViewModel
 import com.bwx.tamansari.ui.paket.list.PaketViewModel
 import com.bwx.tamansari.ui.paket.review.ReviewTransactionTravelPackageViewModel
 import com.bwx.tamansari.ui.payment.choose_payment_method.ChoosePaymentMethodViewModel
@@ -103,4 +106,5 @@ val viewModelModule = module {
     viewModel { DetailHomestayViewModel(get()) }
     viewModel { TpsrViewModel(get(),get()) }
     viewModel { SearchViewModel(get()) }
+    viewModel { DetailTravelPackageViewModel(get()) }
 }

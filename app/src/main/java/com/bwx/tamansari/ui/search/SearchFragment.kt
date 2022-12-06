@@ -12,6 +12,7 @@ import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentSearchBinding
 import com.bwx.tamansari.ui.base.BaseBottomSheetDialog
 import com.bwx.tamansari.utils.Constant
+import com.bwx.tamansari.utils.Utils.hideKeyboard
 import com.bwx.tamansari.utils.Utils.textChanges
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -32,6 +33,8 @@ class SearchFragment :
         adapter = SearchAdapter()
         adapter.setOnItemClickCallback(object :SearchAdapter.OnItemClickCallback{
             override fun onItemClicked(data: MapsOutletDomain) {
+                hideKeyboard(requireActivity())
+                binding.etSearch.clearFocus()
                 val bundle = bundleOf("id" to data.id)
                 when (data.type) {
                     Constant.WISATA_TYPE -> {

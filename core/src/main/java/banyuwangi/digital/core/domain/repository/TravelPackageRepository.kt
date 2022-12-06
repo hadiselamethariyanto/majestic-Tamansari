@@ -7,4 +7,6 @@ import kotlinx.coroutines.flow.Flow
 interface TravelPackageRepository {
 
     fun getTravelPackage(): Flow<Resource<List<TravelPackageDomain>>>
+
+    fun getDetailTravelPackage(id: String): Flow<Resource<TravelPackageDomain>>
 }

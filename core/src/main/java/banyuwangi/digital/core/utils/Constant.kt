@@ -8,6 +8,7 @@ object Constant {
     const val API_GET_DETAIL_HOMESTAY = "homestay/get_detail_homestay"
     const val API_GET_AVAILABILITY_ROOMS = "homestay/get_availability_rooms"
     const val API_GET_TRAVEL_PACKAGE = "travel_package/get_travel_package"
+    const val API_GET_DETAIL_TRAVEL_PACKAGE = "travel_package/get_detail_travel_package"
     const val API_GET_RESTAURANT = "restaurant/get_restaurant"
     const val API_GET_DETAIL_RESTAURANT = "restaurant/get_detail_restaurant"
     const val API_GET_NEWS = "news/get_news"

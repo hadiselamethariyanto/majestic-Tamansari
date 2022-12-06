@@ -1,4 +1,4 @@
-package banyuwangi.digital.core.domain.usecase
+package banyuwangi.digital.core.domain.usecase.travel_package
 
 import banyuwangi.digital.core.data.Resource
 import banyuwangi.digital.core.domain.model.TravelPackageDomain
@@ -9,4 +9,7 @@ class TravelPackageInteractor(private val repository: TravelPackageRepository) :
     TravelPackageUseCase {
     override fun getTravelPackage(): Flow<Resource<List<TravelPackageDomain>>> =
         repository.getTravelPackage()
+
+    override fun getDetailTravelPackage(id: String): Flow<Resource<TravelPackageDomain>> =
+        repository.getDetailTravelPackage(id)
 }

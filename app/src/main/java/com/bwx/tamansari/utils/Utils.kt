@@ -1,9 +1,12 @@
 package com.bwx.tamansari.utils
 
+import android.app.Activity
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.annotation.CheckResult
 import com.google.zxing.BarcodeFormat
@@ -113,6 +116,13 @@ object Utils {
             addTextChangedListener(listener)
             awaitClose { removeTextChangedListener(listener) }
         }.onStart { emit(text) }
+    }
+
+    fun hideKeyboard(activity: Activity){
+        activity.currentFocus?.let { view ->
+            val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+            imm?.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 
 }

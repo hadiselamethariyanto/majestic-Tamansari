@@ -1,14 +1,13 @@
 package com.bwx.tamansari.ui.akun
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import banyuwangi.digital.core.domain.usecase.AuthUseCase
+import banyuwangi.digital.core.domain.usecase.tpsr.TpsrUseCase
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.launch
 
-class AccountViewModel(private val authUseCase: AuthUseCase) : ViewModel() {
+class AccountViewModel(private val authUseCase: AuthUseCase, private val tpsrUseCase: TpsrUseCase) :
+    ViewModel() {
 
     private val _user = MutableLiveData<FirebaseUser?>()
 
@@ -22,5 +21,7 @@ class AccountViewModel(private val authUseCase: AuthUseCase) : ViewModel() {
         authUseCase.logout()
         _user.value = null
     }
+
+    fun getTpsrBalance(email: String) = tpsrUseCase.getTpsrBalance(email).asLiveData()
 
 }

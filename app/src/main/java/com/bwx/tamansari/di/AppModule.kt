@@ -85,7 +85,7 @@ val viewModelModule = module {
     viewModel { PaketViewModel(get()) }
     viewModel { RestaurantViewModel(get()) }
     viewModel { NewsViewModel(get()) }
-    viewModel { AccountViewModel(get()) }
+    viewModel { AccountViewModel(get(),get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { ReviewWisataViewModel(get(), get()) }
     viewModel { ReviewTransactionHomestayViewModel(get(), get()) }

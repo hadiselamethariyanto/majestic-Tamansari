@@ -2,8 +2,10 @@ package com.bwx.tamansari.ui.akun
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import banyuwangi.digital.core.data.Resource
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -11,6 +13,7 @@ import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentAkunBinding
 import com.bwx.tamansari.ui.base.BaseFragment
 import com.bwx.tamansari.ui.login.LoginFragment
+import com.bwx.tamansari.utils.Utils
 import com.google.firebase.auth.FirebaseUser
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -48,6 +51,7 @@ class AkunFragment : BaseFragment<FragmentAkunBinding>(FragmentAkunBinding::infl
                 findNavController().navigate(R.id.loginFragment)
             } else {
                 setupProfile(firebaseUser)
+                firebaseUser.email?.let { getTpsrBalance(it) }
             }
         }
 
@@ -73,5 +77,23 @@ class AkunFragment : BaseFragment<FragmentAkunBinding>(FragmentAkunBinding::infl
             .load(user.photoUrl)
             .transform(CenterCrop(), RoundedCorners(70))
             .into(binding.imgProfile)
+    }
+
+    private fun getTpsrBalance(email: String) {
+        viewModel.getTpsrBalance(email).observe(viewLifecycleOwner) { res ->
+            when (res) {
+                is Resource.Loading -> {
+
+                }
+                is Resource.Success -> {
+                    val data = res.data
+                    val balance = data?.saldo
+                    binding.tvSaldo.text = "IDR ${Utils.thousandSeparator(balance ?: 0)}"
+                }
+                is Resource.Error -> {
+                    Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 }

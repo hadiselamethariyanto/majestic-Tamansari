@@ -88,9 +88,10 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:includeFontPadding="false"
-                android:text="@string/placeholder_saldo"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:text="@string/placeholder_saldo" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

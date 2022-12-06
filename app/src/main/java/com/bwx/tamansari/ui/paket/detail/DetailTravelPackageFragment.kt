@@ -52,9 +52,10 @@ class DetailTravelPackageFragment :
     private val getDetailTravelPackageObserver = Observer<Resource<TravelPackageDomain>> { res ->
         when (res) {
             is Resource.Loading -> {
-
+                setLoading(true)
             }
             is Resource.Success -> {
+                setLoading(false)
                 val travelPackage = res.data
                 setTravelPackageInfo(travelPackage)
                 setTravelPackagePhotos(travelPackage)
@@ -64,6 +65,7 @@ class DetailTravelPackageFragment :
                 setMarker(travelPackage)
             }
             is Resource.Error -> {
+                setLoading(false)
                 Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
             }
         }
@@ -170,5 +172,11 @@ class DetailTravelPackageFragment :
     override fun onLowMemory() {
         super.onLowMemory()
         binding.maps.onLowMemory()
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        binding.llLoading.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.clContainer.visibility = if (isLoading) View.GONE else View.VISIBLE
+        binding.rlChooseTicket.visibility = if (isLoading) View.GONE else View.VISIBLE
     }
 }

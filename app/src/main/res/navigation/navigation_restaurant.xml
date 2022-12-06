@@ -22,7 +22,8 @@
         tools:layout="@layout/fragment_review_transaction_restaurant">
         <action
             android:id="@+id/action_navigation_review_transaction_restaurant_to_choose_payment"
-            app:destination="@id/navigation_payment" />
+            app:destination="@id/navigation_payment"
+            app:popUpTo="@+id/navigation_home" />
     </fragment>
 
     <dialog

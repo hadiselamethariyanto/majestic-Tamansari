@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation_travel_package">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_travel_package"
+    app:startDestination="@id/navigation_detail_travel_packaage">
+
+    <fragment
+        android:id="@+id/navigation_detail_travel_packaage"
+        android:name="com.bwx.tamansari.ui.paket.detail.DetailTravelPackageFragment"
+        android:label="@string/navigation_detail_travel_package"
+        tools:layout="@layout/fragment_detail_travel_package">
+        <action
+            android:id="@+id/action_navigation_detail_travel_packaage_to_navigation_choose_travel_package"
+            app:destination="@id/navigation_choose_travel_package" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_choose_travel_package"
+        android:name="com.bwx.tamansari.ui.paket.choose_paket.ChooseTravelPackageFragment"
+        android:label="@string/navigation_choose_travel_package"
+        tools:layout="@layout/fragment_choose_travel_package">
+        <action
+            android:id="@+id/action_navigation_choose_travel_package_to_navigation_review_transaction_travel_package"
+            app:destination="@id/navigation_review_transaction_travel_package" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_review_transaction_travel_package"
+        android:name="com.bwx.tamansari.ui.paket.review.ReviewTransactionTravelPackageFragment"
+        android:label="@string/navigation_review_transaction"
+        tools:layout="@layout/fragment_review_transaction_travel_package" >
+        <action
+            android:id="@+id/action_navigation_review_transaction_travel_package_to_navigation_payment"
+            app:destination="@id/navigation_payment" />
+    </fragment>
+
+    <include app:graph="@navigation/navigation_payment" />
 
 </navigation>

@@ -43,6 +43,9 @@ class SearchFragment :
                     Constant.HOMESTAY_TYPE -> {
                         findNavController().navigate(R.id.navigation_homestay, bundle)
                     }
+                    Constant.TRAVEL_PACKAGE_TYPE->{
+                        findNavController().navigate(R.id.navigation_travel_package, bundle)
+                    }
                 }
             }
 

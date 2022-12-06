@@ -129,7 +129,7 @@ class ReviewTransactionTravelPackageFragment :
                 if (res.data != null) {
                     val bundle = bundleOf("transaction" to res.data)
                     findNavController().navigate(
-                        R.id.navigation_choose_payment_method,
+                        R.id.action_navigation_review_transaction_travel_package_to_navigation_payment,
                         bundle
                     )
                 }

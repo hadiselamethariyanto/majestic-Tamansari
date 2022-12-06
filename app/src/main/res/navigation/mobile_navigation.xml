@@ -18,7 +18,7 @@
             app:destination="@id/navigation_homestay_list" />
         <action
             android:id="@+id/action_navigation_home_to_navigation_travel_package"
-            app:destination="@id/navigation_travel_package" />
+            app:destination="@id/navigation_travel_package_list" />
         <action
             android:id="@+id/action_navigation_home_to_navigation_restaurant"
             app:destination="@id/navigation_restaurant_list" />
@@ -72,13 +72,13 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_travel_package"
+        android:id="@+id/navigation_travel_package_list"
         android:name="com.bwx.tamansari.ui.paket.list.PaketFragment"
         android:label="@string/navigation_list_travel_package"
         tools:layout="@layout/fragment_paket">
         <action
             android:id="@+id/action_navigation_travel_package_to_navigation_detail_travel_packaage"
-            app:destination="@id/navigation_detail_travel_packaage" />
+            app:destination="@id/navigation_travel_package" />
     </fragment>
 
     <fragment
@@ -97,32 +97,6 @@
         tools:layout="@layout/fragment_detail_berita" />
 
     <fragment
-        android:id="@+id/navigation_detail_travel_packaage"
-        android:name="com.bwx.tamansari.ui.paket.detail.DetailTravelPackageFragment"
-        android:label="@string/navigation_detail_travel_package"
-        tools:layout="@layout/fragment_detail_travel_package">
-        <action
-            android:id="@+id/action_navigation_detail_travel_packaage_to_navigation_choose_travel_package"
-            app:destination="@id/navigation_choose_travel_package" />
-    </fragment>
-
-
-    <fragment
-        android:id="@+id/navigation_choose_travel_package"
-        android:name="com.bwx.tamansari.ui.paket.choose_paket.ChooseTravelPackageFragment"
-        android:label="@string/navigation_choose_travel_package"
-        tools:layout="@layout/fragment_choose_travel_package">
-        <action
-            android:id="@+id/action_navigation_choose_travel_package_to_navigation_review_transaction_travel_package"
-            app:destination="@id/navigation_review_transaction_travel_package" />
-    </fragment>
-    <fragment
-        android:id="@+id/navigation_review_transaction_travel_package"
-        android:name="com.bwx.tamansari.ui.paket.review.ReviewTransactionTravelPackageFragment"
-        android:label="@string/navigation_review_transaction"
-        tools:layout="@layout/fragment_review_transaction_travel_package" />
-
-    <fragment
         android:id="@+id/loginFragment"
         android:name="com.bwx.tamansari.ui.login.LoginFragment"
         android:label="@string/navigation_login"
@@ -132,13 +106,15 @@
 
     <include app:graph="@navigation/navigation_restaurant" />
 
-    <include app:graph="@navigation/navigation_maps"/>
+    <include app:graph="@navigation/navigation_maps" />
 
-    <include app:graph="@navigation/navigation_wisata"/>
+    <include app:graph="@navigation/navigation_wisata" />
 
-    <include app:graph="@navigation/navigation_homestay"/>
+    <include app:graph="@navigation/navigation_homestay" />
 
-    <include app:graph="@navigation/navigation_account"/>
+    <include app:graph="@navigation/navigation_account" />
+
+    <include app:graph="@navigation/navigation_travel_package" />
 
     <fragment
         android:id="@+id/navigation_tpsr"

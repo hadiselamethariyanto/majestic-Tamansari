@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }
-                R.id.navigation_travel_package -> {
+                R.id.navigation_travel_package_list -> {
                     supportActionBar?.show()
                     binding.bottomNav.visibility = View.GONE
                 }

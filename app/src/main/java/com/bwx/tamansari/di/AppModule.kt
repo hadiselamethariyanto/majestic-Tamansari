@@ -1,6 +1,8 @@
 package com.bwx.tamansari.di
 
 import banyuwangi.digital.core.domain.usecase.*
+import banyuwangi.digital.core.domain.usecase.banner.BannerInteractor
+import banyuwangi.digital.core.domain.usecase.banner.BannerUseCase
 import banyuwangi.digital.core.domain.usecase.homestay.HomestayInteractor
 import banyuwangi.digital.core.domain.usecase.homestay.HomestayUseCase
 import banyuwangi.digital.core.domain.usecase.maps.MapsInteractor
@@ -31,6 +33,7 @@ import banyuwangi.digital.core.domain.usecase.wisata.WisataInteractor
 import banyuwangi.digital.core.domain.usecase.wisata.WisataUseCase
 import com.bwx.tamansari.ui.akun.AccountViewModel
 import com.bwx.tamansari.ui.berita.list.NewsViewModel
+import com.bwx.tamansari.ui.home.HomeViewModel
 import com.bwx.tamansari.ui.homestay.choose_room.ChooseRoomViewModel
 import com.bwx.tamansari.ui.homestay.detail.DetailHomestayViewModel
 import com.bwx.tamansari.ui.homestay.list.HomestayViewModel
@@ -77,6 +80,7 @@ val useCaseModule = module {
     factory<MapsUseCase> { MapsInteractor(get()) }
     factory<TpsrUseCase> { TpsrInteractor(get()) }
     factory<SearchUseCase> { SearchInteractor(get()) }
+    factory<BannerUseCase> { BannerInteractor(get()) }
 }
 
 val viewModelModule = module {
@@ -88,7 +92,7 @@ val viewModelModule = module {
     viewModel { PaketViewModel(get()) }
     viewModel { RestaurantViewModel(get()) }
     viewModel { NewsViewModel(get()) }
-    viewModel { AccountViewModel(get(),get()) }
+    viewModel { AccountViewModel(get(), get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { ReviewWisataViewModel(get(), get()) }
     viewModel { ReviewTransactionHomestayViewModel(get(), get()) }
@@ -104,7 +108,8 @@ val viewModelModule = module {
     viewModel { MapsViewModel(get()) }
     viewModel { DetailWisataViewModel(get()) }
     viewModel { DetailHomestayViewModel(get()) }
-    viewModel { TpsrViewModel(get(),get()) }
+    viewModel { TpsrViewModel(get(), get()) }
     viewModel { SearchViewModel(get()) }
     viewModel { DetailTravelPackageViewModel(get()) }
+    viewModel { HomeViewModel(get()) }
 }

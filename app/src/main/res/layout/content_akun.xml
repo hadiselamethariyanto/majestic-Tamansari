@@ -36,6 +36,7 @@
             android:fontFamily="@font/poppins_semi_bold"
             android:gravity="center_vertical"
             android:text="@string/faq"
+            android:visibility="gone"
             android:textSize="14sp"
             app:drawableStartCompat="@drawable/ic_akun_faq"
             app:layout_constraintEnd_toEndOf="parent"

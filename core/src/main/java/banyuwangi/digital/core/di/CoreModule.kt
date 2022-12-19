@@ -2,6 +2,9 @@ package banyuwangi.digital.core.di
 
 import banyuwangi.digital.core.BuildConfig
 import banyuwangi.digital.core.data.auth.repository.AuthRepositoryImpl
+import banyuwangi.digital.core.data.banner.repository.BannerRepositoryImpl
+import banyuwangi.digital.core.data.banner.repository.source.remote.BannerRemoteDataSource
+import banyuwangi.digital.core.data.banner.repository.source.remote.network.BannerService
 import banyuwangi.digital.core.data.berita.repository.NewsRepositoryImpl
 import banyuwangi.digital.core.data.berita.repository.source.remote.NewsRemoteDataSource
 import banyuwangi.digital.core.data.berita.repository.source.remote.nework.NewsService
@@ -197,6 +200,15 @@ val networkModule = module {
             .build()
         retrofit.create(SearchApiService::class.java)
     }
+
+    single {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(get())
+            .build()
+        retrofit.create(BannerService::class.java)
+    }
 }
 
 val repositoryModule = module {
@@ -215,6 +227,7 @@ val repositoryModule = module {
     single { MapsRemoteDataSource(get()) }
     single { TpsrRemoteDataSource(get()) }
     single { SearchRemoteDataSource(get()) }
+    single { BannerRemoteDataSource(get()) }
 
     single<WisataRepository> { WisataRepositoryImpl(get()) }
     single<HomestayRepository> { HomestayRepositoryImpl(get()) }
@@ -232,6 +245,7 @@ val repositoryModule = module {
     single<MapsRepository> { MapsRepositoryImpl(get()) }
     single<TpsrRepository> { TpsrRepositoryImpl(get()) }
     single<SearchRepository> { SearchRepositoryImpl(get()) }
+    single<BannerRepository> { BannerRepositoryImpl(get()) }
 }
 
 val firebaseModule =

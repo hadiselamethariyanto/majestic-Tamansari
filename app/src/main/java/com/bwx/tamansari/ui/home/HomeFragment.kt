@@ -2,16 +2,23 @@ package com.bwx.tamansari.ui.home
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import banyuwangi.digital.core.data.Resource
+import banyuwangi.digital.core.domain.model.BannerDomain
 import com.bwx.tamansari.R
 import com.bwx.tamansari.databinding.FragmentHomeBinding
 import com.bwx.tamansari.model.MenuModel
-import com.bwx.tamansari.model.PromoModel
 import com.bwx.tamansari.ui.base.BaseFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
+
+    private val viewModel: HomeViewModel by viewModel()
+    private lateinit var adapter: PromoAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -23,6 +30,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         binding.etSearch.setOnClickListener {
             findNavController().navigate(R.id.navigation_search)
         }
+
+        viewModel.getBanner().observe(viewLifecycleOwner, bannerObserver)
 
     }
 
@@ -71,34 +80,51 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun setupPromo() {
-        val list = ArrayList<PromoModel>()
-        list.add(
-            PromoModel(
-                "https://www.linkaja.id/uploads/images/promo//YW50aWtvZGVfXzE2MzAzOTU0ODRfd2ViLWJhbm5lci0yMDIxLTA4LTMxdDE0MzcxNy0xMTAtanBn.jpg",
-                "https://www.linkaja.id/uploads/images/promo//YW50aWtvZGVfXzE2MzAzOTU0ODRfd2ViLWJhbm5lci0yMDIxLTA4LTMxdDE0MzcxNy0xMTAtanBn.jpg"
-            )
-        )
-        list.add(
-            PromoModel(
-                "https://www.linkaja.id/uploads/images/promo//YW50aWtvZGVfXzE2MzAzOTU0ODRfd2ViLWJhbm5lci0yMDIxLTA4LTMxdDE0MzcxNy0xMTAtanBn.jpg",
-                "https://www.linkaja.id/uploads/images/promo//YW50aWtvZGVfXzE2MzAzOTU0ODRfd2ViLWJhbm5lci0yMDIxLTA4LTMxdDE0MzcxNy0xMTAtanBn.jpg"
-            )
-        )
-        list.add(
-            PromoModel(
-                "https://www.linkaja.id/uploads/images/promo//YW50aWtvZGVfXzE2MzAzOTU0ODRfd2ViLWJhbm5lci0yMDIxLTA4LTMxdDE0MzcxNy0xMTAtanBn.jpg",
-                "https://www.linkaja.id/uploads/images/promo//YW50aWtvZGVfXzE2MzAzOTU0ODRfd2ViLWJhbm5lci0yMDIxLTA4LTMxdDE0MzcxNy0xMTAtanBn.jpg"
-            )
-        )
-
-        val adapter = PromoAdapter()
+        adapter = PromoAdapter()
         val linearLayoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        adapter.updateData(list)
 
         binding.promo.layoutManager = linearLayoutManager
         binding.promo.adapter = adapter
+    }
 
+    private val bannerObserver = Observer<Resource<List<BannerDomain>>> { res ->
+        when (res) {
+            is Resource.Loading -> {
+                setLoading(true)
+            }
+            is Resource.Success -> {
+                setLoading(false)
+                val banners = res.data ?: arrayListOf()
+                adapter.updateData(banners)
+            }
+            is Resource.Error -> {
+                setLoading(false)
+                Toast.makeText(requireActivity(), res.message, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.promo.visibility = View.GONE
+            binding.shimmerBanner.visibility = View.VISIBLE
+            binding.shimmerBanner.startShimmer()
+        } else {
+            binding.promo.visibility = View.VISIBLE
+            binding.shimmerBanner.visibility = View.GONE
+            binding.shimmerBanner.stopShimmer()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.shimmerBanner.startShimmer()
+    }
+
+    override fun onPause() {
+        binding.shimmerBanner.stopShimmer()
+        super.onPause()
     }
 
 }

@@ -1,6 +1,8 @@
 package com.bwx.tamansari.di
 
 import banyuwangi.digital.core.domain.usecase.*
+import banyuwangi.digital.core.domain.usecase.auth.AuthInteractor
+import banyuwangi.digital.core.domain.usecase.auth.AuthUseCase
 import banyuwangi.digital.core.domain.usecase.banner.BannerInteractor
 import banyuwangi.digital.core.domain.usecase.banner.BannerUseCase
 import banyuwangi.digital.core.domain.usecase.homestay.HomestayInteractor

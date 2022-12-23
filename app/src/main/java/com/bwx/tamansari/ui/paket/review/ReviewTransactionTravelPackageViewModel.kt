@@ -1,7 +1,7 @@
 package com.bwx.tamansari.ui.paket.review
 
 import androidx.lifecycle.*
-import banyuwangi.digital.core.domain.usecase.AuthUseCase
+import banyuwangi.digital.core.domain.usecase.auth.AuthUseCase
 import banyuwangi.digital.core.domain.usecase.transaction_travel_package.TransactionTravelPackageUseCase
 import com.bwx.tamansari.R
 import com.bwx.tamansari.ui.wisata.review.UserFormState

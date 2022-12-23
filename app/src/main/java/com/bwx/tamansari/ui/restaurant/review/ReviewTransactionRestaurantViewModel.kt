@@ -3,7 +3,7 @@ package com.bwx.tamansari.ui.restaurant.review
 import androidx.lifecycle.*
 import banyuwangi.digital.core.domain.model.CartRestaurantDomain
 import banyuwangi.digital.core.domain.model.HomestayDomain
-import banyuwangi.digital.core.domain.usecase.AuthUseCase
+import banyuwangi.digital.core.domain.usecase.auth.AuthUseCase
 import banyuwangi.digital.core.domain.usecase.homestay.HomestayUseCase
 import banyuwangi.digital.core.domain.usecase.transaction_restaurant.TransactionRestaurantUseCase
 import com.bwx.tamansari.R

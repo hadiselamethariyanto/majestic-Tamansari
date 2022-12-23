@@ -5,9 +5,11 @@ import banyuwangi.digital.core.data.mechanism.NetworkOnlyResource
 import banyuwangi.digital.core.data.network.ApiResponseOnly
 import banyuwangi.digital.core.data.wisata.mapper.WisataMapper
 import banyuwangi.digital.core.data.wisata.repository.source.remote.WisataRemoteDataSource
+import banyuwangi.digital.core.data.wisata.repository.source.remote.response.DeleteTicketWisataResponse
 import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetDetailWisataResponse
 import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetWisataRatingResponse
 import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetWisataResponse
+import banyuwangi.digital.core.domain.model.TicketWisataDomain
 import banyuwangi.digital.core.domain.model.WisataDomain
 import banyuwangi.digital.core.domain.model.WisataRatingDomain
 import banyuwangi.digital.core.domain.repository.WisataRepository
@@ -52,6 +54,41 @@ class WisataRepositoryImpl(private val remoteDataSource: WisataRemoteDataSource)
 
             override suspend fun createCall(): Flow<ApiResponseOnly<GetWisataRatingResponse>> =
                 remoteDataSource.getWisataRating(idWisata)
+
+        }.asFlow()
+    }
+
+    override fun deleteTicketWisata(
+        idWisata: String,
+        id: String
+    ): Flow<Resource<List<TicketWisataDomain>>> {
+        return object :
+            NetworkOnlyResource<List<TicketWisataDomain>, DeleteTicketWisataResponse>() {
+            override fun loadFromNetwork(data: DeleteTicketWisataResponse): Flow<List<TicketWisataDomain>> {
+                val response = WisataMapper.mapTicketWisataItemToDomain(data.data)
+                return flowOf(response)
+            }
+
+            override suspend fun createCall(): Flow<ApiResponseOnly<DeleteTicketWisataResponse>> =
+                remoteDataSource.deleteTicket(idWisata, id)
+
+        }.asFlow()
+    }
+
+    override fun addTicketWisata(
+        idWisata: String,
+        name: String,
+        price: String
+    ): Flow<Resource<List<TicketWisataDomain>>> {
+        return object :
+            NetworkOnlyResource<List<TicketWisataDomain>, DeleteTicketWisataResponse>() {
+            override fun loadFromNetwork(data: DeleteTicketWisataResponse): Flow<List<TicketWisataDomain>> {
+                val response = WisataMapper.mapTicketWisataItemToDomain(data.data)
+                return flowOf(response)
+            }
+
+            override suspend fun createCall(): Flow<ApiResponseOnly<DeleteTicketWisataResponse>> =
+                remoteDataSource.addTicket(idWisata, name, price)
 
         }.asFlow()
     }

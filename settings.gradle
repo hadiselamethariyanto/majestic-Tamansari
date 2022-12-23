@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "Tamansari"
 include ':app'
 include ':core'
+include ':admin'

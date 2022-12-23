@@ -119,5 +119,10 @@
     <string name="navigation_login">Login</string>
 
     <string name="about"></string>
+    <string name="title_admin">admin</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="email">E-mail</string>
+    <string name="password">password</string>
+    <string name="or">Or</string>
 
 </resources>

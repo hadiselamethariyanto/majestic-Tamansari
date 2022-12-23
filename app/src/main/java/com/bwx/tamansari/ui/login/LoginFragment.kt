@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import banyuwangi.digital.core.data.Resource
 import com.bwx.tamansari.databinding.FragmentLoginBinding
 import com.bwx.tamansari.ui.base.BaseFragment
+import com.bwx.tamansari.utils.Utils.afterTextChanged
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
@@ -69,6 +70,29 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
         }
 
+        binding.btnLoginWithEmail.setOnClickListener {
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+
+            viewModel.loginWithEmailPassword(email, password)
+//            val intent =
+//                Intent(requireActivity(), Class.forName("banyuwangi.digital.admin.MainActivity"))
+//            startActivity(intent)
+        }
+
+        viewModel.formState.observe(viewLifecycleOwner) {
+            val state = it ?: return@observe
+
+            binding.btnLoginWithEmail.isEnabled = state.isDataValid
+        }
+
+        binding.etEmail.afterTextChanged {
+            triggerDataChange()
+        }
+
+        binding.etPassword.afterTextChanged {
+            triggerDataChange()
+        }
 
         viewModel.user.observe(viewLifecycleOwner) { res ->
             when (res) {
@@ -90,6 +114,13 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     }
 
+    private fun triggerDataChange(){
+        val email = binding.etEmail.text.toString()
+        val password = binding.etPassword.text.toString()
+
+        viewModel.formDataChanged(email, password)
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
@@ -104,7 +135,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                         }
                     }
                 } catch (e: ApiException) {
-                    Toast.makeText(requireActivity(),e.localizedMessage,Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireActivity(), e.localizedMessage, Toast.LENGTH_LONG).show()
                 }
             }
         }

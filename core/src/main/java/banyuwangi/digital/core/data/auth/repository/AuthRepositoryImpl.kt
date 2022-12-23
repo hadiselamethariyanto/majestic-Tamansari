@@ -21,6 +21,15 @@ class AuthRepositoryImpl(private val firebaseAuth: FirebaseAuth) : AuthRepositor
         }
     }
 
+    override suspend fun loginWithEmail(email: String, password: String): Resource<FirebaseUser> {
+        return try {
+            val result = firebaseAuth.signInWithEmailAndPassword(email, password).await()
+            Resource.Success(result.user!!)
+        } catch (e: Exception) {
+            Resource.Error(e.message.toString())
+        }
+    }
+
     override fun logout() {
         firebaseAuth.signOut()
     }

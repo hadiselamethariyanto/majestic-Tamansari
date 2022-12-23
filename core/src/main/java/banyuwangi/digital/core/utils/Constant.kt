@@ -30,4 +30,6 @@ object Constant {
     const val API_GET_TPSR_BALANCE = "tpsr/get_detail_tpsr"
     const val API_SEARCH = "search/search"
     const val API_GET_BANNER = "welcome/get_banner"
+    const val API_DELETE_TICKET = "wisata/delete_ticket"
+    const val API_ADD_TICKET = "wisata/add_ticket"
 }

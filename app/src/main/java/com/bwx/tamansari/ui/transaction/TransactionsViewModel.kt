@@ -1,7 +1,7 @@
 package com.bwx.tamansari.ui.transaction
 
 import androidx.lifecycle.*
-import banyuwangi.digital.core.domain.usecase.AuthUseCase
+import banyuwangi.digital.core.domain.usecase.auth.AuthUseCase
 import banyuwangi.digital.core.domain.usecase.transactions.TransactionsUseCase
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.launch

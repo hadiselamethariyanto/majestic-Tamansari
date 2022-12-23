@@ -2,7 +2,7 @@ package com.bwx.tamansari.ui.wisata.review
 
 import androidx.lifecycle.*
 import banyuwangi.digital.core.domain.model.ChartDomain
-import banyuwangi.digital.core.domain.usecase.AuthUseCase
+import banyuwangi.digital.core.domain.usecase.auth.AuthUseCase
 import banyuwangi.digital.core.domain.usecase.transaction_wisata.TransactionWisataUsecase
 import com.bwx.tamansari.R
 import com.google.firebase.auth.FirebaseUser

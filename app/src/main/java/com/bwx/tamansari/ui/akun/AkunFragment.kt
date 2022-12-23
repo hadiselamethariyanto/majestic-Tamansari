@@ -1,5 +1,6 @@
 package com.bwx.tamansari.ui.akun
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -44,14 +45,24 @@ class AkunFragment : BaseFragment<FragmentAkunBinding>(FragmentAkunBinding::infl
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         viewModel.getUser()
         viewModel.user.observe(viewLifecycleOwner) { firebaseUser ->
             if (firebaseUser == null) {
                 findNavController().navigate(R.id.loginFragment)
             } else {
+                val user = firebaseUser.providerData
                 setupProfile(firebaseUser)
-                firebaseUser.email?.let { getTpsrBalance(it) }
+                for (x in user) {
+                    if (x.providerId == "password") {
+                        val intent = Intent(
+                            requireActivity(),
+                            Class.forName("banyuwangi.digital.admin.MainActivity")
+                        )
+                        startActivity(intent)
+                    } else if (x.providerId == "google.com") {
+                        firebaseUser.email?.let { getTpsrBalance(it) }
+                    }
+                }
             }
         }
 
@@ -75,6 +86,7 @@ class AkunFragment : BaseFragment<FragmentAkunBinding>(FragmentAkunBinding::infl
 
         Glide.with(this)
             .load(user.photoUrl)
+            .error(R.mipmap.dewitari)
             .transform(CenterCrop(), RoundedCorners(70))
             .into(binding.imgProfile)
     }

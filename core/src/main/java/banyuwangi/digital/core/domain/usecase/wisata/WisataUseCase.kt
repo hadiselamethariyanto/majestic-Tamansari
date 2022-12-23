@@ -21,4 +21,12 @@ interface WisataUseCase {
         name: String,
         price: String
     ): Flow<Resource<List<TicketWisataDomain>>>
+
+    fun editTicket(
+        idWisata: String,
+        name: String,
+        price: String,
+        id: String
+    ): Flow<Resource<List<TicketWisataDomain>>>
+
 }

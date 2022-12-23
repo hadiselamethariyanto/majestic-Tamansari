@@ -93,4 +93,23 @@ class WisataRepositoryImpl(private val remoteDataSource: WisataRemoteDataSource)
         }.asFlow()
     }
 
+    override fun editTicketWisata(
+        idWisata: String,
+        name: String,
+        price: String,
+        id: String
+    ): Flow<Resource<List<TicketWisataDomain>>> {
+        return object :
+            NetworkOnlyResource<List<TicketWisataDomain>, DeleteTicketWisataResponse>() {
+            override fun loadFromNetwork(data: DeleteTicketWisataResponse): Flow<List<TicketWisataDomain>> {
+                val response = WisataMapper.mapTicketWisataItemToDomain(data.data)
+                return flowOf(response)
+            }
+
+            override suspend fun createCall(): Flow<ApiResponseOnly<DeleteTicketWisataResponse>> =
+                remoteDataSource.editTicket(idWisata, name, price, id)
+
+        }.asFlow()
+    }
+
 }

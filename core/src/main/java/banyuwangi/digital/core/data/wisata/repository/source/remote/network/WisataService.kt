@@ -36,4 +36,13 @@ interface WisataService {
         @Field("name") name: String,
         @Field("price") price: String
     ): DeleteTicketWisataResponse
+
+    @POST(Constant.API_EDIT_TICKET)
+    @FormUrlEncoded
+    suspend fun editTicket(
+        @Field("id_wisata") idWisata: String,
+        @Field("name") name: String,
+        @Field("price") price: String,
+        @Field("id") id: String
+    ): DeleteTicketWisataResponse
 }

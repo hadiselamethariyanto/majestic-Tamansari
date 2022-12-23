@@ -26,4 +26,12 @@ class WisataInteractor(private val repository: WisataRepository) : WisataUseCase
         name: String,
         price: String
     ): Flow<Resource<List<TicketWisataDomain>>> = repository.addTicketWisata(idWisata, name, price)
+
+    override fun editTicket(
+        idWisata: String,
+        name: String,
+        price: String,
+        id: String
+    ): Flow<Resource<List<TicketWisataDomain>>> =
+        repository.editTicketWisata(idWisata, name, price, id)
 }

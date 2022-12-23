@@ -67,7 +67,7 @@ fun AttractionDetailScreen(
                             bottomSheetContent = {
                                 AddAttractionTicketBottomSheetContent(
                                     onSubmit = {
-                                        attraction?.id?.let { it1 -> viewModel.addTicket(it1) }
+                                        attraction?.id?.let { idWisata -> viewModel.addTicket(idWisata) }
                                         coroutineScope.launch {
                                             bottomSheetState.hide()
                                         }
@@ -91,7 +91,7 @@ fun AttractionDetailScreen(
                             bottomSheetContent = {
                                 AddAttractionTicketBottomSheetContent(
                                     onSubmit = {
-//                                        viewModel.addTicket(attraction?.id ?: "", name, price)
+                                        attraction?.id?.let { idWisata -> viewModel.editTicket(idWisata) }
                                         coroutineScope.launch {
                                             bottomSheetState.hide()
                                         }

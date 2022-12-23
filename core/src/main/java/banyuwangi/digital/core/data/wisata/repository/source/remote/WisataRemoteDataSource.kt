@@ -94,4 +94,24 @@ class WisataRemoteDataSource(private val service: WisataService) {
             }
         }.flowOn(Dispatchers.IO)
     }
+
+    suspend fun editTicket(
+        idWisata: String,
+        name: String,
+        price: String,
+        id: String
+    ): Flow<ApiResponseOnly<DeleteTicketWisataResponse>> {
+        return flow {
+            try {
+                val response = service.editTicket(idWisata, name, price, id)
+                if (response.success) {
+                    emit(ApiResponseOnly.Success(response))
+                } else {
+                    emit(ApiResponseOnly.Error(response.message))
+                }
+            } catch (e: Exception) {
+                emit(ApiResponseOnly.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
 }

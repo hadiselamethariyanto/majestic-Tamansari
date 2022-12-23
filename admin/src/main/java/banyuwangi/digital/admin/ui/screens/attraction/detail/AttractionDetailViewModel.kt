@@ -45,7 +45,29 @@ class AttractionDetailViewModel(
     }
 
     fun addTicket(idWisata: String) = viewModelScope.launch {
-        wisataUseCase.addTicket(idWisata, selectedTicket.name, selectedTicket.price.toString()).collect { res ->
+        wisataUseCase.addTicket(idWisata, selectedTicket.name, selectedTicket.price.toString())
+            .collect { res ->
+                state = when (res) {
+                    is Resource.Loading -> {
+                        state.copy(isTicketLoading = true)
+                    }
+                    is Resource.Success -> {
+                        state.copy(tickets = res.data ?: arrayListOf(), isTicketLoading = false)
+                    }
+                    is Resource.Error -> {
+                        state.copy(isTicketLoading = false)
+                    }
+                }
+            }
+    }
+
+    fun editTicket(idWisata: String) = viewModelScope.launch {
+        wisataUseCase.editTicket(
+            idWisata,
+            selectedTicket.name,
+            selectedTicket.price.toString(),
+            selectedTicket.id
+        ).collect {res ->
             state = when (res) {
                 is Resource.Loading -> {
                     state.copy(isTicketLoading = true)

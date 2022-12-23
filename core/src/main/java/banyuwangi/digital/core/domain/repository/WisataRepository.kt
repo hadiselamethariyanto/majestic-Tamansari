@@ -22,4 +22,10 @@ interface WisataRepository {
         price: String
     ): Flow<Resource<List<TicketWisataDomain>>>
 
+    fun editTicketWisata(
+        idWisata: String,
+        name: String,
+        price: String,
+        id: String
+    ): Flow<Resource<List<TicketWisataDomain>>>
 }

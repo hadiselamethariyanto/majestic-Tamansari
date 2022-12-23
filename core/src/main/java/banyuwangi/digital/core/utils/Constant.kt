@@ -32,4 +32,5 @@ object Constant {
     const val API_GET_BANNER = "welcome/get_banner"
     const val API_DELETE_TICKET = "wisata/delete_ticket"
     const val API_ADD_TICKET = "wisata/add_ticket"
+    const val API_EDIT_TICKET = "wisata/edit_ticket"
 }

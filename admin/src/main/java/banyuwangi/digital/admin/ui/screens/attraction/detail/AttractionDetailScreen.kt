@@ -196,7 +196,7 @@ fun AttractionDetailContent(
             if (state.isTicketLoading) {
                 LazyColumn(
                     modifier = Modifier
-                        .height(200.dp)
+                        .height(150.dp)
                         .shimmer(),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
@@ -207,7 +207,7 @@ fun AttractionDetailContent(
                     }
                 }
             } else {
-                LazyColumn(modifier = Modifier.height(200.dp)) {
+                LazyColumn(modifier = Modifier.height(150.dp)) {
                     items(state.tickets, key = { it.id }) { ticket ->
                         AttractionTicketItem(
                             ticket = ticket,

@@ -34,4 +34,7 @@ class WisataInteractor(private val repository: WisataRepository) : WisataUseCase
         id: String
     ): Flow<Resource<List<TicketWisataDomain>>> =
         repository.editTicketWisata(idWisata, name, price, id)
+
+    override fun deletePhoto(idWisata: String, url: String): Flow<Resource<List<String>>> =
+        repository.deletePhoto(idWisata, url)
 }

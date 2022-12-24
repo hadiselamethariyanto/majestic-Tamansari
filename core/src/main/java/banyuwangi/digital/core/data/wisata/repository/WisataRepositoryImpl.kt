@@ -5,10 +5,7 @@ import banyuwangi.digital.core.data.mechanism.NetworkOnlyResource
 import banyuwangi.digital.core.data.network.ApiResponseOnly
 import banyuwangi.digital.core.data.wisata.mapper.WisataMapper
 import banyuwangi.digital.core.data.wisata.repository.source.remote.WisataRemoteDataSource
-import banyuwangi.digital.core.data.wisata.repository.source.remote.response.DeleteTicketWisataResponse
-import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetDetailWisataResponse
-import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetWisataRatingResponse
-import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetWisataResponse
+import banyuwangi.digital.core.data.wisata.repository.source.remote.response.*
 import banyuwangi.digital.core.domain.model.TicketWisataDomain
 import banyuwangi.digital.core.domain.model.WisataDomain
 import banyuwangi.digital.core.domain.model.WisataRatingDomain
@@ -108,6 +105,18 @@ class WisataRepositoryImpl(private val remoteDataSource: WisataRemoteDataSource)
 
             override suspend fun createCall(): Flow<ApiResponseOnly<DeleteTicketWisataResponse>> =
                 remoteDataSource.editTicket(idWisata, name, price, id)
+
+        }.asFlow()
+    }
+
+    override fun deletePhoto(idWisata: String, url: String): Flow<Resource<List<String>>> {
+        return object : NetworkOnlyResource<List<String>, DeletePhotoWisataResponse>() {
+            override fun loadFromNetwork(data: DeletePhotoWisataResponse): Flow<List<String>> {
+                return flowOf(data.data)
+            }
+
+            override suspend fun createCall(): Flow<ApiResponseOnly<DeletePhotoWisataResponse>> =
+                remoteDataSource.deletePhoto(idWisata, url)
 
         }.asFlow()
     }

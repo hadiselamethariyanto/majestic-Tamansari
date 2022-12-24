@@ -2,10 +2,7 @@ package banyuwangi.digital.core.data.wisata.repository.source.remote
 
 import banyuwangi.digital.core.data.network.ApiResponseOnly
 import banyuwangi.digital.core.data.wisata.repository.source.remote.network.WisataService
-import banyuwangi.digital.core.data.wisata.repository.source.remote.response.DeleteTicketWisataResponse
-import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetDetailWisataResponse
-import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetWisataRatingResponse
-import banyuwangi.digital.core.data.wisata.repository.source.remote.response.GetWisataResponse
+import banyuwangi.digital.core.data.wisata.repository.source.remote.response.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -104,6 +101,24 @@ class WisataRemoteDataSource(private val service: WisataService) {
         return flow {
             try {
                 val response = service.editTicket(idWisata, name, price, id)
+                if (response.success) {
+                    emit(ApiResponseOnly.Success(response))
+                } else {
+                    emit(ApiResponseOnly.Error(response.message))
+                }
+            } catch (e: Exception) {
+                emit(ApiResponseOnly.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun deletePhoto(
+        idWisata: String,
+        url: String
+    ): Flow<ApiResponseOnly<DeletePhotoWisataResponse>> {
+        return flow {
+            try {
+                val response = service.deletePhoto(idWisata, url)
                 if (response.success) {
                     emit(ApiResponseOnly.Success(response))
                 } else {

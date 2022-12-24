@@ -29,4 +29,5 @@ interface WisataUseCase {
         id: String
     ): Flow<Resource<List<TicketWisataDomain>>>
 
+    fun deletePhoto(idWisata: String, url: String): Flow<Resource<List<String>>>
 }

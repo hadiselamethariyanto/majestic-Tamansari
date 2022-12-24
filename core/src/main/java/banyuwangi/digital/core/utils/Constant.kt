@@ -34,4 +34,5 @@ object Constant {
     const val API_ADD_TICKET = "wisata/add_ticket"
     const val API_EDIT_TICKET = "wisata/edit_ticket"
     const val API_DELETE_PHOTO = "wisata/delete_photo"
+    const val API_ADD_PHOTO = "wisata/upload_photo"
 }

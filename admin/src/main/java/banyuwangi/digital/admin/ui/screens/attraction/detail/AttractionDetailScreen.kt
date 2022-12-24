@@ -1,5 +1,7 @@
 package banyuwangi.digital.admin.ui.screens.attraction.detail
 
+import android.content.Context
+import android.net.Uri
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,6 +15,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,7 +31,10 @@ import banyuwangi.digital.core.domain.model.TicketWisataDomain
 import banyuwangi.digital.core.domain.model.WisataDomain
 import com.valentinilk.shimmer.shimmer
 import kotlinx.coroutines.launch
+import org.apache.commons.io.FileUtils
 import org.koin.androidx.compose.koinViewModel
+import java.io.File
+
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -37,6 +43,7 @@ fun AttractionDetailScreen(
     navController: NavController,
     viewModel: AttractionDetailViewModel = koinViewModel()
 ) {
+    val context = LocalContext.current
     Scaffold(
         topBar = {
             TopBar(
@@ -140,7 +147,18 @@ fun AttractionDetailScreen(
                         },
                         onAddPhoto = {
                             bottomSheetContent = {
-                                AddAttractionPhotoBottomSheetContent()
+                                AddAttractionPhotoBottomSheetContent(onSubmit = { uri ->
+                                    coroutineScope.launch { bottomSheetState.hide() }
+                                    val file = createFileFromUri(uri, context)
+                                    attraction?.let { wisata ->
+                                        file?.let { it1 ->
+                                            viewModel.addPhoto(
+                                                wisata.id,
+                                                it1
+                                            )
+                                        }
+                                    }
+                                })
                             }
                             coroutineScope.launch {
                                 bottomSheetState.show()
@@ -279,5 +297,25 @@ fun AttractionDetailScreenPreview() {
                 )
             ), navController = rememberNavController()
         )
+    }
+}
+
+private fun createFileFromUri(uri: Uri, context: Context): File? {
+    return try {
+        val stream = context.contentResolver.openInputStream(uri)
+        val file =
+            File.createTempFile(
+                "${System.currentTimeMillis()}",
+                ".jpg",
+                context.cacheDir
+            )
+        FileUtils.copyInputStreamToFile(
+            stream,
+            file
+        )  // Use this one import org.apache.commons.io.FileUtils
+        file
+    } catch (e: Exception) {
+        e.printStackTrace()
+        null
     }
 }

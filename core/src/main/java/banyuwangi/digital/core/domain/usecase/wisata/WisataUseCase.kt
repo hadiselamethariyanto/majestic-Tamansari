@@ -5,6 +5,7 @@ import banyuwangi.digital.core.domain.model.TicketWisataDomain
 import banyuwangi.digital.core.domain.model.WisataDomain
 import banyuwangi.digital.core.domain.model.WisataRatingDomain
 import kotlinx.coroutines.flow.Flow
+import java.io.File
 
 interface WisataUseCase {
 
@@ -30,4 +31,6 @@ interface WisataUseCase {
     ): Flow<Resource<List<TicketWisataDomain>>>
 
     fun deletePhoto(idWisata: String, url: String): Flow<Resource<List<String>>>
+
+    fun addPhoto(idWisata: String, file: File): Flow<Resource<List<String>>>
 }

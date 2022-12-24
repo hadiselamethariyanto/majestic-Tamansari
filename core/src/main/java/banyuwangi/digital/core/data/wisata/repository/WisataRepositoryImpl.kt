@@ -12,6 +12,7 @@ import banyuwangi.digital.core.domain.model.WisataRatingDomain
 import banyuwangi.digital.core.domain.repository.WisataRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
+import java.io.File
 
 class WisataRepositoryImpl(private val remoteDataSource: WisataRemoteDataSource) :
     WisataRepository {
@@ -117,6 +118,18 @@ class WisataRepositoryImpl(private val remoteDataSource: WisataRemoteDataSource)
 
             override suspend fun createCall(): Flow<ApiResponseOnly<DeletePhotoWisataResponse>> =
                 remoteDataSource.deletePhoto(idWisata, url)
+
+        }.asFlow()
+    }
+
+    override fun addPhoto(idWisata: String, file: File): Flow<Resource<List<String>>> {
+        return object : NetworkOnlyResource<List<String>, DeletePhotoWisataResponse>() {
+            override fun loadFromNetwork(data: DeletePhotoWisataResponse): Flow<List<String>> {
+                return flowOf(data.data)
+            }
+
+            override suspend fun createCall(): Flow<ApiResponseOnly<DeletePhotoWisataResponse>> =
+                remoteDataSource.addPhoto(idWisata, file)
 
         }.asFlow()
     }

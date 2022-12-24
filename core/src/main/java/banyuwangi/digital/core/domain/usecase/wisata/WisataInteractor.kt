@@ -6,6 +6,7 @@ import banyuwangi.digital.core.domain.model.WisataDomain
 import banyuwangi.digital.core.domain.model.WisataRatingDomain
 import banyuwangi.digital.core.domain.repository.WisataRepository
 import kotlinx.coroutines.flow.Flow
+import java.io.File
 
 class WisataInteractor(private val repository: WisataRepository) : WisataUseCase {
     override fun getWisata(): Flow<Resource<List<WisataDomain>>> = repository.getWisata()
@@ -37,4 +38,7 @@ class WisataInteractor(private val repository: WisataRepository) : WisataUseCase
 
     override fun deletePhoto(idWisata: String, url: String): Flow<Resource<List<String>>> =
         repository.deletePhoto(idWisata, url)
+
+    override fun addPhoto(idWisata: String, file: File): Flow<Resource<List<String>>> =
+        repository.addPhoto(idWisata, file)
 }

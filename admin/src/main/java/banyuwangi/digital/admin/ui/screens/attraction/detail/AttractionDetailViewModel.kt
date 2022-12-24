@@ -12,6 +12,7 @@ import banyuwangi.digital.core.domain.model.TicketWisataDomain
 import banyuwangi.digital.core.domain.model.WisataDomain
 import banyuwangi.digital.core.domain.usecase.wisata.WisataUseCase
 import kotlinx.coroutines.launch
+import java.io.File
 
 class AttractionDetailViewModel(
     private val wisataUseCase: WisataUseCase,
@@ -87,6 +88,22 @@ class AttractionDetailViewModel(
 
     fun deletePhoto(idWisata: String, url: String) = viewModelScope.launch {
         wisataUseCase.deletePhoto(idWisata, url).collect { res ->
+            state = when (res) {
+                is Resource.Loading -> {
+                    state.copy(isPhotoLoading = true)
+                }
+                is Resource.Success -> {
+                    state.copy(isPhotoLoading = false, photos = res.data ?: arrayListOf())
+                }
+                is Resource.Error -> {
+                    state.copy(isPhotoLoading = false)
+                }
+            }
+        }
+    }
+
+    fun addPhoto(idWisata: String, file: File) = viewModelScope.launch {
+        wisataUseCase.addPhoto(idWisata, file).collect { res ->
             state = when (res) {
                 is Resource.Loading -> {
                     state.copy(isPhotoLoading = true)

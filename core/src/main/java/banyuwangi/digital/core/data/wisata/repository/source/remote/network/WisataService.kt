@@ -2,10 +2,8 @@ package banyuwangi.digital.core.data.wisata.repository.source.remote.network
 
 import banyuwangi.digital.core.data.wisata.repository.source.remote.response.*
 import banyuwangi.digital.core.utils.Constant
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import okhttp3.MultipartBody
+import retrofit2.http.*
 
 interface WisataService {
     @GET(Constant.API_GET_WISATA)
@@ -48,6 +46,12 @@ interface WisataService {
     suspend fun deletePhoto(
         @Field("id_wisata") idWisata: String,
         @Field("url") url: String
+    ): DeletePhotoWisataResponse
+
+    @POST(Constant.API_ADD_PHOTO)
+    suspend fun addPhoto(
+        @Header("Content-Type") contentType: String,
+        @Body body: MultipartBody
     ): DeletePhotoWisataResponse
 
 }

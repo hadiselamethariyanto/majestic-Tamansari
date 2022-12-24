@@ -6,5 +6,7 @@ data class AttractionDetailState(
     val isLoading: Boolean = false,
     val error: String? = null,
     val tickets: List<TicketWisataDomain> = emptyList(),
-    val isTicketLoading: Boolean = false
+    val photos: List<String> = emptyList(),
+    val isTicketLoading: Boolean = false,
+    val isPhotoLoading: Boolean = false
 )

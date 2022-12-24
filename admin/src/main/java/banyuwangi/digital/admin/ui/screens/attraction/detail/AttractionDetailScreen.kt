@@ -153,6 +153,9 @@ fun AttractionDetailScreen(
                                 price = ticket.price.toString()
                             )
                             openDialog = true
+                        },
+                        onDeletePhoto = { url ->
+                            attraction?.id?.let { it1 -> viewModel.deletePhoto(it1, url) }
                         }
                     )
                 },
@@ -169,6 +172,7 @@ fun AttractionDetailContent(
     onUpdateTicket: (String, String, String) -> Unit,
     onAddPhoto: () -> Unit,
     onDeleteTicket: (TicketWisataDomain) -> Unit,
+    onDeletePhoto: (String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -228,9 +232,19 @@ fun AttractionDetailContent(
                 buttonIcon = Icons.Default.Add,
                 onButtonClicked = { onAddPhoto() })
             Spacer(modifier = Modifier.height(16.dp))
-            LazyRow(modifier = Modifier, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                items(attraction?.photos ?: arrayListOf()) {
-                    PhotoItem(id = "", url = it)
+            if (state.isPhotoLoading) {
+                LazyRow(modifier = Modifier, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    repeat(5) {
+                        item {
+                            PhotoShimmer()
+                        }
+                    }
+                }
+            } else {
+                LazyRow(modifier = Modifier, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    items(state.photos) {
+                        PhotoItem(url = it, onDeletePhoto = onDeletePhoto)
+                    }
                 }
             }
         }

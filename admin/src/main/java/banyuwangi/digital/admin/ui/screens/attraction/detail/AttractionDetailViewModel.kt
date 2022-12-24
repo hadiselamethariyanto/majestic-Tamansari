@@ -24,7 +24,10 @@ class AttractionDetailViewModel(
     init {
         savedStateHandle.get<String>("data").let { data ->
             val attraction = data?.fromJson(WisataDomain::class.java)
-            state = state.copy(tickets = attraction?.tickets ?: arrayListOf())
+            state = state.copy(
+                tickets = attraction?.tickets ?: arrayListOf(),
+                photos = attraction?.photos ?: arrayListOf()
+            )
         }
     }
 
@@ -67,7 +70,7 @@ class AttractionDetailViewModel(
             selectedTicket.name,
             selectedTicket.price.toString(),
             selectedTicket.id
-        ).collect {res ->
+        ).collect { res ->
             state = when (res) {
                 is Resource.Loading -> {
                     state.copy(isTicketLoading = true)
@@ -77,6 +80,22 @@ class AttractionDetailViewModel(
                 }
                 is Resource.Error -> {
                     state.copy(isTicketLoading = false)
+                }
+            }
+        }
+    }
+
+    fun deletePhoto(idWisata: String, url: String) = viewModelScope.launch {
+        wisataUseCase.deletePhoto(idWisata, url).collect { res ->
+            state = when (res) {
+                is Resource.Loading -> {
+                    state.copy(isPhotoLoading = true)
+                }
+                is Resource.Success -> {
+                    state.copy(isPhotoLoading = false, photos = res.data ?: arrayListOf())
+                }
+                is Resource.Error -> {
+                    state.copy(isPhotoLoading = false)
                 }
             }
         }

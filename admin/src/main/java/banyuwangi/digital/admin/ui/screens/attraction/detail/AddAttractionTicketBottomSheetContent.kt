@@ -18,6 +18,7 @@ import banyuwangi.digital.admin.ui.theme.TamansariTheme
 
 @Composable
 fun AddAttractionTicketBottomSheetContent(
+    title:String,
     initialName: String,
     initialPrice: String,
     onNameChange: (String) -> Unit,
@@ -36,7 +37,7 @@ fun AddAttractionTicketBottomSheetContent(
                 .padding(20.dp)
         ) {
             Text(
-                text = "Tambah Tiket",
+                text = title,
                 modifier = modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 fontSize = 18.sp,
@@ -78,7 +79,8 @@ fun AddAttractionTicketBottomSheetContentPrev() {
             initialName = "Tiket domestik",
             initialPrice = "1000",
             onNameChange = { },
-            onPriceChange = {}
+            onPriceChange = {},
+            title = "Tambah Tiket"
         )
     }
 }

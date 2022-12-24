@@ -3,4 +3,6 @@
     <string name="loading">Loading</string>
     <string name="loading_failed">Loading failed</string>
     <string name="retry">Retry</string>
+    <string name="add_ticket">Tambah Tiket</string>
+    <string name="update_ticket">Update Tiket</string>
 </resources>

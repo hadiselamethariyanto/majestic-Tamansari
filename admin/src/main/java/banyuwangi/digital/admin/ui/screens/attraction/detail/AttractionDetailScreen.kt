@@ -5,18 +5,22 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import banyuwangi.digital.admin.R
 import banyuwangi.digital.admin.ui.components.*
 import banyuwangi.digital.admin.ui.theme.TamansariTheme
 import banyuwangi.digital.admin.ui.theme.grey200
@@ -49,6 +53,20 @@ fun AttractionDetailScreen(
                 mutableStateOf(null)
             }
 
+            var openDialog by remember { mutableStateOf(false) }
+
+            if (openDialog) {
+                SimpleAlertDialog(
+                    onDismiss = { openDialog = false },
+                    item = viewModel.selectedTicket.name,
+                    onConfirm = { id ->
+                        viewModel.deleteTicket(attraction?.id ?: "", id)
+                        openDialog = false
+                    },
+                    itemId = viewModel.selectedTicket.id
+                )
+            }
+
             DefaultModalBottomSheetDialog(
                 bottomSheetState = bottomSheetState,
                 sheetContent = {
@@ -67,7 +85,11 @@ fun AttractionDetailScreen(
                             bottomSheetContent = {
                                 AddAttractionTicketBottomSheetContent(
                                     onSubmit = {
-                                        attraction?.id?.let { idWisata -> viewModel.addTicket(idWisata) }
+                                        attraction?.id?.let { idWisata ->
+                                            viewModel.addTicket(
+                                                idWisata
+                                            )
+                                        }
                                         coroutineScope.launch {
                                             bottomSheetState.hide()
                                         }
@@ -79,7 +101,8 @@ fun AttractionDetailScreen(
                                     },
                                     onPriceChange = { price ->
                                         viewModel.updateTicketPrice(price)
-                                    }
+                                    },
+                                    title = stringResource(id = R.string.add_ticket)
                                 )
                             }
                             coroutineScope.launch {
@@ -91,7 +114,11 @@ fun AttractionDetailScreen(
                             bottomSheetContent = {
                                 AddAttractionTicketBottomSheetContent(
                                     onSubmit = {
-                                        attraction?.id?.let { idWisata -> viewModel.editTicket(idWisata) }
+                                        attraction?.id?.let { idWisata ->
+                                            viewModel.editTicket(
+                                                idWisata
+                                            )
+                                        }
                                         coroutineScope.launch {
                                             bottomSheetState.hide()
                                         }
@@ -103,7 +130,8 @@ fun AttractionDetailScreen(
                                     },
                                     onPriceChange = { price ->
                                         viewModel.updateTicketPrice(price)
-                                    }
+                                    },
+                                    title = stringResource(id = R.string.update_ticket)
                                 )
                             }
                             coroutineScope.launch {
@@ -117,6 +145,14 @@ fun AttractionDetailScreen(
                             coroutineScope.launch {
                                 bottomSheetState.show()
                             }
+                        },
+                        onDeleteTicket = { ticket ->
+                            viewModel.updateSelectedTicket(
+                                id = ticket.id,
+                                name = ticket.name,
+                                price = ticket.price.toString()
+                            )
+                            openDialog = true
                         }
                     )
                 },
@@ -132,28 +168,16 @@ fun AttractionDetailContent(
     onAddTicket: () -> Unit,
     onUpdateTicket: (String, String, String) -> Unit,
     onAddPhoto: () -> Unit,
+    onDeleteTicket: (TicketWisataDomain) -> Unit,
 ) {
-    Column(modifier = Modifier.fillMaxSize()) {
-        val openDialog = remember { mutableStateOf(false) }
-        var item by remember { mutableStateOf("") }
-        var itemId by remember { mutableStateOf("") }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+    ) {
         val state = viewModel.state
-
-        if (openDialog.value) {
-            SimpleAlertDialog(
-                onDismiss = { openDialog.value = false },
-                item = item,
-                onConfirm = { id ->
-                    viewModel.deleteTicket(attraction?.id ?: "", id)
-                    openDialog.value = false
-                },
-                itemId = itemId
-            )
-        }
-
         Column(
             modifier = Modifier
-                .fillMaxSize()
                 .padding(16.dp)
         ) {
             Text(text = attraction?.name ?: "", fontSize = 18.sp, fontWeight = FontWeight.Bold)
@@ -171,7 +195,9 @@ fun AttractionDetailContent(
             Spacer(modifier = Modifier.height(16.dp))
             if (state.isTicketLoading) {
                 LazyColumn(
-                    modifier = Modifier.shimmer(),
+                    modifier = Modifier
+                        .height(200.dp)
+                        .shimmer(),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     repeat(5) {
@@ -181,16 +207,12 @@ fun AttractionDetailContent(
                     }
                 }
             } else {
-                LazyColumn {
+                LazyColumn(modifier = Modifier.height(200.dp)) {
                     items(state.tickets, key = { it.id }) { ticket ->
                         AttractionTicketItem(
-                            id = ticket.id,
-                            name = ticket.name,
-                            price = ticket.price,
-                            onDelete = { id, name ->
-                                item = name
-                                itemId = id
-                                openDialog.value = true
+                            ticket = ticket,
+                            onDelete = {
+                                onDeleteTicket(ticket)
                             },
                             modifier = Modifier.clickable {
                                 onUpdateTicket(ticket.id, ticket.name, ticket.price.toString())

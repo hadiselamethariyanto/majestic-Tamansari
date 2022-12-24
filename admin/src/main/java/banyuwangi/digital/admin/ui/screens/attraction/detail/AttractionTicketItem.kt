@@ -19,21 +19,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import banyuwangi.digital.admin.ui.theme.TamansariTheme
 import banyuwangi.digital.admin.ui.theme.grey200
+import banyuwangi.digital.core.domain.model.TicketWisataDomain
 import com.bwx.tamansari.utils.Utils
 
 
 @Composable
 fun AttractionTicketItem(
-    id: String,
-    name: String,
-    price: Int,
-    onDelete: (String, String) -> Unit,
+    ticket: TicketWisataDomain,
+    onDelete: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-        Text(text = name, fontSize = 14.sp, modifier = Modifier.weight(1f))
-        Text(text = Utils.thousandSeparator(price), fontSize = 14.sp)
-        IconButton(onClick = { onDelete(id, name) }) {
+        Text(text = ticket.name, fontSize = 14.sp, modifier = Modifier.weight(1f))
+        Text(text = Utils.thousandSeparator(ticket.price), fontSize = 14.sp)
+        IconButton(onClick = { onDelete() }) {
             Icon(imageVector = Icons.Default.Delete, contentDescription = null)
         }
     }
@@ -56,9 +55,7 @@ fun AttractionTicketShimmer(modifier: Modifier = Modifier) {
 fun AttractionTicketItemPreview() {
     TamansariTheme {
         AttractionTicketItem(
-            id = "1",
-            name = "Tiket Domestik",
-            price = 5000,
-            onDelete = { id, name -> })
+            ticket = TicketWisataDomain("1", "Tiket wisata", 5000),
+            onDelete = { })
     }
 }
